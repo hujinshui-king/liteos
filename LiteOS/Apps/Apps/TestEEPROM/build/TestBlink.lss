@@ -1,0 +1,676 @@
+
+TestBlink.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000358  00013800  00013800  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000044  00800af0  00800af0  000003cc  2**0
+                  ALLOC
+  2 .stab         00000408  00000000  00000000  000003cc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000084  00000000  00000000  000007d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  00000858  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 0000001b  00000000  00000000  00000878  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000013df  00000000  00000000  00000893  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000027d  00000000  00000000  00001c72  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000046c  00000000  00000000  00001eef  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000b0  00000000  00000000  0000235b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000427  00000000  00000000  0000240b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001ae  00000000  00000000  00002832  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00013800 <__vectors>:
+   13800:	0c 94 46 9c 	jmp	0x1388c
+   13804:	0c 94 63 9c 	jmp	0x138c6
+   13808:	0c 94 63 9c 	jmp	0x138c6
+   1380c:	0c 94 63 9c 	jmp	0x138c6
+   13810:	0c 94 63 9c 	jmp	0x138c6
+   13814:	0c 94 63 9c 	jmp	0x138c6
+   13818:	0c 94 63 9c 	jmp	0x138c6
+   1381c:	0c 94 63 9c 	jmp	0x138c6
+   13820:	0c 94 63 9c 	jmp	0x138c6
+   13824:	0c 94 63 9c 	jmp	0x138c6
+   13828:	0c 94 63 9c 	jmp	0x138c6
+   1382c:	0c 94 63 9c 	jmp	0x138c6
+   13830:	0c 94 63 9c 	jmp	0x138c6
+   13834:	0c 94 63 9c 	jmp	0x138c6
+   13838:	0c 94 63 9c 	jmp	0x138c6
+   1383c:	0c 94 63 9c 	jmp	0x138c6
+   13840:	0c 94 63 9c 	jmp	0x138c6
+   13844:	0c 94 63 9c 	jmp	0x138c6
+   13848:	0c 94 63 9c 	jmp	0x138c6
+   1384c:	0c 94 63 9c 	jmp	0x138c6
+   13850:	0c 94 63 9c 	jmp	0x138c6
+   13854:	0c 94 63 9c 	jmp	0x138c6
+   13858:	0c 94 63 9c 	jmp	0x138c6
+   1385c:	0c 94 63 9c 	jmp	0x138c6
+   13860:	0c 94 63 9c 	jmp	0x138c6
+   13864:	0c 94 63 9c 	jmp	0x138c6
+   13868:	0c 94 63 9c 	jmp	0x138c6
+   1386c:	0c 94 63 9c 	jmp	0x138c6
+   13870:	0c 94 63 9c 	jmp	0x138c6
+   13874:	0c 94 63 9c 	jmp	0x138c6
+   13878:	0c 94 63 9c 	jmp	0x138c6
+   1387c:	0c 94 63 9c 	jmp	0x138c6
+   13880:	0c 94 63 9c 	jmp	0x138c6
+   13884:	0c 94 63 9c 	jmp	0x138c6
+   13888:	0c 94 63 9c 	jmp	0x138c6
+
+0001388c <__ctors_end>:
+   1388c:	11 24       	eor	r1, r1
+   1388e:	1f be       	out	0x3f, r1	; 63
+   13890:	c0 ef       	ldi	r28, 0xF0	; 240
+   13892:	dc e0       	ldi	r29, 0x0C	; 12
+   13894:	de bf       	out	0x3e, r29	; 62
+   13896:	cd bf       	out	0x3d, r28	; 61
+
+00013898 <__do_copy_data>:
+   13898:	1a e0       	ldi	r17, 0x0A	; 10
+   1389a:	a0 ef       	ldi	r26, 0xF0	; 240
+   1389c:	ba e0       	ldi	r27, 0x0A	; 10
+   1389e:	e8 e5       	ldi	r30, 0x58	; 88
+   138a0:	fb e3       	ldi	r31, 0x3B	; 59
+   138a2:	01 e0       	ldi	r16, 0x01	; 1
+   138a4:	0b bf       	out	0x3b, r16	; 59
+   138a6:	02 c0       	rjmp	.+4      	; 0x138ac
+   138a8:	07 90       	elpm	r0, Z+
+   138aa:	0d 92       	st	X+, r0
+   138ac:	a0 3f       	cpi	r26, 0xF0	; 240
+   138ae:	b1 07       	cpc	r27, r17
+   138b0:	d9 f7       	brne	.-10     	; 0x138a8
+
+000138b2 <__do_clear_bss>:
+   138b2:	1b e0       	ldi	r17, 0x0B	; 11
+   138b4:	a0 ef       	ldi	r26, 0xF0	; 240
+   138b6:	ba e0       	ldi	r27, 0x0A	; 10
+   138b8:	01 c0       	rjmp	.+2      	; 0x138bc
+
+000138ba <.do_clear_bss_loop>:
+   138ba:	1d 92       	st	X+, r1
+
+000138bc <.do_clear_bss_start>:
+   138bc:	a4 33       	cpi	r26, 0x34	; 52
+   138be:	b1 07       	cpc	r27, r17
+   138c0:	e1 f7       	brne	.-8      	; 0x138ba
+   138c2:	0c 94 4c 9d 	jmp	0x13a98
+
+000138c6 <__bad_interrupt>:
+   138c6:	0c 94 00 9c 	jmp	0x13800
+
+000138ca <getCurrentThread.1394>:
+thread **getCurrentThread()
+{
+   thread **current_thread; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   138ca:	4f 93       	push	r20
+   138cc:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   138ce:	ec e0       	ldi	r30, 0x0C	; 12
+   138d0:	fa ee       	ldi	r31, 0xEA	; 234
+   138d2:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   138d4:	84 2f       	mov	r24, r20
+   138d6:	95 2f       	mov	r25, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   138d8:	5f 91       	pop	r21
+   138da:	4f 91       	pop	r20
+   138dc:	08 95       	ret
+
+000138de <yield.1393>:
+	             "pop r20" "\n\t"
+	              ::);
+   return current_thread; 
+}
+
+
+
+uint8_t getCurrentThreadIndex()
+{
+   
+   uint16_t index; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADINDEXFUNCTION; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (index)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return (uint8_t)index; 
+}
+
+
+void sleepThread(int milliseconds)
+{
+/*
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+
+   asm volatile("push r24" "\n\t"
+	             "push r25" "\n\t"
+	              ::);
+   getaddrfp();     
+
+   asm volatile(" mov %A0, r24" "\n\t"
+	             "mov %B0, r25" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r24" "\n\t"
+	             "pop r25" "\n\t"
+	              ::);
+ */
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 4;
+   (*current_thread)->data.sleepstate.sleeptime = milliseconds;
+   
+   yield(); 
+}
+
+
+void hibernateThread()
+{
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 5; 
+   yield(); 
+}
+
+
+void yield()
+{
+ void (*yieldfp)(void) = (void (*)(void))YIELDFUNCTION; 
+ yieldfp();                              
+   138de:	e0 e0       	ldi	r30, 0x00	; 0
+   138e0:	fa ee       	ldi	r31, 0xEA	; 234
+   138e2:	09 95       	icall
+   138e4:	08 95       	ret
+
+000138e6 <syscall_postThreadTask.1400>:
+}
+
+
+
+void syscall_postThreadTask()
+{
+ void (*postthreadfp)(void) = (void (*)(void))POSTTHREADTASK; 
+ postthreadfp();                              
+   138e6:	e8 e6       	ldi	r30, 0x68	; 104
+   138e8:	fa ee       	ldi	r31, 0xEA	; 234
+   138ea:	09 95       	icall
+   138ec:	08 95       	ret
+
+000138ee <wakeupMeSerial.1744>:
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMeSerial()
+{
+  mythreadserial->state = STATE_ACTIVE; 
+   138ee:	e0 91 30 0b 	lds	r30, 0x0B30
+   138f2:	f0 91 31 0b 	lds	r31, 0x0B31
+   138f6:	82 e0       	ldi	r24, 0x02	; 2
+   138f8:	82 83       	std	Z+2, r24	; 0x02
+  syscall_postThreadTask();
+   138fa:	0e 94 73 9c 	call	0x138e6
+   138fe:	08 95       	ret
+
+00013900 <getCurrentEEPROMInfo.2170>:
+   genericByteStorageTaskNode *currenteeprominfoaddr; 
+
+   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTEEPROMINFOHANDLE; 
+
+   asm volatile("push r20" "\n\t"
+   13900:	4f 93       	push	r20
+   13902:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   13904:	e4 ea       	ldi	r30, 0xA4	; 164
+   13906:	fa ee       	ldi	r31, 0xEA	; 234
+   13908:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   1390a:	84 2f       	mov	r24, r20
+   1390c:	95 2f       	mov	r25, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (currenteeprominfoaddr)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   1390e:	5f 91       	pop	r21
+   13910:	4f 91       	pop	r20
+   13912:	08 95       	ret
+
+00013914 <readFromEEPROM.1486>:
+	             "pop r20" "\n\t"
+	              ::);
+   return currenteeprominfoaddr; 
+}
+
+
+
+
+//Turn off the interrupt, access the location, and use system call to implement poll based imlementation provided by avr libc 
+
+void readFromEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
+{
+   13914:	af 92       	push	r10
+   13916:	bf 92       	push	r11
+   13918:	cf 92       	push	r12
+   1391a:	df 92       	push	r13
+   1391c:	ef 92       	push	r14
+   1391e:	ff 92       	push	r15
+   13920:	0f 93       	push	r16
+   13922:	1f 93       	push	r17
+   13924:	7c 01       	movw	r14, r24
+   13926:	6b 01       	movw	r12, r22
+   13928:	5a 01       	movw	r10, r20
+
+
+_atomic_t _atomic_start(void) 
+{
+  _atomic_t result = SREG;
+   1392a:	0f b7       	in	r16, 0x3f	; 63
+  asm volatile("cli" "\n\t"::);
+   1392c:	f8 94       	cli
+
+	
+	_atomic_t currentatomic;
+
+	currentatomic = _atomic_start();
+   1392e:	11 27       	eor	r17, r17
+
+
+    genericByteStorageTaskNode *eeprominfoaddr; 
+    eeprominfoaddr = getCurrentEEPROMInfo();
+   13930:	0e 94 80 9c 	call	0x13900
+   13934:	fc 01       	movw	r30, r24
+	
+	void (*getaddrfp)(void) = (void (*)(void))READFROMEEPROM; 
+        
+    eeprominfoaddr-> addr = addr;
+   13936:	f1 82       	std	Z+1, r15	; 0x01
+   13938:	e0 82       	st	Z, r14
+   	eeprominfoaddr-> nBytes = nBytes;
+   1393a:	d3 82       	std	Z+3, r13	; 0x03
+   1393c:	c2 82       	std	Z+2, r12	; 0x02
+   	eeprominfoaddr-> buffer = buffer; 
+   1393e:	b5 82       	std	Z+5, r11	; 0x05
+   13940:	a4 82       	std	Z+4, r10	; 0x04
+
+	  
+    getaddrfp();     
+   13942:	e8 ea       	ldi	r30, 0xA8	; 168
+   13944:	fa ee       	ldi	r31, 0xEA	; 234
+   13946:	09 95       	icall
+  return result;
+}
+
+
+
+void _atomic_end(_atomic_t oldSreg)
+{
+  SREG = oldSreg; 
+   13948:	0f bf       	out	0x3f, r16	; 63
+   1394a:	1f 91       	pop	r17
+   1394c:	0f 91       	pop	r16
+   1394e:	ff 90       	pop	r15
+   13950:	ef 90       	pop	r14
+   13952:	df 90       	pop	r13
+   13954:	cf 90       	pop	r12
+   13956:	bf 90       	pop	r11
+   13958:	af 90       	pop	r10
+   1395a:	08 95       	ret
+
+0001395c <writeToEEPROM.1490>:
+
+	_atomic_end(currentatomic); 
+}
+
+
+
+
+//Turn off the interrupt, access the location, and use system call to implement poll based implementation provided by avr libc 
+
+void writeToEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
+{
+   1395c:	af 92       	push	r10
+   1395e:	bf 92       	push	r11
+   13960:	cf 92       	push	r12
+   13962:	df 92       	push	r13
+   13964:	ef 92       	push	r14
+   13966:	ff 92       	push	r15
+   13968:	0f 93       	push	r16
+   1396a:	1f 93       	push	r17
+   1396c:	7c 01       	movw	r14, r24
+   1396e:	6b 01       	movw	r12, r22
+   13970:	5a 01       	movw	r10, r20
+   13972:	0f b7       	in	r16, 0x3f	; 63
+   13974:	f8 94       	cli
+
+	_atomic_t currentatomic;
+
+	currentatomic = _atomic_start();
+   13976:	11 27       	eor	r17, r17
+
+    genericByteStorageTaskNode *eeprominfoaddr; 
+    eeprominfoaddr = getCurrentEEPROMInfo();
+   13978:	0e 94 80 9c 	call	0x13900
+   1397c:	fc 01       	movw	r30, r24
+	
+	void (*getaddrfp)(void) = (void (*)(void))WRITETOEEPROM; 
+        
+    eeprominfoaddr-> addr = addr;
+   1397e:	f1 82       	std	Z+1, r15	; 0x01
+   13980:	e0 82       	st	Z, r14
+	  eeprominfoaddr-> nBytes = nBytes;
+   13982:	d3 82       	std	Z+3, r13	; 0x03
+   13984:	c2 82       	std	Z+2, r12	; 0x02
+	  eeprominfoaddr-> buffer = buffer; 
+   13986:	b5 82       	std	Z+5, r11	; 0x05
+   13988:	a4 82       	std	Z+4, r10	; 0x04
+
+	  
+    getaddrfp();     
+   1398a:	ec ea       	ldi	r30, 0xAC	; 172
+   1398c:	fa ee       	ldi	r31, 0xEA	; 234
+   1398e:	09 95       	icall
+   13990:	0f bf       	out	0x3f, r16	; 63
+   13992:	1f 91       	pop	r17
+   13994:	0f 91       	pop	r16
+   13996:	ff 90       	pop	r15
+   13998:	ef 90       	pop	r14
+   1399a:	df 90       	pop	r13
+   1399c:	cf 90       	pop	r12
+   1399e:	bf 90       	pop	r11
+   139a0:	af 90       	pop	r10
+   139a2:	08 95       	ret
+
+000139a4 <serialSend.1458>:
+   139a4:	8f 92       	push	r8
+   139a6:	9f 92       	push	r9
+   139a8:	af 92       	push	r10
+   139aa:	bf 92       	push	r11
+   139ac:	cf 92       	push	r12
+   139ae:	df 92       	push	r13
+   139b0:	ef 92       	push	r14
+   139b2:	ff 92       	push	r15
+   139b4:	0f 93       	push	r16
+   139b6:	1f 93       	push	r17
+   139b8:	cf 93       	push	r28
+   139ba:	df 93       	push	r29
+   139bc:	88 2e       	mov	r8, r24
+   139be:	5b 01       	movw	r10, r22
+   mutex *msend;   
+
+   void (*getaddrfp)(void) = (void (*)(void))GETSERIALMUTEXFUNCTION;
+   
+   asm volatile("push r20" "\n\t"
+   139c0:	4f 93       	push	r20
+   139c2:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   139c4:	e0 e9       	ldi	r30, 0x90	; 144
+   139c6:	fa ee       	ldi	r31, 0xEA	; 234
+   139c8:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   139ca:	c4 2f       	mov	r28, r20
+   139cc:	d5 2f       	mov	r29, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (msend)
+				 :
+                );
+   asm volatile("pop r21" "\n\t"
+   139ce:	5f 91       	pop	r21
+   139d0:	4f 91       	pop	r20
+   139d2:	0e 94 65 9c 	call	0x138ca
+   139d6:	4f 93       	push	r20
+   139d8:	5f 93       	push	r21
+   139da:	e4 e9       	ldi	r30, 0x94	; 148
+   139dc:	fa ee       	ldi	r31, 0xEA	; 234
+   139de:	09 95       	icall
+   139e0:	c4 2e       	mov	r12, r20
+   139e2:	d5 2e       	mov	r13, r21
+   139e4:	5f 91       	pop	r21
+   139e6:	4f 91       	pop	r20
+   139e8:	0e 94 65 9c 	call	0x138ca
+   139ec:	8c 01       	movw	r16, r24
+   139ee:	4f 93       	push	r20
+   139f0:	5f 93       	push	r21
+   139f2:	ec e1       	ldi	r30, 0x1C	; 28
+   139f4:	fa ee       	ldi	r31, 0xEA	; 234
+   139f6:	09 95       	icall
+   139f8:	e4 2e       	mov	r14, r20
+   139fa:	f5 2e       	mov	r15, r21
+   139fc:	5f 91       	pop	r21
+   139fe:	4f 91       	pop	r20
+   13a00:	9f b6       	in	r9, 0x3f	; 63
+   13a02:	f8 94       	cli
+   13a04:	88 81       	ld	r24, Y
+   13a06:	88 23       	and	r24, r24
+   13a08:	91 f0       	breq	.+36     	; 0x13a2e
+   13a0a:	d8 01       	movw	r26, r16
+   13a0c:	ed 91       	ld	r30, X+
+   13a0e:	fc 91       	ld	r31, X
+   13a10:	11 97       	sbiw	r26, 0x01	; 1
+   13a12:	83 e0       	ldi	r24, 0x03	; 3
+   13a14:	82 83       	std	Z+2, r24	; 0x02
+   13a16:	ed 91       	ld	r30, X+
+   13a18:	fc 91       	ld	r31, X
+   13a1a:	d0 8f       	std	Z+24, r29	; 0x18
+   13a1c:	c7 8b       	std	Z+23, r28	; 0x17
+   13a1e:	89 81       	ldd	r24, Y+1	; 0x01
+   13a20:	8f 5f       	subi	r24, 0xFF	; 255
+   13a22:	89 83       	std	Y+1, r24	; 0x01
+   13a24:	0e 94 6f 9c 	call	0x138de
+   13a28:	89 81       	ldd	r24, Y+1	; 0x01
+   13a2a:	81 50       	subi	r24, 0x01	; 1
+   13a2c:	89 83       	std	Y+1, r24	; 0x01
+   13a2e:	81 e0       	ldi	r24, 0x01	; 1
+   13a30:	88 83       	st	Y, r24
+   13a32:	8e 2d       	mov	r24, r14
+   13a34:	99 27       	eor	r25, r25
+   13a36:	8a 83       	std	Y+2, r24	; 0x02
+   13a38:	89 2d       	mov	r24, r9
+   13a3a:	99 27       	eor	r25, r25
+   13a3c:	8f bf       	out	0x3f, r24	; 63
+   13a3e:	f6 01       	movw	r30, r12
+   13a40:	80 82       	st	Z, r8
+   13a42:	b2 82       	std	Z+2, r11	; 0x02
+   13a44:	a1 82       	std	Z+1, r10	; 0x01
+   13a46:	e8 e9       	ldi	r30, 0x98	; 152
+   13a48:	fa ee       	ldi	r31, 0xEA	; 234
+   13a4a:	09 95       	icall
+   13a4c:	0e 94 65 9c 	call	0x138ca
+   13a50:	dc 01       	movw	r26, r24
+   13a52:	ed 91       	ld	r30, X+
+   13a54:	fc 91       	ld	r31, X
+   13a56:	11 97       	sbiw	r26, 0x01	; 1
+   13a58:	84 e0       	ldi	r24, 0x04	; 4
+   13a5a:	82 83       	std	Z+2, r24	; 0x02
+   13a5c:	ed 91       	ld	r30, X+
+   13a5e:	fc 91       	ld	r31, X
+   13a60:	8e e1       	ldi	r24, 0x1E	; 30
+   13a62:	90 e0       	ldi	r25, 0x00	; 0
+   13a64:	90 8f       	std	Z+24, r25	; 0x18
+   13a66:	87 8b       	std	Z+23, r24	; 0x17
+   13a68:	0e 94 6f 9c 	call	0x138de
+   13a6c:	4f 93       	push	r20
+   13a6e:	5f 93       	push	r21
+   13a70:	4c 2f       	mov	r20, r28
+   13a72:	5d 2f       	mov	r21, r29
+   13a74:	e8 e1       	ldi	r30, 0x18	; 24
+   13a76:	fa ee       	ldi	r31, 0xEA	; 234
+   13a78:	09 95       	icall
+   13a7a:	5f 91       	pop	r21
+   13a7c:	4f 91       	pop	r20
+   13a7e:	df 91       	pop	r29
+   13a80:	cf 91       	pop	r28
+   13a82:	1f 91       	pop	r17
+   13a84:	0f 91       	pop	r16
+   13a86:	ff 90       	pop	r15
+   13a88:	ef 90       	pop	r14
+   13a8a:	df 90       	pop	r13
+   13a8c:	cf 90       	pop	r12
+   13a8e:	bf 90       	pop	r11
+   13a90:	af 90       	pop	r10
+   13a92:	9f 90       	pop	r9
+   13a94:	8f 90       	pop	r8
+   13a96:	08 95       	ret
+
+00013a98 <main>:
+
+int main()
+{
+    int i;
+    __asm__ __volatile__("sei" ::);
+   13a98:	78 94       	sei
+   13a9a:	e0 ef       	ldi	r30, 0xF0	; 240
+   13a9c:	fa e0       	ldi	r31, 0x0A	; 10
+   13a9e:	80 e0       	ldi	r24, 0x00	; 0
+    for (i=0;i<32;i++)
+     datainternal[i] = i * 3; 
+   13aa0:	81 93       	st	Z+, r24
+   13aa2:	8d 5f       	subi	r24, 0xFD	; 253
+   13aa4:	80 36       	cpi	r24, 0x60	; 96
+   13aa6:	e1 f7       	brne	.-8      	; 0x13aa0
+    
+    writeToEEPROM(3500, 32, datainternal);
+   13aa8:	40 ef       	ldi	r20, 0xF0	; 240
+   13aaa:	5a e0       	ldi	r21, 0x0A	; 10
+   13aac:	60 e2       	ldi	r22, 0x20	; 32
+   13aae:	70 e0       	ldi	r23, 0x00	; 0
+   13ab0:	8c ea       	ldi	r24, 0xAC	; 172
+   13ab2:	9d e0       	ldi	r25, 0x0D	; 13
+   13ab4:	0e 94 ae 9c 	call	0x1395c
+    
+    readFromEEPROM(3500, 32, datainternal2);
+   13ab8:	40 e1       	ldi	r20, 0x10	; 16
+   13aba:	5b e0       	ldi	r21, 0x0B	; 11
+   13abc:	60 e2       	ldi	r22, 0x20	; 32
+   13abe:	70 e0       	ldi	r23, 0x00	; 0
+   13ac0:	8c ea       	ldi	r24, 0xAC	; 172
+   13ac2:	9d e0       	ldi	r25, 0x0D	; 13
+   13ac4:	0e 94 8a 9c 	call	0x13914
+    
+    serialSend(32, datainternal2); 
+   13ac8:	60 e1       	ldi	r22, 0x10	; 16
+   13aca:	7b e0       	ldi	r23, 0x0B	; 11
+   13acc:	80 e2       	ldi	r24, 0x20	; 32
+   13ace:	0e 94 d2 9c 	call	0x139a4
+   13ad2:	e0 ef       	ldi	r30, 0xF0	; 240
+   13ad4:	fa e0       	ldi	r31, 0x0A	; 10
+   13ad6:	80 e0       	ldi	r24, 0x00	; 0
+    
+      for (i=0;i<32;i++)
+     datainternal[i] = i * 5; 
+   13ad8:	81 93       	st	Z+, r24
+   13ada:	8b 5f       	subi	r24, 0xFB	; 251
+   13adc:	80 3a       	cpi	r24, 0xA0	; 160
+   13ade:	e1 f7       	brne	.-8      	; 0x13ad8
+    
+    writeToEEPROM(3700, 32, datainternal);
+   13ae0:	40 ef       	ldi	r20, 0xF0	; 240
+   13ae2:	5a e0       	ldi	r21, 0x0A	; 10
+   13ae4:	60 e2       	ldi	r22, 0x20	; 32
+   13ae6:	70 e0       	ldi	r23, 0x00	; 0
+   13ae8:	84 e7       	ldi	r24, 0x74	; 116
+   13aea:	9e e0       	ldi	r25, 0x0E	; 14
+   13aec:	0e 94 ae 9c 	call	0x1395c
+    
+    readFromEEPROM(3700, 32, datainternal2);
+   13af0:	40 e1       	ldi	r20, 0x10	; 16
+   13af2:	5b e0       	ldi	r21, 0x0B	; 11
+   13af4:	60 e2       	ldi	r22, 0x20	; 32
+   13af6:	70 e0       	ldi	r23, 0x00	; 0
+   13af8:	84 e7       	ldi	r24, 0x74	; 116
+   13afa:	9e e0       	ldi	r25, 0x0E	; 14
+   13afc:	0e 94 8a 9c 	call	0x13914
+    
+    serialSend(32, datainternal2); 
+   13b00:	60 e1       	ldi	r22, 0x10	; 16
+   13b02:	7b e0       	ldi	r23, 0x0B	; 11
+   13b04:	80 e2       	ldi	r24, 0x20	; 32
+   13b06:	0e 94 d2 9c 	call	0x139a4
+   13b0a:	e0 ef       	ldi	r30, 0xF0	; 240
+   13b0c:	fa e0       	ldi	r31, 0x0A	; 10
+   13b0e:	80 e0       	ldi	r24, 0x00	; 0
+    
+      for (i=0;i<32;i++)
+     datainternal[i] = i * 8; 
+   13b10:	81 93       	st	Z+, r24
+   13b12:	88 5f       	subi	r24, 0xF8	; 248
+   13b14:	e9 f7       	brne	.-6      	; 0x13b10
+    
+    writeToEEPROM(4000, 32, datainternal);
+   13b16:	40 ef       	ldi	r20, 0xF0	; 240
+   13b18:	5a e0       	ldi	r21, 0x0A	; 10
+   13b1a:	60 e2       	ldi	r22, 0x20	; 32
+   13b1c:	70 e0       	ldi	r23, 0x00	; 0
+   13b1e:	80 ea       	ldi	r24, 0xA0	; 160
+   13b20:	9f e0       	ldi	r25, 0x0F	; 15
+   13b22:	0e 94 ae 9c 	call	0x1395c
+    
+    readFromEEPROM(4000, 32, datainternal2);
+   13b26:	40 e1       	ldi	r20, 0x10	; 16
+   13b28:	5b e0       	ldi	r21, 0x0B	; 11
+   13b2a:	60 e2       	ldi	r22, 0x20	; 32
+   13b2c:	70 e0       	ldi	r23, 0x00	; 0
+   13b2e:	80 ea       	ldi	r24, 0xA0	; 160
+   13b30:	9f e0       	ldi	r25, 0x0F	; 15
+   13b32:	0e 94 8a 9c 	call	0x13914
+    
+    serialSend(32, datainternal2); 
+   13b36:	60 e1       	ldi	r22, 0x10	; 16
+   13b38:	7b e0       	ldi	r23, 0x0B	; 11
+   13b3a:	80 e2       	ldi	r24, 0x20	; 32
+   13b3c:	0e 94 d2 9c 	call	0x139a4
+    
+    
+        
+  
+	  return 0; 
+}
+   13b40:	80 e0       	ldi	r24, 0x00	; 0
+   13b42:	90 e0       	ldi	r25, 0x00	; 0
+   13b44:	08 95       	ret
+
+00013b46 <wakeupMe.3270>:
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMe()
+{
+  mythread->state = STATE_ACTIVE; 
+   13b46:	e0 91 32 0b 	lds	r30, 0x0B32
+   13b4a:	f0 91 33 0b 	lds	r31, 0x0B33
+   13b4e:	82 e0       	ldi	r24, 0x02	; 2
+   13b50:	82 83       	std	Z+2, r24	; 0x02
+  syscall_postThreadTask();
+   13b52:	0e 94 73 9c 	call	0x138e6
+   13b56:	08 95       	ret

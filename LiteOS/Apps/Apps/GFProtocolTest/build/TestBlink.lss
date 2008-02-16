@@ -1,0 +1,897 @@
+
+TestBlink.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000003e2  00013800  00013800  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          0000001f  00800af0  00800af0  00000456  2**0
+                  ALLOC
+  2 .stab         00000408  00000000  00000000  00000458  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000084  00000000  00000000  00000860  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  000008e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 0000001b  00000000  00000000  00000904  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000168e  00000000  00000000  0000091f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000002c2  00000000  00000000  00001fad  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000053c  00000000  00000000  0000226f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000a0  00000000  00000000  000027ab  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000534  00000000  00000000  0000284b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000019b  00000000  00000000  00002d7f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000030  00000000  00000000  00002f1a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00013800 <__vectors>:
+   13800:	0c 94 46 9c 	jmp	0x1388c
+   13804:	0c 94 63 9c 	jmp	0x138c6
+   13808:	0c 94 63 9c 	jmp	0x138c6
+   1380c:	0c 94 63 9c 	jmp	0x138c6
+   13810:	0c 94 63 9c 	jmp	0x138c6
+   13814:	0c 94 63 9c 	jmp	0x138c6
+   13818:	0c 94 63 9c 	jmp	0x138c6
+   1381c:	0c 94 63 9c 	jmp	0x138c6
+   13820:	0c 94 63 9c 	jmp	0x138c6
+   13824:	0c 94 63 9c 	jmp	0x138c6
+   13828:	0c 94 63 9c 	jmp	0x138c6
+   1382c:	0c 94 63 9c 	jmp	0x138c6
+   13830:	0c 94 63 9c 	jmp	0x138c6
+   13834:	0c 94 63 9c 	jmp	0x138c6
+   13838:	0c 94 63 9c 	jmp	0x138c6
+   1383c:	0c 94 63 9c 	jmp	0x138c6
+   13840:	0c 94 63 9c 	jmp	0x138c6
+   13844:	0c 94 63 9c 	jmp	0x138c6
+   13848:	0c 94 63 9c 	jmp	0x138c6
+   1384c:	0c 94 63 9c 	jmp	0x138c6
+   13850:	0c 94 63 9c 	jmp	0x138c6
+   13854:	0c 94 63 9c 	jmp	0x138c6
+   13858:	0c 94 63 9c 	jmp	0x138c6
+   1385c:	0c 94 63 9c 	jmp	0x138c6
+   13860:	0c 94 63 9c 	jmp	0x138c6
+   13864:	0c 94 63 9c 	jmp	0x138c6
+   13868:	0c 94 63 9c 	jmp	0x138c6
+   1386c:	0c 94 63 9c 	jmp	0x138c6
+   13870:	0c 94 63 9c 	jmp	0x138c6
+   13874:	0c 94 63 9c 	jmp	0x138c6
+   13878:	0c 94 63 9c 	jmp	0x138c6
+   1387c:	0c 94 63 9c 	jmp	0x138c6
+   13880:	0c 94 63 9c 	jmp	0x138c6
+   13884:	0c 94 63 9c 	jmp	0x138c6
+   13888:	0c 94 63 9c 	jmp	0x138c6
+
+0001388c <__ctors_end>:
+   1388c:	11 24       	eor	r1, r1
+   1388e:	1f be       	out	0x3f, r1	; 63
+   13890:	c0 ef       	ldi	r28, 0xF0	; 240
+   13892:	dc e0       	ldi	r29, 0x0C	; 12
+   13894:	de bf       	out	0x3e, r29	; 62
+   13896:	cd bf       	out	0x3d, r28	; 61
+
+00013898 <__do_copy_data>:
+   13898:	1a e0       	ldi	r17, 0x0A	; 10
+   1389a:	a0 ef       	ldi	r26, 0xF0	; 240
+   1389c:	ba e0       	ldi	r27, 0x0A	; 10
+   1389e:	e2 ee       	ldi	r30, 0xE2	; 226
+   138a0:	fb e3       	ldi	r31, 0x3B	; 59
+   138a2:	01 e0       	ldi	r16, 0x01	; 1
+   138a4:	0b bf       	out	0x3b, r16	; 59
+   138a6:	02 c0       	rjmp	.+4      	; 0x138ac
+   138a8:	07 90       	elpm	r0, Z+
+   138aa:	0d 92       	st	X+, r0
+   138ac:	a0 3f       	cpi	r26, 0xF0	; 240
+   138ae:	b1 07       	cpc	r27, r17
+   138b0:	d9 f7       	brne	.-10     	; 0x138a8
+
+000138b2 <__do_clear_bss>:
+   138b2:	1b e0       	ldi	r17, 0x0B	; 11
+   138b4:	a0 ef       	ldi	r26, 0xF0	; 240
+   138b6:	ba e0       	ldi	r27, 0x0A	; 10
+   138b8:	01 c0       	rjmp	.+2      	; 0x138bc
+
+000138ba <.do_clear_bss_loop>:
+   138ba:	1d 92       	st	X+, r1
+
+000138bc <.do_clear_bss_start>:
+   138bc:	af 30       	cpi	r26, 0x0F	; 15
+   138be:	b1 07       	cpc	r27, r17
+   138c0:	e1 f7       	brne	.-8      	; 0x138ba
+   138c2:	0c 94 d9 9c 	jmp	0x139b2
+
+000138c6 <__bad_interrupt>:
+   138c6:	0c 94 00 9c 	jmp	0x13800
+
+000138ca <getCurrentThread.1385>:
+thread **getCurrentThread()
+{
+   thread **current_thread; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   138ca:	4f 93       	push	r20
+   138cc:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   138ce:	ec e0       	ldi	r30, 0x0C	; 12
+   138d0:	fa ee       	ldi	r31, 0xEA	; 234
+   138d2:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   138d4:	84 2f       	mov	r24, r20
+   138d6:	95 2f       	mov	r25, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   138d8:	5f 91       	pop	r21
+   138da:	4f 91       	pop	r20
+   138dc:	08 95       	ret
+
+000138de <yield.1384>:
+	             "pop r20" "\n\t"
+	              ::);
+   return current_thread; 
+}
+
+
+
+uint8_t getCurrentThreadIndex()
+{
+   
+   uint16_t index; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADINDEXFUNCTION; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (index)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return (uint8_t)index; 
+}
+
+
+void sleepThread(int milliseconds)
+{
+/*
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+
+   asm volatile("push r24" "\n\t"
+	             "push r25" "\n\t"
+	              ::);
+   getaddrfp();     
+
+   asm volatile(" mov %A0, r24" "\n\t"
+	             "mov %B0, r25" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r24" "\n\t"
+	             "pop r25" "\n\t"
+	              ::);
+ */
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 4;
+   (*current_thread)->data.sleepstate.sleeptime = milliseconds;
+   
+   yield(); 
+}
+
+
+void hibernateThread()
+{
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 5; 
+   yield(); 
+}
+
+
+void yield()
+{
+ void (*yieldfp)(void) = (void (*)(void))YIELDFUNCTION; 
+ yieldfp();                              
+   138de:	e0 e0       	ldi	r30, 0x00	; 0
+   138e0:	fa ee       	ldi	r31, 0xEA	; 234
+   138e2:	09 95       	icall
+   138e4:	08 95       	ret
+
+000138e6 <sleepThread.1383>:
+   138e6:	0f 93       	push	r16
+   138e8:	1f 93       	push	r17
+   138ea:	8c 01       	movw	r16, r24
+   138ec:	0e 94 65 9c 	call	0x138ca
+   138f0:	dc 01       	movw	r26, r24
+   138f2:	ed 91       	ld	r30, X+
+   138f4:	fc 91       	ld	r31, X
+   138f6:	11 97       	sbiw	r26, 0x01	; 1
+   138f8:	84 e0       	ldi	r24, 0x04	; 4
+   138fa:	82 83       	std	Z+2, r24	; 0x02
+   138fc:	ed 91       	ld	r30, X+
+   138fe:	fc 91       	ld	r31, X
+   13900:	10 8f       	std	Z+24, r17	; 0x18
+   13902:	07 8b       	std	Z+23, r16	; 0x17
+   13904:	0e 94 6f 9c 	call	0x138de
+   13908:	1f 91       	pop	r17
+   1390a:	0f 91       	pop	r16
+   1390c:	08 95       	ret
+
+0001390e <syscall_postThreadTask.1391>:
+}
+
+
+
+void syscall_postThreadTask()
+{
+ void (*postthreadfp)(void) = (void (*)(void))POSTTHREADTASK; 
+ postthreadfp();                              
+   1390e:	e8 e6       	ldi	r30, 0x68	; 104
+   13910:	fa ee       	ldi	r31, 0xEA	; 234
+   13912:	09 95       	icall
+   13914:	08 95       	ret
+
+00013916 <wakeupMeSerial.1737>:
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMeSerial()
+{
+  mythreadserial->state = STATE_ACTIVE; 
+   13916:	e0 91 0b 0b 	lds	r30, 0x0B0B
+   1391a:	f0 91 0c 0b 	lds	r31, 0x0B0C
+   1391e:	82 e0       	ldi	r24, 0x02	; 2
+   13920:	82 83       	std	Z+2, r24	; 0x02
+  syscall_postThreadTask();
+   13922:	0e 94 87 9c 	call	0x1390e
+   13926:	08 95       	ret
+
+00013928 <Mutex_unlock.1415>:
+void Mutex_unlock(mutex *m)
+{
+     
+   void (*getaddrfp)(void) = (void (*)(void))MUTEXUNLOCKFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   13928:	4f 93       	push	r20
+   1392a:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+      
+   asm volatile(" mov r20, %A0" "\n\t"
+   1392c:	48 2f       	mov	r20, r24
+   1392e:	59 2f       	mov	r21, r25
+	              " mov r21, %B0" "\n\t"
+				 :
+				 :"r" (m)
+                );
+
+   getaddrfp();
+   13930:	e8 e1       	ldi	r30, 0x18	; 24
+   13932:	fa ee       	ldi	r31, 0xEA	; 234
+   13934:	09 95       	icall
+   asm volatile( "pop r21" "\n\t"
+   13936:	5f 91       	pop	r21
+   13938:	4f 91       	pop	r20
+   1393a:	08 95       	ret
+
+0001393c <Mutex_lock.1413>:
+   1393c:	df 92       	push	r13
+   1393e:	ef 92       	push	r14
+   13940:	ff 92       	push	r15
+   13942:	0f 93       	push	r16
+   13944:	1f 93       	push	r17
+   13946:	cf 93       	push	r28
+   13948:	df 93       	push	r29
+   1394a:	ec 01       	movw	r28, r24
+   1394c:	0e 94 65 9c 	call	0x138ca
+   13950:	8c 01       	movw	r16, r24
+   13952:	4f 93       	push	r20
+   13954:	5f 93       	push	r21
+   13956:	ec e1       	ldi	r30, 0x1C	; 28
+   13958:	fa ee       	ldi	r31, 0xEA	; 234
+   1395a:	09 95       	icall
+   1395c:	e4 2e       	mov	r14, r20
+   1395e:	f5 2e       	mov	r15, r21
+   13960:	5f 91       	pop	r21
+   13962:	4f 91       	pop	r20
+
+
+_atomic_t _atomic_start(void) 
+{
+  _atomic_t result = SREG;
+   13964:	df b6       	in	r13, 0x3f	; 63
+  asm volatile("cli" "\n\t"::);
+   13966:	f8 94       	cli
+   13968:	88 81       	ld	r24, Y
+   1396a:	88 23       	and	r24, r24
+   1396c:	91 f0       	breq	.+36     	; 0x13992
+   1396e:	d8 01       	movw	r26, r16
+   13970:	ed 91       	ld	r30, X+
+   13972:	fc 91       	ld	r31, X
+   13974:	11 97       	sbiw	r26, 0x01	; 1
+   13976:	83 e0       	ldi	r24, 0x03	; 3
+   13978:	82 83       	std	Z+2, r24	; 0x02
+   1397a:	ed 91       	ld	r30, X+
+   1397c:	fc 91       	ld	r31, X
+   1397e:	d0 8f       	std	Z+24, r29	; 0x18
+   13980:	c7 8b       	std	Z+23, r28	; 0x17
+   13982:	89 81       	ldd	r24, Y+1	; 0x01
+   13984:	8f 5f       	subi	r24, 0xFF	; 255
+   13986:	89 83       	std	Y+1, r24	; 0x01
+   13988:	0e 94 6f 9c 	call	0x138de
+   1398c:	89 81       	ldd	r24, Y+1	; 0x01
+   1398e:	81 50       	subi	r24, 0x01	; 1
+   13990:	89 83       	std	Y+1, r24	; 0x01
+   13992:	81 e0       	ldi	r24, 0x01	; 1
+   13994:	88 83       	st	Y, r24
+   13996:	8e 2d       	mov	r24, r14
+   13998:	99 27       	eor	r25, r25
+   1399a:	8a 83       	std	Y+2, r24	; 0x02
+   1399c:	8d 2d       	mov	r24, r13
+   1399e:	99 27       	eor	r25, r25
+  return result;
+}
+
+
+
+void _atomic_end(_atomic_t oldSreg)
+{
+  SREG = oldSreg; 
+   139a0:	8f bf       	out	0x3f, r24	; 63
+   139a2:	df 91       	pop	r29
+   139a4:	cf 91       	pop	r28
+   139a6:	1f 91       	pop	r17
+   139a8:	0f 91       	pop	r16
+   139aa:	ff 90       	pop	r15
+   139ac:	ef 90       	pop	r14
+   139ae:	df 90       	pop	r13
+   139b0:	08 95       	ret
+
+000139b2 <main>:
+uint8_t fromnode;
+uint8_t tonode; 
+
+int main()
+{
+   139b2:	ef 92       	push	r14
+   139b4:	ff 92       	push	r15
+   139b6:	0f 93       	push	r16
+   139b8:	1f 93       	push	r17
+   139ba:	cf 93       	push	r28
+   139bc:	df 93       	push	r29
+ uint16_t nodeid; 
+ uint16_t counter; 
+ uint8_t destx, desty; 
+
+ fromnode = tonode = 100;
+   139be:	84 e6       	ldi	r24, 0x64	; 100
+   139c0:	80 93 05 0b 	sts	0x0B05, r24
+   139c4:	80 93 04 0b 	sts	0x0B04, r24
+ 
+ 
+ __asm__ __volatile__("sei" ::); 
+   139c8:	78 94       	sei
+}
+
+
+
+int random()
+{
+	
+	 int ret; 
+   void (*getrandomfp)(void) = (void (*)(void))GETRANDOM16FUNCTION; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getrandomfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	              "mov %B0, r21" "\n\t"
+				 :"=r" (ret)
+				 :
+                );
+   asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return ret; 
+	
+}
+
+
+
+uint16_t getnodeID()
+	{
+		
+	   int ret; 
+	   void (*fp)(void) = (void (*)(void))GETNODEIDFUNCTION; 
+	   asm volatile("push r20" "\n\t"
+   139ca:	4f 93       	push	r20
+   139cc:	5f 93       	push	r21
+					"push r21" "\n\t"
+					::);
+	   fp();	  
+   139ce:	ec ec       	ldi	r30, 0xCC	; 204
+   139d0:	fa ee       	ldi	r31, 0xEA	; 234
+   139d2:	09 95       	icall
+	   asm volatile(" mov %A0, r20" "\n\t"
+   139d4:	c4 2f       	mov	r28, r20
+   139d6:	d5 2f       	mov	r29, r21
+					  "mov %B0, r21" "\n\t"
+					 :"=r" (ret)
+					 :
+					);
+	   asm volatile("pop r21" "\n\t"
+   139d8:	5f 91       	pop	r21
+   139da:	4f 91       	pop	r20
+ 
+    nodeid = getnodeID();
+	counter = 0; 
+	
+	
+
+  while (1)
+  	{
+  	 
+      if (nodeid == fromnode)
+   139dc:	40 91 04 0b 	lds	r20, 0x0B04
+   139e0:	84 2f       	mov	r24, r20
+   139e2:	99 27       	eor	r25, r25
+   139e4:	30 91 05 0b 	lds	r19, 0x0B05
+   139e8:	c8 17       	cp	r28, r24
+   139ea:	d9 07       	cpc	r29, r25
+   139ec:	09 f0       	breq	.+2      	; 0x139f0
+   139ee:	5c c0       	rjmp	.+184    	; 0x13aa8
+      {    
+
+            destx = tonode%256;
+			desty = tonode/256;
+			msg[0] = destx;
+   139f0:	2f ef       	ldi	r18, 0xFF	; 255
+   139f2:	30 93 f0 0a 	sts	0x0AF0, r19
+			msg[1] = desty; 
+   139f6:	83 2f       	mov	r24, r19
+   139f8:	99 27       	eor	r25, r25
+   139fa:	60 e0       	ldi	r22, 0x00	; 0
+   139fc:	71 e0       	ldi	r23, 0x01	; 1
+   139fe:	0e 94 ca 9d 	call	0x13b94
+   13a02:	60 93 f1 0a 	sts	0x0AF1, r22
+			msg[2] = fromnode; 
+   13a06:	40 93 f2 0a 	sts	0x0AF2, r20
+			msg[3] = tonode;
+   13a0a:	30 93 f3 0a 	sts	0x0AF3, r19
+			msg[4] = 80;
+   13a0e:	80 e5       	ldi	r24, 0x50	; 80
+   13a10:	80 93 f4 0a 	sts	0x0AF4, r24
+			msg[5] = 0xff;
+   13a14:	20 93 f5 0a 	sts	0x0AF5, r18
+			msg[6] = 0xff;
+   13a18:	20 93 f6 0a 	sts	0x0AF6, r18
+			msg[7] = 'h';
+   13a1c:	88 e6       	ldi	r24, 0x68	; 104
+   13a1e:	80 93 f7 0a 	sts	0x0AF7, r24
+			msg[8] = 'e';
+   13a22:	85 e6       	ldi	r24, 0x65	; 101
+   13a24:	80 93 f8 0a 	sts	0x0AF8, r24
+			msg[9] = 'l';
+   13a28:	8c e6       	ldi	r24, 0x6C	; 108
+   13a2a:	80 93 f9 0a 	sts	0x0AF9, r24
+			msg[10] = 'l';
+   13a2e:	80 93 fa 0a 	sts	0x0AFA, r24
+			msg[11] = 'o';
+   13a32:	8f e6       	ldi	r24, 0x6F	; 111
+   13a34:	80 93 fb 0a 	sts	0x0AFB, r24
+			msg[12] = 0;
+   13a38:	10 92 fc 0a 	sts	0x0AFC, r1
+	             "pop r20" "\n\t"
+	              ::);
+   return;  
+}
+
+
+
+ 
+
+
+void Barrier_block(uint8_t type, uint8_t id){
+   
+    _atomic_t currentatomic;
+	thread **current_thread; 
+
+     
+	current_thread = getCurrentThread(); 
+
+    currentatomic = _atomic_start();
+    
+      (*current_thread)->state = STATE_IO;
+      (*current_thread)->data.iostate.type = type;
+      (*current_thread)->data.iostate.id = id;
+      yield();
+    
+    _atomic_end(currentatomic);
+}
+
+
+
+mutex *getRadioMutexAddress()
+{
+   mutex *msend;   
+   void (*getaddrfp)(void) = (void (*)(void))GETRADIOMUTEXFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   13a3c:	4f 93       	push	r20
+   13a3e:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   13a40:	e0 e1       	ldi	r30, 0x10	; 16
+   13a42:	fa ee       	ldi	r31, 0xEA	; 234
+   13a44:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   13a46:	e4 2e       	mov	r14, r20
+   13a48:	f5 2e       	mov	r15, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (msend)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   13a4a:	5f 91       	pop	r21
+   13a4c:	4f 91       	pop	r20
+
+  
+   
+   msend = getRadioMutexAddress();   
+   current_thread = getCurrentThread(); 
+   13a4e:	0e 94 65 9c 	call	0x138ca
+   13a52:	4f 93       	push	r20
+   13a54:	5f 93       	push	r21
+   13a56:	ec e5       	ldi	r30, 0x5C	; 92
+   13a58:	fa ee       	ldi	r31, 0xEA	; 234
+   13a5a:	09 95       	icall
+   13a5c:	04 2f       	mov	r16, r20
+   13a5e:	15 2f       	mov	r17, r21
+   13a60:	5f 91       	pop	r21
+   13a62:	4f 91       	pop	r20
+   radioinfoaddr = getCurrentRadioInfo();
+
+   Mutex_lock(msend);
+   13a64:	c7 01       	movw	r24, r14
+   13a66:	0e 94 9e 9c 	call	0x1393c
+     
+   radioinfoaddr-> socket_port = port; 
+   13a6a:	8a e0       	ldi	r24, 0x0A	; 10
+   13a6c:	90 e0       	ldi	r25, 0x00	; 0
+   13a6e:	d8 01       	movw	r26, r16
+   13a70:	8d 93       	st	X+, r24
+   13a72:	9c 93       	st	X, r25
+   radioinfoaddr->socket_addr = address; 
+   13a74:	f8 01       	movw	r30, r16
+   13a76:	13 82       	std	Z+3, r1	; 0x03
+   13a78:	12 82       	std	Z+2, r1	; 0x02
+   radioinfoaddr->socket_msg_len  = length; 
+   13a7a:	80 e1       	ldi	r24, 0x10	; 16
+   13a7c:	84 83       	std	Z+4, r24	; 0x04
+   radioinfoaddr->socket_msg  = msg;
+   13a7e:	80 ef       	ldi	r24, 0xF0	; 240
+   13a80:	9a e0       	ldi	r25, 0x0A	; 10
+   13a82:	96 83       	std	Z+6, r25	; 0x06
+   13a84:	85 83       	std	Z+5, r24	; 0x05
+   13a86:	e4 e1       	ldi	r30, 0x14	; 20
+   13a88:	fa ee       	ldi	r31, 0xEA	; 234
+   13a8a:	09 95       	icall
+    
+   //pending_id = id;
+   //pending_address = address;
+   //pending_length = length;
+   //pending_msg = msg;
+
+   sendRadioMsg(); 
+
+   sleepThread(30); 
+   13a8c:	8e e1       	ldi	r24, 0x1E	; 30
+   13a8e:	90 e0       	ldi	r25, 0x00	; 0
+   13a90:	0e 94 73 9c 	call	0x138e6
+   13a94:	e8 eb       	ldi	r30, 0xB8	; 184
+   13a96:	fa ee       	ldi	r31, 0xEA	; 234
+   13a98:	09 95       	icall
+   
+   disableRadioState();
+
+  
+   Mutex_unlock(msend); 
+   13a9a:	c7 01       	movw	r24, r14
+   13a9c:	0e 94 94 9c 	call	0x13928
+void redToggle()
+{
+                          
+  void (*redfp)() = (void (*)(void))REDTOGGLEFUNCTION; 
+  redfp();    
+   13aa0:	e8 e0       	ldi	r30, 0x08	; 8
+   13aa2:	fa ee       	ldi	r31, 0xEA	; 234
+   13aa4:	09 95       	icall
+   13aa6:	68 c0       	rjmp	.+208    	; 0x13b78
+	        radioSend(10, 0, 16, msg);
+			redToggle(); 
+			 
+           
+      }
+	else if (nodeid == tonode)
+   13aa8:	83 2f       	mov	r24, r19
+   13aaa:	99 27       	eor	r25, r25
+   13aac:	c8 17       	cp	r28, r24
+   13aae:	d9 07       	cpc	r29, r25
+   13ab0:	09 f0       	breq	.+2      	; 0x13ab4
+   13ab2:	62 c0       	rjmp	.+196    	; 0x13b78
+
+   return; 
+}
+
+
+
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMe()
+{
+  mythread->state = STATE_ACTIVE; 
+  syscall_postThreadTask();
+
+  
+}
+
+
+
+
+
+int radioReceive(uint16_t port, uint8_t maxlength, uint8_t *msg)
+
+{
+
+
+   thread** current_thread; 
+
+   _atomic_t currentatomic;
+    
+
+   radiohandletype *radiohandleaddr; 
+
+
+   void (*getaddrfp)(void) = (void (*)(void))SETCURRENTRADIOHANDLE; 
+   
+   current_thread = getCurrentThread(); 
+   13ab4:	0e 94 65 9c 	call	0x138ca
+   13ab8:	7c 01       	movw	r14, r24
+   13aba:	4f 93       	push	r20
+   13abc:	5f 93       	push	r21
+   13abe:	e0 e6       	ldi	r30, 0x60	; 96
+   13ac0:	fa ee       	ldi	r31, 0xEA	; 234
+   13ac2:	09 95       	icall
+   13ac4:	e4 2f       	mov	r30, r20
+   13ac6:	f5 2f       	mov	r31, r21
+   13ac8:	5f 91       	pop	r21
+   13aca:	4f 91       	pop	r20
+   
+   radiohandleaddr = getCurrentRadioHandleAddr(); 
+   
+   //set up the radiohandleaddr data structures
+
+   radiohandleaddr->port = port; 
+   13acc:	80 e5       	ldi	r24, 0x50	; 80
+   13ace:	90 e0       	ldi	r25, 0x00	; 0
+   13ad0:	91 83       	std	Z+1, r25	; 0x01
+   13ad2:	80 83       	st	Z, r24
+   radiohandleaddr->maxLength = maxlength; 
+   13ad4:	80 e1       	ldi	r24, 0x10	; 16
+   13ad6:	82 83       	std	Z+2, r24	; 0x02
+   radiohandleaddr->dataReady = &radioReceiveDataReady;
+   13ad8:	86 e0       	ldi	r24, 0x06	; 6
+   13ada:	9b e0       	ldi	r25, 0x0B	; 11
+   13adc:	94 83       	std	Z+4, r25	; 0x04
+   13ade:	83 83       	std	Z+3, r24	; 0x03
+   radiohandleaddr->data = msg; 
+   13ae0:	80 ef       	ldi	r24, 0xF0	; 240
+   13ae2:	9a e0       	ldi	r25, 0x0A	; 10
+   13ae4:	96 83       	std	Z+6, r25	; 0x06
+   13ae6:	85 83       	std	Z+5, r24	; 0x05
+   radiohandleaddr->packetinfo = radioReceivePacketInfo; 
+   13ae8:	87 e0       	ldi	r24, 0x07	; 7
+   13aea:	9b e0       	ldi	r25, 0x0B	; 11
+   13aec:	90 87       	std	Z+8, r25	; 0x08
+   13aee:	87 83       	std	Z+7, r24	; 0x07
+   radiohandleaddr->handlefunc = wakeupMe;
+   13af0:	81 ec       	ldi	r24, 0xC1	; 193
+   13af2:	9d e9       	ldi	r25, 0x9D	; 157
+   13af4:	93 87       	std	Z+11, r25	; 0x0b
+   13af6:	82 87       	std	Z+10, r24	; 0x0a
+   13af8:	0f b7       	in	r16, 0x3f	; 63
+   13afa:	f8 94       	cli
+
+
+   //close the interrupt     
+	currentatomic = _atomic_start();
+   13afc:	11 27       	eor	r17, r17
+
+   //call the radio handle set to store the data structure into the handle vectors 
+    getaddrfp();     
+   13afe:	e4 e6       	ldi	r30, 0x64	; 100
+   13b00:	fa ee       	ldi	r31, 0xEA	; 234
+   13b02:	09 95       	icall
+
+
+   //set up the current thread into sleep mode 
+   (*current_thread)->state = STATE_SLEEP;
+   13b04:	d7 01       	movw	r26, r14
+   13b06:	ed 91       	ld	r30, X+
+   13b08:	fc 91       	ld	r31, X
+   13b0a:	11 97       	sbiw	r26, 0x01	; 1
+   13b0c:	85 e0       	ldi	r24, 0x05	; 5
+   13b0e:	82 83       	std	Z+2, r24	; 0x02
+
+   //set up mythread so that later can wake up this thread 
+   mythread = *current_thread; 
+   13b10:	8d 91       	ld	r24, X+
+   13b12:	9c 91       	ld	r25, X
+   13b14:	90 93 0e 0b 	sts	0x0B0E, r25
+   13b18:	80 93 0d 0b 	sts	0x0B0D, r24
+   13b1c:	0f bf       	out	0x3f, r16	; 63
+
+
+   //open the interrupt 
+   _atomic_end(currentatomic);  
+
+    yield(); 
+   13b1e:	0e 94 6f 9c 	call	0x138de
+	             "pop r20" "\n\t"
+	              ::);
+    return msend; 
+}
+ 
+
+
+mutex *getSerialMutexAddress()
+{
+   mutex *msend;   
+
+   void (*getaddrfp)(void) = (void (*)(void))GETSERIALMUTEXFUNCTION;
+   
+   asm volatile("push r20" "\n\t"
+   13b22:	4f 93       	push	r20
+   13b24:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   13b26:	e0 e9       	ldi	r30, 0x90	; 144
+   13b28:	fa ee       	ldi	r31, 0xEA	; 234
+   13b2a:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   13b2c:	e4 2e       	mov	r14, r20
+   13b2e:	f5 2e       	mov	r15, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (msend)
+				 :
+                );
+   asm volatile("pop r21" "\n\t"
+   13b30:	5f 91       	pop	r21
+   13b32:	4f 91       	pop	r20
+   13b34:	0e 94 65 9c 	call	0x138ca
+   13b38:	4f 93       	push	r20
+   13b3a:	5f 93       	push	r21
+   13b3c:	e4 e9       	ldi	r30, 0x94	; 148
+   13b3e:	fa ee       	ldi	r31, 0xEA	; 234
+   13b40:	09 95       	icall
+   13b42:	04 2f       	mov	r16, r20
+   13b44:	15 2f       	mov	r17, r21
+   13b46:	5f 91       	pop	r21
+   13b48:	4f 91       	pop	r20
+   13b4a:	c7 01       	movw	r24, r14
+   13b4c:	0e 94 9e 9c 	call	0x1393c
+   13b50:	80 e1       	ldi	r24, 0x10	; 16
+   13b52:	f8 01       	movw	r30, r16
+   13b54:	80 83       	st	Z, r24
+   13b56:	80 ef       	ldi	r24, 0xF0	; 240
+   13b58:	9a e0       	ldi	r25, 0x0A	; 10
+   13b5a:	92 83       	std	Z+2, r25	; 0x02
+   13b5c:	81 83       	std	Z+1, r24	; 0x01
+   13b5e:	e8 e9       	ldi	r30, 0x98	; 152
+   13b60:	fa ee       	ldi	r31, 0xEA	; 234
+   13b62:	09 95       	icall
+   13b64:	8e e1       	ldi	r24, 0x1E	; 30
+   13b66:	90 e0       	ldi	r25, 0x00	; 0
+   13b68:	0e 94 73 9c 	call	0x138e6
+   13b6c:	c7 01       	movw	r24, r14
+   13b6e:	0e 94 94 9c 	call	0x13928
+}
+
+
+void yellowToggle()
+{
+                          
+  void (*yellowfp)() = (void (*)(void))YELLOWTOGGLEFUNCTION; 
+  yellowfp();    
+   13b72:	e0 e7       	ldi	r30, 0x70	; 112
+   13b74:	fa ee       	ldi	r31, 0xEA	; 234
+   13b76:	09 95       	icall
+	  {
+			    radioReceive(80, 16, msg); 
+		        serialSend(16, msg); 
+				yellowToggle();
+				
+	  }
+	  sleepThread(1000);
+   13b78:	88 ee       	ldi	r24, 0xE8	; 232
+   13b7a:	93 e0       	ldi	r25, 0x03	; 3
+   13b7c:	0e 94 73 9c 	call	0x138e6
+   13b80:	2d cf       	rjmp	.-422    	; 0x139dc
+
+00013b82 <wakeupMe.3263>:
+   13b82:	e0 91 0d 0b 	lds	r30, 0x0B0D
+   13b86:	f0 91 0e 0b 	lds	r31, 0x0B0E
+   13b8a:	82 e0       	ldi	r24, 0x02	; 2
+   13b8c:	82 83       	std	Z+2, r24	; 0x02
+   13b8e:	0e 94 87 9c 	call	0x1390e
+   13b92:	08 95       	ret
+
+00013b94 <__divmodhi4>:
+   13b94:	97 fb       	bst	r25, 7
+   13b96:	09 2e       	mov	r0, r25
+   13b98:	07 26       	eor	r0, r23
+   13b9a:	0a d0       	rcall	.+20     	; 0x13bb0
+   13b9c:	77 fd       	sbrc	r23, 7
+   13b9e:	04 d0       	rcall	.+8      	; 0x13ba8
+   13ba0:	0c d0       	rcall	.+24     	; 0x13bba
+   13ba2:	06 d0       	rcall	.+12     	; 0x13bb0
+   13ba4:	00 20       	and	r0, r0
+   13ba6:	1a f4       	brpl	.+6      	; 0x13bae
+
+00013ba8 <__divmodhi4_neg2>:
+   13ba8:	70 95       	com	r23
+   13baa:	61 95       	neg	r22
+   13bac:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00013bae <__divmodhi4_exit>:
+   13bae:	08 95       	ret
+
+00013bb0 <__divmodhi4_neg1>:
+   13bb0:	f6 f7       	brtc	.-4      	; 0x13bae
+   13bb2:	90 95       	com	r25
+   13bb4:	81 95       	neg	r24
+   13bb6:	9f 4f       	sbci	r25, 0xFF	; 255
+   13bb8:	08 95       	ret
+
+00013bba <__udivmodhi4>:
+   13bba:	aa 1b       	sub	r26, r26
+   13bbc:	bb 1b       	sub	r27, r27
+   13bbe:	51 e1       	ldi	r21, 0x11	; 17
+   13bc0:	07 c0       	rjmp	.+14     	; 0x13bd0
+
+00013bc2 <__udivmodhi4_loop>:
+   13bc2:	aa 1f       	adc	r26, r26
+   13bc4:	bb 1f       	adc	r27, r27
+   13bc6:	a6 17       	cp	r26, r22
+   13bc8:	b7 07       	cpc	r27, r23
+   13bca:	10 f0       	brcs	.+4      	; 0x13bd0
+   13bcc:	a6 1b       	sub	r26, r22
+   13bce:	b7 0b       	sbc	r27, r23
+
+00013bd0 <__udivmodhi4_ep>:
+   13bd0:	88 1f       	adc	r24, r24
+   13bd2:	99 1f       	adc	r25, r25
+   13bd4:	5a 95       	dec	r21
+   13bd6:	a9 f7       	brne	.-22     	; 0x13bc2
+   13bd8:	80 95       	com	r24
+   13bda:	90 95       	com	r25
+   13bdc:	bc 01       	movw	r22, r24
+   13bde:	cd 01       	movw	r24, r26
+   13be0:	08 95       	ret

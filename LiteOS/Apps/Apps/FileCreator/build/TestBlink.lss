@@ -1,0 +1,1076 @@
+
+TestBlink.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000018  00800af0  00013c88  0000051c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000488  00013800  00013800  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000a  00800b08  00800b08  00000534  2**0
+                  ALLOC
+  3 .stab         00000408  00000000  00000000  00000534  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000084  00000000  00000000  0000093c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000020  00000000  00000000  000009c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000001b  00000000  00000000  000009e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   000019b6  00000000  00000000  000009fb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000002b0  00000000  00000000  000023b1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000005ba  00000000  00000000  00002661  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000000f0  00000000  00000000  00002c1b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000498  00000000  00000000  00002d0b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    0000027c  00000000  00000000  000031a3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000018  00000000  00000000  0000341f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00013800 <__vectors>:
+   13800:	0c 94 46 9c 	jmp	0x1388c
+   13804:	0c 94 63 9c 	jmp	0x138c6
+   13808:	0c 94 63 9c 	jmp	0x138c6
+   1380c:	0c 94 63 9c 	jmp	0x138c6
+   13810:	0c 94 63 9c 	jmp	0x138c6
+   13814:	0c 94 63 9c 	jmp	0x138c6
+   13818:	0c 94 63 9c 	jmp	0x138c6
+   1381c:	0c 94 63 9c 	jmp	0x138c6
+   13820:	0c 94 63 9c 	jmp	0x138c6
+   13824:	0c 94 63 9c 	jmp	0x138c6
+   13828:	0c 94 63 9c 	jmp	0x138c6
+   1382c:	0c 94 63 9c 	jmp	0x138c6
+   13830:	0c 94 63 9c 	jmp	0x138c6
+   13834:	0c 94 63 9c 	jmp	0x138c6
+   13838:	0c 94 63 9c 	jmp	0x138c6
+   1383c:	0c 94 63 9c 	jmp	0x138c6
+   13840:	0c 94 63 9c 	jmp	0x138c6
+   13844:	0c 94 63 9c 	jmp	0x138c6
+   13848:	0c 94 63 9c 	jmp	0x138c6
+   1384c:	0c 94 63 9c 	jmp	0x138c6
+   13850:	0c 94 63 9c 	jmp	0x138c6
+   13854:	0c 94 63 9c 	jmp	0x138c6
+   13858:	0c 94 63 9c 	jmp	0x138c6
+   1385c:	0c 94 63 9c 	jmp	0x138c6
+   13860:	0c 94 63 9c 	jmp	0x138c6
+   13864:	0c 94 63 9c 	jmp	0x138c6
+   13868:	0c 94 63 9c 	jmp	0x138c6
+   1386c:	0c 94 63 9c 	jmp	0x138c6
+   13870:	0c 94 63 9c 	jmp	0x138c6
+   13874:	0c 94 63 9c 	jmp	0x138c6
+   13878:	0c 94 63 9c 	jmp	0x138c6
+   1387c:	0c 94 63 9c 	jmp	0x138c6
+   13880:	0c 94 63 9c 	jmp	0x138c6
+   13884:	0c 94 63 9c 	jmp	0x138c6
+   13888:	0c 94 63 9c 	jmp	0x138c6
+
+0001388c <__ctors_end>:
+   1388c:	11 24       	eor	r1, r1
+   1388e:	1f be       	out	0x3f, r1	; 63
+   13890:	c0 ef       	ldi	r28, 0xF0	; 240
+   13892:	dc e0       	ldi	r29, 0x0C	; 12
+   13894:	de bf       	out	0x3e, r29	; 62
+   13896:	cd bf       	out	0x3d, r28	; 61
+
+00013898 <__do_copy_data>:
+   13898:	1b e0       	ldi	r17, 0x0B	; 11
+   1389a:	a0 ef       	ldi	r26, 0xF0	; 240
+   1389c:	ba e0       	ldi	r27, 0x0A	; 10
+   1389e:	e8 e8       	ldi	r30, 0x88	; 136
+   138a0:	fc e3       	ldi	r31, 0x3C	; 60
+   138a2:	01 e0       	ldi	r16, 0x01	; 1
+   138a4:	0b bf       	out	0x3b, r16	; 59
+   138a6:	02 c0       	rjmp	.+4      	; 0x138ac
+   138a8:	07 90       	elpm	r0, Z+
+   138aa:	0d 92       	st	X+, r0
+   138ac:	a8 30       	cpi	r26, 0x08	; 8
+   138ae:	b1 07       	cpc	r27, r17
+   138b0:	d9 f7       	brne	.-10     	; 0x138a8
+
+000138b2 <__do_clear_bss>:
+   138b2:	1b e0       	ldi	r17, 0x0B	; 11
+   138b4:	a8 e0       	ldi	r26, 0x08	; 8
+   138b6:	bb e0       	ldi	r27, 0x0B	; 11
+   138b8:	01 c0       	rjmp	.+2      	; 0x138bc
+
+000138ba <.do_clear_bss_loop>:
+   138ba:	1d 92       	st	X+, r1
+
+000138bc <.do_clear_bss_start>:
+   138bc:	a2 31       	cpi	r26, 0x12	; 18
+   138be:	b1 07       	cpc	r27, r17
+   138c0:	e1 f7       	brne	.-8      	; 0x138ba
+   138c2:	0c 94 34 9d 	jmp	0x13a68
+
+000138c6 <__bad_interrupt>:
+   138c6:	0c 94 00 9c 	jmp	0x13800
+
+000138ca <String_length.1417>:
+
+}
+
+
+int String_length(char* s) {
+   138ca:	20 e0       	ldi	r18, 0x00	; 0
+   138cc:	30 e0       	ldi	r19, 0x00	; 0
+   138ce:	fc 01       	movw	r30, r24
+   138d0:	03 c0       	rjmp	.+6      	; 0x138d8
+	int count=0;
+	while(s[count] != '\0')
+		count++;
+   138d2:	2f 5f       	subi	r18, 0xFF	; 255
+   138d4:	3f 4f       	sbci	r19, 0xFF	; 255
+   138d6:	31 96       	adiw	r30, 0x01	; 1
+   138d8:	80 81       	ld	r24, Z
+   138da:	88 23       	and	r24, r24
+   138dc:	d1 f7       	brne	.-12     	; 0x138d2
+	return count;
+}
+   138de:	c9 01       	movw	r24, r18
+   138e0:	08 95       	ret
+
+000138e2 <String_append.1427>:
+
+
+
+
+void mystrncpy(char *dest, const char *src, uint16_t n)
+{
+	int i;
+	for (i=0;i<n;i++)
+		dest[i] = src[i]; 
+}
+
+
+void mystrcpy(char *dest, const char *src)
+{
+	int i;
+	i = 0; 
+	while (src[i]!='\0')
+	{ dest[i] = src[i];
+	i++;
+	} 
+	dest[i] = '\0'; 
+}
+
+
+char dec2char(uint8_t value) {
+
+	if (/*value >= 0) &&*/(value <=9))
+		return (char) (value + 0x30);
+	else
+		return 0;
+}
+
+
+char *String_intToString(int num)
+{
+	static char temp[7];
+	int internal;
+	uint8_t length; 
+	uint8_t i; 
+	uint8_t offset = 5; 
+	uint8_t remainder;
+
+	if (num <0)
+		internal = -num; 
+	else
+		internal = num; 
+
+	temp[6] = '\0';
+
+	do 
+	{ 
+		remainder = internal%10;
+		temp[offset]= dec2char(remainder); 
+		internal = internal/10;
+		offset--; 
+	}
+	while (internal!=0);
+
+	if (num<0)
+	{temp[offset] = '-'; 
+	 if (offset ==0)
+		 return temp; 
+	 else
+		 offset--; 
+	 
+	}
+
+	
+
+
+	{
+		length = 7-offset-1; 
+		for (i=0;i<length;i++)
+			temp[i] = temp[i+offset+1]; 
+	}
+	return temp; 
+}
+
+
+
+void String_append(char *base, char *string)
+{
+   138e2:	ef 92       	push	r14
+   138e4:	ff 92       	push	r15
+   138e6:	0f 93       	push	r16
+   138e8:	1f 93       	push	r17
+   138ea:	cf 93       	push	r28
+   138ec:	df 93       	push	r29
+   138ee:	8c 01       	movw	r16, r24
+   138f0:	7b 01       	movw	r14, r22
+
+	int length1, length2;
+	uint8_t i; 
+	length1 = String_length(base);
+   138f2:	0e 94 65 9c 	call	0x138ca
+   138f6:	ec 01       	movw	r28, r24
+	length2 = String_length(string); 
+   138f8:	c7 01       	movw	r24, r14
+   138fa:	0e 94 65 9c 	call	0x138ca
+   138fe:	ac 01       	movw	r20, r24
+   13900:	20 e0       	ldi	r18, 0x00	; 0
+   13902:	30 e0       	ldi	r19, 0x00	; 0
+   13904:	09 c0       	rjmp	.+18     	; 0x13918
+	for (i=0;i<length2;i++)
+	{
+		base[i+length1] = string[i];  
+   13906:	fd 01       	movw	r30, r26
+   13908:	e0 0f       	add	r30, r16
+   1390a:	f1 1f       	adc	r31, r17
+   1390c:	ec 0f       	add	r30, r28
+   1390e:	fd 1f       	adc	r31, r29
+   13910:	ae 0d       	add	r26, r14
+   13912:	bf 1d       	adc	r27, r15
+   13914:	8c 91       	ld	r24, X
+   13916:	80 83       	st	Z, r24
+   13918:	a2 2f       	mov	r26, r18
+   1391a:	bb 27       	eor	r27, r27
+   1391c:	2f 5f       	subi	r18, 0xFF	; 255
+   1391e:	3f 4f       	sbci	r19, 0xFF	; 255
+   13920:	a4 17       	cp	r26, r20
+   13922:	b5 07       	cpc	r27, r21
+   13924:	84 f3       	brlt	.-32     	; 0x13906
+
+	}
+	base[length1+length2] = '\0';
+   13926:	c0 0f       	add	r28, r16
+   13928:	d1 1f       	adc	r29, r17
+   1392a:	c4 0f       	add	r28, r20
+   1392c:	d5 1f       	adc	r29, r21
+   1392e:	18 82       	st	Y, r1
+   13930:	df 91       	pop	r29
+   13932:	cf 91       	pop	r28
+   13934:	1f 91       	pop	r17
+   13936:	0f 91       	pop	r16
+   13938:	ff 90       	pop	r15
+   1393a:	ef 90       	pop	r14
+   1393c:	08 95       	ret
+
+0001393e <getCurrentThread.1394>:
+thread **getCurrentThread()
+{
+   thread **current_thread; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   1393e:	4f 93       	push	r20
+   13940:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   13942:	ec e0       	ldi	r30, 0x0C	; 12
+   13944:	fa ee       	ldi	r31, 0xEA	; 234
+   13946:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   13948:	84 2f       	mov	r24, r20
+   1394a:	95 2f       	mov	r25, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   1394c:	5f 91       	pop	r21
+   1394e:	4f 91       	pop	r20
+   13950:	08 95       	ret
+
+00013952 <yield.1393>:
+	             "pop r20" "\n\t"
+	              ::);
+   return current_thread; 
+}
+
+
+
+uint8_t getCurrentThreadIndex()
+{
+   
+   uint16_t index; 
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADINDEXFUNCTION; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (index)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return (uint8_t)index; 
+}
+
+
+void sleepThread(int milliseconds)
+{
+/*
+   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+
+   asm volatile("push r24" "\n\t"
+	             "push r25" "\n\t"
+	              ::);
+   getaddrfp();     
+
+   asm volatile(" mov %A0, r24" "\n\t"
+	             "mov %B0, r25" "\n\t"
+				 :"=r" (current_thread)
+				 :
+                );
+    asm volatile("pop r24" "\n\t"
+	             "pop r25" "\n\t"
+	              ::);
+ */
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 4;
+   (*current_thread)->data.sleepstate.sleeptime = milliseconds;
+   
+   yield(); 
+}
+
+
+void hibernateThread()
+{
+ 
+   thread **current_thread; 
+   current_thread = getCurrentThread(); 
+     
+   (*current_thread)->state = 5; 
+   yield(); 
+}
+
+
+void yield()
+{
+ void (*yieldfp)(void) = (void (*)(void))YIELDFUNCTION; 
+ yieldfp();                              
+   13952:	e0 e0       	ldi	r30, 0x00	; 0
+   13954:	fa ee       	ldi	r31, 0xEA	; 234
+   13956:	09 95       	icall
+   13958:	08 95       	ret
+
+0001395a <syscall_postThreadTask.1400>:
+}
+
+
+
+void syscall_postThreadTask()
+{
+ void (*postthreadfp)(void) = (void (*)(void))POSTTHREADTASK; 
+ postthreadfp();                              
+   1395a:	e8 e6       	ldi	r30, 0x68	; 104
+   1395c:	fa ee       	ldi	r31, 0xEA	; 234
+   1395e:	09 95       	icall
+   13960:	08 95       	ret
+
+00013962 <wakeupMeSerial.1727>:
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMeSerial()
+{
+  mythreadserial->state = STATE_ACTIVE; 
+   13962:	e0 91 0e 0b 	lds	r30, 0x0B0E
+   13966:	f0 91 0f 0b 	lds	r31, 0x0B0F
+   1396a:	82 e0       	ldi	r24, 0x02	; 2
+   1396c:	82 83       	std	Z+2, r24	; 0x02
+  syscall_postThreadTask();
+   1396e:	0e 94 ad 9c 	call	0x1395a
+   13972:	08 95       	ret
+
+00013974 <Mutex_unlock.1409>:
+void Mutex_unlock(mutex *m)
+{
+     
+   void (*getaddrfp)(void) = (void (*)(void))MUTEXUNLOCKFUNCTION; 
+   asm volatile("push r20" "\n\t"
+   13974:	4f 93       	push	r20
+   13976:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+      
+   asm volatile(" mov r20, %A0" "\n\t"
+   13978:	48 2f       	mov	r20, r24
+   1397a:	59 2f       	mov	r21, r25
+	              " mov r21, %B0" "\n\t"
+				 :
+				 :"r" (m)
+                );
+
+   getaddrfp();
+   1397c:	e8 e1       	ldi	r30, 0x18	; 24
+   1397e:	fa ee       	ldi	r31, 0xEA	; 234
+   13980:	09 95       	icall
+   asm volatile( "pop r21" "\n\t"
+   13982:	5f 91       	pop	r21
+   13984:	4f 91       	pop	r20
+   13986:	08 95       	ret
+
+00013988 <getCurrentThreadIndex.1395>:
+   13988:	4f 93       	push	r20
+   1398a:	5f 93       	push	r21
+   1398c:	ec e1       	ldi	r30, 0x1C	; 28
+   1398e:	fa ee       	ldi	r31, 0xEA	; 234
+   13990:	09 95       	icall
+   13992:	84 2f       	mov	r24, r20
+   13994:	95 2f       	mov	r25, r21
+   13996:	5f 91       	pop	r21
+   13998:	4f 91       	pop	r20
+   1399a:	99 27       	eor	r25, r25
+   1399c:	08 95       	ret
+
+0001399e <Mutex_lock.1407>:
+   1399e:	ef 92       	push	r14
+   139a0:	ff 92       	push	r15
+   139a2:	0f 93       	push	r16
+   139a4:	1f 93       	push	r17
+   139a6:	cf 93       	push	r28
+   139a8:	df 93       	push	r29
+   139aa:	ec 01       	movw	r28, r24
+   139ac:	0e 94 9f 9c 	call	0x1393e
+   139b0:	8c 01       	movw	r16, r24
+   139b2:	0e 94 c4 9c 	call	0x13988
+   139b6:	e8 2e       	mov	r14, r24
+
+
+_atomic_t _atomic_start(void) 
+{
+  _atomic_t result = SREG;
+   139b8:	ff b6       	in	r15, 0x3f	; 63
+  asm volatile("cli" "\n\t"::);
+   139ba:	f8 94       	cli
+   139bc:	88 81       	ld	r24, Y
+   139be:	88 23       	and	r24, r24
+   139c0:	91 f0       	breq	.+36     	; 0x139e6
+   139c2:	d8 01       	movw	r26, r16
+   139c4:	ed 91       	ld	r30, X+
+   139c6:	fc 91       	ld	r31, X
+   139c8:	11 97       	sbiw	r26, 0x01	; 1
+   139ca:	83 e0       	ldi	r24, 0x03	; 3
+   139cc:	82 83       	std	Z+2, r24	; 0x02
+   139ce:	ed 91       	ld	r30, X+
+   139d0:	fc 91       	ld	r31, X
+   139d2:	d0 8f       	std	Z+24, r29	; 0x18
+   139d4:	c7 8b       	std	Z+23, r28	; 0x17
+   139d6:	89 81       	ldd	r24, Y+1	; 0x01
+   139d8:	8f 5f       	subi	r24, 0xFF	; 255
+   139da:	89 83       	std	Y+1, r24	; 0x01
+   139dc:	0e 94 a9 9c 	call	0x13952
+   139e0:	89 81       	ldd	r24, Y+1	; 0x01
+   139e2:	81 50       	subi	r24, 0x01	; 1
+   139e4:	89 83       	std	Y+1, r24	; 0x01
+   139e6:	81 e0       	ldi	r24, 0x01	; 1
+   139e8:	88 83       	st	Y, r24
+   139ea:	ea 82       	std	Y+2, r14	; 0x02
+   139ec:	8f 2d       	mov	r24, r15
+   139ee:	99 27       	eor	r25, r25
+  return result;
+}
+
+
+
+void _atomic_end(_atomic_t oldSreg)
+{
+  SREG = oldSreg; 
+   139f0:	8f bf       	out	0x3f, r24	; 63
+   139f2:	df 91       	pop	r29
+   139f4:	cf 91       	pop	r28
+   139f6:	1f 91       	pop	r17
+   139f8:	0f 91       	pop	r16
+   139fa:	ff 90       	pop	r15
+   139fc:	ef 90       	pop	r14
+   139fe:	08 95       	ret
+
+00013a00 <getFileMutexAddress.1415>:
+	             "pop r20" "\n\t"
+	              ::);
+   return;  
+}
+
+
+
+ 
+
+
+void Barrier_block(uint8_t type, uint8_t id){
+   
+    _atomic_t currentatomic;
+	thread **current_thread; 
+
+     
+	current_thread = getCurrentThread(); 
+
+    currentatomic = _atomic_start();
+    
+      (*current_thread)->state = STATE_IO;
+      (*current_thread)->data.iostate.type = type;
+      (*current_thread)->data.iostate.id = id;
+      yield();
+    
+    _atomic_end(currentatomic);
+}
+
+
+
+mutex *getRadioMutexAddress()
+{
+   mutex *msend;   
+   void (*getaddrfp)(void) = (void (*)(void))GETRADIOMUTEXFUNCTION; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (msend)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+    return msend; 
+}
+ 
+
+
+mutex *getSerialMutexAddress()
+{
+   mutex *msend;   
+
+   void (*getaddrfp)(void) = (void (*)(void))GETSERIALMUTEXFUNCTION;
+   
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (msend)
+				 :
+                );
+   asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return msend; 
+}
+ 
+
+
+
+mutex *getFileMutexAddress()
+{
+   mutex *mfile;   
+   void (*getaddrfp)(void) = (void (*)(void))GETFILEMUTEXADDRESS; 
+   asm volatile("push r20" "\n\t"
+   13a00:	4f 93       	push	r20
+   13a02:	5f 93       	push	r21
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   13a04:	e8 e2       	ldi	r30, 0x28	; 40
+   13a06:	fa ee       	ldi	r31, 0xEA	; 234
+   13a08:	09 95       	icall
+   asm volatile(" mov %A0, r20" "\n\t"
+   13a0a:	84 2f       	mov	r24, r20
+   13a0c:	95 2f       	mov	r25, r21
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (mfile)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+   13a0e:	5f 91       	pop	r21
+   13a10:	4f 91       	pop	r20
+   13a12:	08 95       	ret
+
+00013a14 <Barrier_block.1414>:
+   13a14:	ef 92       	push	r14
+   13a16:	ff 92       	push	r15
+   13a18:	0f 93       	push	r16
+   13a1a:	1f 93       	push	r17
+   13a1c:	f8 2e       	mov	r15, r24
+   13a1e:	e6 2e       	mov	r14, r22
+   13a20:	0e 94 9f 9c 	call	0x1393e
+   13a24:	dc 01       	movw	r26, r24
+   13a26:	0f b7       	in	r16, 0x3f	; 63
+   13a28:	f8 94       	cli
+   13a2a:	11 27       	eor	r17, r17
+   13a2c:	ed 91       	ld	r30, X+
+   13a2e:	fc 91       	ld	r31, X
+   13a30:	11 97       	sbiw	r26, 0x01	; 1
+   13a32:	86 e0       	ldi	r24, 0x06	; 6
+   13a34:	82 83       	std	Z+2, r24	; 0x02
+   13a36:	ed 91       	ld	r30, X+
+   13a38:	fc 91       	ld	r31, X
+   13a3a:	11 97       	sbiw	r26, 0x01	; 1
+   13a3c:	f7 8a       	std	Z+23, r15	; 0x17
+   13a3e:	ed 91       	ld	r30, X+
+   13a40:	fc 91       	ld	r31, X
+   13a42:	e0 8e       	std	Z+24, r14	; 0x18
+   13a44:	0e 94 a9 9c 	call	0x13952
+   13a48:	0f bf       	out	0x3f, r16	; 63
+   13a4a:	1f 91       	pop	r17
+   13a4c:	0f 91       	pop	r16
+   13a4e:	ff 90       	pop	r15
+   13a50:	ef 90       	pop	r14
+   13a52:	08 95       	ret
+
+00013a54 <mystrcpy.1424>:
+   13a54:	dc 01       	movw	r26, r24
+   13a56:	fb 01       	movw	r30, r22
+   13a58:	02 c0       	rjmp	.+4      	; 0x13a5e
+   13a5a:	8d 93       	st	X+, r24
+   13a5c:	31 96       	adiw	r30, 0x01	; 1
+   13a5e:	80 81       	ld	r24, Z
+   13a60:	88 23       	and	r24, r24
+   13a62:	d9 f7       	brne	.-10     	; 0x13a5a
+   13a64:	1c 92       	st	X, r1
+   13a66:	08 95       	ret
+
+00013a68 <main>:
+
+
+
+int main()
+{ 
+   13a68:	8f 92       	push	r8
+   13a6a:	9f 92       	push	r9
+   13a6c:	af 92       	push	r10
+   13a6e:	bf 92       	push	r11
+   13a70:	cf 92       	push	r12
+   13a72:	df 92       	push	r13
+   13a74:	ef 92       	push	r14
+   13a76:	ff 92       	push	r15
+   13a78:	0f 93       	push	r16
+   13a7a:	1f 93       	push	r17
+   13a7c:	cf 93       	push	r28
+   13a7e:	df 93       	push	r29
+   13a80:	cd b7       	in	r28, 0x3d	; 61
+   13a82:	de b7       	in	r29, 0x3e	; 62
+   13a84:	a0 97       	sbiw	r28, 0x20	; 32
+   13a86:	0f b6       	in	r0, 0x3f	; 63
+   13a88:	f8 94       	cli
+   13a8a:	de bf       	out	0x3e, r29	; 62
+   13a8c:	0f be       	out	0x3f, r0	; 63
+   13a8e:	cd bf       	out	0x3d, r28	; 61
+
+ __asm__ __volatile__("sei" ::); 
+   13a90:	78 94       	sei
+   thread** current_thread; 
+
+   mutex *mfile; 
+   
+   current_thread = getCurrentThread(); 
+   13a92:	0e 94 9f 9c 	call	0x1393e
+   13a96:	5c 01       	movw	r10, r24
+
+   currentthreadindex = getCurrentThreadIndex(); 
+   13a98:	0e 94 c4 9c 	call	0x13988
+   13a9c:	4f 93       	push	r20
+   13a9e:	5f 93       	push	r21
+   13aa0:	e0 e2       	ldi	r30, 0x20	; 32
+   13aa2:	fa ee       	ldi	r31, 0xEA	; 234
+   13aa4:	09 95       	icall
+   13aa6:	c4 2e       	mov	r12, r20
+   13aa8:	d5 2e       	mov	r13, r21
+   13aaa:	5f 91       	pop	r21
+   13aac:	4f 91       	pop	r20
+   13aae:	4f 93       	push	r20
+   13ab0:	5f 93       	push	r21
+   13ab2:	e4 e2       	ldi	r30, 0x24	; 36
+   13ab4:	fa ee       	ldi	r31, 0xEA	; 234
+   13ab6:	09 95       	icall
+   13ab8:	e4 2e       	mov	r14, r20
+   13aba:	f5 2e       	mov	r15, r21
+   13abc:	5f 91       	pop	r21
+   13abe:	4f 91       	pop	r20
+   
+   commonpathnameaddr =  getFilePathAddress();   
+
+   commonmodeaddr = getFileModeAddress();
+
+   mfile = getFileMutexAddress(); 
+   13ac0:	0e 94 00 9d 	call	0x13a00
+   13ac4:	8c 01       	movw	r16, r24
+
+
+   Mutex_lock(mfile);
+   13ac6:	0e 94 cf 9c 	call	0x1399e
+
+   mystrcpy(commonpathnameaddr, pathname); 
+   13aca:	60 ef       	ldi	r22, 0xF0	; 240
+   13acc:	7a e0       	ldi	r23, 0x0A	; 10
+   13ace:	c6 01       	movw	r24, r12
+   13ad0:	0e 94 2a 9d 	call	0x13a54
+   mystrcpy(commonmodeaddr, mode); 
+   13ad4:	67 ef       	ldi	r22, 0xF7	; 247
+   13ad6:	7a e0       	ldi	r23, 0x0A	; 10
+   13ad8:	c7 01       	movw	r24, r14
+   13ada:	0e 94 2a 9d 	call	0x13a54
+   13ade:	ec e2       	ldi	r30, 0x2C	; 44
+   13ae0:	fa ee       	ldi	r31, 0xEA	; 234
+   13ae2:	09 95       	icall
+
+   openFileSysCall();   
+   
+   Barrier_block(7, 1); 
+   13ae4:	61 e0       	ldi	r22, 0x01	; 1
+   13ae6:	87 e0       	ldi	r24, 0x07	; 7
+   13ae8:	0e 94 0a 9d 	call	0x13a14
+   Mutex_unlock(mfile); 
+   13aec:	c8 01       	movw	r24, r16
+   13aee:	0e 94 ba 9c 	call	0x13974
+
+   return (MYFILE *)((*current_thread)->filedata.filestate.fileptr);    
+   13af2:	d5 01       	movw	r26, r10
+   13af4:	ed 91       	ld	r30, X+
+   13af6:	fc 91       	ld	r31, X
+   13af8:	83 8d       	ldd	r24, Z+27	; 0x1b
+   13afa:	94 8d       	ldd	r25, Z+28	; 0x1c
+ fileptr = mfopen("/file1", "w");
+   13afc:	90 93 09 0b 	sts	0x0B09, r25
+   13b00:	80 93 08 0b 	sts	0x0B08, r24
+ samples = 50; 
+   13b04:	82 e3       	ldi	r24, 0x32	; 50
+   13b06:	90 e0       	ldi	r25, 0x00	; 0
+   13b08:	90 93 0b 0b 	sts	0x0B0B, r25
+   13b0c:	80 93 0a 0b 	sts	0x0B0A, r24
+ sleeptime = 100; 
+   13b10:	84 e6       	ldi	r24, 0x64	; 100
+   13b12:	90 e0       	ldi	r25, 0x00	; 0
+   13b14:	90 93 0d 0b 	sts	0x0B0D, r25
+   13b18:	80 93 0c 0b 	sts	0x0B0C, r24
+   13b1c:	82 e3       	ldi	r24, 0x32	; 50
+   13b1e:	90 e0       	ldi	r25, 0x00	; 0
+
+ while (1)
+ {
+  if (samples >0)
+   samples--; 
+   13b20:	01 97       	sbiw	r24, 0x01	; 1
+   13b22:	90 93 0b 0b 	sts	0x0B0B, r25
+   13b26:	80 93 0a 0b 	sts	0x0B0A, r24
+   else
+   break; 
+    
+   sleepThread(sleeptime);
+   13b2a:	00 91 0c 0b 	lds	r16, 0x0B0C
+   13b2e:	10 91 0d 0b 	lds	r17, 0x0B0D
+   13b32:	0e 94 9f 9c 	call	0x1393e
+   13b36:	dc 01       	movw	r26, r24
+   13b38:	ed 91       	ld	r30, X+
+   13b3a:	fc 91       	ld	r31, X
+   13b3c:	11 97       	sbiw	r26, 0x01	; 1
+   13b3e:	84 e0       	ldi	r24, 0x04	; 4
+   13b40:	82 83       	std	Z+2, r24	; 0x02
+   13b42:	ed 91       	ld	r30, X+
+   13b44:	fc 91       	ld	r31, X
+   13b46:	10 8f       	std	Z+24, r17	; 0x18
+   13b48:	07 8b       	std	Z+23, r16	; 0x17
+   13b4a:	0e 94 a9 9c 	call	0x13952
+void redToggle()
+{
+                          
+  void (*redfp)() = (void (*)(void))REDTOGGLEFUNCTION; 
+  redfp();    
+   13b4e:	e8 e0       	ldi	r30, 0x08	; 8
+   13b50:	fa ee       	ldi	r31, 0xEA	; 234
+   13b52:	09 95       	icall
+
+   redToggle(); 
+
+   {{
+
+    char _tempbuffer[32];
+    char *_temp1 = "Hello ";
+    char *_temp3 = "World\n";
+	  uint8_t lengthstring;
+    
+    _tempbuffer[0] = '\0';
+   13b54:	19 82       	std	Y+1, r1	; 0x01
+    String_append(_tempbuffer, _temp1);
+   13b56:	69 ef       	ldi	r22, 0xF9	; 249
+   13b58:	7a e0       	ldi	r23, 0x0A	; 10
+   13b5a:	7e 01       	movw	r14, r28
+   13b5c:	08 94       	sec
+   13b5e:	e1 1c       	adc	r14, r1
+   13b60:	f1 1c       	adc	r15, r1
+   13b62:	c7 01       	movw	r24, r14
+   13b64:	0e 94 71 9c 	call	0x138e2
+    String_append(_tempbuffer, _temp3);
+   13b68:	60 e0       	ldi	r22, 0x00	; 0
+   13b6a:	7b e0       	ldi	r23, 0x0B	; 11
+   13b6c:	c7 01       	movw	r24, r14
+   13b6e:	0e 94 71 9c 	call	0x138e2
+
+    lengthstring = String_length(_tempbuffer); 
+   13b72:	c7 01       	movw	r24, r14
+   13b74:	0e 94 65 9c 	call	0x138ca
+
+    mfwrite(fileptr, _tempbuffer, lengthstring);
+   13b78:	88 2e       	mov	r8, r24
+   13b7a:	99 24       	eor	r9, r9
+   13b7c:	a0 90 08 0b 	lds	r10, 0x0B08
+   13b80:	b0 90 09 0b 	lds	r11, 0x0B09
+}
+
+
+
+void mfclose(MYFILE *fp)
+{
+   uint8_t currentthreadindex; 
+   thread** current_thread; 
+   mutex *mfile; 
+   
+   current_thread = getCurrentThread(); 
+   currentthreadindex = getCurrentThreadIndex(); 
+   mfile = getFileMutexAddress(); 
+   
+   Mutex_lock(mfile);
+
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
+   closeFileSysCall(); 
+
+   Barrier_block(7, 2); 
+   Mutex_unlock(mfile); 
+
+   return; 
+
+}
+
+void mfread(MYFILE *fp, void *buffer, int nBytes)
+{
+   uint8_t currentthreadindex; 
+   thread** current_thread; 
+   mutex *mfile; 
+   
+   current_thread = getCurrentThread(); 
+   currentthreadindex = getCurrentThreadIndex();    
+   mfile = getFileMutexAddress(); 
+
+
+   Mutex_lock(mfile);
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
+   (*current_thread)->filedata.filestate.bufferptr = (uint8_t*)buffer;
+   (*current_thread)->filedata.filestate.bytes = nBytes; 
+
+   readFileSysCall();    
+   
+   Barrier_block(7, 3); 
+   Mutex_unlock(mfile); 
+
+   return; 
+
+}
+
+
+
+void mfwrite(MYFILE *fp, void *buffer, int nBytes)
+{
+   uint8_t currentthreadindex; 
+   thread** current_thread; 
+   mutex *mfile; 
+   
+   current_thread = getCurrentThread(); 
+   13b84:	0e 94 9f 9c 	call	0x1393e
+   13b88:	8c 01       	movw	r16, r24
+   currentthreadindex = getCurrentThreadIndex();    
+   13b8a:	0e 94 c4 9c 	call	0x13988
+   mfile = getFileMutexAddress(); 
+   13b8e:	0e 94 00 9d 	call	0x13a00
+   13b92:	6c 01       	movw	r12, r24
+
+
+   Mutex_lock(mfile);
+   13b94:	0e 94 cf 9c 	call	0x1399e
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
+   13b98:	d8 01       	movw	r26, r16
+   13b9a:	ed 91       	ld	r30, X+
+   13b9c:	fc 91       	ld	r31, X
+   13b9e:	11 97       	sbiw	r26, 0x01	; 1
+   13ba0:	b4 8e       	std	Z+28, r11	; 0x1c
+   13ba2:	a3 8e       	std	Z+27, r10	; 0x1b
+   (*current_thread)->filedata.filestate.bufferptr = (uint8_t*)buffer;
+   13ba4:	ed 91       	ld	r30, X+
+   13ba6:	fc 91       	ld	r31, X
+   13ba8:	11 97       	sbiw	r26, 0x01	; 1
+   13baa:	f6 8e       	std	Z+30, r15	; 0x1e
+   13bac:	e5 8e       	std	Z+29, r14	; 0x1d
+   (*current_thread)->filedata.filestate.bytes = nBytes; 
+   13bae:	ed 91       	ld	r30, X+
+   13bb0:	fc 91       	ld	r31, X
+   13bb2:	90 a2       	std	Z+32, r9	; 0x20
+   13bb4:	87 8e       	std	Z+31, r8	; 0x1f
+   13bb6:	e8 e3       	ldi	r30, 0x38	; 56
+   13bb8:	fa ee       	ldi	r31, 0xEA	; 234
+   13bba:	09 95       	icall
+
+   writeFileSysCall();    
+   
+   Barrier_block(7, 4); 
+   13bbc:	64 e0       	ldi	r22, 0x04	; 4
+   13bbe:	87 e0       	ldi	r24, 0x07	; 7
+   13bc0:	0e 94 0a 9d 	call	0x13a14
+   Mutex_unlock(mfile); 
+   13bc4:	c6 01       	movw	r24, r12
+   13bc6:	0e 94 ba 9c 	call	0x13974
+  	mfseek(fileptr, lengthstring, 1);
+   13bca:	e0 90 08 0b 	lds	r14, 0x0B08
+   13bce:	f0 90 09 0b 	lds	r15, 0x0B09
+
+   return; 
+}
+
+
+void mfwrite_withoutlength(MYFILE *fp, void *buffer)
+{
+
+   
+   uint8_t length; 
+
+   length = (uint8_t)String_length((char*)buffer);
+
+   mfwrite(fp, buffer, length); 
+
+   return; 
+}
+
+
+
+
+
+
+void mfseek(MYFILE *fp, int offset, int position)
+{
+   uint8_t currentthreadindex; 
+   thread** current_thread; 
+     
+   current_thread = getCurrentThread(); 
+   13bd2:	0e 94 9f 9c 	call	0x1393e
+   13bd6:	8c 01       	movw	r16, r24
+   currentthreadindex = getCurrentThreadIndex();    
+   13bd8:	0e 94 c4 9c 	call	0x13988
+   
+   (*current_thread)->filedata.fileseekstate.fileptr = (uint8_t*)fp; 
+   13bdc:	d8 01       	movw	r26, r16
+   13bde:	ed 91       	ld	r30, X+
+   13be0:	fc 91       	ld	r31, X
+   13be2:	11 97       	sbiw	r26, 0x01	; 1
+   13be4:	f4 8e       	std	Z+28, r15	; 0x1c
+   13be6:	e3 8e       	std	Z+27, r14	; 0x1b
+   (*current_thread)->filedata.fileseekstate.offset = offset;
+   13be8:	ed 91       	ld	r30, X+
+   13bea:	fc 91       	ld	r31, X
+   13bec:	11 97       	sbiw	r26, 0x01	; 1
+   13bee:	96 8e       	std	Z+30, r9	; 0x1e
+   13bf0:	85 8e       	std	Z+29, r8	; 0x1d
+   (*current_thread)->filedata.fileseekstate.position = position; 
+   13bf2:	ed 91       	ld	r30, X+
+   13bf4:	fc 91       	ld	r31, X
+   13bf6:	81 e0       	ldi	r24, 0x01	; 1
+   13bf8:	90 e0       	ldi	r25, 0x00	; 0
+   13bfa:	90 a3       	std	Z+32, r25	; 0x20
+   13bfc:	87 8f       	std	Z+31, r24	; 0x1f
+   13bfe:	ec e3       	ldi	r30, 0x3C	; 60
+   13c00:	fa ee       	ldi	r31, 0xEA	; 234
+   13c02:	09 95       	icall
+   13c04:	80 91 0a 0b 	lds	r24, 0x0B0A
+   13c08:	90 91 0b 0b 	lds	r25, 0x0B0B
+   13c0c:	00 97       	sbiw	r24, 0x00	; 0
+   13c0e:	09 f0       	breq	.+2      	; 0x13c12
+   13c10:	87 cf       	rjmp	.-242    	; 0x13b20
+
+    }}
+   
+}
+
+
+mfclose(fileptr);
+   13c12:	c0 90 08 0b 	lds	r12, 0x0B08
+   13c16:	d0 90 09 0b 	lds	r13, 0x0B09
+   13c1a:	0e 94 9f 9c 	call	0x1393e
+   13c1e:	8c 01       	movw	r16, r24
+   13c20:	0e 94 c4 9c 	call	0x13988
+   13c24:	0e 94 00 9d 	call	0x13a00
+   13c28:	7c 01       	movw	r14, r24
+   13c2a:	0e 94 cf 9c 	call	0x1399e
+   13c2e:	d8 01       	movw	r26, r16
+   13c30:	ed 91       	ld	r30, X+
+   13c32:	fc 91       	ld	r31, X
+   13c34:	d4 8e       	std	Z+28, r13	; 0x1c
+   13c36:	c3 8e       	std	Z+27, r12	; 0x1b
+   13c38:	e0 e3       	ldi	r30, 0x30	; 48
+   13c3a:	fa ee       	ldi	r31, 0xEA	; 234
+   13c3c:	09 95       	icall
+   13c3e:	62 e0       	ldi	r22, 0x02	; 2
+   13c40:	87 e0       	ldi	r24, 0x07	; 7
+   13c42:	0e 94 0a 9d 	call	0x13a14
+   13c46:	c7 01       	movw	r24, r14
+   13c48:	0e 94 ba 9c 	call	0x13974
+
+return 0; 
+
+}
+   13c4c:	80 e0       	ldi	r24, 0x00	; 0
+   13c4e:	90 e0       	ldi	r25, 0x00	; 0
+   13c50:	a0 96       	adiw	r28, 0x20	; 32
+   13c52:	0f b6       	in	r0, 0x3f	; 63
+   13c54:	f8 94       	cli
+   13c56:	de bf       	out	0x3e, r29	; 62
+   13c58:	0f be       	out	0x3f, r0	; 63
+   13c5a:	cd bf       	out	0x3d, r28	; 61
+   13c5c:	df 91       	pop	r29
+   13c5e:	cf 91       	pop	r28
+   13c60:	1f 91       	pop	r17
+   13c62:	0f 91       	pop	r16
+   13c64:	ff 90       	pop	r15
+   13c66:	ef 90       	pop	r14
+   13c68:	df 90       	pop	r13
+   13c6a:	cf 90       	pop	r12
+   13c6c:	bf 90       	pop	r11
+   13c6e:	af 90       	pop	r10
+   13c70:	9f 90       	pop	r9
+   13c72:	8f 90       	pop	r8
+   13c74:	08 95       	ret
+
+00013c76 <wakeupMe.3253>:
+//wakeup the current thread once an incoming packet arrives 
+
+void wakeupMe()
+{
+  mythread->state = STATE_ACTIVE; 
+   13c76:	e0 91 10 0b 	lds	r30, 0x0B10
+   13c7a:	f0 91 11 0b 	lds	r31, 0x0B11
+   13c7e:	82 e0       	ldi	r24, 0x02	; 2
+   13c80:	82 83       	std	Z+2, r24	; 0x02
+  syscall_postThreadTask();
+   13c82:	0e 94 ad 9c 	call	0x1395a
+   13c86:	08 95       	ret
