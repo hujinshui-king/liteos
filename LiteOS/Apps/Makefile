@@ -6,8 +6,18 @@
 PROJECT = TestBlink
 MCU = atmega128
 TARGET = TestBlink.elf
-CC = c:/WinAVR/bin/avr-gcc.exe
-AVRSIZE = c:/WinAVR/bin/avr-size.exe
+
+## Check if this is linux machine
+ifeq ($(OSTYPE), linux-gnu)
+	CC = avr-gcc
+	AVRSIZE = avr-size
+endif
+
+## Check if this is cygwin machine
+ifeq ($(OSTYPE), cygwin)
+	CC = c:/WinAVR/bin/avr-gcc.exe
+	AVRSIZE = c:/WinAVR/bin/avr-size.exe
+endif
 
 ## Options common to compile, link and assembly rules
 COMMON = -mmcu=$(MCU)
