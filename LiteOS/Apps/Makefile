@@ -11,7 +11,7 @@ TARGET = TestBlink.elf
 ## Fedora core 7 : GNU/Linux 
 ## Cygwin: Cygwin
 
-OSTYPE = $(shell, uname -o)
+OSTYPE = $(shell uname -o)
 
 ## Check if this is linux machine
 ifeq ($(OSTYPE), GNU/Linux)
