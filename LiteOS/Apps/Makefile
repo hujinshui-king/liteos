@@ -7,14 +7,20 @@ PROJECT = TestBlink
 MCU = atmega128
 TARGET = TestBlink.elf
 
+## Get OS type using uname
+## Fedora core 7 : GNU/Linux 
+## Cygwin: Cygwin
+
+OSTYPE = $(shell, uname -o)
+
 ## Check if this is linux machine
-ifeq ($(OSTYPE), linux-gnu)
+ifeq ($(OSTYPE), GNU/Linux)
 	CC = avr-gcc
 	AVRSIZE = avr-size
 endif
 
 ## Check if this is cygwin machine
-ifeq ($(OSTYPE), cygwin)
+ifeq ($(OSTYPE), Cygwin)
 	CC = c:/WinAVR/bin/avr-gcc.exe
 	AVRSIZE = c:/WinAVR/bin/avr-size.exe
 endif
