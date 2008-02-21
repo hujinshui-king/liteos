@@ -25,7 +25,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "fsapi.h"
 
-#include "../system/byteStorage.h"
+#include "../system/bytestorage.h"
 
 #include "../system/nodeconfig.h"
 
