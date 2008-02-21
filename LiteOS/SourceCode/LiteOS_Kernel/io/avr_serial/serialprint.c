@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 */
  
-#include <avr\io.h>
+#include <avr/io.h>
 #include <avr/interrupt.h>
 #define xtal 8000000L
 #define baud 57600
