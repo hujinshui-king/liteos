@@ -31,7 +31,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../system/socket.h"
 #include "../../filesys/inode.h"
 #include "../../filesys/fsapi.h"
-#include "../../system/commandHandle.h"
+#include "../../system/commandhandle.h"
 #include "../avr/bootloader.h"
 #include "adcdriver.h"
 #include "../../filesys/filesocket.h"
