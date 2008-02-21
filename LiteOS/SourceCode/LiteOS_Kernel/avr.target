@@ -6,8 +6,25 @@
 PROJECT = LiteOS
 MCU = atmega128
 TARGET = LiteOS.elf
-CC = C:/WinAVR/bin/avr-gcc.exe
-AVR-SIZE = C:/WinAVR/bin/avr-size.exe
+
+## Get OS type using uname
+## Fedora core 7 : GNU/Linux 
+## Cygwin: Cygwin
+
+OSTYPE = $(shell uname -o)
+
+## Check if this is linux machine
+ifeq ($(OSTYPE), GNU/Linux)
+	CC = avr-gcc
+	AVRSIZE = avr-size
+endif
+
+## Check if this is cygwin machine
+ifeq ($(OSTYPE), Cygwin)
+	CC = c:/WinAVR/bin/avr-gcc.exe
+	AVRSIZE = c:/WinAVR/bin/avr-size.exe
+endif
+
 ## Options common to compile, link and assembly rules
 COMMON = -mmcu=$(MCU)
 
