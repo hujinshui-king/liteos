@@ -149,7 +149,7 @@ if __name__ == "__main__":
 
 				
     print "LiteOS Build Environment Starts..."
-    global staticdatasize 
+#    global staticdatasize  # no need to define global here, suppressed to avoid warning - phamducnam
     processArguments()
     if os.path.isdir("build") == True:
         shutil.rmtree("./build")
