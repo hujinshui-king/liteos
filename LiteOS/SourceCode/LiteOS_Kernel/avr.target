@@ -21,8 +21,8 @@ endif
 
 ## Check if this is cygwin machine
 ifeq ($(OSTYPE), Cygwin)
-	CC = c:/WinAVR/bin/avr-gcc.exe
-	AVRSIZE = c:/WinAVR/bin/avr-size.exe
+	CC = C:/Programs/WinAVR/bin/avr-gcc.exe
+	AVRSIZE = C:/Programs/WinAVR/bin/avr-size.exe
 endif
 
 ## Options common to compile, link and assembly rules
@@ -215,8 +215,7 @@ $(TARGET): $(OBJECTS)
 	avr-objdump -h -S $< > $@
 
 size: ${TARGET}
-	@echo
-	$(AVR-SIZE) -C --mcu=${MCU} ${TARGET}
+	$(AVRSIZE) -C --mcu=${MCU} ${TARGET}
 
 ## Clean target
 .PHONY: clean
