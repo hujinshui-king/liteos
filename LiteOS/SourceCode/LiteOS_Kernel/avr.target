@@ -121,7 +121,7 @@ adcsocket.o: ../platform/micaz/adcsocket.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 atmelflash.o: ../platform/micaz/atmelflash.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+	$(CC) $(INCLUDES) $(CFLAGS) -w -c  $<
 
 hplcc2420fifom.o: ../platform/micaz/hplcc2420fifom.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
