@@ -306,7 +306,12 @@ public class installer {
        if (mib520inuse == 1)
                   commportA = commportB;
 
-              //  System.out.println(""+commportA);
+// change the device name to /dev/ttySn in Linux environment
+// haven't tested with usb port
+         if (System.getProperty("os.name").equals("Linux")) 
+            commportA = "/dev/ttyS" + portNum;
+
+//                 System.out.println(""+commportA);
 
                  PortListener pl = new PortListener(commportA, 57600);
 
