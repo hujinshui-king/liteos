@@ -46,9 +46,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "thread.h"
 #include "adc.h"
 #include "radio.h"
-#include "Serial.h"
-#include "File.h"
-#include "System.h"
+#include "serial.h"
+#include "file.h"
+#include "system.h"
 #include "thread.h"
 
 uint16_t nodeid; 
