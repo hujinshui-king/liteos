@@ -21,8 +21,8 @@ endif
 
 ## Check if this is cygwin machine
 ifeq ($(OSTYPE), Cygwin)
-	CC = c:/WinAVR/bin/avr-gcc.exe
-	AVRSIZE = c:/WinAVR/bin/avr-size.exe
+	CC = C:/WinAVR/bin/avr-gcc.exe
+	AVRSIZE = C:/WinAVR/bin/avr-size.exe
 endif
 
 ## Options common to compile, link and assembly rules
