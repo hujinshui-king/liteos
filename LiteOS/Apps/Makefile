@@ -78,7 +78,6 @@ $(TARGET):
 	avr-objdump -h -S $< > $@
 
 size: ${TARGET}
-	#@echo
 	$(AVRSIZE) --version
 	$(AVRSIZE) -C --mcu=${MCU} ${TARGET}
 
