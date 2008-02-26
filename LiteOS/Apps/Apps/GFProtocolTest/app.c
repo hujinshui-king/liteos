@@ -2,9 +2,9 @@
 #include "thread.h"
 #include "adc.h"
 #include "radio.h"
-#include "Serial.h"
-#include "File.h"
-#include "System.h"
+#include "serial.h"
+#include "file.h"
+#include "system.h"
 
 
 
