@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Serial.h"
+#include "serial.h"
 #include "system.h"
 #include "liteoscommon.h"
 #include "mutex.h"
