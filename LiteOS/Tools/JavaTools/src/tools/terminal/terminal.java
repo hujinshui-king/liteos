@@ -212,7 +212,7 @@ public class terminal {
         // Prompt the user
         //System.out.print("LiteOS Shell\n");
 
-        colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "LiteOS Version 0.3");
+        colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "LiteOS Version 0.31");
         init();
      //  PortListener pl;
         //Now set up the port

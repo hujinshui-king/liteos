@@ -292,6 +292,12 @@ void buildRootNode() {
    buildNewNode( FSROOTNODE, "root", 0, 0, DIRNODE );
 }
 
+void SocketSendRadioThroughCommandandAdcTask()
+{
+  //dummy now. to fix. 
+
+}
+
 //-------------------------------------------------------------------------
 void buildDeviceDirectory() {
    uint8_t newaddr;
@@ -311,8 +317,8 @@ void buildDeviceDirectory() {
    buildDeviceNode( newaddr, "temp", get_temp_task, ( uint8_t* )adc_parameter, ( uint8_t* )adc_returnvalue );
    buildDeviceNode( newaddr, "magnet", get_mag_task_x, ( uint8_t* )adc_parameter, ( uint8_t* ) adc_returnvalue );
    buildDeviceNode( newaddr, "accel", get_acc_task_x, ( uint8_t* )adc_parameter, ( uint8_t* ) adc_returnvalue );
+   buildDeviceNode( newaddr, "radio", SocketSendRadioThroughCommandandAdcTask, ( uint8_t* )adc_parameter, ( uint8_t* ) adc_returnvalue );
    }
-   //buildDeviceNode( newaddr, "radio", SocketSendRadioThroughCommandandAdcTask, ( uint8_t* )adc_parameter, ( uint8_t* )& adc_returnvalue );
    #endif
 }
 
