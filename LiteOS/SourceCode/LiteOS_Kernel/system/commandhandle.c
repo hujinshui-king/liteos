@@ -602,7 +602,7 @@ void reply_fromNodeToPC_type1( uint8_t *receivebuffer ) {
    //send out the size 
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
    //    StandardSocketSend(0xefef, 0xffff, 32, reply);
-   sleepThread( 100 );
+   //sleepThread( 100 );
    reply[ 3 ] = newblockid;
    round = filesize / 20;
    remain = filesize % 20;
@@ -615,7 +615,7 @@ void reply_fromNodeToPC_type1( uint8_t *receivebuffer ) {
       reply[ 4 ] = temp1;
       reply[ 5 ] = temp2;
       //printStringN(reply,32); 		    
-      sleepThread( 100 );
+     // sleepThread( 100 );
       StandardSocketSend( 0xefef, 0xffff, 32, reply );
    }
    if ( remain > 0 ) {
@@ -625,7 +625,7 @@ void reply_fromNodeToPC_type1( uint8_t *receivebuffer ) {
       reply[ 5 ] = round % 256;
       round ++;
       //printStringN(reply,32);
-      sleepThread( 25 );
+      //sleepThread( 25 );
       StandardSocketSend( 0xefef, 0xffff, 32, reply );
    }
    temp1 = round / 256;
@@ -636,13 +636,13 @@ void reply_fromNodeToPC_type1( uint8_t *receivebuffer ) {
    reply[ 4 ] = 0xef;
    reply[ 5 ] = temp1;
    reply[ 6 ] = temp2;
-   sleepThread( 100 );
+   //ephread( 100 );
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
-   sleepThread( 100 );
+   //sleepThread( 100 );
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
-   sleepThread( 100 );
+   //sleepThread( 100 );
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
-   sleepThread( 100 );
+   //sleepThread( 100 );
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
    //do not close now!
    //	 fclose2(fp); 
