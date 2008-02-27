@@ -90,7 +90,9 @@ public class installCommand implements cmdcontrol {
             }
             else
             {
-                colorOutput.println(colorOutput.COLOR_GREEN, "Process execution succeeds.");
+                colorOutput.println(colorOutput.COLOR_GREEN, "Process execution request received. Please use ps to check if the command"+
+                         "has been correctly executed.\n If there is no process running, it may be because of file not found or memory corrupt detected.");
+                
             }
         }
         return;

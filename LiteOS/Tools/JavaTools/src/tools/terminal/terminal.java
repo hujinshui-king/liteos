@@ -95,7 +95,8 @@ public class terminal {
     private static devCommand devhandle = new devCommand();
     private static manCommand manhandle = new manCommand();
     private static historyCommand historyhandle = new historyCommand();
-    private static setCommand sethandle = new setCommand(); 
+    private static setCommand sethandle = new setCommand();
+    private static memCommand memhandle = new memCommand();
 
 
     //the following part implements the debugging interface
@@ -316,7 +317,7 @@ public class terminal {
 
 
              if (commandName.compareTo("chmod") == 0) {
-                 colorOutput.println(colorOutput.COLOR_YELLOW, "Sorry, Chmod command is not supported in the demo version.");
+                 colorOutput.println(colorOutput.COLOR_YELLOW, "Chmod command will be supported soon");
                  nextCommand = true;
                  SkipReading = 0;
                  continue;
@@ -326,8 +327,16 @@ public class terminal {
             if (commandName.compareTo("history") == 0) {
                             historyhandle.printCommand();
                             choosehistorycommand = true;
+                            System.out.println("\n");
                             continue;
             }
+
+           if (commandName.compareTo("who") == 0) {
+                 colorOutput.println(colorOutput.COLOR_GREEN, "Administrator\n");
+                 nextCommand = true;
+                 SkipReading = 0;
+                 continue;
+             }
 
 
 
@@ -338,14 +347,10 @@ public class terminal {
                  continue;
             }
 
-             if (commandName.compareTo("who") == 0) {
-                 colorOutput.println(colorOutput.COLOR_YELLOW, "Sorry, User command who is not supported in the demo version.");
-                 nextCommand = true;
-                 SkipReading = 0;
-                 continue;
-            }
+
+
              if (commandName.compareTo("echo") == 0) {
-                 colorOutput.println(colorOutput.COLOR_YELLOW, "Sorry, Echo command is not supported in the demo version.");
+                 colorOutput.println(colorOutput.COLOR_GREEN, parameters[0]+"\n");
                  nextCommand = true;
                  SkipReading = 0;
                  continue;
@@ -872,6 +877,26 @@ public class terminal {
 
 
 
+            //print command
+            if (commandName.compareTo("memory") == 0) {
+
+                       serverpl.setPacketWaitTimeout(SHELLPORT, memhandle.getDelay());
+                       serverpl.setPacketWaitBuffer(SHELLPORT, 100);
+
+                       countCommand = memhandle.setNewCommand(options, optioncount, parameters, parametercount, fdir);
+
+                       if (countCommand > 0) {
+                          // pl.setWait(printhandle.getDelay());
+                          // serverpl.setPacketWaitTimeout(SHELLPORT, printhandle.getDelay());
+                           for (int i = 0; i < countCommand; i++) {
+                               byte[] temp = memhandle.getNewCommand(i);
+                               int templength = temp.length;
+                               System.arraycopy(temp, 0, command[i], 0, templength);
+                           }
+                       }
+                   }
+
+
 
            if (commandName.startsWith("./"))
            {
@@ -1214,6 +1239,10 @@ public class terminal {
                   //  colorOutput.println(colorOutput.COLOR_RED,  "There is no info packet received.");
                   //  else
                     pshandle.handleresponse(options, optioncount, parameters, parametercount, responseList, fdir);
+                }
+
+                if (commandName.compareTo("memory") == 0) {
+                     memhandle.handleresponse(options, optioncount, parameters, parametercount, responseList, fdir);
                 }
 
 
