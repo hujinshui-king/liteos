@@ -300,12 +300,36 @@ void threads_handle_service() /*__attribute__((noinline))*/ {
 
 uint8_t memory_conflict_detect(uint16_t createflashromstart, uint16_t createflashromsize, uint16_t ramstackstart, uint16_t ramstackend )
 {
- //if no conflict return 0. 
-
-  
-
-  return 0; 
-
+   uint8_t i; 
+   uint16_t userthreadromstart;
+   uint16_t userthreadromend;
+   uint16_t userthreadramstart; 
+   uint16_t userthreadramend; 
+   
+   for ( i = 0; i < LITE_MAX_THREADS; i ++ ) {
+      if ( thread_table[ i ].state != STATE_NULL ) {
+       
+     if (thread_table[i].romstart == 0)
+     	 continue;     	 
+     
+     userthreadromstart =  thread_table[i].romstart ;  
+     userthreadromend = thread_table[i].romsize/2 + userthreadromstart; 
+     userthreadramstart = (uint16_t)thread_table[i].ramstart; 
+     userthreadramend = (uint16_t)thread_table[i].ramend; 
+     
+     if (!((createflashromstart > userthreadromend + 2) || ( createflashromstart + createflashromsize/2 < userthreadromstart - 2)))
+     	  
+     	    return 1; 
+     	    
+     	    
+     if (!((ramstackstart > userthreadramend + 1) || ( ramstackend  < userthreadramstart - 1)))	    
+     	    
+     	    return 1; 
+     	
+		 }
+		}
+		return 0; 
+		  
 }
 
 

@@ -925,6 +925,17 @@ void create_thread_task() {
 
    createflashromstart = ((uint16_t)pageno)*(uint16_t)128;
    createflashromsize = (uint16_t)(filesize-16)/2;       
+   
+   if ((createflashromstart <= kernelromsize) || ( ramstackstart <= kernelramsize + 256))
+   	 {
+	  fclose2( fp );
+      //reply[ 0 ] = 4;
+      //reply[ 1 ] = 231;
+      //reply[ 2 ] = nodeid;
+      //reply[ 3 ] = 1;
+      //StandardSocketSend( 0xefef, 0xffff, 32, reply );
+	  return; 	  
+	  }
   
     if (memory_conflict_detect(createflashromstart, createflashromsize, ramstackstart, ramstackend ) == 1)
       {

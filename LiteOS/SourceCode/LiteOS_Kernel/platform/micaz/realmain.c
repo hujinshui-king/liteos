@@ -179,8 +179,9 @@ int main() {
       
       /* The following is for debugging the kernel , where no reprogramming overboard is used 
       */
+	  /*
       
-	  /*  Leds_redToggle();
+	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
       mystrncpy( networkid, "d01\0", 4 );
@@ -199,8 +200,8 @@ int main() {
 	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
-      
-	 */
+      */
+	 
 
     }
    
