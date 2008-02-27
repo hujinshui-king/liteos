@@ -199,8 +199,8 @@ int main() {
 	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
-      */
-	 
+      
+	 */
 
     }
    
@@ -230,7 +230,7 @@ int main() {
   }
    cc2420controlm_CC2420Control_TunePower( 31 ); 
    
-   create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell" );
+   create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell", 0, 0 );
    
    _avr_enable_interrupt();
 

@@ -70,6 +70,12 @@ uint16_t *createstackpointer;
 uint16_t createstaticdatasize;
 uint16_t *createramstart;
 
+//the start location for writing the rom as user application
+uint16_t createflashromstart;
+
+//the size of written user application 
+uint16_t createflashromsize; 
+
 
 MYFILE *openedfile;
 MYFILE *fp;
@@ -80,6 +86,9 @@ uint8_t blockid;
 char filename[ 13 ];
 uint16_t nodeid; 
 
+
+static uint16_t kernelromsize = 39056;
+static uint16_t kernelramsize = 2385; 
 
 //-------------------------------------------------------------------------
 
@@ -718,6 +727,58 @@ void reply_ps( uint8_t *receivebuffer ) {
    }
 }
 
+
+//-------------------------------------------------------------------------
+
+//Is this function avr specific? Does not look so, though. 
+
+void reply_memory( uint8_t *receivebuffer ) {
+   uint8_t i, len;
+
+   //reply[0] = 15;
+
+   reply[ 1 ] = 181;
+   reply[ 2 ] = nodeid;
+   reply[ 3 ] = kernelromsize/256;
+   reply[ 4 ] = kernelromsize%256; 
+   reply[ 5 ] = kernelramsize/256; 
+   reply[ 6 ] = kernelramsize%256; 
+  
+
+   for ( i = 0; i < LITE_MAX_THREADS; i ++ ) {
+      if ( thread_table[ i ].state != STATE_NULL ) {
+         len = mystrlen( (char *)thread_table[ i ].threadName );
+
+         reply[7] = len; 
+
+		 mystrncpy( (char *)&reply[ 8 ], (char *)thread_table[ i ].threadName, len );
+         
+		 reply[8+len] = 0; 
+
+		 //Note that here the romstart is the exact start location in words
+		 //the romesize is in bytes
+		 //the ramstart is in bytes
+		 //the ramsize is in bytes
+
+		 reply[len+9] =  thread_table[i].romstart/256; 
+		 reply[len+10] = thread_table[i].romstart%256; 
+		 reply[len+11] = thread_table[i].romsize/256; 
+		 reply[len+12] = thread_table[i].romsize%256;
+		 reply[len+13] = ((uint16_t)thread_table[i].ramstart)/256; 
+		 reply[len+14] = ((uint16_t)thread_table[i].ramstart)%256;
+		 reply[len+15] = ((uint16_t)thread_table[i].ramend)/256; 
+		 reply[len+16] = ((uint16_t)thread_table[i].ramend)%256;
+
+		 reply[0] = len+16+1; 
+
+		  
+         StandardSocketSend( 0xefef, 0xffff, 32, reply );
+      }
+   }
+}
+
+
+
 //-------------------------------------------------------------------------
 void reply_killthread( uint8_t *receivebuffer ) {
    uint8_t i;
@@ -812,8 +873,12 @@ void reply_search( uint8_t *receivebuffer ) {
 
 //-------------------------------------------------------------------------
 void createNewThread() {
-   create_thread( createtaskthread, createramstart, createstackpointer, createstaticdatasize, 1, (char *)createthreadname );
+   create_thread( createtaskthread, createramstart, createstackpointer, createstaticdatasize, 1, (char *)createthreadname, createflashromstart, createflashromsize);
 }
+
+
+
+
 
 
 //-------------------------------------------------------------------------
@@ -837,11 +902,11 @@ void create_thread_task() {
    uint16_t ramstackstart;
    newblockid = existBlockAddr( filename, ( int )blockid );
    if ( newblockid == 0 ) {
-      reply[ 0 ] = 4;
-      reply[ 1 ] = 231;
-      reply[ 2 ] = nodeid;
-      reply[ 3 ] = 0;
-      StandardSocketSend( 0xefef, 0xffff, 32, reply );
+      //reply[ 0 ] = 4;
+      //reply[ 1 ] = 231;
+      //reply[ 2 ] = nodeid;
+      //reply[ 3 ] = 0;
+      //StandardSocketSend( 0xefef, 0xffff, 32, reply );
       return ;
    }
    fid = getFreeFid();
@@ -857,6 +922,23 @@ void create_thread_task() {
    ramstackstart = ( uint16_t )( hex2value( sysinfo[ 7 ] )) *256+( uint16_t )( hex2value( sysinfo[ 8 ] )) *16+( uint16_t )( hex2value( sysinfo[ 9 ] ));
    ramstackend = ( uint16_t )( hex2value( sysinfo[ 10 ] )) *256+( uint16_t )( hex2value( sysinfo[ 11 ] )) *16+( uint16_t )( hex2value( sysinfo[ 12 ] ));
    createstaticdatasize = ( uint16_t )( hex2value( sysinfo[ 13 ] )) *100+( uint16_t )( hex2value( sysinfo[ 14 ] )) *10+( uint16_t )( hex2value( sysinfo[ 15 ] ));
+
+   createflashromstart = ((uint16_t)pageno)*(uint16_t)128;
+   createflashromsize = (uint16_t)(filesize-16)/2;       
+  
+    if (memory_conflict_detect(createflashromstart, createflashromsize, ramstackstart, ramstackend ) == 1)
+      {
+	  fclose2( fp );
+      //reply[ 0 ] = 4;
+      //reply[ 1 ] = 231;
+      //reply[ 2 ] = nodeid;
+      //reply[ 3 ] = 1;
+      //StandardSocketSend( 0xefef, 0xffff, 32, reply );
+	  return; 	  
+	  }
+
+     
+
    round = ( filesize - 16 ) / 16;
    remain = ( filesize - 16 ) % 16;
    ProgramSetPage( pageno );
@@ -877,8 +959,13 @@ void create_thread_task() {
     {
       createtaskthread = ( void( * )( void ))entryaddr;
       createramstart = ( uint16_t* )ramstackstart;
+      
+     
       createstackpointer = ( uint16_t* )ramstackend;
       mystrncpy( (char *)createthreadname, filename, mystrlen( filename ) + 1 );
+
+      
+
       postTask( createNewThread, 1 );
    }
    // reply[0] = 4; 
@@ -905,8 +992,9 @@ void reply_create_thread( uint8_t *receivebuffer )
    reply[ 0 ] = 4;
    reply[ 1 ] = 231;
    reply[ 2 ] = nodeid;
-   reply[ 3 ] = 1;
+   reply[ 3 ] = 2;
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
+   
    return ;
 }
 
@@ -1041,6 +1129,9 @@ void commandHandle( uint8_t *receivebuffer, uint8_t total ) {
       case 171:
       reply_ps( receivebuffer );
       break;
+      case 181:
+      reply_memory( receivebuffer ); 
+      break; 
       case 211:
       reply_du( receivebuffer );
       break;

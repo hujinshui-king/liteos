@@ -84,8 +84,9 @@ uint8_t is_thread() {
 
 //Now adds the support for kernel built-in memory corrupt search and find 
 //To extend to other platforms, this function prototype may need to be modified or encapsulated into modules 
+//updated the romstart and romsize parameter in version 0.31 to support rom image loading conflict detection 
 
-int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uint16_t staticdatasize, uint8_t priority, char *threadName ) {
+int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uint16_t staticdatasize, uint8_t priority, char *threadName , uint16_t romstart, uint16_t romsize) {
    int i;
    _atomic_t currentatomic;
    
@@ -125,6 +126,8 @@ int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uin
    current_thread->ramstart = ram_start;
    current_thread->ramend = stack_ptr;
    current_thread->sizeofBss = staticdatasize;
+   current_thread->romstart = romstart; 
+   current_thread->romsize = romsize; 
    
    //COPY file name 
    {
@@ -295,7 +298,15 @@ void threads_handle_service() /*__attribute__((noinline))*/ {
 
 
 
+uint8_t memory_conflict_detect(uint16_t createflashromstart, uint16_t createflashromsize, uint16_t ramstackstart, uint16_t ramstackend )
+{
+ //if no conflict return 0. 
 
+  
+
+  return 0; 
+
+}
 
 
 //this executes and cleans up a thread

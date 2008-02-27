@@ -46,7 +46,7 @@ void thread_init();
 
 /**\ingroup  thread */
 ///create thread
-int create_thread(void (*fcn)(), uint16_t *ram_start, uint16_t * stack_ptr, uint16_t staticdatasize, uint8_t priority, char *threadName);
+int create_thread(void (*fcn)(), uint16_t *ram_start, uint16_t * stack_ptr, uint16_t staticdatasize, uint8_t priority, char *threadName, uint16_t romstart, uint16_t romsize);
 
 
 /**\ingroup  thread */
@@ -99,6 +99,10 @@ void Barrier_unblock( uint8_t type, uint8_t id );
 
 /**\ingroup  thread */
 void break_point_function();
+
+
+/**\ingroup thread */
+uint8_t memory_conflict_detect(uint16_t createflashromstart, uint16_t createflashromsize, uint16_t ramstackstart, uint16_t ramstackend );
 
 
 
