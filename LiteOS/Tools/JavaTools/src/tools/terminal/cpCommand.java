@@ -663,7 +663,7 @@ public class cpCommand implements cmdcontrol {
 
     public boolean terminateSignal() {
 
-        if (endisnear > 5)
+        if (endisnear > 8)
             endofFile = true;
         return endofFile;
 

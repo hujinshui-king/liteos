@@ -56,7 +56,7 @@ public class installCommand implements cmdcontrol {
 
     //Return the  delay in milliseconds
     public int getDelay() {
-        return 800;  //To change body of implemented methods use File | Settings | File Templates.
+        return 300;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     //return the command will be used

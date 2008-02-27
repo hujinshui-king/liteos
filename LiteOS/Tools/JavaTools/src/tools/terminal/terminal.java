@@ -1110,7 +1110,8 @@ public class terminal {
 
 
                     serverpl.setPacketWaitBuffer(SHELLPORT, 2);
-                    serverpl.setPacketWaitTimeout(SHELLPORT, 300);
+                    //speed optimization for cp
+                    serverpl.setPacketWaitTimeout(SHELLPORT, 50);
                    // System.out.println("Now prepare to get incoming data");
                    // System.out.println("Reading port");
 
@@ -1133,7 +1134,8 @@ public class terminal {
                    // pl.setWait(200);
 
                    serverpl.setPacketWaitBuffer(SHELLPORT, 1);
-                   serverpl.setPacketWaitTimeout(SHELLPORT, 200);
+                   //speed optimization for cp
+                   serverpl.setPacketWaitTimeout(SHELLPORT, 50);
 
 
                     //System.out.println("Now Patching");
