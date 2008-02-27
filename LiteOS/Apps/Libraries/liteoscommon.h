@@ -220,6 +220,8 @@ typedef struct thread{
   uint16_t *ramend; 
   uint16_t sizeofBss; 
   
+   uint16_t romstart; 
+   uint16_t romsize; 
   
   volatile union{
     void (*tp) ();
