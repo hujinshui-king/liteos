@@ -49,6 +49,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #endif
  
 
+extern volatile uint16_t *old_stack_ptr;
 
 
 uint8_t IncomingLength;
@@ -768,6 +769,14 @@ void reply_memory( uint8_t *receivebuffer ) {
 		 reply[len+14] = ((uint16_t)thread_table[i].ramstart)%256;
 		 reply[len+15] = ((uint16_t)thread_table[i].ramend)/256; 
 		 reply[len+16] = ((uint16_t)thread_table[i].ramend)%256;
+
+         reply[len+17] = ((uint16_t)thread_table[i].sp)/256;
+		 reply[len+18] = ((uint16_t)thread_table[i].sp)%256;
+		 reply[len+19] = ((uint16_t)thread_table[i].sizeofBss)/256;
+		 reply[len+20] = ((uint16_t)thread_table[i].sizeofBss)%256;
+
+		 reply[len+21] = ((uint16_t)old_stack_ptr)/256;
+		 reply[len+22] = ((uint16_t)old_stack_ptr)%256;
 
 		 reply[0] = len+16+1; 
 

@@ -180,7 +180,6 @@ int main() {
       /* The following is for debugging the kernel , where no reprogramming overboard is used 
       */
 	  /*
-      
 	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();

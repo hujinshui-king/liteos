@@ -70,14 +70,21 @@ public class memCommand  {
 
         int kernelromuse = 0;
         int kernelramuse = 0;
+
+        int kernelstacksp = 0;
         int appromstart;
         int appromsize = 0;
         int appramstart = 0;
         int appromend = 0;
         int appramend = 0;
+
+
+        int threadsp;
+        int threadbsssize;
         //System.out.println("There are " + length +" bytes received");
 
         int lenoffilename;
+        int threadbssstart, threadbssend;
 
         byte [] response = null;
 
@@ -98,12 +105,13 @@ public class memCommand  {
                 //Print memory info and kernel memory usage info
                 colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "Following is the memory information\n");
                 colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The total flash 0--0x1FFFF, ram 0x100--0x10FF\n");
-                colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The kernel bootloader and system calls use 0x1D400 and above\n");
+                colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The kernel bootloader and system calls use 0x1D400 and above for flash\n");
                 kernelromuse =  (0x000000FF & ((int) response[start+3]))*256 + (0x000000FF & ((int) response[start+4]));
                 kernelramuse =  (0x000000FF & ((int) response[start+5]))*256 + (0x000000FF & ((int) response[start+6]));
                 kernelromuse = kernelromuse * 2;
                 kernelramuse = kernelramuse + 255;
                 colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The kernel consumes 0x00 to 0x"+ Integer.toHexString(kernelromuse).toUpperCase() + " bytes for flash\n");
+                colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The mapped registers take 0x00 to 0xff for ram\n");
                 colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The kernel consumes 0x100 to 0x" + Integer.toHexString(kernelramuse).toUpperCase() + " for ram\n");
 
             }
@@ -122,15 +130,34 @@ public class memCommand  {
             appramend =  (0x000000FF & ((int) response[start+lenoffilename + 15])) * 256 +  (0x000000FF & ((int) response[start+lenoffilename + 16])) ;
             appromend = appromstart + appromsize;
 
+            threadsp =  (0x000000FF & ((int) response[start+lenoffilename + 17])) * 256 +  (0x000000FF & ((int) response[start+lenoffilename + 18])) ;
+            threadbsssize =   (0x000000FF & ((int) response[start+lenoffilename + 19])) * 256 +  (0x000000FF & ((int) response[start+lenoffilename + 20])) ;
+
+            threadbssstart = appramstart;
+            threadbssend = appramstart + threadbsssize;
+
             String nameoffile = new String(targetData, 0, lenoffilename);
             if (appromstart !=0)
             {colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " consumes 0x"+ Integer.toHexString(appromstart).toUpperCase() +  " to 0x"+ Integer.toHexString(appromend).toUpperCase() +" for flash\n");
-            colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " consumes 0x"+ Integer.toHexString(appramstart).toUpperCase() +  " to 0x"+ Integer.toHexString(appramend).toUpperCase() +" for ram\n");
+             colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " consumes 0x"+ Integer.toHexString(appramstart).toUpperCase() +  " to 0x"+ Integer.toHexString(appramend).toUpperCase() +" for ram\n");
+             colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " static variables consume 0x"+ Integer.toHexString(threadbssstart).toUpperCase() +  " to 0x"+ Integer.toHexString(threadbssend).toUpperCase() +" for ram\n");
+             colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " stack space consumes 0x"+ Integer.toHexString(threadsp).toUpperCase() +  " to 0x"+ Integer.toHexString(appramend).toUpperCase() +" for ram\n");
+
+            }
+
+
+            if (gotmsg == 1)
+            {
+             kernelstacksp =   (0x000000FF & ((int) response[start+lenoffilename + 21])) * 256 +  (0x000000FF & ((int) response[start+lenoffilename + 22])) ;
+
             }
 
 
         }
     //colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "0x" + Integer.toString(targetData[i] & 0xFF, 16) + " ,");
+
+     colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The kernel stack consumes 0x"+ Integer.toHexString(kernelstacksp).toUpperCase() +  " to 0x10FF for ram\n");
+
     }
 
 }

@@ -183,7 +183,7 @@ public class terminal {
                 input = stdin.readLine();
                 devCommandRepeat = false;
 
-            if ((choosehistorycommand == true))
+            /*if ((choosehistorycommand == true))
                 {
 
                      try {
@@ -206,7 +206,7 @@ public class terminal {
                      continue;
                     }
 
-                }
+                }     */
                 historyhandle.addCommand(input);
 
 
@@ -266,7 +266,9 @@ public class terminal {
 
             if (commandName.compareTo("history") == 0) {
                             historyhandle.printCommand();
-                            choosehistorycommand = true;
+                            choosehistorycommand = false;
+                            nextCommand = true;
+                            SkipReading = 0;
                             System.out.println("\n");
                             continue;
             }

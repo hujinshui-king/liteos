@@ -54,7 +54,7 @@ public class historyCommand {
     public void printCommand()
     {
 
-         colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "The previous commands are (using number to select):");
+         colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "The previous commands are as follows.");
         int start = (currentIndex-20+100)%100;
         if (history[start]== null)
           start = 0;
