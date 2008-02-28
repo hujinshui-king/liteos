@@ -79,8 +79,9 @@ public class debugCommand implements cmdcontrol {
 
         int kerneldebug = 0;
         String destDir = parameters[0];
-       sizeOfVariables = 0; 
-       destDir = destDir.replace('/', '\\');
+       sizeOfVariables = 0;
+
+       destDir = cpCommand.stdFileName(destDir);
 
 
        File a = new File(destDir+"\\build\\extract.pl");

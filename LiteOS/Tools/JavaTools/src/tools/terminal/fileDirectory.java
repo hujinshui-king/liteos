@@ -26,7 +26,7 @@ package tools.terminal;
 import java.util.regex.Pattern;
 
 /**
- * The file directory class stores the information of the directory structure for the user
+ *  The file directory is composed of fileNode. Each node stores info on the files. The default location is the root
  */
 public class fileDirectory {
 
@@ -68,12 +68,14 @@ public class fileDirectory {
     }
 
 
-    private fileNode relativeAddress(String fileLocation, fileNode start) {
+    private fileNode relativeAddress(String fileLocation, fileNode start, fileNode defaultnode) {
         String REGEX = "/";
         Pattern p = Pattern.compile(REGEX);
         String[] items = p.split(fileLocation);
         for (int i = 0; i < items.length; i++) {
             start = start.enterSubDirectory(items[i]);
+            if (start == null)
+             return defaultnode;
         }
         return start;
 
@@ -88,18 +90,18 @@ public class fileDirectory {
     public void changeDir(String fileLocation) {
 
         if (fileLocation.startsWith("/")) {
-            this.currentNode = relativeAddress(fileLocation, this.root);
+            this.currentNode = relativeAddress(fileLocation, this.root, this.currentNode);
         }
 
         else if (fileLocation.startsWith("../")) {
-            this.currentNode = relativeAddress(fileLocation.substring(2), this.currentNode.getParent());
+            this.currentNode = relativeAddress(fileLocation.substring(2), this.currentNode.getParent(), this.currentNode);
 
         }
         else if (fileLocation.startsWith("./")) {
             if (this.currentNode.getType().startsWith("file") == true)
-                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode.getParent());
+                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode.getParent(), this.currentNode);
             else
-                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode);
+                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode, this.currentNode);
 
         }
         else if (fileLocation.compareTo("..") == 0) {
@@ -109,7 +111,7 @@ public class fileDirectory {
             if (this.currentNode.getType().startsWith("file") == true)
                 this.currentNode = this.currentNode.getParent();
         } else {
-            this.currentNode = relativeAddress(fileLocation, this.currentNode);
+            this.currentNode = relativeAddress(fileLocation, this.currentNode, this.currentNode);
         }
 
     }

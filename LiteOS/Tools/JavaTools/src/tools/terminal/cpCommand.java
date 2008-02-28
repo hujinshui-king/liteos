@@ -189,7 +189,7 @@ public class cpCommand implements cmdcontrol {
 
     }
 
-    String stdFileName(String file) {
+    static public String stdFileName(String file) {
         char [] temp = new char[2000];
         temp = file.toCharArray();
         temp[0] = temp[1];
@@ -241,10 +241,12 @@ public class cpCommand implements cmdcontrol {
         else
             copyType = 3;
 
-
+        //pc to node
         if  ((copyType == 1) && (fileExist(parameters[0]) == 0))
              return -1;
-
+        //node to pc
+        if  ((copyType == 2) && (fileExist(parameters[1]) == 1))
+             return -2;
 
         if (SkipContinue == 0) {
 

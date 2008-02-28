@@ -97,15 +97,8 @@ public class terminal {
     private static historyCommand historyhandle = new historyCommand();
     private static setCommand sethandle = new setCommand();
     private static memCommand memhandle = new memCommand();
-
-
-    //the following part implements the debugging interface
-
     private static debugCommand debughandle = new debugCommand();
- //   private static listVariableCommand listvariablehandle = new listVariableCommand();
     private static printCommand printhandle = new printCommand();
-
-  //the breakpoint command handle
     private static breakpointCommand breakpointhandle = new breakpointCommand();
     private static continueCommand continuehandle = new continueCommand();
     private static snapshotCommand snapshothandle = new snapshotCommand();
@@ -113,7 +106,6 @@ public class terminal {
     private static channelSelectCommand channelhandle = new channelSelectCommand();
 
     private static long prevtime, aftertime;
-
     private static String input;
     private static int SkipReading = 0;
     private static boolean devCommandRepeat = false;
@@ -159,47 +151,12 @@ public class terminal {
         packetsource = null;
 
         commport = null;
-
-
-
-        //colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "green");
-        //colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "red");
-        //colorOutput.println(colorOutput.COLOR_BRIGHT_CYAN, "cyan");
-        //colorOutput.println(colorOutput.COLOR_YELLOW, "YELLOW");
-
-      /*  ByteArrayOutputStream out = null;
-              try {
-
-                  File f = new File("test.doc"); // only used to be able to init the ByteArrayoutputStream
-                  InputStream in = new java.io.FileInputStream("test.doc");
-
-                  out = new ByteArrayOutputStream((int) f.length());
-                  int k;
-                  while ((k = in.read()) != -1) {
-                      out.write(k);
-                  }
-                  in.close();
-              }
-
-              catch (FileNotFoundException fnfe) {
-                  //System.out.println("File not found.");
-                   colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "File not found!");
-              }
-
-              catch (IOException ioe) {
-                  //System.out.println("Unable to read from file");
-                   colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "Unable to read from file");
-              }
-
-        */
         if (args.length > 0)
         {
             int k;
             colorOutput.setColor(false);
             for (k=0;k<args.length;k++)
             {
-             //if (args[k].startsWith("COM")==true)
-             //    commport = args[k];
              if (args[k].startsWith("-color")==true)
                 colorOutput.setColor(true);
              else
@@ -210,34 +167,8 @@ public class terminal {
         serverpl = new ServerPort(packetsource);
         String [] elements = null;
 
-        // Prompt the user
-        //System.out.print("LiteOS Shell\n");
-
         colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "LiteOS Version 0.31");
         init();
-     //  PortListener pl;
-        //Now set up the port
-    //   PortListener pl = new PortListener(commport, 57600);
-        /*try {
-            pl.open();
-        }
-        catch (javax.comm.NoSuchPortException e) {
-            //System.out.println("No such port");
-           colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "No such port");
-        }
-        catch (javax.comm.PortInUseException e) {
-           // System.out.println("Port in use");
-        colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Port in use");
-        }
-        catch (javax.comm.UnsupportedCommOperationException e) {
-         //   System.out.println("Comm not supported");
-        colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Port operation not supported");
-        }
-          */
-        //Now commandName, options and parameters contain the necessary results
-        //Now check out the parameters and get the returned command or command list
-
-        //uses nextCommand to regulate the behavior of the shell.  Defined as true when program starts
 
         while (nextCommand == true) {
 
@@ -262,21 +193,23 @@ public class terminal {
                      catch (NumberFormatException e)
                      {
                          choosehistorycommand = false;
-
                      }
 
                     if (choosehistorycommand == true)
                     {choosehistorycommand = false;
                     input = historyhandle.getCommand(input);
                     }
+                    else
+                    {
+                     SkipReading = 0;
+                     nextCommand = true;
+                     continue;
+                    }
 
                 }
                 historyhandle.addCommand(input);
 
-                //This threashold works together with the timeout and buffer size. THe min one is returned. Now
-                //set it to be huge.
 
-            //    pl.setThreshold(1024000);
                 prevtime = System.currentTimeMillis();
             } else {
                 SkipReading --;
@@ -315,6 +248,13 @@ public class terminal {
             }
 
 
+           if (genericCommand.commandValidCheck(commandName, options, optioncount, parameters, parametercount, fdir) == false)
+           {
+                    colorOutput.println(colorOutput.COLOR_YELLOW, "Bad command or syntax\n");
+                    nextCommand = true;
+                    SkipReading = 0;
+                    continue;
+           }
 
              if (commandName.compareTo("chmod") == 0) {
                  colorOutput.println(colorOutput.COLOR_YELLOW, "Chmod command will be supported soon");
@@ -480,10 +420,21 @@ public class terminal {
 
                 {
                     System.out.println("File does not exist.\n");
+                    nextCommand = true;
+                    SkipReading = 0;
                     continue;
 
                 }
 
+                if (countCommand == -2)
+
+                {
+                    System.out.println("File target already exists.\n");
+                    nextCommand = true;
+                    SkipReading = 0;
+                    continue;
+
+                }
                 if (countCommand > 0) {
 
                     //pl.setWait()

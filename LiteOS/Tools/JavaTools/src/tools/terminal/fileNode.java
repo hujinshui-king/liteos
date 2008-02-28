@@ -28,14 +28,20 @@ package tools.terminal;
  */
 public class fileNode {
 
-    //File type information
+    //File name is the name of the file. It could be test, whatever
+
     private String FileName;
+
+    //The type of the file
     private String FileType;
+
+    //the actual size
     private int size;
+
     private int block;
     private int address;
 
-    //children and parent
+    //children and parent relationship
     private fileNode[] children = new fileNode[32];
     private fileNode parent;
     private int childNum = 0;
@@ -119,7 +125,10 @@ public class fileNode {
      * @return the parent of the file node
      */
     public fileNode getParent() {
-        return this.parent;
+        if (FileName.compareTo("root") == 0)
+          return this;
+        else
+          return this.parent;
     }
 
     /**
@@ -206,9 +215,9 @@ public class fileNode {
             }
         }
        //System.out.println("No such subdirectory exists");
-        colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "No such subdirectory exists. Probably you have not used the ls command to list such directory. Currently cd only works for directories that are listed using ls.");
+        colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "No subdirectory exists when trying to enter it. Probably you have not used the ls command to list such directory. Currently cd only works for directories that are listed using ls.");
 
-        return this;
+        return null;
     }
 
 
