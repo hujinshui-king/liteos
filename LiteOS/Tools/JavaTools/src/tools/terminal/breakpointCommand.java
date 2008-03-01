@@ -230,6 +230,7 @@ public class breakpointCommand  {
         fileNode cnode = fdir.getCurrentNode();
         String nodeName = cnode.getNodeName();
         int addr;
+        int breakpointreceived = 0;
         byte [] targetData = new byte[100];
         //System.out.println("There are " + length +" bytes received");
         byte [] response  = null;
@@ -247,8 +248,13 @@ public class breakpointCommand  {
 
             InternalBreakpoints[breakpointNum++] = new breakpointinfo(addr, false);
             updateInternalBreakpoint(addr, true, response);
+            breakpointreceived = 1;
+            break;
 
         }
+
+        if (breakpointreceived == 0)
+          System.out.println("The shell has not received any meaningful breakpoint information. The information is probably lost due to extremely bad link quality or interference. To use the coninue command, you must first set up the debugging environment using the debug command.\n");
    }
 
 }

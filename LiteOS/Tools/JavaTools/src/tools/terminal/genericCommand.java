@@ -85,7 +85,7 @@ public class genericCommand {
                      dirname = cpCommand.stdFileName(dirname);
 
                      File a = new File(dirname+"\\build\\extract.pl");
-                     File b = new File(dirname+"\\build\\TestBlink.elf");
+                     File b = new File(dirname+"\\build\\App.elf");
                      if ((a.exists() == false )||(b.exists()==false))
                      {
                        a = new File(dirname+"\\bin\\extract.pl");
@@ -96,6 +96,8 @@ public class genericCommand {
                       return false;
                      }
                      }
+                    else
+                      return true;
                     }
 
            if (commandName.compareTo("list") == 0)

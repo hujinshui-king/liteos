@@ -29,6 +29,7 @@ public class debugCommand implements cmdcontrol {
 
 
  variable  variables[] = new variable[1002];
+ String localdirectory = null;
  static int sizeOfVariables;
  static boolean isSetUp;
 
@@ -37,6 +38,11 @@ public class debugCommand implements cmdcontrol {
        sizeOfVariables = 0;
        isSetUp = false;
 
+ }
+
+ public String getLocalDirectory()
+ {
+      return localdirectory;      
  }
 
  public boolean isSetUp()
@@ -84,12 +90,14 @@ public class debugCommand implements cmdcontrol {
        destDir = cpCommand.stdFileName(destDir);
 
 
+
+
        File a = new File(destDir+"\\build\\extract.pl");
-       File b = new File(destDir+"\\build\\TestBlink.elf");
+       File b = new File(destDir+"\\build\\App.elf");
      if ((a.exists() == false )||(b.exists()==false))
      {
            a = new File(destDir+"\\bin\\extract.pl");
-           b = new File(destDir+"\\bin\\LiteOS.elf");
+           b = new File(destDir+"\\bin\\App.elf");
            if ((a.exists() == false )||(b.exists()==false))
            {
           colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Directory error. File does not exist. ");
@@ -102,6 +110,7 @@ public class debugCommand implements cmdcontrol {
 
 
         isSetUp = true;
+        localdirectory = new String(destDir);
 
 
 
@@ -112,7 +121,7 @@ public class debugCommand implements cmdcontrol {
 
      if (kerneldebug == 0)
           p = Runtime.getRuntime().exec
-        ("perl "+ destDir +"\\build\\extract.pl "+ destDir  +"\\build\\TestBlink.elf" );
+        ("perl "+ destDir +"\\build\\extract.pl "+ destDir  +"\\build\\App.elf" );
       else
              p = Runtime.getRuntime().exec
         ("perl "+ destDir +"\\bin\\extract.pl "+ destDir  +"\\bin\\LiteOS.elf" );

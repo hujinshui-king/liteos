@@ -24,6 +24,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 package tools.terminal;
 
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * The du command class that allows the current directory information to be displayed.
@@ -33,8 +36,28 @@ public class continueCommand  {
 
     private byte[] reply = new byte[64];
 
+    private byte[] getInstructionsFromFile(File lssfile, String instructionnum) throws Exception{
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir, breakpointCommand breakpointhandle) {
+        String pathname = lssfile.getAbsolutePath();
+
+        //Now read the file content into a string
+        FileInputStream fis = new FileInputStream(pathname);
+        int x= fis.available();
+        byte b[]= new byte[x];
+        fis.read(b);
+        String content = new String(b);
+
+        int pagenum = new Integer(content.substring(0,3)).intValue();
+        int startbinaryposition = pagenum * 256;
+        int offset =   Integer.parseInt(instructionnum, 16) - startbinaryposition;
+        //16 is the first byte menaingful
+        offset = offset*2 + 16;
+        String bytescontent = content.substring(offset, offset+6);
+        return bytescontent.getBytes();
+
+    }
+
+    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir, breakpointCommand breakpointhandle, debugCommand debughandle) {
 
         fileNode currentnode = fdir.getCurrentNode();
         int currentAddress = currentnode.getNodeAddress();
@@ -43,6 +66,7 @@ public class continueCommand  {
         int temp = 0;
         byte[] patchinstructions = new byte[6];
         boolean patchinitilized = false;
+        int patchedthroughfile = 0;
 
         String numparameter;
 
@@ -71,16 +95,47 @@ public class continueCommand  {
              patchinitilized = true;
         }
 
-        if (parametercount > 1)
-        {
-            System.out.println("Reading from file to patch instructions.. Not implemented yet");
-            return 0;
-        }
+
 
         if (patchinitilized == false)
-        return 0;
+        {
+            //Now read from the file to continue. Requires the debugging environment to be set up
 
-        int addr = temp;
+           if (debughandle.isSetUp() == false)
+           {
+               System.out.println("The debugging environment has not been set up properly. Please set up the correct debugging environment and proceed.\n ");
+               return 0;
+           }
+           String directoryname = debughandle.getLocalDirectory();
+
+           //Now open the file ending with lss and read its contents
+
+           File lssfile = new File(directoryname+"\\build\\App.hex");
+
+           if ((lssfile.exists() == false ))
+           {
+            lssfile = new File(directoryname+"\\bin\\LiteOS.hex");
+            if ((lssfile.exists() == false ))
+            {
+                System.out.println("Could not find the correct files. Please ensure that the environment is correct.\n ");
+                return 0;
+            }
+           }
+
+        try {
+        System.arraycopy(getInstructionsFromFile(lssfile, numparameter), 0, patchinstructions, 0, 6);
+        patchinitilized = true;
+        patchedthroughfile = 1;
+        }
+        catch (java.lang.Exception e)
+        {
+            patchinitilized = false;
+        }
+        }
+        if (patchinitilized == false)
+          return 0;
+
+        int addr = Integer.parseInt(numparameter, 16);
 
         addr = addr/2;
 
@@ -95,7 +150,8 @@ public class continueCommand  {
         reply[4] =  (new Integer(addrlow)).byteValue();
         System.arraycopy(patchinstructions, 0, reply, 5, 6);
 
-        breakpointhandle.removeBreakPointAddr(addr*2);
+        if (patchedthroughfile == 0)
+          breakpointhandle.removeBreakPointAddr(addr*2);
 
         //System.arraycopy(filename, 0, reply, 3, filename.length);
 
@@ -123,16 +179,28 @@ public class continueCommand  {
         int addr;
         byte [] response  = null;
         int start = 5;
+        int replied = 0;
 
         while (reply.size() > 0)
         {
+
             response = (byte [])reply.remove(0);
             if (response[start + 1]!=93)
             continue;
 
+            replied = 1;
             if (response[ start + 3] == 0)
-             System.out.println("The specified breakpoint is not found.");
+             System.out.print("The specified breakpoint is not found.");
+            else
+              System.out.print("The specified breakpoint is found. Continue command is successful.");
+
         }
+        if (replied == 0)
+         System.out.print("No reply received. Probably because the link is very weak. Use ps to see if the breakpoint has been removed");
+
+        System.out.print("\n");
+
+
       }
 }
 

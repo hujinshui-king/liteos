@@ -329,6 +329,7 @@ public class terminal {
 
             if (commandName.compareTo("debug") == 0) {
                            debughandle.setNewCommand(options, optioncount, parameters, parametercount, fdir);
+                           colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "Reading debugging information successful.\n");
                            nextCommand = true;
                            SkipReading = 0;
                            continue;
@@ -338,7 +339,9 @@ public class terminal {
                                     if (debughandle.isSetUp() == false)
                                        colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Debug environment has not been set up."  );
                                     else
-                                    debughandle.printAll();
+                                    { debughandle.printAll();
+                                    colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "Debug environment set up complete.\n"  );
+                                    }
                                    nextCommand = true;
                                    SkipReading = 0;
                                    continue;
@@ -711,7 +714,8 @@ public class terminal {
             if (commandName.compareTo("breakpoint") == 0) {
                      //   pl.setThreshold(32);
 
-                     serverpl.setPacketWaitBuffer(SHELLPORT, 1);
+                     serverpl.setPacketWaitBuffer(SHELLPORT, 3);
+                     serverpl.setPacketWaitTimeout(SHELLPORT, breakpointhandle.getDelay());
                         countCommand = breakpointhandle.setNewCommand(options, optioncount, parameters, parametercount, fdir);
 
                         if (countCommand > 0) {
@@ -730,7 +734,7 @@ public class terminal {
                        //   pl.setThreshold(32);
 
                           serverpl.setPacketWaitBuffer(SHELLPORT, 1);
-                          countCommand =  continuehandle.setNewCommand(options, optioncount, parameters, parametercount, fdir, breakpointhandle);
+                          countCommand =  continuehandle.setNewCommand(options, optioncount, parameters, parametercount, fdir, breakpointhandle, debughandle);
 
                           if (countCommand > 0) {
                               serverpl.setPacketWaitTimeout(SHELLPORT, continuehandle.getDelay());
