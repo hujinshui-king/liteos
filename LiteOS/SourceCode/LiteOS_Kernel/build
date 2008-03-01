@@ -81,6 +81,7 @@ if __name__ == "__main__":
 
     shutil.move("./bin/LiteOS.hex", "LiteOS.hex")
     shutil.move("./bin/LiteOS.elf", "LiteOS.elf")
+    shutil.move("./bin/LiteOS.lss", "LiteOS.lss")
     
     shutil.rmtree("./bin")
 
@@ -88,6 +89,7 @@ if __name__ == "__main__":
     os.chdir("./bin")
     shutil.move("../LiteOS.hex", "./LiteOS.hex")
     shutil.move("../LiteOS.elf", "./LiteOS.elf")
+    shutil.move("../LiteOS.lss", "./LiteOS.lss")
     shutil.copy("../extract.pl", "./extract.pl")
     
     print "The files have been generated in the bin directory"

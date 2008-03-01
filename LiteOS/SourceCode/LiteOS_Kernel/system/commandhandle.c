@@ -280,6 +280,8 @@ void reply_debugging_insert_avr_breakpoint( uint8_t *receivebuffer ) {
       reply[ 6+offset ] = instructions[ offset ];
    } 
    StandardSocketSend( 0xefef, 0xffff, 32, reply );
+   StandardSocketSend( 0xefef, 0xffff, 32, reply );
+   StandardSocketSend( 0xefef, 0xffff, 32, reply );
 }
 #endif
 
