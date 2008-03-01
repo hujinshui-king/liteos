@@ -1,11 +1,11 @@
 ###############################################################################
-# Makefile for the project TestBlink
+# Makefile for the project App
 ###############################################################################
 
 ## General Flags
-PROJECT = TestBlink
+PROJECT = App
 MCU = atmega128
-TARGET = TestBlink.elf
+TARGET = App.elf
 
 ## Get OS type using uname
 ## Fedora core 7 : GNU/Linux 
@@ -62,7 +62,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Build
-all: $(TARGET) TestBlink.hex TestBlink.eep TestBlink.lss size
+all: $(TARGET) App.hex App.eep App.lss size
 
 
 $(TARGET):
@@ -84,7 +84,7 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+	-rm -rf $(OBJECTS) App.elf dep/* App.hex App.eep App.lss App.map
 
 
 ## Other dependencies

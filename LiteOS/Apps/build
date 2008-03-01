@@ -58,7 +58,7 @@ def processHexFile():
     prefix = prefix.upper()
     #print prefix
     
-    for line in fileinput.input("./TestBlink.hex", inplace = 1):
+    for line in fileinput.input("./App.hex", inplace = 1):
 
         if (trailing == True):
             trailing = False
@@ -149,7 +149,9 @@ if __name__ == "__main__":
 
 				
     print "LiteOS Build Environment Starts..."
+
 #    global staticdatasize  # no need to define global here, suppressed to avoid warning - phamducnam
+
     processArguments()
     if os.path.isdir("build") == True:
         shutil.rmtree("./build")
@@ -175,12 +177,12 @@ if __name__ == "__main__":
     processHexFile()
 
     #os.chdir("../")
-    #shutil.move("./build/TestBlink.hex", "TestBlink.hex")
+    #shutil.move("./build/App.hex", "App.hex")
     #if os.path.isdir("build") == True:
     #    shutil.rmtree("./build")
     #os.mkdir("build")
     #os.chdir("./build")
-    shutil.move("./TestBlink.hex", targetFile)
+    shutil.copy("./App.hex", targetFile)
     shutil.copy("../../../extract.pl", "extract.pl")
     
     print "Build complete. The lhex is located in ./build directory."
