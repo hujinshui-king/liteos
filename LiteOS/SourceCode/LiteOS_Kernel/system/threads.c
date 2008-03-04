@@ -44,15 +44,34 @@ extern volatile mutex *m_unlock;
 
 
 
+//stores the maximum thread bound updated when adding thread
+volatile uint16_t *maxthreadrambound; 
+
+
 //Our thread table
 thread thread_table[ LITE_MAX_THREADS ];
 volatile thread *current_thread;
 volatile uint16_t *old_stack_ptr;
 volatile uint16_t *stackinterrupt_ptr;
+
 //This is simply a way to track whether our task is running
 volatile uint8_t thread_task_active;
 
+typedef struct thread_create_block
+{
+  void (*fp)();
+  uint8_t* ram_start;
+  uint8_t *stack_ptr;
+  uint8_t priority;
+  char *threadname; 
+} thread_create_block_type;
 
+
+thread_create_block_type newthreadblock;
+
+//then in thread_init, this data structure is initilized 
+
+volatile mutex m_createthreadlock; 
 
 
 //-------------------------------------------------------------------------
@@ -62,11 +81,13 @@ void thread_init() {
    currentatomic = _atomic_start();
    
    nmemset( thread_table, 0, sizeof( thread ) *LITE_MAX_THREADS );
+   m_createthreadlock.lock = m_createthreadlock.lockingthreadid = m_createthreadlock.waiting = 0; 
    
    current_thread = 0;
    old_stack_ptr = 0;
    stackinterrupt_ptr = 0;   
    thread_task_active = 0;   
+   maxthreadrambound = 0; 
    _atomic_end( currentatomic );
 
    //    TimerM_Timer_start(9, TIMER_REPEAT, 1000);
@@ -74,13 +95,85 @@ void thread_init() {
 
 
 
+
+//--------------------------------------------------------------------------
+
+
+
+
 uint8_t is_thread() {
-   return (  !  ! current_thread );
+
+  uint16_t SPvalue; 
+
+
+  asm volatile (
+    "in %A0, 0x3d" "\n\t"
+    "in %B0, 0x3e" "\n\t"
+    : "=r" (SPvalue)
+    :
+  );
+
+  if (SPvalue > (uint16_t)maxthreadrambound)
+   return 0; 
+  else
+   return 1; 
+ 
+} // getSP
+
+   
+ //  return (  !  ! current_thread );
+
+
+
+
+//--------------------------------------------------------------------------
+
+//return the data structure address of the newthreadblock for user to be used 
+
+void *getNewThreadBlock()
+{
+  return (void *)&newthreadblock; 
+}
+
+
+//--------------------------------------------------------------------------
+
+//return the mutex address
+
+void *getCreateThreadMutex()
+{
+  return (void *)&m_createthreadlock; 
 }
 
 
 
 //--------------------------------------------------------------------------
+
+void createThreadTaskPosted()
+
+{
+   create_thread(newthreadblock.fp, (uint16_t *)newthreadblock.ram_start, (uint16_t *)newthreadblock.stack_ptr, 0, newthreadblock.priority, newthreadblock.threadname, 0, 0); 
+}
+
+
+
+
+
+//--------------------------------------------------------------------------
+
+
+//call the task of creating thread based on the thread block information 
+
+void createThreadTask()
+{
+  postTask(createThreadTaskPosted, 1); 
+
+}
+
+
+
+//--------------------------------------------------------------------------
+
 
 //Now adds the support for kernel built-in memory corrupt search and find 
 //To extend to other platforms, this function prototype may need to be modified or encapsulated into modules 
@@ -98,6 +191,10 @@ int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uin
    if ( is_thread()) {
       return ( 0 );
    } 
+
+   if (stack_ptr > maxthreadrambound )
+     maxthreadrambound = stack_ptr; 
+
    
    //First loop all the way through the table and find an empty slot 
    //computation time for space here 
@@ -223,7 +320,7 @@ void __attribute__(( noinline ))lite_switch_to_user_thread() /* __attribute__((n
    
    #endif
    
-   _enable_interrupt(); 
+   //_enable_interrupt(); 
    return ;
 }
 
