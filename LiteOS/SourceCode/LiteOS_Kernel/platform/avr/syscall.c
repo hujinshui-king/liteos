@@ -1534,3 +1534,105 @@ void setNodeID() {
    asm volatile( "ret":: );
 }
 
+
+
+void getThreadControlBlock_avr()
+{
+   void *addr; 
+   addr = getNewThreadBlock();
+   asm volatile( "mov r20, %A0""\n\t""mov r21, %B0""\n\t": : "r"( addr) );
+
+}
+
+void getThreadControlBlockAddress_Logger()
+{
+  addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK); 
+  getThreadControlBlock_avr(); 
+}
+
+
+/**\ingroup syscall 
+*/
+void getThreadControlBlockAddress()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void getThreadControlBlockAddress() {
+
+  #ifdef TRACE_ENABLE_SYSCALLEVENT
+   #ifdef  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLBLOCK
+		getThreadControlBlockAddress_Logger(); 
+   #endif
+   #else
+		getThreadControlBlock_avr();
+  #endif
+
+   
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+void getThreadControlMutex_avr()
+{
+   void *addr; 
+   addr = getCreateThreadMutex();
+   asm volatile( "mov r20, %A0""\n\t""mov r21, %B0""\n\t": : "r"( addr) );
+
+}
+
+void getThreadControlBlockMutex_Logger()
+{
+  addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK); 
+  getThreadControlMutex_avr(); 
+}
+
+
+/**\ingroup syscall 
+*/
+void getThreadControlBlockMutex()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void getThreadControlBlockMutex() {
+
+  #ifdef TRACE_ENABLE_SYSCALLEVENT
+   #ifdef  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLMUTEX
+		getThreadControlBlockMutex_Logger(); 
+   #endif
+   #else
+		getThreadControlMutex_avr();
+  #endif
+
+   
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+
+
+
+void createThreadSyscallTask_Logger()
+{ 
+  addTrace(TRACE_SYSCALL_CREATETHREAD);
+  createThreadTask(); 
+}
+
+/**\ingroup syscall 
+      Set the radio frequency, stored in the registers. 
+*/
+//inline result_t cc2420controlm_CC2420Control_TuneManual(uint16_t DesiredFreq);
+void createThreadSyscall()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void createThreadSyscall() {
+	
+   #ifdef TRACE_ENABLE_SYSCALLEVENT
+   #ifdef TRACE_ENABLE_SYSCALL_CREATETHREAD
+       createThreadSyscallTask_Logger();
+   #endif
+   #else
+       createThreadTask();
+   #endif
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+
+
+
+
