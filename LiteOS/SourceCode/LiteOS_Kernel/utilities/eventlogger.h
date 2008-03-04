@@ -218,6 +218,17 @@
 #define  TRACE_SYSCALL_SETNODEID         										153
 #define  TRACE_ENABLE_SYSCALL_SETNODEID   
 
+#define  TRACE_SYSCALL_GETTHREADCONTROLBLOCK                                    154
+#define  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLBLOCK
+
+
+#define  TRACE_SYSCALL_GETTHREADCONTROLMUTEX    							    155
+#define  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLMUTEX       
+
+
+#define  TRACE_SYSCALL_CREATETHREAD												156
+#define  TRACE_ENABLE_SYSCALL_CREATETHREAD
+
 #endif 
 
 /**\defgroup logger Event Logger*/
