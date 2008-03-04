@@ -160,11 +160,21 @@ result_t HPLClock_Clock_setRate(char interval, char scale)
 _INTERRUPT(SIG_OUTPUT_COMPARE0)
 {
 
+  _atomic_t _atomic;
+  uint8_t isthreadtrue; 
   
+   
+  isthreadtrue = 0;
+  
+   _atomic = _atomic_start();
   if (is_thread())
-   {SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  }
+   {
+   isthreadtrue = 1; 
+   SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  }
+   _atomic_end(_atomic);
 
-  { _atomic_t _atomic = _atomic_start();
+
+  { _atomic = _atomic_start();
    
 
     {
@@ -182,11 +192,15 @@ _INTERRUPT(SIG_OUTPUT_COMPARE0)
     _atomic_end(_atomic); }
   HPLClock_Clock_fire();
 
- if (is_thread())
+  _atomic = _atomic_start();
+ if (isthreadtrue == 1)
  {
+  isthreadtrue = 0; 
   SWAP_STACK_PTR(old_stack_ptr, stackinterrupt_ptr);  
-  thread_yield();
+  //thread_yield();
  }
+ _atomic_end(_atomic); 
+
 }
 
 //_INTERRUPT(SIG_OUTPUT_COMPARE0)
