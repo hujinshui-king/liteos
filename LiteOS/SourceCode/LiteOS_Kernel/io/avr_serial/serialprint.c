@@ -28,6 +28,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../platform/micaz/realmain.h"
 #include "../../platform/avr/avrhardware.h"
 #include "../../system/stdserialhandler.h"
+#include "../../system/threads.h"
 
 
 static char cFlag;
@@ -35,6 +36,8 @@ static uint8_t receivebuffer[ 33 ];
 static uint8_t previous;
 static uint8_t status;
 
+extern volatile uint16_t *stackinterrupt_ptr; 
+extern volatile uint16_t *old_stack_ptr; 
 
 //No need to be called from main 
 void initUSART() {
@@ -153,10 +156,35 @@ currentindex = 0;
 
 
 SIGNAL( SIG_UART0_RECV ) {
+
+ 
    uint8_t dummy = UDR0;
    uint8_t currentindex = 0;
    uint8_t portnum, length;
    uint8_t i;
+
+
+   uint8_t isthreadtrue;
+
+
+   _atomic_t _atomic ; 
+
+   isthreadtrue = 0; 
+    
+    _atomic = _atomic_start();
+
+   if (is_thread())
+   {
+   isthreadtrue = 1; 
+   SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  
+   
+   }
+
+   _atomic_end( _atomic );
+
+   
+
+
    if ( dummy == 'a' ) {
       _atomic_t _atomic = _atomic_start();
 	   while (  ! ( UCSR0A& ( 1 << RXC0 )))
@@ -195,5 +223,33 @@ SIGNAL( SIG_UART0_RECV ) {
 	  currentindex = 0; 
      
    }
+
+
+    
+
+	
+  
+     _atomic = _atomic_start();
+   
+    if (isthreadtrue == 1)
+   {
+     isthreadtrue = 0; 
+     SWAP_STACK_PTR( old_stack_ptr, stackinterrupt_ptr);
+     //thread_yield();   
+   }
+    _atomic_end( _atomic );
+
+   // if (is_thread())
+   //{SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  }
+
+
+
+
+  // if (is_thread())
+  // {
+  //   SWAP_STACK_PTR( old_stack_ptr, stackinterrupt_ptr);
+  //  thread_yield();   
+  // }
+
   
 }
