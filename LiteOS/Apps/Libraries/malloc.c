@@ -24,7 +24,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 void *malloc(uint16_t size)
 {
  
-   void (*mallocfunc)(void) = (void (*)(void))MALLOCHANDLE;
+   void (*mallocfunc)(void) = (void (*)(void))MALLOC_MEMORY_FUNCTION;
    void *resultaddr; 
 
    asm volatile("push r20" "\n\t"
@@ -54,7 +54,7 @@ void *malloc(uint16_t size)
 void free(void *ptr)
 {
   	
-	 void (*mallocfunc)(void) = (void (*)(void))FREEMALLOCHANDLE;
+	 void (*mallocfunc)(void) = (void (*)(void))FREE_MEMORY_FUNCTION;
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"

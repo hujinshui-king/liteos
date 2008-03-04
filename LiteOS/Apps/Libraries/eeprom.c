@@ -45,7 +45,7 @@ genericByteStorageTaskNode *getCurrentEEPROMInfo()
 {
    genericByteStorageTaskNode *currenteeprominfoaddr; 
 
-   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTEEPROMINFOHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_EEPROM_STRUCTURE_HANDLE; 
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
@@ -79,7 +79,7 @@ void readFromEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
     genericByteStorageTaskNode *eeprominfoaddr; 
     eeprominfoaddr = getCurrentEEPROMInfo();
 	
-	void (*getaddrfp)(void) = (void (*)(void))READFROMEEPROM; 
+	void (*getaddrfp)(void) = (void (*)(void))READ_EEPROM_TASK; 
         
     eeprominfoaddr-> addr = addr;
    	eeprominfoaddr-> nBytes = nBytes;
@@ -106,7 +106,7 @@ void writeToEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
     genericByteStorageTaskNode *eeprominfoaddr; 
     eeprominfoaddr = getCurrentEEPROMInfo();
 	
-	void (*getaddrfp)(void) = (void (*)(void))WRITETOEEPROM; 
+	void (*getaddrfp)(void) = (void (*)(void))WRITE_EEPROM_TASK; 
         
     eeprominfoaddr-> addr = addr;
 	  eeprominfoaddr-> nBytes = nBytes;

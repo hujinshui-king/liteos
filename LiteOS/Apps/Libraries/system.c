@@ -51,7 +51,7 @@ int random()
 {
 	
 	 int ret; 
-   void (*getrandomfp)(void) = (void (*)(void))GETRANDOM16FUNCTION; 
+   void (*getrandomfp)(void) = (void (*)(void))GET_RANDOM_NUMBER_FUNCTION; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -74,7 +74,7 @@ uint16_t getnodeID()
 	{
 		
 	   int ret; 
-	   void (*fp)(void) = (void (*)(void))GETNODEIDFUNCTION; 
+	   void (*fp)(void) = (void (*)(void))GET_NODE_ID_FUNCTION; 
 	   asm volatile("push r20" "\n\t"
 					"push r21" "\n\t"
 					::);
@@ -97,7 +97,7 @@ void setnodeID(uint16_t nodeid)
 
 	   
 	   
-	   void (*fp)(void) = (void (*)(void))SETNODEIDFUNCTION; 
+	   void (*fp)(void) = (void (*)(void))SET_NODE_ID_FUNCTION; 
 	   asm volatile("push r20" "\n\t"
 					"push r21" "\n\t"
 					::);

@@ -27,7 +27,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 int get_light()
 {
    thread** current_thread; 
-   void (*fp)() = (void (*)(void))ADCLIGHT;
+   void (*fp)() = (void (*)(void))ADC_READ_LIGHT;
    current_thread = getCurrentThread();    
    fp(); 
    return (*current_thread)->data.adcstate.adcreading;  
@@ -38,7 +38,7 @@ int get_light()
 int get_temp()
 {
    thread** current_thread; 
-   void (*fp)() = (void (*)(void))ADCTEMP;
+   void (*fp)() = (void (*)(void))ADC_READ_TEMP;
    current_thread = getCurrentThread();    
    fp(); 
    return (*current_thread)->data.adcstate.adcreading;  
@@ -52,7 +52,7 @@ int get_magx()
    
    {_atomic_t test = _atomic_start();
    
-   void (*fp)() = (void (*)(void))ADCMAGX;
+   void (*fp)() = (void (*)(void))ADC_READ_MAGX;
    current_thread = getCurrentThread();    
    fp(); 
    
@@ -67,7 +67,7 @@ int get_magy()
 {
    thread** current_thread; 
   {_atomic_t test = _atomic_start();
-   void (*fp)() = (void (*)(void))ADCMAGY;
+   void (*fp)() = (void (*)(void))ADC_READ_MAGY;
    current_thread = getCurrentThread();    
    fp(); 
    
@@ -81,7 +81,7 @@ int get_magy()
 int get_accx()
 {
    thread** current_thread; 
-   void (*fp)() = (void (*)(void))ADCACCX;
+   void (*fp)() = (void (*)(void))ADC_READ_ACCX;
    current_thread = getCurrentThread();    
    fp(); 
    return (*current_thread)->data.adcstate.adcreading;  
@@ -91,7 +91,7 @@ int get_accx()
 int get_accy()
 {
    thread** current_thread; 
-   void (*fp)() = (void (*)(void))ADCACCY;
+   void (*fp)() = (void (*)(void))ADC_READ_ACCY;
    current_thread = getCurrentThread();    
    fp(); 
    return (*current_thread)->data.adcstate.adcreading;  

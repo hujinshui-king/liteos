@@ -24,7 +24,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 void greenToggle()
 {
- void (*greenfp)() = (void (*)(void))GREENTOGGLEFUNCTION; 
+ void (*greenfp)() = (void (*)(void))GREEN_LED_TOGGLE_FUNCTION; 
  greenfp();                              
 
 
@@ -34,7 +34,7 @@ void greenToggle()
 void redToggle()
 {
                           
-  void (*redfp)() = (void (*)(void))REDTOGGLEFUNCTION; 
+  void (*redfp)() = (void (*)(void))RED_LED_TOGGLE_FUNCTION; 
   redfp();    
 }
 
@@ -42,7 +42,7 @@ void redToggle()
 void yellowToggle()
 {
                           
-  void (*yellowfp)() = (void (*)(void))YELLOWTOGGLEFUNCTION; 
+  void (*yellowfp)() = (void (*)(void))YELLOW_TOGGLE_FUNCTION; 
   yellowfp();    
 }
 
@@ -51,7 +51,7 @@ void yellowToggle()
 void redOn()
 {
                           
-  void (*redfp)() = (void (*)(void))REDONFUNCTION; 
+  void (*redfp)() = (void (*)(void))RED_ON_FUNCTION; 
   redfp();    
 }
 
@@ -60,7 +60,7 @@ void redOn()
 void redOff()
 {
                           
-  void (*redfp)() = (void (*)(void))REDOFFFUNCTION; 
+  void (*redfp)() = (void (*)(void))RED_OFF_FUNCTION; 
   redfp();    
 }
 
@@ -69,7 +69,7 @@ void redOff()
 void greenOn()
 {
                           
-  void (*greenfp)() = (void (*)(void))GREENONFUNCTION; 
+  void (*greenfp)() = (void (*)(void))GREEN_ON_FUNCTION; 
   greenfp();    
 }
 
@@ -77,20 +77,20 @@ void greenOn()
 void greenOff()
 {
                           
-  void (*greenfp)() = (void (*)(void))GREENOFFFUNCTION; 
+  void (*greenfp)() = (void (*)(void))GREEN_OFF_FUNCTION; 
   greenfp();    
 }
 
 void yellowOn()
 {
                           
-  void (*yellowfp)() = (void (*)(void))YELLOWONFUNCTION; 
+  void (*yellowfp)() = (void (*)(void))YELLOW_ON_FUNCTION; 
   yellowfp();    
 }
 
 void yellowOff()
 {
                           
-  void (*yellowfp)() = (void (*)(void))YELLOWOFFFUNCTION; 
+  void (*yellowfp)() = (void (*)(void))YELLOW_OFF_FUNCTION; 
   yellowfp();    
 }

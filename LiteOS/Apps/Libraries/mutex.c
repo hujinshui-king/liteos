@@ -62,7 +62,7 @@ void Mutex_lock(mutex *m)
 void Mutex_unlock(mutex *m)
 {
      
-   void (*getaddrfp)(void) = (void (*)(void))MUTEXUNLOCKFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))MUTEX_UNLOCK_FUNCTION; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -108,7 +108,7 @@ void Barrier_block(uint8_t type, uint8_t id){
 mutex *getRadioMutexAddress()
 {
    mutex *msend;   
-   void (*getaddrfp)(void) = (void (*)(void))GETRADIOMUTEXFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_RADIO_MUTEX_ADDRESS_FUNCTION; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -130,7 +130,7 @@ mutex *getSerialMutexAddress()
 {
    mutex *msend;   
 
-   void (*getaddrfp)(void) = (void (*)(void))GETSERIALMUTEXFUNCTION;
+   void (*getaddrfp)(void) = (void (*)(void))GET_SERIAL_MUTEX_ADDRESS_FUNCTION;
    
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
@@ -153,7 +153,7 @@ mutex *getSerialMutexAddress()
 mutex *getFileMutexAddress()
 {
    mutex *mfile;   
-   void (*getaddrfp)(void) = (void (*)(void))GETFILEMUTEXADDRESS; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_MUTEX_ADDRESS; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);

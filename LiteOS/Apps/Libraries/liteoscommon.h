@@ -31,130 +31,140 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #define CURRENTADDRESS 1
 
 //yied function
-#define YIELDFUNCTION  0xEA00
+#define YIELD_FUNCTION  												0xEA00
 
 //green toggle function 
-#define GREENTOGGLEFUNCTION 0xEA04
+#define GREEN_LED_TOGGLE_FUNCTION 							0xEA04
 
 //red toggle function 
-#define REDTOGGLEFUNCTION  0xEA08
+#define RED_LED_TOGGLE_FUNCTION  								0xEA08
 
 //get current thread address
-#define CURRENTTHREADFUNCTION 0xEA0C
+#define GET_CURRENT_THREAD_ADDRESS_FUNCTION 		0xEA0C
 
 //get the radio mutex address
-#define GETRADIOMUTEXFUNCTION 0xEA10
-
+#define GET_RADIO_MUTEX_ADDRESS_FUNCTION 				0xEA10
 
 //send by radio 
-#define RADIOSENDFUNCTION 0xEA14
+#define SOCKET_RADIO_SEND_FUNCTION 							0xEA14
 
 //unlock the mutex
-#define MUTEXUNLOCKFUNCTION 0xEA18
+#define MUTEX_UNLOCK_FUNCTION										0xEA18
 
 //get the index of the current thread 
-#define CURRENTTHREADINDEXFUNCTION 0xEA1C
+#define GET_CURRENT_THREAD_INDEX_FUNCTION			  0xEA1C
 
 //get the file path parameter address
-#define GETFILEPATHADDRESS 0xEA20
+#define GET_FILE_PATH_ADDRESS										0xEA20
 
 //get the file mode parameter address
-#define GETFILEMODEADDRESS 0xEA24
+#define GET_FILE_MODE_ADDRESS 									0xEA24
 
 //get the file operation mutex address
-#define GETFILEMUTEXADDRESS 0xEA28
+#define GET_FILE_MUTEX_ADDRESS									0xEA28
 
 //open a file
-#define OPENFILESYSCALL 0xEA2C
+#define OPEN_FILE_SYSCALL 											0xEA2C
 
 //close a file 
-#define CLOSEFILESYSCALL 0xEA30
+#define CLOSE_FILE_SYSCALL 											0xEA30
 
 //read from a file 
-#define READFILESYSCALL 0xEA34
+#define READ_FILE_SYSCALL 											0xEA34
 
 //write to a file 
-#define WRITEFILESYSCALL 0xEA38
+#define WRITE_FILE_SYSCALL 											0xEA38
 
 //seek between the file location 
-#define SEEKFILESYSCALL 0xEA3C
+#define SEEK_FILE_SYSCALL 											0xEA3C
 
 //ADC interfaces 
-#define ADCLIGHT 0xEA40
+#define ADC_READ_LIGHT 													0xEA40
 
-#define ADCTEMP 0xEA44
+#define ADC_READ_TEMP 													0xEA44
 
-#define ADCMAGX 0xEA48
+#define ADC_READ_MAGX 													0xEA48
 
-#define ADCMAGY 0xEA4C
+#define ADC_READ_MAGY 													0xEA4C
 
-#define ADCACCX 0xEA50
+#define ADC_READ_ACCX 													0xEA50
 
-#define ADCACCY 0xEA54
+#define ADC_READ_ACCY 													0xEA54
 
-#define POSTTASKSYSCALL 0xEA58
+#define POST_TASK_SYSCALL 											0xEA58
 
-#define GETCURRENTRADIOINFO 0xEA5C
+#define GET_CURRENT_RADIO_INFO_ADDR 						0xEA5C
 
-#define GETCURRENTRADIOHANDLE 0xEA60
+//Handle is for receiving packets 
 
-#define SETCURRENTRADIOHANDLE 0xEA64
+#define GET_CURRENT_RADIO_HANDLE_ADDR 					0xEA60
 
-#define POSTTHREADTASK 0xEA68
+//Register the radio receive event 
 
-#define DEBUGSYSCALL 0xEA6C
+#define REGISTER_RADIO_RECEIVE_EVENT 						0xEA64
 
-#define YELLOWTOGGLEFUNCTION 0xEA70
+//Post a new thread task to the kernel to continue thread scheduling 
+#define POST_NEW_THREAD_TASK 										0xEA68
 
-#define REDONFUNCTION 0xEA74
+//Debug purposes only to view variable values 
+#define DEBUG_VALUE_SYSCALL 										0xEA6C
 
-#define REDOFFFUNCTION 0xEA78
+#define YELLOW_TOGGLE_FUNCTION 									0xEA70
 
-#define YELLOWONFUNCTION 0xEA7C
+#define RED_ON_FUNCTION 												0xEA74
 
-#define YELLOWOFFFUNCTION 0xEA80
+#define RED_OFF_FUNCTION 												0xEA78
 
-#define GREENONFUNCTION 0xEA84
+#define YELLOW_ON_FUNCTION 											0xEA7C
 
-#define GREENOFFFUNCTION 0xEA88
+#define YELLOW_OFF_FUNCTION 										0xEA80
 
-#define BREAKFUNCTION 0xEA8C
+#define GREEN_ON_FUNCTION 											0xEA84
 
-#define GETSERIALMUTEXFUNCTION 0xEA90
+#define GREEN_OFF_FUNCTION 											0xEA88
 
-#define GETCURRENTSERIALINFO 0xEA94
+#define BREAK_POINT_FUNCTION 										0xEA8C
 
-#define SERIALSENDFUNCTION 0xEA98
+#define GET_SERIAL_MUTEX_ADDRESS_FUNCTION 			0xEA90
 
-#define GETCURRENTSERIALHANDLE 0xEA9C
+#define GET_SERIAL_SEND_STRUCTURE_ADDRESS				0xEA94
 
-#define SETCURRENTSERIALHANDLE 0xEAA0
+#define SERIAL_SEND_FUNCTION 										0xEA98
 
-#define GETCURRENTEEPROMINFOHANDLE 0xEAA4
+#define GET_SERIAL_RECEIVE_HANDLE 							0xEA9C
+	
+#define REGISTER_SERIAL_RECEIVE_EVENT 					0xEAA0
 
-#define READFROMEEPROM 0xEAA8
+#define GET_EEPROM_STRUCTURE_HANDLE 						0xEAA4
 
-#define WRITETOEEPROM 0xEAAC
+#define READ_EEPROM_TASK 												0xEAA8
 
-#define MALLOCHANDLE 0xEAB0
+#define WRITE_EEPROM_TASK 											0xEAAC
 
-#define FREEMALLOCHANDLE 0xEAB4
+#define MALLOC_MEMORY_FUNCTION 									0xEAB0
 
-#define DISABLERADIOSTATE 0xEAB8
+#define FREE_MEMORY_FUNCTION 										0xEAB4
 
-#define GETRANDOM16FUNCTION 0xEABC
+#define RESTORE_RADIO_STATE 										0xEAB8
 
-#define SETRADIOFREQFUNCTION 0xEAC0
+#define GET_RANDOM_NUMBER_FUNCTION 							0xEABC
 
-#define SETRADIOCHANNELFUNCTION 0xEAC4
+#define SET_RADIO_FREQ_FUNCTION 								0xEAC0
 
-#define SETRADIOPOWERFUNCTION 0xEAC8
+#define SET_RADIO_CHANNEL_FUNCTION 							0xEAC4
 
-#define GETNODEIDFUNCTION 0xEACC
+#define SET_RADIO_POWER_FUNCTION 								0xEAC8
 
-#define SETNODEIDFUNCTION 0xEAD0
+#define GET_NODE_ID_FUNCTION 										0xEACC
 
+#define SET_NODE_ID_FUNCTION 										0xEAD0
 
+#define GET_THREAD_CONTROL_BLOCK 								0xEAD4
+
+#define GET_THREAD_CONTROL_MUTEX 								0xEAD8
+
+#define CREATE_THERAD_SYSCALL   								0xEADC
+	
 
 typedef struct mutex{
   volatile uint8_t lock;
@@ -294,6 +304,17 @@ enum {
   STATE_FILE = 7,
   STATE_BREAK = 8
 };
+
+
+typedef struct thread_create_block
+{
+  void (*fp)();
+  uint8_t* ram_start;
+  uint8_t *stack_ptr;
+  uint8_t priority;
+  char *threadname; 
+} thread_create_block_type;
+
 
 
 

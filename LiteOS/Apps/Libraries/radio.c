@@ -31,7 +31,7 @@ thread* mythread;
 
 void sendRadioMsg()
 {  
- void (*radiosendfp)() = (void (*)(void))RADIOSENDFUNCTION; 
+ void (*radiosendfp)() = (void (*)(void))SOCKET_RADIO_SEND_FUNCTION; 
  radiosendfp();                              
 }
 
@@ -73,7 +73,7 @@ radiohandletype *getCurrentRadioHandleAddr()
 {
    radiohandletype *currentradioinfo; 
 
-   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTRADIOHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_HANDLE_ADDR; 
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
@@ -94,7 +94,7 @@ radiohandletype *getCurrentRadioHandleAddr()
 void setRadioFreq(uint16_t freq)
 {
   
-   void (*getaddrfp)(void) = (void (*)(void))SETRADIOFREQFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_FREQ_FUNCTION; 
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
@@ -117,7 +117,7 @@ void setRadioChannel(uint8_t channel)
   
   uint16_t maskchannel = channel; 
   
-  void (*getaddrfp)(void) = (void (*)(void))SETRADIOCHANNELFUNCTION; 
+  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_CHANNEL_FUNCTION; 
 
   asm volatile("push r20" "\n\t"
                "push r21" "\n\t"
@@ -140,7 +140,7 @@ void setRadioPower(uint8_t power)
   
   uint16_t maskchannel = power; 
   
-  void (*getaddrfp)(void) = (void (*)(void))SETRADIOPOWERFUNCTION; 
+  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_POWER_FUNCTION; 
 
   asm volatile("push r20" "\n\t"
                "push r21" "\n\t"
@@ -160,10 +160,10 @@ void setRadioPower(uint8_t power)
 
 
 
-radioinfotype *getCurrentRadioInfo()
+radioinfotype *getCurrentRadioInfoAddr()
 {
    radioinfotype *currentradioinfo; 
-   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTRADIOINFO; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_INFO_ADDR; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -183,7 +183,7 @@ radioinfotype *getCurrentRadioInfo()
 void disableRadioState()
 {
   
-   void (*disableradiofp)(void) = (void (*)(void))DISABLERADIOSTATE; 
+   void (*disableradiofp)(void) = (void (*)(void))RESTORE_RADIO_STATE; 
    
    disableradiofp();     
 
@@ -203,7 +203,7 @@ void radioSend(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg)
    
    msend = getRadioMutexAddress();   
    current_thread = getCurrentThread(); 
-   radioinfoaddr = getCurrentRadioInfo();
+   radioinfoaddr = getCurrentRadioInfoAddr();
 
    Mutex_lock(msend);
      
@@ -258,7 +258,7 @@ int radioReceive(uint16_t port, uint8_t maxlength, uint8_t *msg)
    radiohandletype *radiohandleaddr; 
 
 
-   void (*getaddrfp)(void) = (void (*)(void))SETCURRENTRADIOHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT; 
    
    current_thread = getCurrentThread(); 
    

@@ -36,7 +36,7 @@ thread* mythreadserial;
 
 void sendSerialMsg()
 {  
- void (*serialsendfp)() = (void (*)(void))SERIALSENDFUNCTION; 
+ void (*serialsendfp)() = (void (*)(void))SERIAL_SEND_FUNCTION; 
  serialsendfp();                              
 }
 
@@ -74,7 +74,7 @@ serialhandletype *getCurrentSerialHandleAddr()
 {
    serialhandletype *currentserialhandle; 
 
-   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTSERIALHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_SERIAL_RECEIVE_HANDLE; 
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
@@ -99,7 +99,7 @@ serialhandletype *getCurrentSerialHandleAddr()
 serialinfotype* getCurrentSerialInfo()
 {
    serialinfotype *currentserialinfo; 
-   void (*getaddrfp)(void) = (void (*)(void))GETCURRENTSERIALINFO; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_SERIAL_SEND_STRUCTURE_ADDRESS; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -176,7 +176,7 @@ void serialReceive(uint16_t port, uint8_t maxlength, uint8_t *msg)
     
    serialhandletype *serialhandleaddr; 
 
-   void (*getaddrfp)(void) = (void (*)(void))SETCURRENTSERIALHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))REGISTER_SERIAL_RECEIVE_EVENT; 
    
    current_thread = getCurrentThread(); 
    

@@ -84,4 +84,11 @@ void debugValue(uint16_t v1, uint16_t v2, uint16_t v3);
 void hibernateThread();
 
 
+/** \ingroup thread
+ 
+   Create a new thread 
+*/
+void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t priority, char *threadname);
+
+
 #endif 

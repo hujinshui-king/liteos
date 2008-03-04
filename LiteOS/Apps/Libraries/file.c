@@ -29,7 +29,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 char *getFilePathAddress()
 {
    char *pathaddr; 
-   void (*getaddrfp)(void) = (void (*)(void))GETFILEPATHADDRESS; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_PATH_ADDRESS; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -50,7 +50,7 @@ char *getFileModeAddress()
 
 {
    char *modeaddr; 
-   void (*getaddrfp)(void) = (void (*)(void))GETFILEMODEADDRESS; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_MODE_ADDRESS; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -70,7 +70,7 @@ char *getFileModeAddress()
 
 void openFileSysCall()
 {  
- void (*filefp)() = (void (*)(void))OPENFILESYSCALL;
+ void (*filefp)() = (void (*)(void))OPEN_FILE_SYSCALL;
  filefp();                              
 }
 
@@ -78,14 +78,14 @@ void openFileSysCall()
 
 void closeFileSysCall()
 {  
- void (*filefp)() = (void (*)(void))CLOSEFILESYSCALL;
+ void (*filefp)() = (void (*)(void))CLOSE_FILE_SYSCALL;
  filefp();                              
 }
 
 
 void readFileSysCall()
 {  
- void (*filefp)() = (void (*)(void))READFILESYSCALL;
+ void (*filefp)() = (void (*)(void))READ_FILE_SYSCALL;
  filefp();                              
 }
 
@@ -93,7 +93,7 @@ void readFileSysCall()
 
 void writeFileSysCall()
 {  
- void (*filefp)() = (void (*)(void))WRITEFILESYSCALL;
+ void (*filefp)() = (void (*)(void))WRITE_FILE_SYSCALL;
  filefp();                              
 }
 
@@ -101,7 +101,7 @@ void writeFileSysCall()
 
 void seekFileSysCall()
 {  
- void (*filefp)() = (void (*)(void))SEEKFILESYSCALL;
+ void (*filefp)() = (void (*)(void))SEEK_FILE_SYSCALL;
  filefp();                              
 }
 

@@ -20,18 +20,18 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "thread.h"
 #include <avr/io.h>
- 	     
+#include "mutex.h" 	     
 
 
 
 
 
-
+//Warning: this returns the address of the currentthread pointer. 
 
 thread **getCurrentThread()
 {
    thread **current_thread; 
-   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_THREAD_ADDRESS_FUNCTION; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -53,7 +53,7 @@ uint8_t getCurrentThreadIndex()
 {
    
    uint16_t index; 
-   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADINDEXFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_THREAD_INDEX_FUNCTION; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
@@ -73,7 +73,7 @@ uint8_t getCurrentThreadIndex()
 void sleepThread(int milliseconds)
 {
 /*
-   void (*getaddrfp)(void) = (void (*)(void))CURRENTTHREADFUNCTION; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_THREAD_ADDRESS_FUNCTION; 
 
    asm volatile("push r24" "\n\t"
 	             "push r25" "\n\t"
@@ -113,7 +113,7 @@ void hibernateThread()
 
 void yield()
 {
- void (*yieldfp)(void) = (void (*)(void))YIELDFUNCTION; 
+ void (*yieldfp)(void) = (void (*)(void))YIELD_FUNCTION; 
  yieldfp();                              
 }
 
@@ -121,7 +121,7 @@ void yield()
 
 void syscall_postThreadTask()
 {
- void (*postthreadfp)(void) = (void (*)(void))POSTTHREADTASK; 
+ void (*postthreadfp)(void) = (void (*)(void))POST_NEW_THREAD_TASK; 
  postthreadfp();                              
 }
 
@@ -129,7 +129,7 @@ void syscall_postThreadTask()
 void debugValue(uint16_t v1, uint16_t v2, uint16_t v3)
 {
 
-  void (*fp)(void) = (void (*)(void))DEBUGSYSCALL; 
+  void (*fp)(void) = (void (*)(void))DEBUG_VALUE_SYSCALL; 
    asm volatile("push r8" "\n\t"
                 "push r9" "\n\t"
                 "push r10" "\n\t"
@@ -179,7 +179,7 @@ void debugValue(uint16_t v1, uint16_t v2, uint16_t v3)
 
 void postTask(void (*tp) (void), uint16_t priority)
 {
-   void (*fp)(void) = (void (*)(void))POSTTASKSYSCALL; 
+   void (*fp)(void) = (void (*)(void))POST_TASK_SYSCALL; 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
 				"push r22" "\n\t"
@@ -212,4 +212,81 @@ void postTask(void (*tp) (void), uint16_t priority)
 
 
 }
+
+
+
+
+thread_create_block_type *getCurrentThreadControlBlockAddr()
+{
+   thread_create_block_type *blockinfo; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_THREAD_CONTROL_BLOCK; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	              " mov %B0, r21" "\n\t"
+				 :"=r" (blockinfo)
+				 :
+               );
+    asm volatile("pop r21" "\n\t"
+	               "pop r20" "\n\t"
+	               ::);
+   return blockinfo; 
+}
+
+
+void *getCurrentThreadControlMutexAddr()
+{
+   void *blockinfo; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_THREAD_CONTROL_MUTEX; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	              " mov %B0, r21" "\n\t"
+				 :"=r" (blockinfo)
+				 :
+               );
+    asm volatile("pop r21" "\n\t"
+	               "pop r20" "\n\t"
+	               ::);
+   return blockinfo; 
+}
+
+
+
+
+
+void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t priority, char *threadname)
+{
+ 
+ 
+   mutex* createthreadmutex; 
+   thread_create_block_type *threadblock;
+   void (*getaddrfp)(void) = (void (*)(void))CREATE_THERAD_SYSCALL;
+
+  
+   threadblock = getCurrentThreadControlBlockAddr(); 
+   createthreadmutex = (mutex *)getCurrentThreadControlMutexAddr(); 
+   
+   Mutex_lock(createthreadmutex);
+     
+   threadblock-> fp = fp; 
+   threadblock->ram_start = ram_start; 
+   threadblock->stack_ptr = stack_ptr; 
+   threadblock->priority = priority;
+   threadblock->threadname = threadname; 
+
+   getaddrfp(); 
+   
+   sleepThread(20); 
+   
+  
+   Mutex_unlock(createthreadmutex); 
+
+   return; 
+}
+
 
