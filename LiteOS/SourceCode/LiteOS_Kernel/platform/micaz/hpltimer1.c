@@ -97,11 +97,17 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "hplcc2420m.h"
 #include "hpltimer1.h"
 #include "../../types/types.h"
+#include "../../system/threads.h"
+
+
+extern volatile uint16_t *stackinterrupt_ptr; 
+extern volatile uint16_t *old_stack_ptr; 
 
 //THis file is the organized HPLTIMER1 
 //The fire is not connected becuase no one is using it
 //only the capture interface is used and has a reverse link 
 //To do  is to add the headers and ge tthe function calls outside 
+
 
 
 
@@ -296,7 +302,34 @@ inline    void HPLTimer1M_CaptureT1_captured(uint16_t arg_0xa4d7ac0){
 SIGNAL(TIMER1_CAPT_vect)
 
 {
+   uint8_t isthreadtrue; 
+
+   _atomic_t _atomic;
+   
+   isthreadtrue = 0; 
+   _atomic = _atomic_start();
+
+   if (is_thread())
+   {
+    isthreadtrue = 1; 
+    SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  
+	}
+   _atomic_end( _atomic );
+
+
+ 
   HPLTimer1M_CaptureT1_captured(HPLTimer1M_CaptureT1_getEvent());
+
+
+  _atomic = _atomic_start();
+   if (isthreadtrue == 1)
+   {
+     isthreadtrue = 0; 
+     SWAP_STACK_PTR( old_stack_ptr, stackinterrupt_ptr);
+   // thread_yield();   
+   }
+    _atomic_end( _atomic );
+  
 }
 
 
@@ -340,6 +373,22 @@ void HPLTimer1M_CaptureT1_setEdge(uint8_t LowToHigh)
 
 ISR(TIMER1_COMPA_vect)
 {
+
+
+   _atomic_t _atomic;
+   uint8_t isthreadtrue; 
+   isthreadtrue = 0; 
+   _atomic = _atomic_start();
+
+   if (is_thread())
+   {
+   isthreadtrue = 1; 
+   SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  }
+   _atomic_end( _atomic );
+
+
+
+
   { _atomic_t _atomic = _atomic_start();
 
     {
@@ -354,5 +403,20 @@ ISR(TIMER1_COMPA_vect)
 
     _atomic_end(_atomic); }
   HPLTimer1M_Timer1_fire();
+
+
+ 
+    
+
+    _atomic = _atomic_start();
+   if (isthreadtrue == 1)
+   {
+     isthreadtrue = 0; 
+     SWAP_STACK_PTR( old_stack_ptr, stackinterrupt_ptr);
+  //  thread_yield();   
+   }
+    _atomic_end( _atomic );
+
+
 }
 
