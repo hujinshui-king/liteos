@@ -59,6 +59,7 @@ void* getAdcReturnValueAddr()
 
 //The critical ISR function to come back when the interrupt of ADC finishes 
 ISR( ADC_vect ) {
+
    ADCSRA |= _BV( ADIF );
    ADCSRA &=  ~ _BV( ADEN ); // disable interrupt
 //   flag = 1;
