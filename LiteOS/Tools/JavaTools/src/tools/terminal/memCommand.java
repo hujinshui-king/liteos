@@ -84,6 +84,7 @@ public class memCommand  {
         //System.out.println("There are " + length +" bytes received");
 
         int lenoffilename;
+        int appromzero = 0;
         int threadbssstart, threadbssend;
 
         byte [] response = null;
@@ -137,12 +138,16 @@ public class memCommand  {
             threadbssend = appramstart + threadbsssize;
 
             String nameoffile = new String(targetData, 0, lenoffilename);
-            if (appromstart !=0)
+            if (((appromstart !=0)&&(appromzero == 0)) || (appromzero == 1))
             {colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " consumes 0x"+ Integer.toHexString(appromstart).toUpperCase() +  " to 0x"+ Integer.toHexString(appromend).toUpperCase() +" for flash\n");
              colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " consumes 0x"+ Integer.toHexString(appramstart).toUpperCase() +  " to 0x"+ Integer.toHexString(appramend).toUpperCase() +" for ram\n");
              colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " static variables consume 0x"+ Integer.toHexString(threadbssstart).toUpperCase() +  " to 0x"+ Integer.toHexString(threadbssend).toUpperCase() +" for ram\n");
              colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "The thread "+ nameoffile + " stack space consumes 0x"+ Integer.toHexString(threadsp).toUpperCase() +  " to 0x"+ Integer.toHexString(appramend).toUpperCase() +" for ram\n");
 
+            }
+
+            else {
+                appromzero =1 ;
             }
 
 
