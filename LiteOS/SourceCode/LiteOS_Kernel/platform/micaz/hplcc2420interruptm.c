@@ -96,7 +96,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  *  PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE INTEL OR ITS
  *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  POCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
  *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  *  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
@@ -128,8 +128,10 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../system/amcommon.h"
 #include "../../system/amradio.h"
 #include "../../types/byteorder.h"
+#include "../../system/threads.h"
 
 
+extern volatile uint16_t *old_stack_ptr;
 
 //platform depedent inclusions 
 
@@ -148,23 +150,60 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-
+extern volatile uint16_t *stackinterrupt_ptr; 
 
 uint8_t hplcc2420interruptm_FIFOWaitForState;
 uint8_t hplcc2420interruptm_FIFOLastState;
 uint8_t hplcc2420interruptm_CCAWaitForState;
 uint8_t hplcc2420interruptm_CCALastState;
+
+
 //This function is the start position of the receving pacekts
 //void  __vector_7(void) __attribute__((signal, used,   externally_visible)); 
 //void __attribute((signal, used, externally_visible)) __vector_7(void)
+
 SIGNAL( INT6_vect )
  {
+   
    result_t val = SUCCESS;
+   uint8_t isthreadtrue;
+
+
+   _atomic_t _atomic ; 
+
+   isthreadtrue = 0; 
+    
+    _atomic = _atomic_start();
+
+   if (is_thread())
+   {
+   isthreadtrue = 1; 
+   SWAP_STACK_PTR(stackinterrupt_ptr, old_stack_ptr);  
+   
+   }
+
+   _atomic_end( _atomic );
+
+   
+
    val = hplcc2420interruptm_FIFOP_fired();
    if ( val == FAIL ) {
       *( volatile unsigned char* )( unsigned int )& *( volatile unsigned char* )( 0x39 + 0x20 ) &=  ~ ( 1 << 6 );
       *( volatile unsigned char* )( unsigned int )& *( volatile unsigned char* )( 0x38 + 0x20 ) |= 1 << 6;
    }
+
+     _atomic = _atomic_start();
+   
+    if (isthreadtrue == 1)
+   {
+     isthreadtrue = 0; 
+     SWAP_STACK_PTR( old_stack_ptr, stackinterrupt_ptr);
+     //thread_yield();   
+   }
+    _atomic_end( _atomic );
+
+	
+
 }
 
 
