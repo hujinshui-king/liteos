@@ -183,20 +183,20 @@ int main() {
 	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
-      mystrncpy( networkid, "d01\0", 4 );
-      mystrncpy( filenameid, "node1\0", 6 );
-	    CURRENT_NODE_ID = 1;
+      mystrncpy( networkid, "d03\0", 4 );
+      mystrncpy( filenameid, "node3\0", 6 );
+	  CURRENT_NODE_ID = 3;
       nodeid = CURRENT_NODE_ID; 
-	    srand( nodeid );
-	    formatSystem();
+	  srand( nodeid );
+	  formatSystem();
       buildRootNode();
       buildDeviceDirectory();
-	    genericwriteBytes ( NETWORKNAMEOFFSET, 16, networkid );
+	  genericwriteBytes ( NETWORKNAMEOFFSET, 16, networkid );
       genericwriteBytes ( NODEFILENAMEOFFSET,    16,  filenameid );
       node_writenodeid ( nodeid );
-	    node_setinitstatus(MICAZCONFIGMESSAGERECEIVED); 
-	    node_setradiochannel(15); 
-	    Leds_redToggle();
+	  node_setinitstatus(MICAZCONFIGMESSAGERECEIVED); 
+	  node_setradiochannel(16); 
+	  Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
       
@@ -231,7 +231,8 @@ int main() {
    cc2420controlm_CC2420Control_TunePower( 31 ); 
    
    create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell", 0, 0 );
-   
+  // GenericTimerStart(9, TIMER_REPEAT, 100);
+      
    _avr_enable_interrupt();
 
    while ( 1 ) {
