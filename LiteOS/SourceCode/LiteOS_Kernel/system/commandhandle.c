@@ -784,6 +784,8 @@ void reply_memory( uint8_t *receivebuffer ) {
 
 		  
          StandardSocketSend( 0xefef, 0xffff, 32, reply );
+
+
       }
    }
 }

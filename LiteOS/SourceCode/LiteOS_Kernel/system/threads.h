@@ -104,6 +104,15 @@ void break_point_function();
 /**\ingroup thread */
 uint8_t memory_conflict_detect(uint16_t createflashromstart, uint16_t createflashromsize, uint16_t ramstackstart, uint16_t ramstackend );
 
+/**\ingroup thread */
+void *getNewThreadBlock(); 
+
+
+/**\ingroup thread */
+void *getCreateThreadMutex();
+
+/**\ingroup thread */
+void createThreadTask();
 
 
 

@@ -77,6 +77,10 @@ inline result_t GenericTimerFired(uint8_t id)
 	  case 7:
 	  ServiceTimerFired(7);
 	  break;
+
+	  case 9:
+	  ServiceTimerFired(9);
+	  break;
     
    
    #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
