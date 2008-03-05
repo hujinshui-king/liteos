@@ -26,12 +26,12 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 volatile thread ** current_thread;
 
-volatile mutex* msend; 
+volatile mutex* msend;
 
 volatile uint16_t * old_stack_ptr ;
 
 
-_atomic_t _atomic_start(void) 
+_atomic_t _atomic_start(void)
 {
   _atomic_t result = SREG;
   asm volatile("cli" "\n\t"::);
@@ -42,20 +42,20 @@ _atomic_t _atomic_start(void)
 
 void _atomic_end(_atomic_t oldSreg)
 {
-  SREG = oldSreg; 
+  SREG = oldSreg;
 }
 
 
 
-int random()
+int rnd()
 {
-	
-	 int ret; 
-   void (*getrandomfp)(void) = (void (*)(void))GET_RANDOM_NUMBER_FUNCTION; 
+
+	 int ret;
+   void (*getrandomfp)(void) = (void (*)(void))GET_RANDOM_NUMBER_FUNCTION;
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getrandomfp();     
+   getrandomfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	              "mov %B0, r21" "\n\t"
 				 :"=r" (ret)
@@ -64,21 +64,21 @@ int random()
    asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return ret; 
-	
+   return ret;
+
 }
 
 
 
 uint16_t getnodeID()
 	{
-		
-	   int ret; 
-	   void (*fp)(void) = (void (*)(void))GET_NODE_ID_FUNCTION; 
+
+	   int ret;
+	   void (*fp)(void) = (void (*)(void))GET_NODE_ID_FUNCTION;
 	   asm volatile("push r20" "\n\t"
 					"push r21" "\n\t"
 					::);
-	   fp();	  
+	   fp();
 	   asm volatile(" mov %A0, r20" "\n\t"
 					  "mov %B0, r21" "\n\t"
 					 :"=r" (ret)
@@ -87,31 +87,31 @@ uint16_t getnodeID()
 	   asm volatile("pop r21" "\n\t"
 					 "pop r20" "\n\t"
 					  ::);
-	   return ret; 
-		
+	   return ret;
+
 	}
 
 
 void setnodeID(uint16_t nodeid)
 	{
 
-	   
-	   
-	   void (*fp)(void) = (void (*)(void))SET_NODE_ID_FUNCTION; 
+
+
+	   void (*fp)(void) = (void (*)(void))SET_NODE_ID_FUNCTION;
 	   asm volatile("push r20" "\n\t"
 					"push r21" "\n\t"
 					::);
-	     
+
 	   asm volatile(" mov r20, %A0" "\n\t"
 					  "mov r21, %B0" "\n\t"
 					 :
 					 :"r" (nodeid)
 					);
-	   fp(); 
+	   fp();
 	   asm volatile("pop r21" "\n\t"
 					 "pop r20" "\n\t"
 					  ::);
-	   return; 
+	   return;
 
 	}
 

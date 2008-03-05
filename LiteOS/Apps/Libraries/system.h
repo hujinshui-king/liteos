@@ -27,13 +27,13 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 /** \defgroup system System Utilities
 
-      This module implements LiteOS system utilities 
+      This module implements LiteOS system utilities
 */
 
 
-/** \ingroup system 
+/** \ingroup system
 
-     Definition of _atomic_t type variable. 
+     Definition of _atomic_t type variable.
 */
 
 typedef uint8_t _atomic_t;
@@ -41,22 +41,22 @@ typedef uint8_t _atomic_t;
 
 /** \ingroup system
 
-     Start of an atomic code section. 
+     Start of an atomic code section.
      \param NONE
      \return The register status
 */
 
-inline _atomic_t _atomic_start(void);
+_atomic_t _atomic_start(void);
 
 
 /** \ingroup system
 
-     End of an atomic code section. 
+     End of an atomic code section.
      \param oldSreg The old register status
      \return NONE
 */
 
-inline void _atomic_end(_atomic_t oldSreg);
+void _atomic_end(_atomic_t oldSreg);
 
 /** \ingroup system
 
@@ -65,7 +65,7 @@ inline void _atomic_end(_atomic_t oldSreg);
      \return The generated random number
 */
 
-int random();
+int rnd();
 
 
 /** \ingroup system
@@ -78,8 +78,8 @@ uint16_t getnodeID();
 
 /** \ingroup system
      Set node ID
-     \param nodeid The node id to be set to 
-     \return NONE 
+     \param nodeid The node id to be set to
+     \return NONE
 */
 
 void setnodeID(uint16_t nodeid);
