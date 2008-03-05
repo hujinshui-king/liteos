@@ -19,7 +19,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "file.h"
-#include "string.h"
+#include "stringutil.h"
 #include "thread.h"
 #include "mutex.h"
 #include "liteoscommon.h"
@@ -28,12 +28,12 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 char *getFilePathAddress()
 {
-   char *pathaddr; 
-   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_PATH_ADDRESS; 
+   char *pathaddr;
+   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_PATH_ADDRESS;
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getaddrfp();     
+   getaddrfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	             "mov %B0, r21" "\n\t"
 				 :"=r" (pathaddr)
@@ -41,20 +41,20 @@ char *getFilePathAddress()
     asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-    return pathaddr; 
+    return pathaddr;
 }
-   
+
 
 
 char *getFileModeAddress()
 
 {
-   char *modeaddr; 
-   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_MODE_ADDRESS; 
+   char *modeaddr;
+   void (*getaddrfp)(void) = (void (*)(void))GET_FILE_MODE_ADDRESS;
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getaddrfp();     
+   getaddrfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	             "mov %B0, r21" "\n\t"
 				 :"=r" (modeaddr)
@@ -62,47 +62,47 @@ char *getFileModeAddress()
     asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-    return modeaddr; 
+    return modeaddr;
 }
-   
+
 
 
 
 void openFileSysCall()
-{  
+{
  void (*filefp)() = (void (*)(void))OPEN_FILE_SYSCALL;
- filefp();                              
+ filefp();
 }
 
 
 
 void closeFileSysCall()
-{  
+{
  void (*filefp)() = (void (*)(void))CLOSE_FILE_SYSCALL;
- filefp();                              
+ filefp();
 }
 
 
 void readFileSysCall()
-{  
+{
  void (*filefp)() = (void (*)(void))READ_FILE_SYSCALL;
- filefp();                              
+ filefp();
 }
 
 
 
 void writeFileSysCall()
-{  
+{
  void (*filefp)() = (void (*)(void))WRITE_FILE_SYSCALL;
- filefp();                              
+ filefp();
 }
 
 
 
 void seekFileSysCall()
-{  
+{
  void (*filefp)() = (void (*)(void))SEEK_FILE_SYSCALL;
- filefp();                              
+ filefp();
 }
 
 
@@ -112,84 +112,84 @@ MYFILE *mfopen(char *pathname, char *mode)
 {
    char *commonpathnameaddr;
 
-   char *commonmodeaddr; 
+   char *commonmodeaddr;
 
-   uint8_t currentthreadindex; 
+   uint8_t currentthreadindex;
 
-   thread** current_thread; 
+   thread** current_thread;
 
-   mutex *mfile; 
-   
-   current_thread = getCurrentThread(); 
+   mutex *mfile;
 
-   currentthreadindex = getCurrentThreadIndex(); 
-   
-   commonpathnameaddr =  getFilePathAddress();   
+   current_thread = getCurrentThread();
+
+   currentthreadindex = getCurrentThreadIndex();
+
+   commonpathnameaddr =  getFilePathAddress();
 
    commonmodeaddr = getFileModeAddress();
 
-   mfile = getFileMutexAddress(); 
+   mfile = getFileMutexAddress();
 
 
    Mutex_lock(mfile);
 
-   mystrcpy(commonpathnameaddr, pathname); 
-   mystrcpy(commonmodeaddr, mode); 
+   mystrcpy(commonpathnameaddr, pathname);
+   mystrcpy(commonmodeaddr, mode);
 
-   openFileSysCall();   
-   
-   Barrier_block(7, 1); 
-   Mutex_unlock(mfile); 
+   openFileSysCall();
 
-   return (MYFILE *)((*current_thread)->filedata.filestate.fileptr);    
+   Barrier_block(7, 1);
+   Mutex_unlock(mfile);
+
+   return (MYFILE *)((*current_thread)->filedata.filestate.fileptr);
 }
 
 
 
 void mfclose(MYFILE *fp)
 {
-   uint8_t currentthreadindex; 
-   thread** current_thread; 
-   mutex *mfile; 
-   
-   current_thread = getCurrentThread(); 
-   currentthreadindex = getCurrentThreadIndex(); 
-   mfile = getFileMutexAddress(); 
-   
+   uint8_t currentthreadindex;
+   thread** current_thread;
+   mutex *mfile;
+
+   current_thread = getCurrentThread();
+   currentthreadindex = getCurrentThreadIndex();
+   mfile = getFileMutexAddress();
+
    Mutex_lock(mfile);
 
-   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
-   closeFileSysCall(); 
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp;
+   closeFileSysCall();
 
-   Barrier_block(7, 2); 
-   Mutex_unlock(mfile); 
+   Barrier_block(7, 2);
+   Mutex_unlock(mfile);
 
-   return; 
+   return;
 
 }
 
 void mfread(MYFILE *fp, void *buffer, int nBytes)
 {
-   uint8_t currentthreadindex; 
-   thread** current_thread; 
-   mutex *mfile; 
-   
-   current_thread = getCurrentThread(); 
-   currentthreadindex = getCurrentThreadIndex();    
-   mfile = getFileMutexAddress(); 
+   uint8_t currentthreadindex;
+   thread** current_thread;
+   mutex *mfile;
+
+   current_thread = getCurrentThread();
+   currentthreadindex = getCurrentThreadIndex();
+   mfile = getFileMutexAddress();
 
 
    Mutex_lock(mfile);
-   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp;
    (*current_thread)->filedata.filestate.bufferptr = (uint8_t*)buffer;
-   (*current_thread)->filedata.filestate.bytes = nBytes; 
+   (*current_thread)->filedata.filestate.bytes = nBytes;
 
-   readFileSysCall();    
-   
-   Barrier_block(7, 3); 
-   Mutex_unlock(mfile); 
+   readFileSysCall();
 
-   return; 
+   Barrier_block(7, 3);
+   Mutex_unlock(mfile);
+
+   return;
 
 }
 
@@ -197,40 +197,40 @@ void mfread(MYFILE *fp, void *buffer, int nBytes)
 
 void mfwrite(MYFILE *fp, void *buffer, int nBytes)
 {
-   uint8_t currentthreadindex; 
-   thread** current_thread; 
-   mutex *mfile; 
-   
-   current_thread = getCurrentThread(); 
-   currentthreadindex = getCurrentThreadIndex();    
-   mfile = getFileMutexAddress(); 
+   uint8_t currentthreadindex;
+   thread** current_thread;
+   mutex *mfile;
+
+   current_thread = getCurrentThread();
+   currentthreadindex = getCurrentThreadIndex();
+   mfile = getFileMutexAddress();
 
 
    Mutex_lock(mfile);
-   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp; 
+   (*current_thread)->filedata.filestate.fileptr = (uint8_t*)fp;
    (*current_thread)->filedata.filestate.bufferptr = (uint8_t*)buffer;
-   (*current_thread)->filedata.filestate.bytes = nBytes; 
+   (*current_thread)->filedata.filestate.bytes = nBytes;
 
-   writeFileSysCall();    
-   
-   Barrier_block(7, 4); 
-   Mutex_unlock(mfile); 
+   writeFileSysCall();
 
-   return; 
+   Barrier_block(7, 4);
+   Mutex_unlock(mfile);
+
+   return;
 }
 
 
 void mfwrite_withoutlength(MYFILE *fp, void *buffer)
 {
 
-   
-   uint8_t length; 
+
+   uint8_t length;
 
    length = (uint8_t)String_length((char*)buffer);
 
-   mfwrite(fp, buffer, length); 
+   mfwrite(fp, buffer, length);
 
-   return; 
+   return;
 }
 
 
@@ -240,19 +240,19 @@ void mfwrite_withoutlength(MYFILE *fp, void *buffer)
 
 void mfseek(MYFILE *fp, int offset, int position)
 {
-   uint8_t currentthreadindex; 
-   thread** current_thread; 
-     
-   current_thread = getCurrentThread(); 
-   currentthreadindex = getCurrentThreadIndex();    
-   
-   (*current_thread)->filedata.fileseekstate.fileptr = (uint8_t*)fp; 
-   (*current_thread)->filedata.fileseekstate.offset = offset;
-   (*current_thread)->filedata.fileseekstate.position = position; 
+   uint8_t currentthreadindex;
+   thread** current_thread;
 
-   seekFileSysCall(); 
-   
-   return; 
+   current_thread = getCurrentThread();
+   currentthreadindex = getCurrentThreadIndex();
+
+   (*current_thread)->filedata.fileseekstate.fileptr = (uint8_t*)fp;
+   (*current_thread)->filedata.fileseekstate.offset = offset;
+   (*current_thread)->filedata.fileseekstate.position = position;
+
+   seekFileSysCall();
+
+   return;
 
 
 

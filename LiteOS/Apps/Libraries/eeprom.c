@@ -22,35 +22,35 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "system.h"
 #include "liteoscommon.h"
 #include "mutex.h"
-#include "string.h"
+#include "stringutil.h"
 #include "thread.h"
 #include "eeprom.h"
 
-//Assume that the file system take 0-3199. 
+//Assume that the file system take 0-3199.
 
 //The remaining 3200-4000 , 25 32-byte locations are provided to store hash data
 
-//And the EEPROM library also allows user to access, read, and write to individual EEPROM locations 
+//And the EEPROM library also allows user to access, read, and write to individual EEPROM locations
 
 
 
 
-//static uint8_t iocache[8]; 
+//static uint8_t iocache[8];
 
-//#define GLOBALINFOBLOCK 25 
+//#define GLOBALINFOBLOCK 25
 
 
 
 genericByteStorageTaskNode *getCurrentEEPROMInfo()
 {
-   genericByteStorageTaskNode *currenteeprominfoaddr; 
+   genericByteStorageTaskNode *currenteeprominfoaddr;
 
-   void (*getaddrfp)(void) = (void (*)(void))GET_EEPROM_STRUCTURE_HANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_EEPROM_STRUCTURE_HANDLE;
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getaddrfp();     
+   getaddrfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	             "mov %B0, r21" "\n\t"
 				 :"=r" (currenteeprominfoaddr)
@@ -59,42 +59,42 @@ genericByteStorageTaskNode *getCurrentEEPROMInfo()
     asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return currenteeprominfoaddr; 
+   return currenteeprominfoaddr;
 }
 
 
 
 
-//Turn off the interrupt, access the location, and use system call to implement poll based imlementation provided by avr libc 
+//Turn off the interrupt, access the location, and use system call to implement poll based imlementation provided by avr libc
 
 void readFromEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
 {
 
-	
+
 	_atomic_t currentatomic;
 
 	currentatomic = _atomic_start();
 
 
-    genericByteStorageTaskNode *eeprominfoaddr; 
+    genericByteStorageTaskNode *eeprominfoaddr;
     eeprominfoaddr = getCurrentEEPROMInfo();
-	
-	void (*getaddrfp)(void) = (void (*)(void))READ_EEPROM_TASK; 
-        
+
+	void (*getaddrfp)(void) = (void (*)(void))READ_EEPROM_TASK;
+
     eeprominfoaddr-> addr = addr;
    	eeprominfoaddr-> nBytes = nBytes;
-   	eeprominfoaddr-> buffer = buffer; 
+   	eeprominfoaddr-> buffer = buffer;
 
-	  
-    getaddrfp();     
 
-	_atomic_end(currentatomic); 
+    getaddrfp();
+
+	_atomic_end(currentatomic);
 }
 
 
 
 
-//Turn off the interrupt, access the location, and use system call to implement poll based implementation provided by avr libc 
+//Turn off the interrupt, access the location, and use system call to implement poll based implementation provided by avr libc
 
 void writeToEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
 {
@@ -103,19 +103,19 @@ void writeToEEPROM(uint16_t addr, uint16_t nBytes, uint8_t *buffer)
 
 	currentatomic = _atomic_start();
 
-    genericByteStorageTaskNode *eeprominfoaddr; 
+    genericByteStorageTaskNode *eeprominfoaddr;
     eeprominfoaddr = getCurrentEEPROMInfo();
-	
-	void (*getaddrfp)(void) = (void (*)(void))WRITE_EEPROM_TASK; 
-        
+
+	void (*getaddrfp)(void) = (void (*)(void))WRITE_EEPROM_TASK;
+
     eeprominfoaddr-> addr = addr;
 	  eeprominfoaddr-> nBytes = nBytes;
-	  eeprominfoaddr-> buffer = buffer; 
+	  eeprominfoaddr-> buffer = buffer;
 
-	  
-    getaddrfp();     
-	
-	_atomic_end(currentatomic); 
+
+    getaddrfp();
+
+	_atomic_end(currentatomic);
 
 
 }
