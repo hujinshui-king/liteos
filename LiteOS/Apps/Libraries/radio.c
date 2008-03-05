@@ -21,29 +21,29 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "radio.h"
 
-uint8_t buffer[32]; 
+uint8_t buffer[32];
 
-uint8_t radioReceiveDataReady; 
+uint8_t radioReceiveDataReady;
 
-uint8_t radioReceivePacketInfo[4]; 
+uint8_t radioReceivePacketInfo[4];
 
-thread* mythread; 
+thread* mythread;
 
 void sendRadioMsg()
-{  
- void (*radiosendfp)() = (void (*)(void))SOCKET_RADIO_SEND_FUNCTION; 
- radiosendfp();                              
+{
+ void (*radiosendfp)() = (void (*)(void))SOCKET_RADIO_SEND_FUNCTION;
+ radiosendfp();
 }
 
 
 
-//This function sends out a string 
+//This function sends out a string
 
 void radioSend_string(uint8_t *msg)
 {
-  
-    uint8_t temp = (uint8_t)String_length((char *)msg); 
-	return radioSend(1, 0xffff, temp, msg); 
+
+    uint8_t temp = (uint8_t)String_length((char *)msg);
+	return radioSend(1, 0xffff, temp, msg);
 
 
 }
@@ -54,15 +54,15 @@ void radioSend_string(uint8_t *msg)
 
 void radioSend_uint16(uint16_t value)
 {
-  uint8_t temp1,temp2; 
+  uint8_t temp1,temp2;
   temp1 = (uint8_t) (value >> 8);
   temp2 = (uint8_t) (value & 0x00ff);
 
-  buffer[0] = temp1; 
-  buffer[1] = temp2; 
-  buffer[2] = buffer[3] = 0xee; 
-   
-  return radioSend(12, 0xffff, 16, buffer); 
+  buffer[0] = temp1;
+  buffer[1] = temp2;
+  buffer[2] = buffer[3] = 0xee;
+
+  return radioSend(12, 0xffff, 16, buffer);
 
 }
 
@@ -71,14 +71,14 @@ void radioSend_uint16(uint16_t value)
 
 radiohandletype *getCurrentRadioHandleAddr()
 {
-   radiohandletype *currentradioinfo; 
+   radiohandletype *currentradioinfo;
 
-   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_HANDLE_ADDR; 
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_HANDLE_ADDR;
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getaddrfp();     
+   getaddrfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	             "mov %B0, r21" "\n\t"
 				 :"=r" (currentradioinfo)
@@ -87,87 +87,87 @@ radiohandletype *getCurrentRadioHandleAddr()
     asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return currentradioinfo; 
+   return currentradioinfo;
 }
 
 
 void setRadioFreq(uint16_t freq)
 {
-  
-   void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_FREQ_FUNCTION; 
+
+   void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_FREQ_FUNCTION;
 
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-      
+
    asm volatile(" mov r20, %A0" "\n\t"
 	              "mov r21, %B0" "\n\t"
 				 :
 				 :"r" (freq)
                 );
-   getaddrfp(); 
+   getaddrfp();
    asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return; 
+   return;
 }
 
 void setRadioChannel(uint8_t channel)
 {
-  
-  uint16_t maskchannel = channel; 
-  
-  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_CHANNEL_FUNCTION; 
+
+  uint16_t maskchannel = channel;
+
+  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_CHANNEL_FUNCTION;
 
   asm volatile("push r20" "\n\t"
                "push r21" "\n\t"
                ::);
-      
+
   asm volatile(" mov r20, %A0" "\n\t"
 	              "mov r21, %B0" "\n\t"
 				 :
 				 :"r" (maskchannel)
                 );
-   getaddrfp(); 
+   getaddrfp();
    asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return; 
+   return;
 }
 
 void setRadioPower(uint8_t power)
 {
-  
-  uint16_t maskchannel = power; 
-  
-  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_POWER_FUNCTION; 
+
+  uint16_t maskchannel = power;
+
+  void (*getaddrfp)(void) = (void (*)(void))SET_RADIO_POWER_FUNCTION;
 
   asm volatile("push r20" "\n\t"
                "push r21" "\n\t"
                ::);
-      
+
   asm volatile(" mov r20, %A0" "\n\t"
 	              "mov r21, %B0" "\n\t"
 				 :
 				 :"r" (maskchannel)
                 );
-   getaddrfp(); 
+   getaddrfp();
    asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return; 
+   return;
 }
 
 
 
 radioinfotype *getCurrentRadioInfoAddr()
 {
-   radioinfotype *currentradioinfo; 
-   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_INFO_ADDR; 
+   radioinfotype *currentradioinfo;
+   void (*getaddrfp)(void) = (void (*)(void))GET_CURRENT_RADIO_INFO_ADDR;
    asm volatile("push r20" "\n\t"
                 "push r21" "\n\t"
                 ::);
-   getaddrfp();     
+   getaddrfp();
    asm volatile(" mov %A0, r20" "\n\t"
 	             "mov %B0, r21" "\n\t"
 				 :"=r" (currentradioinfo)
@@ -176,69 +176,69 @@ radioinfotype *getCurrentRadioInfoAddr()
     asm volatile("pop r21" "\n\t"
 	             "pop r20" "\n\t"
 	              ::);
-   return currentradioinfo; 
+   return currentradioinfo;
 }
 
 
 void disableRadioState()
 {
-  
-   void (*disableradiofp)(void) = (void (*)(void))RESTORE_RADIO_STATE; 
-   
-   disableradiofp();     
 
-   return;	
+   void (*disableradiofp)(void) = (void (*)(void))RESTORE_RADIO_STATE;
+
+   disableradiofp();
+
+   return;
 }
 
 
 void radioSend(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg)
 {
- 
- 
-   mutex* msend; 
-   thread** current_thread; 
-   radioinfotype *radioinfoaddr; 
 
-  
-   
-   msend = getRadioMutexAddress();   
-   current_thread = getCurrentThread(); 
+
+   mutex* msend;
+   thread** current_thread;
+   radioinfotype *radioinfoaddr;
+
+
+
+   msend = getRadioMutexAddress();
+   current_thread = getCurrentThread();
    radioinfoaddr = getCurrentRadioInfoAddr();
 
    Mutex_lock(msend);
-     
-   radioinfoaddr-> socket_port = port; 
-   radioinfoaddr->socket_addr = address; 
-   radioinfoaddr->socket_msg_len  = length; 
+
+   radioinfoaddr-> socket_port = port;
+   radioinfoaddr->socket_addr = address;
+   radioinfoaddr->socket_msg_len  = length;
    radioinfoaddr->socket_msg  = msg;
-    
+
    //pending_id = id;
    //pending_address = address;
    //pending_length = length;
    //pending_msg = msg;
 
-   sendRadioMsg(); 
+   sendRadioMsg();
 
-   sleepThread(30); 
-   
+   sleepThread(30);
+
    disableRadioState();
 
-  
-   Mutex_unlock(msend); 
 
-   return; 
+   Mutex_unlock(msend);
+
+   return;
 }
 
 
 
-//wakeup the current thread once an incoming packet arrives 
+//wakeup the current thread once an incoming packet arrives
 
 void wakeupMe()
 {
-  mythread->state = STATE_ACTIVE; 
+  mythread->state = STATE_ACTIVE;
   syscall_postThreadTask();
 
-  
+
 }
 
 
@@ -250,50 +250,99 @@ int radioReceive(uint16_t port, uint8_t maxlength, uint8_t *msg)
 {
 
 
-   thread** current_thread; 
+   thread** current_thread;
 
    _atomic_t currentatomic;
-    
-
-   radiohandletype *radiohandleaddr; 
 
 
-   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT; 
-   
-   current_thread = getCurrentThread(); 
-   
-   radiohandleaddr = getCurrentRadioHandleAddr(); 
-   
+   radiohandletype *radiohandleaddr;
+
+
+   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
+
+   current_thread = getCurrentThread();
+
+   radiohandleaddr = getCurrentRadioHandleAddr();
+
    //set up the radiohandleaddr data structures
 
-   radiohandleaddr->port = port; 
-   radiohandleaddr->maxLength = maxlength; 
+   radiohandleaddr->port = port;
+   radiohandleaddr->maxLength = maxlength;
    radiohandleaddr->dataReady = &radioReceiveDataReady;
-   radiohandleaddr->data = msg; 
-   radiohandleaddr->packetinfo = radioReceivePacketInfo; 
+   radiohandleaddr->data = msg;
+   radiohandleaddr->packetinfo = radioReceivePacketInfo;
    radiohandleaddr->handlefunc = wakeupMe;
 
 
-   //close the interrupt     
+   //close the interrupt
 	currentatomic = _atomic_start();
 
-   //call the radio handle set to store the data structure into the handle vectors 
-    getaddrfp();     
+   //call the radio handle set to store the data structure into the handle vectors
+    getaddrfp();
 
 
-   //set up the current thread into sleep mode 
+   //set up the current thread into sleep mode
    (*current_thread)->state = STATE_SLEEP;
 
-   //set up mythread so that later can wake up this thread 
-   mythread = *current_thread; 
+   //set up mythread so that later can wake up this thread
+   mythread = *current_thread;
 
 
-   //open the interrupt 
-   _atomic_end(currentatomic);  
+   //open the interrupt
+   _atomic_end(currentatomic);
 
-    yield(); 
+    yield();
 
 
-   return radioReceiveDataReady; 
- 
+   return radioReceiveDataReady;
+
+}
+
+int radioReceiveTimed(uint16_t port, uint8_t maxlength, uint8_t *msg, uint16_t time)
+{
+   thread** current_thread;
+
+   _atomic_t currentatomic;
+
+
+   radiohandletype *radiohandleaddr;
+	radioReceiveDataReady = 0;
+
+   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
+
+   current_thread = getCurrentThread();
+
+   radiohandleaddr = getCurrentRadioHandleAddr();
+
+   //set up the radiohandleaddr data structures
+
+   radiohandleaddr->port = port;
+   radiohandleaddr->maxLength = maxlength;
+   radiohandleaddr->dataReady = &radioReceiveDataReady;
+   radiohandleaddr->data = msg;
+   radiohandleaddr->packetinfo = radioReceivePacketInfo;
+   radiohandleaddr->handlefunc = wakeupMe;
+
+
+   //close the interrupt
+	currentatomic = _atomic_start();
+
+   //call the radio handle set to store the data structure into the handle vectors
+    getaddrfp();
+
+
+   //set up the current thread into sleep mode
+   (*current_thread)->state = STATE_SLEEP;
+
+   //set up mythread so that later can wake up this thread
+   mythread = *current_thread;
+
+
+   //open the interrupt
+   _atomic_end(currentatomic);
+
+   sleepThread(time);
+
+
+   return radioReceiveDataReady;
 }
