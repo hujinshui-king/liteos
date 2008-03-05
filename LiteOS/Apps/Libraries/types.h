@@ -43,9 +43,7 @@ typedef unsigned long long uint64_t;
 
 typedef unsigned int size_t;
 
-
-
-typedef unsigned char bool;
+typedef unsigned char boolean;
 
 enum  {
   FALSE = 0, 
