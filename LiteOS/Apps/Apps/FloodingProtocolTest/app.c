@@ -36,7 +36,7 @@ int main()
       if (nodeid == fromnode)
       {    
 
-      sig = random(); 
+      sig = rnd(); 
       msg[0] = nodeid%256;
 			msg[1] = nodeid/256;
 			msg[2] = sig%256;

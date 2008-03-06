@@ -1,7 +1,7 @@
 #include "leds.h"
 #include "thread.h"
 #include "radio.h"
-#include "string.h"
+#include "stringutil.h"
 #include "serial.h"
 
 

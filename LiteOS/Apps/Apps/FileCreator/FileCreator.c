@@ -3,7 +3,7 @@
 #include "liteoscommon.h"
 #include "thread.h"
 #include "radio.h"
-#include "string.h"
+#include "stringutil.h"
 #include "file.h"
 #include "adc.h"
 

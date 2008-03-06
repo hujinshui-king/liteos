@@ -222,7 +222,7 @@ int main() {
 				incomingMsg[5] = nodeid%256; 
 				incomingMsg[6] = nodeid/256; 
 				
-				jitter = random()%20;
+				jitter = rnd()%20;
 				sleepThread(jitter); 
 				radioSend(20, 0xffff, incomingDataLength, incomingMsg);
 				packetsreceived ++; 
@@ -244,7 +244,7 @@ int main() {
 
 				incomingMsg[5] = nodeid%256;
 				
-				jitter = random()%20;
+				jitter = rnd()%20;
 				sleepThread(jitter); 
 				radioSend(20, 0xffff, incomingDataLength, incomingMsg);
 				packetsdelivered++; 

@@ -3,7 +3,7 @@
 #include "liteoscommon.h"
 #include "thread.h"
 #include "radio.h"
-#include "string.h"
+#include "stringutil.h"
 #include "serial.h"
 #include "file.h"
 #include "eeprom.h"
