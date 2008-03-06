@@ -73,8 +73,15 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include <avr/wdt.h>
 #include <avr/pgmspace.h>
 #include <avr/eeprom.h>
-//#include <avr/iom1281.h>
-#include <avr/iom128.h>
+
+
+#if defined(AVR_PLATFORM_IRIS)
+ #include <avr/iom1281.h>
+#elif defined(AVR_PLATFORM)
+ #include <avr/iom128.h>
+#endif
+
+
 //iom1281.h
 
 
