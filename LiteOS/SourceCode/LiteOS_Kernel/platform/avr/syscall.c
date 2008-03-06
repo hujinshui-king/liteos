@@ -1397,7 +1397,10 @@ void getRandomNumberSyscall() {
 void setRadioFrequencyTask_Logger()
 { 
   addTrace(TRACE_SYSCALL_SETRADIOFREQUENCY);
+ 
+  #ifdef RADIO_CC2420
   setRadioFrequencyTask(); 
+  #endif
 }
 
 /**\ingroup syscall 
@@ -1412,7 +1415,9 @@ void setRadioFrequency() {
        setRadioFrequencyTask_Logger();
    #endif
    #else
+        #ifdef RADIO_CC2420
        setRadioFrequencyTask();
+	    #endif
    #endif
    asm volatile( "nop":: );
    asm volatile( "ret":: );
@@ -1424,7 +1429,9 @@ void setRadioFrequency() {
 void setRadioChannelTask_Logger()
 {
    addTrace(TRACE_SYSCALL_SETRADIOCHANNEL); 
+   #ifdef RADIO_CC2420
    setRadioChannelTask(); 
+   #endif
 }
 
 
@@ -1439,7 +1446,9 @@ void setRadioChannel() {
        setRadioChannelTask_Logger();
    #endif
    #else
+        #ifdef RADIO_CC2420
        setRadioChannelTask();
+	    #endif
    #endif
    asm volatile( "nop":: );
    asm volatile( "ret":: );
@@ -1449,7 +1458,9 @@ void setRadioChannel() {
 void setRadioPowerTask_Logger()
 {
    addTrace(TRACE_SYSCALL_SETRADIOPOWER); 
-   setRadioPowerTask(); 
+   #ifdef RADIO_CC2420
+   setRadioPowerTask();
+   #endif 
 }
 
 
@@ -1465,7 +1476,9 @@ void setRadioPower() {
        setRadioPowerTask_Logger();
    #endif
    #else
+      #ifdef RADIO_CC2420
        setRadioPowerTask();
+      #endif
    #endif
    asm volatile( "nop":: );
    asm volatile( "ret":: );
