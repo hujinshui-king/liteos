@@ -31,6 +31,10 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "stdserial.h"
 #include "../filesys/filesocket.h"
 
+
+#ifdef SERIAL_COMMAND_REPLY
+#include "../io/avr_serial/serialprint.h"
+#endif
 extern uint8_t cc2420radiom_stateRadio;
 
 
@@ -102,6 +106,22 @@ static void send_task() {
    
    mystrncpy(( char* )dataPayloadPtr_currentMsg, ( char* )radioinfo.socket_msg, radioinfo.socket_msg_len );
    
+
+  #if defined(PLATFORM_AVR_IRIS)
+  {
+  
+      currentMsg.length = radioinfo.socket_msg_len;
+      currentMsg.addr = radioinfo.socket_addr;
+      currentMsg.port = radioinfo.socket_port;
+	  Broadcast2SerialAlternative(&currentMsg); 
+
+  
+  
+  
+  
+  }
+  #elif defined(PLATFORM_AVR)
+
    if ( radioinfo.socket_addr != 0 ) {
       AMStandard_SendMsg_send( radioinfo.socket_port, radioinfo.socket_addr, radioinfo.socket_msg_len, &currentMsg );
    }
@@ -112,6 +132,7 @@ static void send_task() {
       currentMsg.port = radioinfo.socket_port;
       Standard_Receive_Packet( radioinfo.socket_port, &currentMsg );
    } 
+  #endif
 }
 
 
