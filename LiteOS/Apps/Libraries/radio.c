@@ -306,7 +306,7 @@ int radioReceiveTimed(uint16_t port, uint8_t maxlength, uint8_t *msg, uint16_t t
 
 
    radiohandletype *radiohandleaddr;
-	radioReceiveDataReady = 0;
+	
 
    void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
 
@@ -342,7 +342,6 @@ int radioReceiveTimed(uint16_t port, uint8_t maxlength, uint8_t *msg, uint16_t t
    _atomic_end(currentatomic);
 
    sleepThread(time);
-
 
    return radioReceiveDataReady;
 }
