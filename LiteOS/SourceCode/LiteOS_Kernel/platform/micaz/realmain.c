@@ -179,7 +179,8 @@ int main() {
       
       /* The following is for debugging the kernel , where no reprogramming overboard is used 
       */
-	  /*
+      #ifdef PLATFORM_AVR_IRIS
+	  
 	    Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
@@ -200,9 +201,8 @@ int main() {
       Leds_greenToggle();
       Leds_yellowToggle();
       
-	 */
-
-    }
+      #endif
+  }
    
    
    //Init everything 
@@ -225,13 +225,23 @@ int main() {
 
   {
    uint8_t currentchannel;  
+
    currentchannel = node_getradiochannel(); 
+  
+   #ifdef RADIO_CC2420
    cc2420controlm_CC2420Control_TuneChannel( currentchannel ); 
-  }
+   #endif
+    
+   #ifdef RADIO_CC2420
    cc2420controlm_CC2420Control_TunePower( 31 ); 
+   #endif
+
+
+  }
+  
    
    create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell", 0, 0 );
-  // GenericTimerStart(9, TIMER_REPEAT, 100);
+ //  GenericTimerStart(9, TIMER_REPEAT, 100);
       
    _avr_enable_interrupt();
 
