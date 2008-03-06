@@ -39,7 +39,7 @@
 //MICAZ ONLY. 
 //////////////////////////////////////////////////////////////////////
 
-#if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
+#if defined(PLATFORM_AVR)
 
 #define TRACE_CONTEXTSWITCHTOUSERTHREAD     								1
 #define TRACE_CONTEXTSWITCHFROMUSERTHREAD   								2
