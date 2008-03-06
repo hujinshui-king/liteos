@@ -32,6 +32,10 @@ def processArguments():
     if temp == 'micaz':
         typeOfTarget = 1
         return
+        
+    if temp == 'iris':
+        typeOfTarget = 2
+        return
 
 
     #if temp == 'iris':
@@ -58,7 +62,11 @@ if __name__ == "__main__":
     #Add new types of targets here.
     
     if typeOfTarget == 1:
-        shutil.copyfile("../avr.target", "./Makefile")
+        shutil.copyfile("../avr.micaz.target", "./Makefile")
+
+    if typeOfTarget == 2:
+        shutil.copyfile("../avr.iris.target", "./Makefile")
+
     print "Please wait... This will take a few seconds..."
         
     os.system("make clean")
