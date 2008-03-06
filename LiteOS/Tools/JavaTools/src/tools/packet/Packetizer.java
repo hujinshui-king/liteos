@@ -341,8 +341,8 @@ public class Packetizer extends AbstractSource implements Runnable {
 	    System.err.println();
 	}
 
-        byte[]  realPackets1 = new byte[32];
-    byte[]  realPackets2 = new byte[64];
+    byte[]  realPackets1 = new byte[320];
+    byte[]  realPackets2 = new byte[640];
 
 
      if (packet[0] == (byte)97)        {
