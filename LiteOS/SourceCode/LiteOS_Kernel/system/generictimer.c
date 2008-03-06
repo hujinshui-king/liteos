@@ -2,12 +2,14 @@
 #include "generictimer.h"
 
 
+
  #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
    #include "../platform/micaz/hplcc2420interruptm.h"
  #endif
  
  #ifdef PLATFORM_AVR
    #include "../platform/avr/timerraw.h"
+   #include "../platform/micaz/leds.h"
  #endif
  
 //Implementing platform related modules 
@@ -79,6 +81,7 @@ inline result_t GenericTimerFired(uint8_t id)
 	  break;
 
 	  case 9:
+	  Leds_redToggle();	
 	  ServiceTimerFired(9);
 	  break;
     
