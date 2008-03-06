@@ -28,7 +28,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../platform/micaz/realmain.h"
 #include "../../platform/avr/avrhardware.h"
 #include "../../system/stdserialhandler.h"
+#include "../../system/amcommon.h"
 #include "../../system/threads.h"
+#include "../../system/packethandler.h"
 
 
 static char cFlag;
@@ -38,6 +40,10 @@ static uint8_t status;
 
 extern volatile uint16_t *stackinterrupt_ptr; 
 extern volatile uint16_t *old_stack_ptr; 
+
+#ifdef PLATFORM_AVR_IRIS
+uint8_t dataToSend[128]; 
+#endif
 
 //No need to be called from main 
 void initUSART() {
@@ -155,8 +161,111 @@ currentindex = 0;
 ///1 the initilization starts with z 2 the comm where two starting bytes tell the port and the message length 
 
 
-SIGNAL( SIG_UART0_RECV ) {
+//SIGNAL( SIG_UART0_RECV ) {
 
+
+
+#ifdef SERIAL_COMMAND_REPLY
+Radio_Msg broadcastmsg; 
+#endif
+
+#if defined(PLATFORM_AVR_IRIS) && (SERIAL_COMMAND_REPLY)
+
+SIGNAL(USART0_RX_vect)
+{
+
+
+ uint8_t dummy = UDR0;
+ uint8_t currentindex = 0; 
+ uint8_t i; 
+
+
+ if (dummy == 'a')
+  {
+
+   _atomic_t _atomic = _atomic_start();
+
+    for (i=0;i<31;i++)
+	{
+    while (!(UCSR0A & (1<<RXC0)));
+	receivebuffer[currentindex++] = UDR0; 
+	}  
+
+   _atomic_end(_atomic); 
+		
+		//Leds_greenToggle(); 
+		
+		
+     { _atomic_t _atomic = _atomic_start();
+	    uint8_t reallength = receivebuffer[0]; 
+	    broadcastmsg.port = 0xfefe; 
+		broadcastmsg.length = reallength;  
+    
+     {
+	  uint8_t *pack; 
+	  pack = (uint8_t *)broadcastmsg.data;
+
+      for (i=0;i<reallength; i++)
+	    pack[i] = receivebuffer[i]; 
+     }
+     _atomic_end(_atomic); }  
+
+
+		
+
+		//broadcastCommand(receivebuffer, currentindex); 
+		//tryoutCommand(receivebuffer); 
+
+		Standard_Receive_Packet(0xfefe, &broadcastmsg);
+
+  }
+ else if (dummy == 'l')
+  {
+   _atomic_t _atomic = _atomic_start();
+    for (i=0;i<63;i++)
+	{
+    while (!(UCSR0A & (1<<RXC0)));
+	receivebuffer[currentindex++] = UDR0; 
+	}  
+    _atomic_end(_atomic); 
+	   	
+		
+     { _atomic_t _atomic = _atomic_start();
+	    uint8_t reallength = receivebuffer[0]; 
+	    broadcastmsg.port = 0xfefe; 
+		broadcastmsg.length = reallength;  
+    
+     {
+	  uint8_t *pack;
+	  pack = (uint8_t *)broadcastmsg.data;
+
+      for (i=0;i<reallength; i++)
+	    pack[i] = receivebuffer[i]; 
+     }
+     _atomic_end(_atomic); }  
+
+
+		
+
+		//broadcastCommand(receivebuffer, currentindex); 
+		//tryoutCommand(receivebuffer); 
+
+		Standard_Receive_Packet(0xfefe, &broadcastmsg);
+
+   }
+ 
+  
+
+} 
+
+
+
+
+
+
+#elif defined(PLATFORM_AVR)
+SIGNAL(USART0_RX_vect)
+{
  
    uint8_t dummy = UDR0;
    uint8_t currentindex = 0;
@@ -253,3 +362,97 @@ SIGNAL( SIG_UART0_RECV ) {
 
   
 }
+
+#endif
+
+
+#ifdef PLATFORM_AVR_IRIS
+
+void senddata(uint8_t length)
+{
+    printStringN((char *)dataToSend, length); 
+
+}
+
+
+
+Radio_MsgPtr Broadcast2SerialAlternative(Radio_MsgPtr msg)
+{
+
+
+
+   uint8_t *pack; 
+   uint8_t currentlength; 
+   uint8_t i; 
+
+   uint8_t currentindex; 
+{ _atomic_t _atomic = _atomic_start();
+    
+
+
+   pack = (uint8_t*)(msg); 
+
+   currentlength = pack[0]; 
+
+  
+   currentindex = 0;
+
+   dataToSend[currentindex++] = 0x7e;
+   dataToSend[currentindex++] = 0x42;
+  
+     
+
+   for (i=6;i<4+6;i++)
+   {
+   
+   
+     uint8_t temp = pack[i]; 
+     if (temp == 0x7e)
+      {dataToSend[currentindex++] = 0x7d;dataToSend[currentindex++] = 0x5e; }
+     else  if (temp == 0x7d)
+      {dataToSend[currentindex++] = 0x7d;dataToSend[currentindex++] = 0x5d; }
+	  else 
+	   dataToSend[currentindex++] = temp; 
+
+   
+
+   }
+
+   dataToSend[currentindex++] = currentlength;
+
+
+   for (i=4+6;i<currentlength+4+6;i++)
+   {
+   
+   
+     uint8_t temp = pack[i]; 
+     if (temp == 0x7e)
+      {dataToSend[currentindex++] = 0x7d;dataToSend[currentindex++] = 0x5e; }
+     else  if (temp == 0x7d)
+      {dataToSend[currentindex++] = 0x7d;dataToSend[currentindex++] = 0x5d; }
+	  else 
+	   dataToSend[currentindex++] = temp; 
+
+   
+
+   }
+  
+
+  
+  dataToSend[currentindex++] = 0;
+  dataToSend[currentindex++] = 0;
+  dataToSend[currentindex++] = 0x7e; 
+   _atomic_end(_atomic); }  
+  
+
+  senddata(currentindex); 
+  
+  return msg;      
+  
+
+
+
+}
+
+
+#endif

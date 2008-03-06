@@ -26,6 +26,10 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../../types/types.h"
 
+#ifdef PLATFORM_AVR_IRIS
+#include "../../system/amcommon.h"
+#endif
+
 /** \defgroup serial Serial port operations 
 
       \par Overview
@@ -77,6 +81,12 @@ void usartPrint(uint8_t c);
 
 void initUSART();
 
+
+#ifdef PLATFORM_AVR_IRIS
+
+Radio_MsgPtr Broadcast2SerialAlternative(Radio_MsgPtr msg);
+
+#endif
 
 /** @} */
 #endif 
