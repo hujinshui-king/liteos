@@ -127,7 +127,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../types/types.h"
 #include "packethandler.h"
 #include "../utilities/eventlogger.h"
-#include "../io/cc2420/cc2420radiom.h"
+
 
 
 
