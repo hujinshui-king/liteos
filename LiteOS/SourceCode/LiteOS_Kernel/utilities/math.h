@@ -27,7 +27,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../types/types.h"
 
-#ifdef PLATFORM_AVR
+#if defined(PLATFORM_AVR)
 #include <stdlib.h> 
 #endif 
 
