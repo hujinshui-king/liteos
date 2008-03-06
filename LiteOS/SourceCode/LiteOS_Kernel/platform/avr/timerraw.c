@@ -84,7 +84,13 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-#include "clockraw.h"
+#if defined(PLATFORM_AVR_IRIS)
+ #include "clockraw_iris.h"
+#elif defined(PLATFORM_AVR)
+ #include "clockraw.h"
+#endif
+
+
 #include  "../../system/scheduling.h"
 #include "avrhardware.h"
 #include "timerraw.h"
