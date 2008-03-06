@@ -81,7 +81,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 
-#include "clockraw.h"
+ #include "clockraw.h"
+
 #include "timerraw.h"
 #include "../../system/threads.h"
 
