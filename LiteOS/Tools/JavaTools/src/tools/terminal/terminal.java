@@ -919,7 +919,7 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
-                    int NORMALTIME = 40;
+                    int NORMALTIME = 100;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
                     serverpl.setPacketWaitBuffer(SHELLPORT, 40);
