@@ -278,7 +278,18 @@ public class genericCommand {
            if (commandName.compareTo("set") == 0)
          {
              if ((optioncount == 0) && (parametercount > 0))
-                  return true;
+             {
+                 if (parameters[1].startsWith("0x") == true)
+                 {
+                              System.out.println("Please do not start parameters with 0x. Simply use integers without prefix. ");
+                              return false;
+
+                 }
+                 return true;
+
+
+             }
+
              else
                  return false;
          }
