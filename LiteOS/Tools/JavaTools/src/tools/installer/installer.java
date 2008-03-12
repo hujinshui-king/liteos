@@ -71,6 +71,9 @@ public class installer {
 
        int portNum = 0;
        try{
+         if (commportA.length() > 4)
+            portNum = Integer.parseInt( commportA.substring(3, commportA.length())) - 1;
+           else
          portNum = Integer.parseInt( Character.toString(commportA.charAt(commportA.length()-1))) - 1;
        }
        catch (Exception io)
@@ -79,7 +82,10 @@ public class installer {
            System.exit(1);
        }
 
-       commportB = commportA.substring(0, commportA.length()-1) + (new Integer(portNum+2)).toString();
+       if (commportA.length() > 4)
+       commportB = commportA.substring(0, commportA.length()-2) + (new Integer(portNum+2)).toString();
+      else
+       commportB = commportA.substring(0, commportA.length()-1) + (new Integer(portNum+2)).toString(); 
 
 
       String tempanswer = null;
