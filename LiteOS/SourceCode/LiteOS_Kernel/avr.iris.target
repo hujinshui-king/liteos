@@ -63,124 +63,124 @@ LINKONLYOBJECTS =
 all: $(TARGET) LiteOS.hex LiteOS.eep LiteOS.lss size
 
 ## Compile
-filesocket.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/filesocket.c
+filesocket.o: ../../../SourceCode/LiteOS_Kernel/filesys/filesocket.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-fs_structure.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/fs_structure.c
+fs_structure.o: ../../../SourceCode/LiteOS_Kernel/filesys/fs_structure.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-fsapi.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/fsapi.c
+fsapi.o: ../../../SourceCode/LiteOS_Kernel/filesys/fsapi.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-fsconfig.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/fsconfig.c
+fsconfig.o: ../../../SourceCode/LiteOS_Kernel/filesys/fsconfig.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-fsstring.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/fsstring.c
+fsstring.o: ../../../SourceCode/LiteOS_Kernel/filesys/fsstring.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-inode.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/inode.c
+inode.o: ../../../SourceCode/LiteOS_Kernel/filesys/inode.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-stdfsa.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/stdfsa.c
+stdfsa.o: ../../../SourceCode/LiteOS_Kernel/filesys/stdfsa.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-vectorflash.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/vectorflash.c
+vectorflash.o: ../../../SourceCode/LiteOS_Kernel/filesys/vectorflash.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-vectornode.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/filesys/vectornode.c
+vectornode.o: ../../../SourceCode/LiteOS_Kernel/filesys/vectornode.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-serialprint.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/io/avr_serial/serialprint.c
+serialprint.o: ../../../SourceCode/LiteOS_Kernel/io/avr_serial/serialprint.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-avrhardware.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/avr/avrhardware.c
+avrhardware.o: ../../../SourceCode/LiteOS_Kernel/platform/avr/avrhardware.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-bootloader.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/avr/bootloader.c
+bootloader.o: ../../../SourceCode/LiteOS_Kernel/platform/avr/bootloader.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-syscall.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/avr/syscall.c
+syscall.o: ../../../SourceCode/LiteOS_Kernel/platform/avr/syscall.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-timerraw.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/avr/timerraw.c
+timerraw.o: ../../../SourceCode/LiteOS_Kernel/platform/avr/timerraw.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-adcdriver.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/adcdriver.c
+adcdriver.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/adcdriver.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-adcsocket.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/adcsocket.c
+adcsocket.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/adcsocket.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-atmelflash.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/atmelflash.c
+atmelflash.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/atmelflash.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-ioeeprom.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/ioeeprom.c
+ioeeprom.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/ioeeprom.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-leds.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/leds.c
+leds.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/leds.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-micazhardware.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/micazhardware.c
+micazhardware.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/micazhardware.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-realmain.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/micaz/realmain.c
+realmain.o: ../../../SourceCode/LiteOS_Kernel/platform/micaz/realmain.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-amradio.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/amradio.c
+amradio.o: ../../../SourceCode/LiteOS_Kernel/system/amradio.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-bytestorage.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/bytestorage.c
+bytestorage.o: ../../../SourceCode/LiteOS_Kernel/system/bytestorage.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-commandhandle.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/commandhandle.c
+commandhandle.o: ../../../SourceCode/LiteOS_Kernel/system/commandhandle.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-generictimer.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/generictimer.c
+generictimer.o: ../../../SourceCode/LiteOS_Kernel/system/generictimer.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-nodeconfig.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/nodeconfig.c
+nodeconfig.o: ../../../SourceCode/LiteOS_Kernel/system/nodeconfig.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-packethandler.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/packethandler.c
+packethandler.o: ../../../SourceCode/LiteOS_Kernel/system/packethandler.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-pagestorage.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/pagestorage.c
+pagestorage.o: ../../../SourceCode/LiteOS_Kernel/system/pagestorage.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-scheduling.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/scheduling.c
+scheduling.o: ../../../SourceCode/LiteOS_Kernel/system/scheduling.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-socket.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/socket.c
+socket.o: ../../../SourceCode/LiteOS_Kernel/system/socket.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-stdserial.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/stdserial.c
+stdserial.o: ../../../SourceCode/LiteOS_Kernel/system/stdserial.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-stdserialhandler.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/stdserialhandler.c
+stdserialhandler.o: ../../../SourceCode/LiteOS_Kernel/system/stdserialhandler.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-threaddata.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/threaddata.c
+threaddata.o: ../../../SourceCode/LiteOS_Kernel/system/threaddata.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-threads.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/system/threads.c
+threads.o: ../../../SourceCode/LiteOS_Kernel/system/threads.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-byteorder.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/types/byteorder.c
+byteorder.o: ../../../SourceCode/LiteOS_Kernel/types/byteorder.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-string.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/types/string.c
+string.o: ../../../SourceCode/LiteOS_Kernel/types/string.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-types.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/types/types.c
+types.o: ../../../SourceCode/LiteOS_Kernel/types/types.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-eventlogger.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/utilities/eventlogger.c
+eventlogger.o: ../../../SourceCode/LiteOS_Kernel/utilities/eventlogger.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-math.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/utilities/math.c
+math.o: ../../../SourceCode/LiteOS_Kernel/utilities/math.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-clockraw_iris.o: ../../../../OS_Dev/SourceCode/LiteOS_Kernel/platform/avr/clockraw_iris.c
+clockraw_iris.o: ../../../SourceCode/LiteOS_Kernel/platform/avr/clockraw_iris.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
