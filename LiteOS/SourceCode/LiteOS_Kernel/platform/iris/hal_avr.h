@@ -1,3 +1,36 @@
+/* LiteOS Version 0.3 */
+/*
+The following is the license of LiteOS.
+
+This file is part of LiteOS.
+Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+
+LiteOS is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+LiteOS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+
+Modification log:
+  March 08: Added and modify pin configuration for IRIS
+  # Chip Select: PB0
+  # SPI Clock Signal: PB1
+  # MOSI: PB2
+  # MISO: PB3
+  # SLP_TR: PB7
+  # RST: PA6
+  # CLKM: PD6
+  # IRQ: PD4 Timer1 Input Capture pin. Could also use pin change or external
+    interrupt.
+*/
+
 /* This file has been prepared for Doxygen automatic documentation generation.*/
 /*! \file *********************************************************************
  *
@@ -69,6 +102,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
+
+
+
 #ifndef HAL_AVR_H
 #define HAL_AVR_H
 /*============================ INCLUDE =======================================*/
@@ -80,7 +116,7 @@
  * 
  *  \ingroup hal_avr_board
  */
-#define SLP_TR              ( 0x04 )
+#define SLP_TR              ( 0x07 )
 
 /*! \brief Data Direction Register that corresponds to the port where SLP_TR is 
  *         connected.
@@ -121,23 +157,23 @@
 /*! \brief Pin number that corresponds to the RST pin.
  *  \ingroup hal_avr_board
  */
-#define RST                 ( 0x05 )
+#define RST                 ( 0x06 )
 
 /*! \brief Data Direction Register that corresponds to the port where RST is 
  *         connected.
  *  \ingroup hal_avr_board
  */
-#define DDR_RST             ( DDRB )
+#define DDR_RST             ( DDRA )
 
 /*! \brief Port (Write Access) where RST is connected.
  *  \ingroup hal_avr_board
  */
-#define PORT_RST            ( PORTB )
+#define PORT_RST            ( PORTA )
 
 /*! \brief Pin (Read Access) where RST is connected.
  *  \ingroup hal_avr_board
  */
-#define PIN_RST             ( PINB )
+#define PIN_RST             ( PINA )
 
 /*! \brief This macro pulls the RST pin high.
  *
