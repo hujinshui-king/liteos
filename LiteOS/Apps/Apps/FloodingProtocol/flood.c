@@ -136,7 +136,7 @@ void registerDataPacket() {
    _atomic_t currentatomic;
    radiohandletype *radiohandleaddr;
    
-   void (*getaddrfp)(void) = (void (*)(void))SETCURRENTRADIOHANDLE; 
+   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT; 
 
    //Finds the radio handle, so that when this code is ported to be externally used, it will be obtained via a system call 
    radiohandleaddr =  getCurrentRadioHandleAddr();
