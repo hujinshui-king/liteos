@@ -44,7 +44,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
  */
 
-radiohandletype *GET_CURRENT_RADIO_HANDLE_ADDRAddr();
+radiohandletype *getCurrentRadioHandleAddr();
 
 
 
