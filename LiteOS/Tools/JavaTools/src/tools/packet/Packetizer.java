@@ -1,19 +1,19 @@
 // $Id: Packetizer.java,v 1.14 2004/11/18 19:02:18 idgay Exp $
 
 /*									tab:4
- * "Copyright (c) 2000-2003 The Regents of the University  of California.  
+ * "Copyright (c) 2000-2003 The Regents of the University  of California.
  * All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its
  * documentation for any purpose, without fee, and without written agreement is
  * hereby granted, provided that the above copyright notice, the following
  * two paragraphs and the author appear in all copies of this software.
- * 
+ *
  * IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
  * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
  * OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF
  * CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
  * AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
@@ -23,9 +23,9 @@
  * Copyright (c) 2002-2003 Intel Corporation
  * All rights reserved.
  *
- * This file is distributed under the terms in the attached INTEL-LICENSE     
+ * This file is distributed under the terms in the attached INTEL-LICENSE
  * file. If you do not find these files, copies can be found by writing to
- * Intel Research Berkeley, 2150 Shattuck Avenue, Suite 1300, Berkeley, CA, 
+ * Intel Research Berkeley, 2150 Shattuck Avenue, Suite 1300, Berkeley, CA,
  * 94704.  Attention:  Intel License Inquiry.
  */
 package tools.packet;
@@ -45,7 +45,7 @@ public class Packetizer extends AbstractSource implements Runnable {
      * byte ("packet type") to identify the kind/target/etc of each packet.
      *
      * The protocol is really, really not aiming for high performance.
-     * 
+     *
      * There is however a hook for future extensions: implementations are
      * required to answer all unknown packet types with a P_UNKNOWN packet.
      *
@@ -58,11 +58,11 @@ public class Packetizer extends AbstractSource implements Runnable {
      *   where the crc (see tools.util.Crc) covers the packet type
      *   and bytes 1..n
      * - bytes can be escaped by preceding them with 0x7d and their
-     *   value xored with 0x20; 0x7d and 0x7e bytes must be escaped, 
+     *   value xored with 0x20; 0x7d and 0x7e bytes must be escaped,
      *   0x00 - 0x1f and 0x80-0x9f may be optionally escaped
      * - There are currently 5 packet types:
      *   P_PACKET_NO_ACK: A user-packet, with no ack required
-     *   P_PACKET_ACK: A user-packet with a prefix byte, ack required. 
+     *   P_PACKET_ACK: A user-packet with a prefix byte, ack required.
      *     The receiver must send a P_ACK packet with the prefix byte
      *     as its contents.
      *   P_ACK: ack for a previous P_PACKET_ACK packet
@@ -341,9 +341,11 @@ public class Packetizer extends AbstractSource implements Runnable {
 	    System.err.println();
 	}
 
-    byte[]  realPackets1 = new byte[320];
-    byte[]  realPackets2 = new byte[640];
+        byte[]  realPackets1 = new byte[32];
+    byte[]  realPackets2 = new byte[64];
 
+	if (packet.length == 0)
+		return;
 
      if (packet[0] == (byte)97)        {
      System.arraycopy(packet, 0, realPackets1, 0, 32);
