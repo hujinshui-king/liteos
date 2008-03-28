@@ -5,38 +5,40 @@
 
 
 //In the future, this file should be organized into central control point for differne types of
-//hardware logging control 
+//hardware logging control
 
 
 
 
-//#define TRACE_ENABLE
+// #define TRACE_ENABLE
 
-//#define TRACE_ENABLE_CONTEXTSWITCH
+// #define SERIAL_TRACE
 
-//#define TRACE_ENABLE_RADIOEVENT
+// #define TRACE_ENABLE_CONTEXTSWITCH
 
-//#define TRACE_ENABLE_ADCEVENT
+// #define TRACE_ENABLE_RADIOEVENT
 
-//#define TRACE_ENABLE_LEDEVENT
+// #define TRACE_ENABLE_ADCEVENT
 
-
-#define TRACE_ENABLE_THREADCREATE
-
-#define TRACE_ENABLE_THREADDESTROY
+// #define TRACE_ENABLE_LEDEVENT
 
 
-//Works at top level without being affected by TRACE_ENABLE 
+// #define TRACE_ENABLE_THREADCREATE
+
+// #define TRACE_ENABLE_THREADDESTROY
 
 
-//#define TRACE_ENABLE_SYSCALLEVENT
+//Works at top level without being affected by TRACE_ENABLE
+
+
+// #define TRACE_ENABLE_SYSCALLEVENT
 
 //Now this is a list of possible events under tracking
-//PLATFORM SPECIFIC 
+//PLATFORM SPECIFIC
 
 //////////////////////////////////////////////////////////////////////
 //MICAZ TRACE LOGGING UTILIITES FOR SYSTEM CALLS
-//MICAZ ONLY. 
+//MICAZ ONLY.
 //////////////////////////////////////////////////////////////////////
 
 #if defined(PLATFORM_AVR)
@@ -60,24 +62,24 @@
 
 
 #define TRACE_ENABLE_SYSCALL_YIELDFUNCTION
-#define TRACE_SYSCALL_YIELDFUNCTION													101
+#define TRACE_SYSCALL_YIELDFUNCTION											101
 
 #define TRACE_ENABLE_SYSCALL_GREENTOGGLEFUNCTION
-#define TRACE_SYSCALL_GREENTOGGLEFUNCTION   								102 
+#define TRACE_SYSCALL_GREENTOGGLEFUNCTION   								102
 
-#define TRACE_ENABLE_SYSCALL_REDTOGGLEFUNCTION 
+#define TRACE_ENABLE_SYSCALL_REDTOGGLEFUNCTION
 #define TRACE_SYSCALL_REDTOGGLEFUNCTION     								103
 
 #define TRACE_ENABLE_SYSCALL_GETCURRENTTHREADADDRESS
 #define TRACE_SYSCALL_GETCURRENTTHREADADDRESS 							104
 
-#define TRACE_ENABLE_SYSCALL_GETRADIOMUTEX  
+#define TRACE_ENABLE_SYSCALL_GETRADIOMUTEX
 #define TRACE_SYSCALL_GETRADIOMUTEX         								105
 
 #define TRACE_ENABLE_SYSCALL_GETRADIOSENDFUNCTION
 #define TRACE_SYSCALL_GETRADIOSENDFUNCTION  								106
 
-#define TRACE_ENABLE_SYSCALL_MUTEXUNLOCKFUNCTION 
+#define TRACE_ENABLE_SYSCALL_MUTEXUNLOCKFUNCTION
 #define TRACE_SYSCALL_MUTEXUNLOCKFUNCTION     							107
 
 #define TRACE_ENABLE_SYSCALL_GETCURRENTTHREADINDEX
@@ -92,13 +94,13 @@
 #define TRACE_ENABLE_SYSCALL_GETFILEMUTEXADDR
 #define TRACE_SYSCALL_GETFILEMUTEXADDR       								111
 
-#define TRACE_ENABLE_SYSCALL_OPENFILESYSCALL 
+#define TRACE_ENABLE_SYSCALL_OPENFILESYSCALL
 #define TRACE_SYSCALL_OPENFILESYSCALL        								112
 
 #define TRACE_ENABLE_SYSCALL_CLOSEFILESYSCALL
 #define TRACE_SYSCALL_CLOSEFILESYSCALL       								113
 
-#define TRACE_ENABLE_SYSCALL_READFILESYSCALL  
+#define TRACE_ENABLE_SYSCALL_READFILESYSCALL
 #define TRACE_SYSCALL_READFILESYSCALL        								114
 
 #define TRACE_ENABLE_SYSCALL_WRITEFILESYSCALL
@@ -113,14 +115,14 @@
 #define  TRACE_ENABLE_SYSCALL_ADCTEMPSYSCALL
 #define  TRACE_SYSCALL_ADCTEMPSYSCALL       								118
 
-#define  TRACE_ENABLE_SYSCALL_ADCMAGXSYSCALL  
+#define  TRACE_ENABLE_SYSCALL_ADCMAGXSYSCALL
 #define  TRACE_SYSCALL_ADCMAGXSYSCALL       								119
 
 #define  TRACE_ENABLE_SYSCALL_ADCMAGYSYSCALL
 #define  TRACE_SYSCALL_ADCMAGYSYSCALL       								120
 
-#define  TRACE_ENABLE_SYSCALL_ADCACCXSYSCALL 
-#define  TRACE_SYSCALL_ADCACCXSYSCALL       								121 
+#define  TRACE_ENABLE_SYSCALL_ADCACCXSYSCALL
+#define  TRACE_SYSCALL_ADCACCXSYSCALL       								121
 
 #define  TRACE_ENABLE_SYSCALL_ADCACCYSYSCALL
 #define  TRACE_SYSCALL_ADCACCYSYSCALL       								122
@@ -133,7 +135,7 @@
 
 #define TRACE_ENABLE_SYSCALL_GETCURRENTRADIOHANDLEADDRESS
 #define TRACE_SYSCALL_GETCURRENTRADIOHANDLEADDRESS 					125
-   
+
 #define TRACE_ENABLE_SYSCALL_GETCURRENTRADIOHANDLE
 #define TRACE_SYSCALL_GETCURRENTRADIOHANDLE    							126
 
@@ -171,7 +173,7 @@
 #define TRACE_ENABLE_SYSCALL_GETSERIALMUTEX
 
 #define TRACE_SYSCALL_GETCURRENTSERIALINFOADDRESS 					138
-#define  TRACE_ENABLE_SYSCALL_GETCURRENTSERIALINFOADDRESS 
+#define  TRACE_ENABLE_SYSCALL_GETCURRENTSERIALINFOADDRESS
 
 #define TRACE_SYSCALL_GETSERIALSENDFUNCTION    							139
 #define TRACE_ENABLE_SYSCALL_GETSERIALSENDFUNCTION
@@ -204,10 +206,10 @@
 #define  TRACE_ENABLE_SYSCALL_GETRANDOMNUMBER
 
 #define  TRACE_SYSCALL_SETRADIOFREQUENCY 										149
-#define  TRACE_ENABLE_SYSCALL_SETRADIOFREQUENCY 
+#define  TRACE_ENABLE_SYSCALL_SETRADIOFREQUENCY
 
 #define  TRACE_SYSCALL_SETRADIOCHANNEL   										150
-#define  TRACE_ENABLE_SYSCALL_SETRADIOCHANNEL  
+#define  TRACE_ENABLE_SYSCALL_SETRADIOCHANNEL
 
 #define  TRACE_SYSCALL_SETRADIOPOWER     										151
 #define  TRACE_ENABLE_SYSCALL_SETRADIOPOWER
@@ -216,83 +218,83 @@
 #define  TRACE_ENABLE_SYSCALL_GETNODEID
 
 #define  TRACE_SYSCALL_SETNODEID         										153
-#define  TRACE_ENABLE_SYSCALL_SETNODEID   
+#define  TRACE_ENABLE_SYSCALL_SETNODEID
 
 #define  TRACE_SYSCALL_GETTHREADCONTROLBLOCK                                    154
 #define  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLBLOCK
 
 
 #define  TRACE_SYSCALL_GETTHREADCONTROLMUTEX    							    155
-#define  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLMUTEX       
+#define  TRACE_ENABLE_SYSCALL_GETTHREADCONTROLMUTEX
 
 
 #define  TRACE_SYSCALL_CREATETHREAD												156
 #define  TRACE_ENABLE_SYSCALL_CREATETHREAD
 
-#endif 
+#endif
 
 /**\defgroup logger Event Logger*/
 
 /** \ingroup logger
-  
+
     Init the trace buffer.
 */
 
 void initTrace();
 
 /** \ingroup logger
-  
-    Add a trace to the buffer. 
+
+    Add a trace to the buffer.
 */
 
 void addTrace(uint8_t traceid);
 
 /** \ingroup logger
-  
-    Dump the content of the trace buffer into the trace file. 
+
+    Dump the content of the trace buffer into the trace file.
 */
 
 
 void dumpTrace();
 
 /** \ingroup logger
-     
-     Clean the trace file.  
+
+     Clean the trace file.
 */
 
 
-void cleanTrace(); 
+void cleanTrace();
 
 /** \ingroup logger
-     
-     Close the trace file. 
+
+     Close the trace file.
 */
 
 void closeTraceFile();
 
 
 /** \ingroup logger
-     
-     Open the trace file.  
+
+     Open the trace file.
 */
 
 
 void openTraceFile();
 
 /** \ingroup logger
-     
-    Enable event trace logging. 
+
+    Enable event trace logging.
 */
 
 void enabletracingfunction();
 
 /** \ingroup logger
-     
-    Disable event trace logging. 
+
+    Disable event trace logging.
 */
 
 
-void disabletracingfunction(); 
+void disabletracingfunction();
 
 
 
