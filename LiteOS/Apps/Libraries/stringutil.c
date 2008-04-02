@@ -2,7 +2,7 @@
 The following is the license of LiteOS.
 
 This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+Copyright Qing Cao, Hossein Ahmadi 2007-2008, University of Illinois , qcao2@uiuc.edu
 
 LiteOS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
