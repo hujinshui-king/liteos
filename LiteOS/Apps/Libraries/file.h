@@ -108,7 +108,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
   	\return MYFILE The pointer to the file to be opened
 */
 
-MYFILE *mfopen(char *pathname, char *mode);
+MYFILE *mfopen(char *pathname, const char *mode);
 
 /** \ingroup file 
 
