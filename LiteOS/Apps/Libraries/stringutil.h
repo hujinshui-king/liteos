@@ -58,6 +58,14 @@ void mystrcpy(char *dest, const char *src);
 void String_append(char *base, char *string);
 
 /** \ingroup string
+  
+    Split a zero-terminated string at the first occurance of delimiter. 
+	The first part is extracted from input string and returned as a zero-terminated string.
+*/
+
+char* string_split(char ** string, char delimiter);
+
+/** \ingroup string
 
      Convert an integer to a string
 */

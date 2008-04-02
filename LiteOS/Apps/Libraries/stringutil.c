@@ -121,11 +121,8 @@ char *String_intToString(int num)
 	return temp;
 }
 
-
-
 void String_append(char *base, char *string)
 {
-
 	int length1, length2;
 	uint8_t i;
 	length1 = String_length(base);
@@ -136,7 +133,21 @@ void String_append(char *base, char *string)
 
 	}
 	base[length1+length2] = '\0';
-
-
-
 }
+
+char* string_split(char ** string, char delimiter)
+{
+	uint16_t i;
+	char* output = (*string);
+
+	for (i = 0; output[i] != 0; i++) 
+		if (output[i] == delimiter) {
+			output[i] = 0;
+			(*string) = (*string) + i + 1;
+			return output;
+		}
+
+	(*string) = (*string) + i;
+	return output;
+}
+
