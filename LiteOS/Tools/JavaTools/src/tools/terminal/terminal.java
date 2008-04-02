@@ -2,7 +2,7 @@
 The following is the license of LiteOS.
 
 This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+Copyright Qing Cao, Hossein Ahmadi 2007-2008, University of Illinois , qcao2@uiuc.edu
 
 LiteOS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ import tools.tools.*;
 
 public class terminal {
 
-    private static BufferedReader stdin =
+    private static BufferedReader input_stream =
             new BufferedReader(new InputStreamReader(System.in));
 
     private static String commandName;
@@ -157,8 +157,10 @@ public class terminal {
             colorOutput.setColor(false);
             for (k=0;k<args.length;k++)
             {
-             if (args[k].startsWith("-color")==true)
+             if (args[k].startsWith("-color") == true)
                 colorOutput.setColor(true);
+             else if ((args[k].startsWith("-script") == true) && (k < args.length - 1))
+             	input_stream = new BufferedReader(new FileReader(args[++k]));
              else
                 packetsource = args[k];
             }
@@ -180,7 +182,7 @@ public class terminal {
 
             if (SkipReading == 0) {
                 printScore();
-                input = stdin.readLine();
+                input = input_stream.readLine();
                 devCommandRepeat = false;
 
             /*if ((choosehistorycommand == true))
@@ -889,7 +891,7 @@ public class terminal {
 
 
             //Key part: send out the command and wait for reply from the user
-            
+
             //Now get the command, send it, wait for the response
 
             if (countCommand == 1) {
@@ -919,7 +921,7 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
-                    int NORMALTIME = 100;
+                    int NORMALTIME = 40;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
                     serverpl.setPacketWaitBuffer(SHELLPORT, 40);
