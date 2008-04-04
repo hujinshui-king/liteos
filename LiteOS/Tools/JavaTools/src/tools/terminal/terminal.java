@@ -423,27 +423,8 @@ public class terminal {
                 serverpl.setPacketWaitTimeout(SHELLPORT, 500);
 
                 countCommand = cphandle.setNewCommand(options, optioncount, parameters, parametercount, fdir);
-                if (countCommand == -1)
 
-                {
-                    System.out.println("File does not exist.\n");
-                    nextCommand = true;
-                    SkipReading = 0;
-                    continue;
-
-                }
-
-                if (countCommand == -2)
-
-                {
-                    System.out.println("File target already exists.\n");
-                    nextCommand = true;
-                    SkipReading = 0;
-                    continue;
-
-                }
                 if (countCommand > 0) {
-
                     //pl.setWait()
 
                     for (int i = 0; i < countCommand; i++) {
@@ -451,6 +432,17 @@ public class terminal {
                         int templength = temp.length;
                         System.arraycopy(temp, 0, command[i], 0, templength);
                     }
+                } else {
+					if (countCommand == -1)
+                    	System.out.println("File does not exist.\n");
+                	else if (countCommand == -2)
+                    	System.out.println("File target already exists.\n");
+                    else if (countCommand == -3)
+                    	System.out.println("Root or network can not be copy destinations.\n");
+
+                    nextCommand = true;
+                    SkipReading = 0;
+                    continue;
                 }
 
               //System.out.println("Now the countcommand is "+countCommand);

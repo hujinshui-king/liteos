@@ -2,7 +2,7 @@
 The following is the license of LiteOS.
 
 This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+Copyright Qing Cao, Hossein Ahmadi 2007-2008, University of Illinois , qcao2@uiuc.edu
 
 LiteOS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -216,11 +216,15 @@ public class cpCommand implements cmdcontrol {
        if (file.exists() == false)
          return 0;
        else
-         return 1; 
+         return 1;
     }
     public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
 
         fileNode currentnode = fdir.getCurrentNode();
+
+        if ((currentnode.getType().compareTo("network") == 0) ||  (currentnode.getType().compareTo("root") == 0))
+        	return -3;
+
         int currentAddress = currentnode.getNodeAddress();
 
         //skipcontinue is set as 0 when the application starts
