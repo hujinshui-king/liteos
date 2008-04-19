@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+#For installing the binary into multiple nodes using multiple threads.
+#This file must be modified to suit the particular needs of the user. 
+
 import threading
 import os
 
