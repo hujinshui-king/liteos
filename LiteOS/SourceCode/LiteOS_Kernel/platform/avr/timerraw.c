@@ -140,6 +140,26 @@ result_t TimerM_StdControl_init(void)
 }
 
 
+inline uint8_t TimerM_Timer_stop(uint8_t id)
+{
+   if (id > NUM_TIMERS)
+      return FAIL; 
+   if (TimerM_mState & (0x1L << id)) { 
+     _atomic_t _atomic = _atomic_start();
+	 TimerM_mState &= ~(0x1L << id);
+	 _atomic_end(_atomic); 
+
+	 if (!TimerM_mState){
+	   TimerM_setIntervalFlag = 1; 
+	  }
+	  return SUCCESS;
+  }
+  return FAIL;      
+      
+
+}
+
+
 
 inline  
 result_t TimerM_Timer_start(uint8_t id, char type, 

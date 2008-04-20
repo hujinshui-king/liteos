@@ -143,5 +143,7 @@ inline uint8_t TimerM_Clock_getInterval(void);
 
 inline void TimerM_Clock_setInterval(uint8_t arg_0xa362928);
 
+inline uint8_t TimerM_Timer_stop(uint8_t id); 
+
 #endif
 
