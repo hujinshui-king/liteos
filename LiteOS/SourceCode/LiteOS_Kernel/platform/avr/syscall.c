@@ -38,8 +38,15 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../system/scheduling.h"
 #include "../../system/bytestorage.h"
 #include "../../system/nodeconfig.h"
+#include "../../system/generictimer.h"
+
+#include "./bootloader.h"
 
 uint16_t variable_debug;
+
+
+volatile uint16_t *syscallptr; 
+extern volatile uint16_t *old_stack_ptr; 
 
 
 /**\defgroup syscall System calls
@@ -55,7 +62,12 @@ This module defines system calls and is the interface between the OS and the use
 
 void thread_yield_logger()
 {
-   addTrace(TRACE_SYSCALL_YIELDFUNCTION);
+
+ uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_YIELDFUNCTION, currentindex);
    thread_yield();
 }
 
@@ -80,7 +92,11 @@ void yieldfunction() {
 
 void Leds_greenToggle_Logger()
 {
-  addTrace(TRACE_SYSCALL_GREENTOGGLEFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GREENTOGGLEFUNCTION, currentindex);
   Leds_greenToggle();
 }
 
@@ -104,7 +120,11 @@ void greentogglefunction() {
 
 void Leds_redToggle_Logger()
 {
-  addTrace(TRACE_SYSCALL_REDTOGGLEFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_REDTOGGLEFUNCTION, currentindex);
   Leds_redToggle();
 }
 
@@ -139,7 +159,11 @@ void getThreadAddress_avr()
 
 void getThreadAddress_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETCURRENTTHREADADDRESS); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTTHREADADDRESS, currentindex); 
   getThreadAddress_avr(); 
 }
 
@@ -171,7 +195,11 @@ void getRadioMutexAddress_avr()
 
 void getRadioMutexAddress_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETRADIOMUTEX); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETRADIOMUTEX, currentindex); 
    getRadioMutexAddress_avr();
 }
 
@@ -196,7 +224,11 @@ void getRadioMutex() {
 
 void SocketRadioSend_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETRADIOSENDFUNCTION); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETRADIOSENDFUNCTION, currentindex); 
    SocketRadioSend();  
 }
 
@@ -230,7 +262,11 @@ void mutexUnlockFunction()
 
 void mutexUnlockFunction_Logger()
 {
-  addTrace(TRACE_SYSCALL_MUTEXUNLOCKFUNCTION); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_MUTEXUNLOCKFUNCTION, currentindex); 
   mutexUnlockFunction(); 
 }
 
@@ -261,7 +297,11 @@ void getThreadIndexAddress_avr()
 
 void getThreadIndexAddress_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETCURRENTTHREADINDEX);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTTHREADINDEX, currentindex);
    getThreadIndexAddress_avr(); 
 }
 
@@ -294,7 +334,11 @@ void getFilePathAddress_avr()
 
 void getFilePathAddress_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETFILEPATHADDR); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETFILEPATHADDR, currentindex); 
   getFilePathAddress_avr(); 
 }
 
@@ -326,7 +370,11 @@ void getFileModeAddress_avr()
 
 void getFileModeAddress_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETFILEMODEADDR); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETFILEMODEADDR, currentindex); 
   getFileModeAddress_avr(); 
 }
 
@@ -362,7 +410,11 @@ void getFileMutexAddress_avr(){
 
 void getFileMutexAddress_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETFILEMUTEXADDR);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETFILEMUTEXADDR, currentindex);
   getFileMutexAddress_avr(); 
 }
 
@@ -388,7 +440,11 @@ void getFileMutexAddr() {
 
 void openFileTask_Logger()
 {
-  addTrace(TRACE_SYSCALL_OPENFILESYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_OPENFILESYSCALL, currentindex); 
   openFileTask();   
 }
 
@@ -413,7 +469,11 @@ void openFileSysCall() {
 
 void closeFileTask_Logger()
 {
-  addTrace(TRACE_SYSCALL_CLOSEFILESYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_CLOSEFILESYSCALL, currentindex); 
   closeFileTask(); 
 }
 
@@ -440,7 +500,11 @@ void closeFileSysCall() {
 
 void readFileTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_READFILESYSCALL);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_READFILESYSCALL, currentindex);
    readFileTask(); 
 }
 
@@ -465,7 +529,11 @@ void readFileSysCall() {
 
 void writeFileTask_Logger()
 {
-  addTrace(TRACE_SYSCALL_WRITEFILESYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_WRITEFILESYSCALL, currentindex); 
   writeFileTask(); 
 }
 
@@ -491,7 +559,11 @@ void writeFileSysCall() {
 
 void seekFileTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_SEEKFILESYSCALL); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SEEKFILESYSCALL, currentindex); 
    seekFileTask(); 
 }
 
@@ -519,7 +591,11 @@ void seekFileSysCall() {
 
 void ADCLight_Logger()
 {
-   addTrace(TRACE_SYSCALL_ADCLIGHTSYSCALL); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCLIGHTSYSCALL, currentindex); 
    ADCLight(); 
 }
 
@@ -544,7 +620,11 @@ void ADCLightSysCall() {
 
 void ADCTemp_Logger()
 {
-   addTrace(TRACE_SYSCALL_ADCTEMPSYSCALL); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCTEMPSYSCALL, currentindex); 
    ADCTemp(); 
 }
 
@@ -569,7 +649,11 @@ void ADCTempSysCall() {
 
 void ADCMagX_Logger()
 {
-  addTrace(TRACE_SYSCALL_ADCMAGXSYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCMAGXSYSCALL, currentindex); 
   ADCMagX(); 
 }
 
@@ -594,7 +678,11 @@ void ADCMagXSysCall() {
 
 void ADCMagY_Logger()
 {
-  addTrace(TRACE_SYSCALL_ADCMAGYSYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCMAGYSYSCALL, currentindex); 
   ADCMagY(); 
 }
 
@@ -618,7 +706,11 @@ void ADCMagYSysCall() {
 
 void ADCAccX_Logger()
 {
-  addTrace(TRACE_SYSCALL_ADCACCXSYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCACCXSYSCALL, currentindex); 
   ADCAccX(); 
 }
 
@@ -643,7 +735,11 @@ void ADCAccXSysCall() {
 
 void ADCAccY_Logger()
 {
-  addTrace(TRACE_SYSCALL_ADCACCYSYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_ADCACCYSYSCALL, currentindex); 
   ADCAccY(); 
 }
 
@@ -683,7 +779,11 @@ void postNewTask_avr() {
 
 void postNewTask_Logger(){
     
-  addTrace(TRACE_SYSCALL_POSTTASKSYSCALL); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_POSTTASKSYSCALL, currentindex); 
   postNewTask_avr();   
 }
 
@@ -717,7 +817,11 @@ void getRadioInfo_avr(){
 
 void getRadioInfo_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETCURRENTRADIOINFOADDRESS); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTRADIOINFOADDRESS, currentindex); 
    getRadioInfo_avr(); 
 }
 
@@ -747,7 +851,11 @@ void getHandleInfo_avr(){
 
 void getHandleInfo_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETCURRENTRADIOHANDLEADDRESS);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTRADIOHANDLEADDRESS, currentindex);
   getHandleInfo_avr(); 
 }
 
@@ -772,7 +880,11 @@ void getCurrentRadioHandleAddress() {
 
 void syscall_registerEvent_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETCURRENTRADIOHANDLE);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTRADIOHANDLE, currentindex);
   registerReceiverHandle_syscall(); 
 }
 
@@ -796,7 +908,11 @@ void setCurrentRadioHandle() {
 
 void postNewThreadTask_Logger()
 {
-  addTrace(TRACE_SYSCALL_POSTTHREADTASK);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_POSTTHREADTASK, currentindex);
   postNewThreadTask(); 
 }
 
@@ -835,7 +951,11 @@ void debugInfoVariable(){
 
 void debugInfoVariable_Logger()
 {
-  addTrace(TRACE_SYSCALL_DEBUGINFOTASK); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_DEBUGINFOTASK, currentindex); 
   debugInfoVariable(); 
 }
 
@@ -857,7 +977,11 @@ void debugInfoTask() {
 
 void Leds_yellowToggle_Logger()
 {
-  addTrace(TRACE_SYSCALL_YELLOWTOGGLEFUNCTION); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_YELLOWTOGGLEFUNCTION, currentindex); 
   Leds_yellowToggle(); 
 }
 
@@ -880,7 +1004,11 @@ void yellowtogglefunction() {
 
 void Leds_redOn_Logger()
 {
-   addTrace(TRACE_SYSCALL_REDONFUNCTION); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_REDONFUNCTION, currentindex); 
    Leds_redOn(); 
 }
 
@@ -905,7 +1033,11 @@ void redonfunction() {
 
 void Leds_redOff_Logger()
 {
-   addTrace(TRACE_SYSCALL_REDOFFFUNCTION); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_REDOFFFUNCTION, currentindex); 
    Leds_redOff(); 
 }
 
@@ -929,7 +1061,11 @@ void redofffunction() {
 
 void Leds_yellowOn_Logger()
 {
-  addTrace(TRACE_SYSCALL_YELLOWONFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_YELLOWONFUNCTION, currentindex);
   Leds_yellowOn(); 
 }
 
@@ -954,7 +1090,11 @@ void yellowonfunction() {
 
 void Leds_yellowOff_Logger()
 {
-  addTrace(TRACE_SYSCALL_YELLOWOFFFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_YELLOWOFFFUNCTION, currentindex);
   Leds_yellowOff(); 
 }
 
@@ -978,7 +1118,11 @@ void yellowofffunction() {
 
 void Leds_greenOn_Logger()
 {
-  addTrace(TRACE_SYSCALL_GREENONFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GREENONFUNCTION, currentindex);
   Leds_greenOn(); 
 }
 
@@ -1001,7 +1145,11 @@ void greenonfunction() {
 
 void Leds_greenOff_Logger()
 {
-  addTrace(TRACE_SYSCALL_GREENOFFFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GREENOFFFUNCTION, currentindex);
   Leds_greenOff(); 
 }
 
@@ -1026,7 +1174,11 @@ void greenofffunction() {
 
 void break_point_function_Logger()
 {
-  addTrace(TRACE_SYSCALL_BREAKFUNCTION);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_BREAKFUNCTION, currentindex);
   break_point_function(); 
 }
 
@@ -1056,7 +1208,11 @@ void getSerialMutexAddress_avr(){
 
 void getSerialMutexAddress_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETSERIALMUTEX);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETSERIALMUTEX, currentindex);
    getSerialMutexAddress_avr(); 
 }
 
@@ -1086,7 +1242,11 @@ void getSerialInfo_avr()
 
 void getSerialInfo_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETCURRENTSERIALINFOADDRESS);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTSERIALINFOADDRESS, currentindex);
   getSerialInfo_avr(); 
 }
 
@@ -1111,7 +1271,11 @@ void getCurrentSerialInfoAddress() {
 
 void SocketSerialSend_Logger()
 {
-    addTrace(TRACE_SYSCALL_GETSERIALSENDFUNCTION); 
+    uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETSERIALSENDFUNCTION, currentindex); 
 	SocketSerialSend(); 
 }
 
@@ -1142,7 +1306,11 @@ void getSerialHandleInfo_avr(){
 
 void getSerialHandleInfo_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETCURRENTSERIALHANDLEADDRESS);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTSERIALHANDLEADDRESS, currentindex);
   getSerialHandleInfo_avr();    
 }
 
@@ -1165,7 +1333,11 @@ void getCurrentSerialHandleAddress() {
 
 void syscall_registerEventSerial_Logger()
 {
-   addTrace(TRACE_SYSCALL_SETCURRENTSERIALHANDLEADDRESS);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SETCURRENTSERIALHANDLEADDRESS, currentindex);
    syscall_registerEventSerial(); 
 }
 
@@ -1196,7 +1368,11 @@ void getEEPROMHandleInfo() {
 }
 
 void getEEPROMHandleInfo_Logger(){
-	 addTrace(TRACE_SYSCALL_GETCURRENTEEPROMHANDLEADDRESS);
+	 uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETCURRENTEEPROMHANDLEADDRESS, currentindex);
 	 getEEPROMHandleInfo();
 }
 
@@ -1224,7 +1400,11 @@ void readEEPROMTask(){
 }
 
 void readEEPROMTask_Logger(){
-	 addTrace(TRACE_SYSCALL_READFROMEEPROM);
+	 uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_READFROMEEPROM, currentindex);
 	 readEEPROMTask();
 }
 
@@ -1253,7 +1433,11 @@ void writeEEPROMTask(){
 
 void writeEEPROMTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_WRITETOEEPROM);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_WRITETOEEPROM, currentindex);
    writeEEPROMTask(); 
 }
 
@@ -1281,7 +1465,11 @@ void getMalloc() {
 
 void getMalloc_Logger()
 {
-   addTrace(TRACE_SYSCALL_MALLOCFUNCTION);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_MALLOCFUNCTION, currentindex);
    getMalloc(); 
 }
 
@@ -1311,7 +1499,11 @@ void freeMemory(){}
 
 void freeMemory_Logger()
 {
-   addTrace(TRACE_SYSCALL_FREEFUNCTION);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_FREEFUNCTION, currentindex);
    freeMemory(); 
 }
 
@@ -1337,7 +1529,11 @@ void freeFunction() {
 
 void disableSocketRadioState_Logger()
 {
-   addTrace(TRACE_SYSCALL_DISABLERADIOSTATE);
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_DISABLERADIOSTATE, currentindex);
    restoreRadioState(); 
 }
 
@@ -1369,7 +1565,11 @@ void getRandomTask(){
 }
 void getRandomTask_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETRANDOMNUMBER);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETRANDOMNUMBER, currentindex);
   getRandomTask(); 
 }
 
@@ -1396,7 +1596,11 @@ void getRandomNumberSyscall() {
 
 void setRadioFrequencyTask_Logger()
 { 
-  addTrace(TRACE_SYSCALL_SETRADIOFREQUENCY);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SETRADIOFREQUENCY, currentindex);
  
   #ifdef RADIO_CC2420
   setRadioFrequencyTask(); 
@@ -1428,7 +1632,11 @@ void setRadioFrequency() {
 
 void setRadioChannelTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_SETRADIOCHANNEL); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SETRADIOCHANNEL, currentindex); 
    #ifdef RADIO_CC2420
    setRadioChannelTask(); 
    #endif
@@ -1457,7 +1665,11 @@ void setRadioChannel() {
 
 void setRadioPowerTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_SETRADIOPOWER); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SETRADIOPOWER, currentindex); 
    #ifdef RADIO_CC2420
    setRadioPowerTask();
    #endif 
@@ -1495,7 +1707,11 @@ void getNodeIdTask(){
 }
 void getNodeIdTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_GETNODEID); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETNODEID, currentindex); 
    getNodeIdTask(); 
 }
 
@@ -1529,7 +1745,11 @@ void setNodeIdTask(){
 
 void setNodeIdTask_Logger()
 {
-   addTrace(TRACE_SYSCALL_SETNODEID); 
+   uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_SETNODEID, currentindex); 
    setNodeIdTask(); 
 }
 
@@ -1559,7 +1779,11 @@ void getThreadControlBlock_avr()
 
 void getThreadControlBlockAddress_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK, currentindex); 
   getThreadControlBlock_avr(); 
 }
 
@@ -1593,7 +1817,11 @@ void getThreadControlMutex_avr()
 
 void getThreadControlBlockMutex_Logger()
 {
-  addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK); 
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_GETTHREADCONTROLBLOCK, currentindex); 
   getThreadControlMutex_avr(); 
 }
 
@@ -1622,7 +1850,11 @@ void getThreadControlBlockMutex() {
 
 void createThreadSyscallTask_Logger()
 { 
-  addTrace(TRACE_SYSCALL_CREATETHREAD);
+  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+ addTrace(TRACE_SYSCALL_CREATETHREAD, currentindex);
   createThreadTask(); 
 }
 
@@ -1646,6 +1878,313 @@ void createThreadSyscall() {
 
 
 
+void getInternalTracingBlockAddress()
+{
+   void *addr; 
+   addr = getTracingBlockAddress();
+   asm volatile( "mov r20, %A0""\n\t""mov r21, %B0""\n\t": : "r"( addr) );
+
+}
+
+/**\ingroup syscall 
+*/
+void getInternalTracingBlockAddressSyscall()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void getInternalTracingBlockAddressSyscall() {
+
+ 		getInternalTracingBlockAddress(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+
+
+
+/**\ingroup syscall 
+*/
+void enableTracingSyscall()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void enableTracingSyscall() {
+
+ 		enabletracingfunction(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+
+
+
+/**\ingroup syscall 
+*/
+void disableTracingSyscall()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void disableTracingSyscall() {
+
+ 		disabletracingfunction(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+
+
+
+/**\ingroup syscall 
+     Posttask here for backward compatibility
+     Bug to be fixed here. 
+*/
+void postTaskSysCallWithoutAnyLogging()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void postTaskSysCallWithoutAnyLogging() {
+ 
+    postNewTask_avr(); 
+
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+
+
+/**\ingroup syscall 
+     Trigger the thread scheduling task. 
+*/
+void postThreadTaskNoLogging()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void postThreadTaskNoLogging() {
+  
+
+     postNewThreadTask(); 
+
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+/**\ingroup syscall 
+*
+*/
+
+void jumpToTracePointSyscall()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void jumpToTracePointSyscall() {
+
+ 	  apptracepointfunction(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+
+void insertTracePoint()
+{
+
+  uint16_t pagenum; 
+  uint16_t pageoffset;  
+  
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( pagenum ):  );
+  asm volatile( "mov %A0, r22""\n\t""mov %B0, r23""\n\t": "=r"( pageoffset ):  );  
+  
+  boot_insertTracePoint( pagenum, (uint8_t)pageoffset); 
+  
+
+}
+
+
+
+
+/**\ingroup syscall 
+*
+*/
+
+void insertTracePointToUser()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void insertTracePointToUser() {
+
+ 	insertTracePoint(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+
+
+void insertTracePointLong()
+{
+
+  uint16_t pagenum; 
+  uint16_t pageoffset;  
+  
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( pagenum ):  );
+  asm volatile( "mov %A0, r22""\n\t""mov %B0, r23""\n\t": "=r"( pageoffset ):  );  
+  
+  boot_insertTracePointLong( pagenum, (uint8_t)pageoffset); 
+  
+
+}
+
+
+
+
+/**\ingroup syscall 
+*
+*/
+
+void insertTracePointToUserLong()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void insertTracePointToUserLong() {
+
+ 	insertTracePointLong(); 
+    asm volatile( "nop":: );
+    asm volatile( "ret":: );
+}
+
+
+void terminateThreadFunctionAvr() {
+
+  void (*fp)(void);
+  uint8_t currentthreadindex; 
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( fp):  );
+  currentthreadindex = getThreadIndexAddress();
+  setThreadTerminateFunction(currentthreadindex, fp); 
+  
+
+}
+
+
+
+/**\ingroup syscall 
+    This system call allows the user thread to define a clean-up function that releases the resources currently allocated by the user thread function
+*/
+
+void terminateThreadFunction()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void terminateThreadFunction() {
+ 
+   terminateThreadFunctionAvr(); 
+
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+
+
+void setupTimerTask() {
+
+  void (*fp)(void);
+  uint8_t currentthreadindex; 
+  uint16_t period;
+  uint16_t type;
+ 
+  asm volatile( "mov %A0, r18""\n\t""mov %B0, r19""\n\t": "=r"( period):  );
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( type):  );
+  asm volatile( "mov %A0, r22""\n\t""mov %B0, r23""\n\t": "=r"( fp):  );
+
+  currentthreadindex = getThreadIndexAddress();
+  setTimerCallBackFunction(currentthreadindex, period, type, fp);
+  
+   
+  
+
+}
+
+
+
+/**\ingroup syscall 
+    This system call allows the user thread to define a clean-up function that releases the resources currently allocated by the user thread function
+*/
+
+void setTimerFunction()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void setTimerFunction() {
+ 
+   setupTimerTask(); 
+
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+
+void getStackPtrTask(){ 
+
+void **returnthreadaddr; 
+  returnthreadaddr = getKernelStackAddress(); 
+  asm volatile( "mov r20, %A0""\n\t""mov r21, %B0""\n\t": : "r"( returnthreadaddr ) );
+
+}
+
+//Get the address of the kernel stack 
+
+void getStackPtr()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void getStackPtr()
+{
+  getStackPtrTask();
+  asm volatile( "nop":: );
+   asm volatile( "ret":: );
+
+}
+
+
+
+
+
+
+//Get the address of the kernel stack 
+void removeTracePointTask(){
+
+  uint16_t pagenum; 
+  uint16_t pageoffset; 
+  uint8_t *buffer;  
+  
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( pagenum ):  );
+  asm volatile( "mov %A0, r22""\n\t""mov %B0, r23""\n\t": "=r"( pageoffset ):  );  
+  asm volatile( "mov %A0, r18""\n\t""mov %B0, r19""\n\t": "=r"( buffer ):  ); 
+ 
+
+ SWAP_STACK_PTR(syscallptr, old_stack_ptr);  
+
+  boot_removeTracePoint( pagenum, (uint8_t)pageoffset, buffer); 
+
+ SWAP_STACK_PTR( old_stack_ptr , syscallptr);  
+
+}
+
+
+
+void removeTracePoint()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void removeTracePoint()
+{
+   removeTracePointTask();
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+//Get the address of the kernel stack 
+
+
+void removeTracePointLongTask()
+{
+  uint16_t pagenum; 
+  uint16_t pageoffset; 
+  uint8_t *buffer;  
+  
+  asm volatile( "mov %A0, r20""\n\t""mov %B0, r21""\n\t": "=r"( pagenum ):  );
+  asm volatile( "mov %A0, r22""\n\t""mov %B0, r23""\n\t": "=r"( pageoffset ):  );  
+  asm volatile( "mov %A0, r18""\n\t""mov %B0, r19""\n\t": "=r"( buffer ):  ); 
+
+
+ SWAP_STACK_PTR(syscallptr, old_stack_ptr);  
+
+   boot_removeTracePointLong( pagenum, (uint8_t)pageoffset, buffer); 
+
+ SWAP_STACK_PTR( old_stack_ptr , syscallptr);  
+
+
+ }
+
+
+
+void removeTracePointLong()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void removeTracePointLong()
+{
+   removeTracePointLongTask();
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
 
 
 
