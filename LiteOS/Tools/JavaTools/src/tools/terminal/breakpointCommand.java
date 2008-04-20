@@ -121,7 +121,7 @@ public class breakpointCommand  {
            {
                     int i;
                for (i=0;i<6;i++)
-                internalinstructions[i] = response[6+i];
+                internalinstructions[i] = response[6+i+5];
            }
 
           public byte[] getinstructions()

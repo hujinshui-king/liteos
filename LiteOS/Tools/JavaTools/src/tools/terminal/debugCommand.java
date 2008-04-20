@@ -97,11 +97,11 @@ public class debugCommand implements cmdcontrol {
      if ((a.exists() == false )||(b.exists()==false))
      {
            a = new File(destDir+"\\bin\\extract.pl");
-           b = new File(destDir+"\\bin\\App.elf");
+           b = new File(destDir+"\\bin\\LiteOS.elf");
            if ((a.exists() == false )||(b.exists()==false))
            {
-          colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Directory error. File does not exist. ");
-          return 0;
+           colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Directory error. File does not exist. ");
+           return 0;
            }
          else
            kerneldebug = 1;

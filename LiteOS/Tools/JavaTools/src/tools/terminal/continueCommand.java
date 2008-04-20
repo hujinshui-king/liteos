@@ -36,13 +36,14 @@ public class continueCommand  {
 
     private byte[] reply = new byte[64];
 
-    private byte[] getInstructionsFromFile(File lssfile, String instructionnum) throws Exception{
+    private String getInstructionsFromFile(File lssfile, String instructionnum) throws Exception{
 
         String pathname = lssfile.getAbsolutePath();
 
         //Now read the file content into a string
         FileInputStream fis = new FileInputStream(pathname);
         int x= fis.available();
+
         byte b[]= new byte[x];
         fis.read(b);
         String content = new String(b);
@@ -52,8 +53,8 @@ public class continueCommand  {
         int offset =   Integer.parseInt(instructionnum, 16) - startbinaryposition;
         //16 is the first byte menaingful
         offset = offset*2 + 16;
-        String bytescontent = content.substring(offset, offset+6);
-        return bytescontent.getBytes();
+        String bytescontent = content.substring(offset, offset+12);
+        return bytescontent;
 
     }
 
@@ -64,9 +65,11 @@ public class continueCommand  {
         int numOfBreaks = breakpointhandle.getNumOfBreakpoint();
         int i;
         int temp = 0;
-        byte[] patchinstructions = new byte[6];
+        String patchinstructions = null;
         boolean patchinitilized = false;
         int patchedthroughfile = 0;
+
+        byte[] patchinstructionsbinary = new byte[6];
 
         String numparameter;
 
@@ -91,7 +94,7 @@ public class continueCommand  {
 
         if (i<numOfBreaks)
         {
-             System.arraycopy(breakpointhandle.getInstructions(i), 0, patchinstructions, 0, 6);
+             System.arraycopy(breakpointhandle.getInstructions(i), 0, patchinstructionsbinary, 0, 6);
              patchinitilized = true;
         }
 
@@ -122,8 +125,12 @@ public class continueCommand  {
             }
            }
 
+        //patchinstructions get the results in the explict form. For example, for the
+        //code, then it is like E4E0FAEE0995
+        //IT should be e4 as one byte, and so on
+
         try {
-        System.arraycopy(getInstructionsFromFile(lssfile, numparameter), 0, patchinstructions, 0, 6);
+       patchinstructions = getInstructionsFromFile(lssfile, numparameter);
         patchinitilized = true;
         patchedthroughfile = 1;
         }
@@ -131,10 +138,34 @@ public class continueCommand  {
         {
             patchinitilized = false;
         }
+
+
+        int j;
+        for (j=0;j<6;j++)
+        {
+         String temp3 = null;
+         try {
+
+          temp3 = patchinstructions.substring(j*2,j*2+2);
+         }
+         catch (java.lang.NullPointerException e)
+         {
+             System.out.println("Null pointer catched");
+             System.out.println(patchinstructions.toString());
+
+         }
+
+         patchinstructionsbinary[j] =  (byte) Integer.parseInt(temp3,16);
+        }
         }
         if (patchinitilized == false)
-          return 0;
+        {
+            //Should not reach here. 
+            System.out.println("Could not find the breakpoint information. Either the debugging environment is not set up " +
+                    "correctly or because the shell has been restarted, hence the debugging info lost. Please set up the debuging info with debug command.");
 
+            return 0;
+        }
         int addr = Integer.parseInt(numparameter, 16);
 
         addr = addr/2;
@@ -148,7 +179,7 @@ public class continueCommand  {
         reply[2] = (new Integer(currentAddress)).byteValue();
         reply[3] = (new Integer(addrhigh)).byteValue();
         reply[4] =  (new Integer(addrlow)).byteValue();
-        System.arraycopy(patchinstructions, 0, reply, 5, 6);
+        System.arraycopy(patchinstructionsbinary, 0, reply, 5, 6);
 
         if (patchedthroughfile == 0)
           breakpointhandle.removeBreakPointAddr(addr*2);
