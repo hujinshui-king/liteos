@@ -48,6 +48,30 @@ thread **getCurrentThread()
 }
 
 
+void **getKernelStackPtr()
+	{
+   void **ptr;
+   void (*getaddrfp)(void) = (void (*)(void))GET_KERNEL_STACK_PTR_ADDRESS; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+                ::);
+   getaddrfp();     
+   asm volatile(" mov %A0, r20" "\n\t"
+	             "mov %B0, r21" "\n\t"
+				 :"=r" (ptr)
+				 :
+                );
+    asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+   return ptr; 
+}
+
+
+
+
+
+
 
 uint8_t getCurrentThreadIndex()
 {
@@ -122,6 +146,12 @@ void yield()
 void syscall_postThreadTask()
 {
  void (*postthreadfp)(void) = (void (*)(void))POST_NEW_THREAD_TASK; 
+ postthreadfp();                              
+}
+
+void syscall_postThreadTask_nologging()
+{
+ void (*postthreadfp)(void) = (void (*)(void))POST_NEW_THREAD_TASK_NOLOG; 
  postthreadfp();                              
 }
 
@@ -216,6 +246,43 @@ void postTask(void (*tp) (void), uint16_t priority)
 
 
 
+void postTaskWithoutLogging(void (*tp) (void), uint16_t priority)
+{
+   void (*fp)(void) = (void (*)(void))POST_TASK_SYSCALL; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+				"push r22" "\n\t"
+				"push r23" "\n\t"
+                ::);
+   
+   asm volatile(" mov r20, %A0" "\n\t"
+	             "mov r21, %B0" "\n\t"
+				 :
+				 :"r" (tp)
+                );
+
+
+   asm volatile(" mov r22, %A0" "\n\t"
+	             "mov r23, %B0" "\n\t"
+				 :
+				 :"r" (priority)
+                );
+
+  fp(); 
+
+  asm volatile("pop r23" "\n\t"
+	           "pop r22" "\n\t"
+	              ::);
+
+  asm volatile("pop r21" "\n\t"
+	           "pop r20" "\n\t"
+	              ::);
+  return; 
+
+
+}
+
+
 thread_create_block_type *getCurrentThreadControlBlockAddr()
 {
    thread_create_block_type *blockinfo; 
@@ -287,6 +354,90 @@ void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t 
    Mutex_unlock(createthreadmutex); 
 
    return; 
+}
+
+
+
+
+void setThreadTerminateHandler(void (*tp) (void))
+{
+   void (*fp)(void) = (void (*)(void))SYSCALL_USER_THREAD_TERMINATE_TASK; 
+   asm volatile("push r20" "\n\t"
+                "push r21" "\n\t"
+				        ::);
+   
+   asm volatile(" mov r20, %A0" "\n\t"
+	             "mov r21, %B0" "\n\t"
+				 :
+				 :"r" (tp)
+                );
+
+
+  fp(); 
+
+  asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	             ::);
+
+  return; 
+
+
+}
+
+
+void setTimerFunction(uint16_t period, uint8_t type, void (*callback)(void))
+{
+	
+	 void (*fp)(void) = (void (*)(void))SYSCALL_TIMER_FIRE_TASK; 
+ 	 uint16_t type16; 
+
+   type16 = type; 
+   
+   asm volatile("push r18" "\n\t"
+                "push r19" "\n\t"
+								"push r20" "\n\t"
+								"push r21" "\n\t"
+								"push r22" "\n\t"
+								"push r23" "\n\t"								
+                ::);
+   
+   asm volatile(" mov r18, %A0" "\n\t"
+	               "mov r19, %B0" "\n\t"
+				 :
+				 :"r" (period)
+                );
+
+
+
+   asm volatile(" mov r20, %A0" "\n\t"
+	               "mov r21, %B0" "\n\t"
+				 :
+				 :"r" (type16)
+                );
+
+
+   asm volatile(" mov r22, %A0" "\n\t"
+	              " mov r23, %B0" "\n\t"
+				 :
+				 :"r" (callback)
+                );
+
+  fp(); 
+
+  asm volatile("pop r23" "\n\t"
+	             "pop r22" "\n\t"
+	              ::);
+
+  asm volatile("pop r21" "\n\t"
+	             "pop r20" "\n\t"
+	              ::);
+	              	
+	asm volatile("pop r19" "\n\t"
+	             "pop r18" "\n\t"
+	              ::);
+  return; 
+	
+	
 }
 
 
