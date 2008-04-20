@@ -164,6 +164,38 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #define GET_THREAD_CONTROL_MUTEX 								0xEAD8
 
 #define CREATE_THERAD_SYSCALL   								0xEADC
+
+//No logging for the remaining
+	
+#define GET_LOGGER_BLOCK_ADDRESS  							0xEAE0
+
+#define ENABLE_TRACING_SYSCALL									0xEAE4
+
+#define DISABLE_TRACING_SYSCALL									0xEAE8
+
+#define POST_TASK_WITHOUT_LOGGING								0xEAEC
+
+#define POST_NEW_THREAD_TASK_NOLOG							0xEAF0
+
+//This is for the purpose of jumping to the user trace handler 
+//The prelimnary trace hanlder is included in the current version for use
+
+#define SYSCALL_TRACE_POINT_USER								0xEAF4
+
+#define SYSCALL_USER_ADD_TRACE_POINT						0xEAF8
+
+#define SYSCALL_USER_ADD_TRACE_POINT_LONG				0xEAFC
+
+#define SYSCALL_USER_THREAD_TERMINATE_TASK			0xEB00
+
+#define SYSCALL_TIMER_FIRE_TASK	 								0xEB04
+
+#define GET_KERNEL_STACK_PTR_ADDRESS						0xEB08
+
+
+#define SYSCALL_USER_REMOVE_TRACE_POINT         0xEB0C
+
+#define SYSCALL_USER_REMOVE_TRACE_POINT_LONG    0xEB10
 	
 
 typedef struct mutex{
