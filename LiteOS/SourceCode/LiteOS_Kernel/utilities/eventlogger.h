@@ -233,68 +233,18 @@
 
 #endif
 
-/**\defgroup logger Event Logger*/
-
-/** \ingroup logger
-
-    Init the trace buffer.
-*/
 
 void initTrace();
 
-/** \ingroup logger
+void addTrace(uint8_t traceid, uint8_t threadid);
 
-    Add a trace to the buffer.
-*/
-
-void addTrace(uint8_t traceid);
-
-/** \ingroup logger
-
-    Dump the content of the trace buffer into the trace file.
-*/
-
-
-void dumpTrace();
-
-/** \ingroup logger
-
-     Clean the trace file.
-*/
-
-
-void cleanTrace();
-
-/** \ingroup logger
-
-     Close the trace file.
-*/
-
-void closeTraceFile();
-
-
-/** \ingroup logger
-
-     Open the trace file.
-*/
-
-
-void openTraceFile();
-
-/** \ingroup logger
-
-    Enable event trace logging.
-*/
+void *getTracingBlockAddress();
 
 void enabletracingfunction();
 
-/** \ingroup logger
-
-    Disable event trace logging.
-*/
-
-
 void disabletracingfunction();
+
+void apptracepointfunction()__attribute__((naked));
 
 
 

@@ -2,38 +2,43 @@
 #include "../filesys/fsapi.h"
 #include "../io/avr_serial/serialprint.h"
 
-#define EVENTTRACESIZE 128
 
-uint8_t trace[EVENTTRACESIZE];
 
-uint16_t currentindex;
 
-MYFILE *logptr;
 
-uint8_t enabletracing;
+
+typedef struct tracingblock {
+	
+ uint8_t internaleventid; 
+ uint8_t threadid; 
+ void (*externaladdtracefp)(); 
+ void (*externalapptracefp)();
+ 
+ }  tracingblock;
+ 
+ 
+uint8_t enabletracing; 
+
+tracingblock internaltracingblock;  
 
 
 void enabletracingfunction() {
-   enabletracing = 1;
+   enabletracing = 1; 
 }
 
 void disabletracingfunction(){
-	 enabletracing = 0;
-
-}
-void initTrace()
-{
-  currentindex = 0;
-  enabletracing = 1;
-  logptr = NULL;
-
-
+	 enabletracing = 0; 
 }
 
+void initTrace(){
+	 internaltracingblock.externaladdtracefp = NULL; 
+	 internaltracingblock.externalapptracefp = NULL; 
+	 enabletracing = 0; 
+}
 
 #ifdef SERIAL_TRACE
 
-void addTrace(uint8_t traceid)
+void addTrace(uint8_t traceid, uint8_t threadid)
 {
 	usartPrint('K');
 	usartPrint(' ');
@@ -45,63 +50,38 @@ void addTrace(uint8_t traceid)
 
 #else
 
-void addTrace(uint8_t traceid)
+void addTrace(uint8_t traceid, uint8_t threadid)
 {
-
-	openTraceFile();
-
-  _atomic_t _atomic = _atomic_start();
-
-  if (enabletracing == 1)
-
-   trace[currentindex++] = traceid;
-
-  _atomic_end(_atomic);
-
- if (currentindex == EVENTTRACESIZE)
-
-  	{
-	     //Now write the trace into the file and clean it up
-		 fwrite2(logptr, trace, EVENTTRACESIZE);
-		 fseek2(logptr, EVENTTRACESIZE, 1);
-		 currentindex = 0;
-    }
-
+   internaltracingblock.internaleventid = traceid; 
+   internaltracingblock.threadid = threadid; 
+   
+   if ((internaltracingblock.externaladdtracefp !=NULL)&&(enabletracing == 1))
+   	internaltracingblock.externaladdtracefp(); 	
 }
 
-void dumpTrace()
+#endif 
+
+
+
+void apptracepointfunction() __attribute__(( naked ));
+void apptracepointfunction()
 {
-  if (currentindex >0)
-  {
-         fwrite2(logptr, trace, currentindex);
-	     fseek2 (logptr, currentindex, 1);
-  }
-  currentindex = 0;
+	
+	 asm volatile( "push r24":: );
+	 asm volatile( "push r25":: );
+	 asm volatile( "push r28":: );
+	 asm volatile( "push r29":: );
+  if ((internaltracingblock.externalapptracefp !=NULL)&&(enabletracing == 1))
+   	internaltracingblock.externalapptracefp(); 	
 }
 
 
 
-void closeTraceFile()
+
+
+void *getTracingBlockAddress()
 {
-   fclose2(logptr);
-   logptr = NULL;
+   return (void *)&internaltracingblock; 	
 }
 
 
-void openTraceFile()
-{
-   if (logptr == NULL)
-   logptr = fopen2("/logtrace", "w");
-}
-
-
-void cleanTrace()
-{
-
-  fclose2(logptr);
-  fdelete2("/logtrace");
-  logptr = fopen2("/logtrace", "w");
-
-}
-
-#endif
