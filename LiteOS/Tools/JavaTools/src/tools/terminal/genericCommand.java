@@ -95,6 +95,8 @@ public class genericCommand {
                       colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Directory error. Specified debugging files missing. ");
                       return false;
                      }
+                       else
+                      return true; 
                      }
                     else
                       return true;
