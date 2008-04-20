@@ -110,7 +110,21 @@ void boot_insertBreakPoint(uint16_t pagenum, uint8_t pageoffset, uint8_t *instru
 
 void boot_removeBreakPoint(uint16_t pagenum, uint8_t pageoffset, uint8_t *instructions) __attribute__((section (".bootloader")));
 
+
+
+void  boot_insertTracePoint( uint16_t pagenum, uint8_t pageoffset ) __attribute__(( section( ".bootloader" ))) ;
+ 
+
+void  boot_insertTracePointLong( uint16_t pagenum, uint8_t pageoffset)   __attribute__(( section( ".bootloader" )));
+
+
+void    boot_removeTracePoint( uint16_t pagenum, uint8_t pageoffset, uint8_t *buffer)  __attribute__(( section( ".bootloader" )))  ;
+
+void    boot_removeTracePointLong( uint16_t pagenum, uint8_t pageoffset, uint8_t *buffer)  __attribute__(( section( ".bootloader" ))) ; 
+	
+	
 /**@}*/
+
 
 #endif 
 
