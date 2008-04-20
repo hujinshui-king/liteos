@@ -91,4 +91,22 @@ void hibernateThread();
 void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t priority, char *threadname);
 
 
+
+void postTaskWithoutLogging(void (*tp) (void), uint16_t priority);
+
+
+
+void syscall_postThreadTask_nologging();
+
+
+
+void setThreadTerminateHandler(void (*tp) (void));
+
+
+void setTimerFunction(uint16_t period, uint8_t type, void (*callback)(void));
+
+
+
+void **getKernelStackPtr(); 
+
 #endif 
