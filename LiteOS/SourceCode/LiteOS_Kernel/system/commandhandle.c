@@ -26,6 +26,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../filesys/inode.h"
 #include "../system/threads.h"
 #include "../system/scheduling.h"
+#include "../system/generictimer.h"
 #include "../types/types.h"
 #include "../system/packethandler.h"
 #include "../system/socket.h"
@@ -50,6 +51,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  
 
 extern volatile uint16_t *old_stack_ptr;
+
+extern void (*timercallback[8])(); 
 
 
 uint8_t IncomingLength;
@@ -88,8 +91,8 @@ char filename[ 13 ];
 uint16_t nodeid; 
 
 
-static uint16_t kernelromsize = 39056;
-static uint16_t kernelramsize = 2385; 
+static uint16_t kernelromsize = 41131;
+static uint16_t kernelramsize = 2275; 
 
 //-------------------------------------------------------------------------
 
@@ -464,7 +467,9 @@ void reply_ls_long( uint8_t block ) {
    uint8_t childblock;
    uint8_t seq = 0;
    if ( openedfile != NULL ) {
-      fclose2( openedfile );
+      //fclose2( openedfile );
+       openedfile = NULL; 
+   
    } 
    for ( blockindex = 0; blockindex < 10; blockindex ++ ) {
       childblock = fsread8uint( block, DIR_ADDRSUBOFFSET + blockindex );
@@ -826,6 +831,21 @@ void reply_killthread( uint8_t *receivebuffer ) {
  	 deleteThreadRegistrationInReceiverHandles(start, end);
 	 releaseMutexLockUponThreadKill( index ); 
 	 
+   
+    if (thread_clear_func_table[index] != NULL)
+       { (*thread_clear_func_table[index])(); 
+	     thread_clear_func_table[index] = NULL; 
+
+
+       }
+
+   if (timercallback[index] != NULL)
+      {
+	    timercallback[index] = NULL; 
+		GenericTimerStop(	index + 12 ); 	  }   
+
+
+
    /*for ( i = 0; i < RECEIVE_HANDLE_NUM; i ++ )
    { if (( receivehandles[ i ].handlevalid == 1 ) && ( receivehandles[ i ].dataReady <= end ) && ( receivehandles[ i ].dataReady >= start )) {
       receivehandles[ i ].handlevalid = 0;
