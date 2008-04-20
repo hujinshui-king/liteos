@@ -33,13 +33,22 @@
 package tools.tools;
 
 import java.io.*;
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
 import tools.packet.*;
 import tools.util.*;
 import tools.message.*;
 
+
 public class Listen {
+          static long nowtime, previoustime;
+
     public static void main(String args[]) throws IOException {
-	if (args.length > 0) {
+
+
+    if (args.length > 0) {
 	    System.err.println("usage: java tools.tools.Listen");
 	    System.exit(2);
 	}
@@ -54,8 +63,20 @@ public class Listen {
 	  reader.open(PrintStreamMessenger.err);
 	  for (;;) {
 	    byte[] packet = reader.readPacket();
-	    Dump.printPacket(System.out, packet);
-	    System.out.println();
+
+       Calendar cal = Calendar.getInstance();
+
+       //SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+
+                  //System.out.println("Now:  "+ sdf.format(cal.getTime()) + " counter: "+String.valueOf(total) + " diff "+ String.valueOf(total-lastvalue));
+      Date now = new Date();
+     nowtime = now.getTime();
+     System.out.println("The time elpased is "+ (nowtime - previoustime) +  "\n");
+
+     previoustime = nowtime; 
+      Dump.printPacket(System.out, packet);
+
+        System.out.println();
 	    System.out.flush();
 	  }
 	}
