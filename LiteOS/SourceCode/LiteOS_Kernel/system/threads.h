@@ -31,6 +31,8 @@ extern volatile thread *current_thread;;
 
 extern thread thread_table[ LITE_MAX_THREADS ];
 
+extern void (*thread_clear_func_table[LITE_MAX_THREADS])(); 
+
 /**\defgroup thread Thread operations
      This module defines various thread operations, including add/remove/wakeup/sleep, etc 
 
@@ -114,6 +116,12 @@ void *getCreateThreadMutex();
 /**\ingroup thread */
 void createThreadTask();
 
+
+void setThreadTerminateFunction(uint8_t currentindex, void (*fp)()); 
+
+
+
+void ** getKernelStackAddress(); 
 
 
 #endif

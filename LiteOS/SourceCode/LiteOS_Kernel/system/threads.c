@@ -50,6 +50,9 @@ volatile uint16_t *maxthreadrambound;
 
 //Our thread table
 thread thread_table[ LITE_MAX_THREADS ];
+void (*thread_clear_func_table[LITE_MAX_THREADS])(); 
+
+
 volatile thread *current_thread;
 volatile uint16_t *old_stack_ptr;
 volatile uint16_t *stackinterrupt_ptr;
@@ -77,10 +80,15 @@ volatile mutex m_createthreadlock;
 //-------------------------------------------------------------------------
 void thread_init() {
 
+    uint8_t i; 
    _atomic_t currentatomic;
    currentatomic = _atomic_start();
    
    nmemset( thread_table, 0, sizeof( thread ) *LITE_MAX_THREADS );
+
+   for (i=0;i<LITE_MAX_THREADS;i++)
+    thread_clear_func_table[i] = NULL; 
+
    m_createthreadlock.lock = m_createthreadlock.lockingthreadid = m_createthreadlock.waiting = 0; 
    
    current_thread = 0;
@@ -266,6 +274,15 @@ int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uin
 
 
 
+/* Set up the destroy thread function call */
+
+void setThreadTerminateFunction(uint8_t currentindex, void (*fp)()) {
+  
+   
+   thread_clear_func_table[currentindex] = fp;     
+
+}
+
 
 /* destroy_user_thread
  * This routine is only called when a users thread returns.
@@ -285,6 +302,12 @@ void destroy_user_thread() {
    deleteThreadRegistrationInReceiverHandles(start, end); 
    indexofthread = getThreadIndexAddress();
    releaseMutexLockUponThreadKill(indexofthread); 
+
+   if (thread_clear_func_table[indexofthread] != NULL)
+        {
+		 (*thread_clear_func_table[indexofthread])(); 
+		 thread_clear_func_table[indexofthread] = NULL; 
+		}
    
     #ifdef TRACE_ENABLE
      #ifdef TRACE_ENABLE_THREADDESTROY
@@ -510,11 +533,19 @@ int check_for_memory_corrupt( int i )
 void thread_task() {
    int i;
    i = thread_get_next();
-   i = check_for_memory_corrupt( i );
+ 
    if ( i < 0 ) {
       //here is the exit 	
       return ;
    }
+
+   i = check_for_memory_corrupt( i );
+    if ( i < 0 ) {
+      //here is the exit 	
+      return ;
+   }
+
+
    current_thread = &( thread_table[ i ] );
    lite_switch_to_user_thread();
    current_thread = 0;
@@ -583,12 +614,23 @@ thread** getThreadAddress() {
 }
 
 
+void ** getKernelStackAddress() {
+   void **addr;
+   addr = (void **)&old_stack_ptr;
+   return addr; 
+
+
+}
+
 
 //void getThreadIndexAddress() __attribute__((naked));
 
 int getThreadIndexAddress() {
+
    int i;
    uint16_t index;
+   
+   asm volatile( "push r20""\n\t""push r21""\n\t": : );
    index = 0;
    for ( i = 0; i < LITE_MAX_THREADS; i ++ ) {
       if ( current_thread == & ( thread_table[ i ] )) {
@@ -597,6 +639,7 @@ int getThreadIndexAddress() {
       }
    }
    
+    asm volatile( "pop r21""\n\t""pop r20""\n\t": : );
    return index; 
    //asm volatile( "mov r20, %A0""\n\t""mov r21, %B0""\n\t": : "r"( index ) );
    //asm volatile("ret"::); 
