@@ -913,6 +913,8 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
+                    ///Tuning place
+                    //change this to 100 as an option to ensure correctness
                     int NORMALTIME = 40;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
@@ -1087,6 +1089,7 @@ public class terminal {
 
                     serverpl.setPacketWaitBuffer(SHELLPORT, 2);
                     //speed optimization for cp
+                   ///Tuning place change to 100 as an tuning
                     serverpl.setPacketWaitTimeout(SHELLPORT, 50);
                    // System.out.println("Now prepare to get incoming data");
                    // System.out.println("Reading port");
@@ -1111,6 +1114,7 @@ public class terminal {
 
                    serverpl.setPacketWaitBuffer(SHELLPORT, 1);
                    //speed optimization for cp
+                    ///Tuning place change to 100 as an tuning
                    serverpl.setPacketWaitTimeout(SHELLPORT, 50);
 
 
@@ -1119,11 +1123,17 @@ public class terminal {
 
                     while (cphandle.morepatchingdata()) {
                          colorOutput.println(colorOutput.COLOR_YELLOW,     "Now another patch request");
+                         byte [] tosend; 
                       //  pl.write(cphandle.getpatchcommand(fdir));
                       //  pl.read();
                      //   responsecount = pl.getCount();
                      //   response = pl.getData();
+                        tosend = cphandle.getpatchcommand(fdir);
 
+                        if (tosend.length <10 )
+                        {      colorOutput.println(colorOutput.COLOR_YELLOW,     "Patching error. Now try again. ");
+                             continue;
+                        }
                         serverpl.sendProtocolPacket(cphandle.getpatchcommand(fdir));
                         responseList = serverpl.readProtocolPacket(SHELLPORT);
 
