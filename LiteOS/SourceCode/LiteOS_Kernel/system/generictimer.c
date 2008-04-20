@@ -5,21 +5,35 @@
 
  #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
    #include "../platform/micaz/hplcc2420interruptm.h"
+   #include "../io/avr_serial/serialprint.h"
+
  #endif
  
  #ifdef PLATFORM_AVR
    #include "../platform/avr/timerraw.h"
    #include "../platform/micaz/leds.h"
  #endif
+
+
  
 //Implementing platform related modules 
+
+
+//This part assumes that LITE_MAX_THREAD is 8
+
+void (*timercallback[8])(); 
 
 inline  
 result_t GenericTimerInit(void)
 {
+	 uint8_t i; 
+	 for (i=0;i<8;i++)
+	  timercallback[i] = NULL; 
+	 
 	 #ifdef PLATFORM_AVR
 	  return TimerM_StdControl_init();
 	 #endif
+	 
 	
 }
 
@@ -31,6 +45,32 @@ result_t GenericTimerStart(uint8_t id, char type, uint32_t interval)
     return 	TimerM_Timer_start(id, type, interval); 
    #endif
 		
+}
+
+inline result_t GenericTimerStop(uint8_t id)
+{
+  #ifdef PLATFORM_AVR
+     return TimerM_Timer_stop( id ); 
+  #endif
+}
+
+
+void  setTimerCallBackFunction(uint8_t currentthreadindex, uint16_t period,  uint16_t type, void (*fp)())
+{
+    timercallback[currentthreadindex] = fp; 
+
+    GenericTimerStart(currentthreadindex + 12, type,  period);
+   
+
+}
+
+
+void timercallbackinvoke(uint8_t id)
+{
+   uint8_t index = id-12; 
+   if (timercallback[index] != NULL)
+     (*timercallback[index])(); 
+
 }
 
 
@@ -81,8 +121,7 @@ inline result_t GenericTimerFired(uint8_t id)
 	  break;
 
 	  case 9:
-	  Leds_redToggle();	
-	  ServiceTimerFired(9);
+	
 	  break;
     
    
@@ -97,8 +136,12 @@ inline result_t GenericTimerFired(uint8_t id)
    #endif 
    
    default:
+      timercallbackinvoke(id); 
       result = SUCCESS; 
      }
   return SUCCESS;	 
 }
+
+
+
 

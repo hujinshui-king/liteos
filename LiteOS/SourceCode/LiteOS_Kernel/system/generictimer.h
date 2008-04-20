@@ -43,5 +43,14 @@ result_t GenericTimerStart(uint8_t id, char type, uint32_t interval);
 inline result_t GenericTimerFired(uint8_t id);
 
 
+
+void  setTimerCallBackFunction(uint8_t currentthreadindex, uint16_t period,  uint16_t type, void (*fp)()); 
+
+
+
+
+inline result_t GenericTimerStop(uint8_t id);
+
+
 #endif 
 
