@@ -108,7 +108,7 @@ void seekFileSysCall()
 
 
 
-MYFILE *mfopen(char *pathname, const char *mode)
+MYFILE *mfopen(const char *pathname, const char *mode)
 {
    char *commonpathnameaddr;
 
