@@ -2,7 +2,7 @@
 The following is the license of LiteOS.
 
 This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+Copyright Qing Cao, Hossein Ahmadi 2007-2008, University of Illinois , qcao2@uiuc.edu
 
 LiteOS is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 
 #include "radio.h"
 
@@ -35,22 +34,13 @@ void sendRadioMsg()
  radiosendfp();
 }
 
-
-
 //This function sends out a string
 
 void radioSend_string(uint8_t *msg)
 {
-
     uint8_t temp = (uint8_t)String_length((char *)msg);
 	return radioSend(1, 0xffff, temp, msg);
-
-
 }
-
-
-
-
 
 void radioSend_uint16(uint16_t value)
 {
@@ -63,11 +53,7 @@ void radioSend_uint16(uint16_t value)
   buffer[2] = buffer[3] = 0xee;
 
   return radioSend(12, 0xffff, 16, buffer);
-
 }
-
-
-
 
 radiohandletype *getCurrentRadioHandleAddr()
 {
@@ -223,13 +209,10 @@ void radioSend(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg)
 
    disableRadioState();
 
-
    Mutex_unlock(msend);
 
    return;
 }
-
-
 
 //wakeup the current thread once an incoming packet arrives
 
@@ -237,111 +220,53 @@ void wakeupMe()
 {
   mythread->state = STATE_ACTIVE;
   syscall_postThreadTask();
-
-
 }
 
-
-
-
-
 int radioReceive(uint16_t port, uint8_t maxlength, uint8_t *msg)
-
 {
-
-
-   thread** current_thread;
-
-   _atomic_t currentatomic;
-
-
-   radiohandletype *radiohandleaddr;
-
-
-   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
-
-   current_thread = getCurrentThread();
-
-   radiohandleaddr = getCurrentRadioHandleAddr();
-
-   //set up the radiohandleaddr data structures
-
-   radiohandleaddr->port = port;
-   radiohandleaddr->maxLength = maxlength;
-   radiohandleaddr->dataReady = &radioReceiveDataReady;
-   radiohandleaddr->data = msg;
-   radiohandleaddr->packetinfo = radioReceivePacketInfo;
-   radiohandleaddr->handlefunc = wakeupMe;
-
-
-   //close the interrupt
-	currentatomic = _atomic_start();
-
-   //call the radio handle set to store the data structure into the handle vectors
-    getaddrfp();
-
-
-   //set up the current thread into sleep mode
-   (*current_thread)->state = STATE_SLEEP;
-
-   //set up mythread so that later can wake up this thread
-   mythread = *current_thread;
-
-
-   //open the interrupt
-   _atomic_end(currentatomic);
-
-    yield();
-
-
-   return radioReceiveDataReady;
-
+   return radioReceiveTimed(port, maxlength, msg, 0);
 }
 
 int radioReceiveTimed(uint16_t port, uint8_t maxlength, uint8_t *msg, uint16_t time)
 {
-   thread** current_thread;
-
    _atomic_t currentatomic;
-
-
-   radiohandletype *radiohandleaddr;
-	
-
-   void (*getaddrfp)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
-
-   current_thread = getCurrentThread();
-
-   radiohandleaddr = getCurrentRadioHandleAddr();
+   
+   void (*radioRegisterFP)(void) = (void (*)(void))REGISTER_RADIO_RECEIVE_EVENT;
+   thread** current_thread = getCurrentThread();
+   radiohandletype *radiohandleaddr = getCurrentRadioHandleAddr();
 
    //set up the radiohandleaddr data structures
 
    radiohandleaddr->port = port;
-   radiohandleaddr->maxLength = maxlength;
+   radiohandleaddr->maxLength = 32;
    radiohandleaddr->dataReady = &radioReceiveDataReady;
-   radiohandleaddr->data = msg;
+   radiohandleaddr->data = buffer;
    radiohandleaddr->packetinfo = radioReceivePacketInfo;
    radiohandleaddr->handlefunc = wakeupMe;
 
-
-   //close the interrupt
+	//close the interrupt
 	currentatomic = _atomic_start();
+	
+	//call the radio handle set to store the data structure into the handle vectors
+	radioRegisterFP();
 
-   //call the radio handle set to store the data structure into the handle vectors
-    getaddrfp();
-
-
-   //set up the current thread into sleep mode
+	//set up the current thread into sleep mode
    (*current_thread)->state = STATE_SLEEP;
 
-   //set up mythread so that later can wake up this thread
-   mythread = *current_thread;
+	//set up mythread so that later can wake up this thread
+	mythread = *current_thread;
 
+	//open the interrupt
+	_atomic_end(currentatomic);
 
-   //open the interrupt
-   _atomic_end(currentatomic);
+	if (time == 0)
+		yield();
+	else
+		sleepThread(time);
+	
+	uint8_t i;
+	for (i = 0; i < maxlength && i < 32; i++)
+		msg[i] = buffer[i];
 
-   sleepThread(time);
-
-   return radioReceiveDataReady;
+	return radioReceiveDataReady;
 }
