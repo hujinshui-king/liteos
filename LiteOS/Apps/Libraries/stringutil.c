@@ -143,11 +143,11 @@ char* string_split(char ** string, char delimiter)
 	for (i = 0; output[i] != 0; i++) 
 		if (output[i] == delimiter) {
 			output[i] = 0;
-			(*string) = (*string) + i + 1;
+			*string = output + i + 1;
 			return output;
 		}
 
-	(*string) = (*string) + i;
+	*string = output + i;
 	return output;
 }
 
