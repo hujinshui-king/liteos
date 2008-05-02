@@ -218,7 +218,7 @@ result_t AMStandard_SendMsg_send( uint16_t port, uint16_t addr, uint8_t length, 
  {
    #ifdef TRACE_ENABLE
       #ifdef TRACE_ENABLE_RADIOEVENT
-       addTrace(TRACE_RADIOEVENT_SENDPACKET);     
+       addTrace(TRACE_RADIOEVENT_SENDPACKET, 100);     
 	  #endif
    #endif
 
@@ -296,7 +296,7 @@ Radio_MsgPtr received( Radio_MsgPtr packet )
    
    #ifdef TRACE_ENABLE
       #ifdef TRACE_ENABLE_RADIOEVENT
-       addTrace(TRACE_RADIOEVENT_RECEIVEPACKET);     
+       addTrace(TRACE_RADIOEVENT_RECEIVEPACKET, 100);     
       #endif
    #endif
 
