@@ -423,8 +423,27 @@ public class terminal {
                 serverpl.setPacketWaitTimeout(SHELLPORT, 500);
 
                 countCommand = cphandle.setNewCommand(options, optioncount, parameters, parametercount, fdir);
+                if (countCommand == -1)
 
+                {
+                    System.out.println("File does not exist.\n");
+                    nextCommand = true;
+                    SkipReading = 0;
+                    continue;
+
+                }
+
+                if (countCommand == -2)
+
+                {
+                    System.out.println("File target already exists.\n");
+                    nextCommand = true;
+                    SkipReading = 0;
+                    continue;
+
+                }
                 if (countCommand > 0) {
+
                     //pl.setWait()
 
                     for (int i = 0; i < countCommand; i++) {
@@ -432,17 +451,6 @@ public class terminal {
                         int templength = temp.length;
                         System.arraycopy(temp, 0, command[i], 0, templength);
                     }
-                } else {
-					if (countCommand == -1)
-                    	System.out.println("File does not exist.\n");
-                	else if (countCommand == -2)
-                    	System.out.println("File target already exists.\n");
-                    else if (countCommand == -3)
-                    	System.out.println("Root or network can not be copy destinations.\n");
-
-                    nextCommand = true;
-                    SkipReading = 0;
-                    continue;
                 }
 
               //System.out.println("Now the countcommand is "+countCommand);
@@ -913,12 +921,10 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
-                    ///Tuning place
-                    //change this to 100 as an option to ensure correctness
-                    int NORMALTIME = 40;
+                    int NORMALTIME = 60;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
-                    serverpl.setPacketWaitBuffer(SHELLPORT, 40);
+                    serverpl.setPacketWaitBuffer(SHELLPORT, 60);
                     int PACKETBLOCK = 30;
                     int i;
 
@@ -948,7 +954,7 @@ public class terminal {
 
                             //sending done
                             //send finalize packet
-                             serverpl.setPacketWaitTimeout(SHELLPORT, 350);
+                             serverpl.setPacketWaitTimeout(SHELLPORT, 60);
                              serverpl.setPacketWaitBuffer(SHELLPORT,1);
                              serverpl.sendProtocolPacket(cphandle.getEndPacket());
 
@@ -1005,7 +1011,7 @@ public class terminal {
                         //System.out.println("Now trying to send sync");
                         colorOutput.println(colorOutput.COLOR_YELLOW ,"Now trying to send sync");
                        // pl.write(cphandle.getSync(nextIndex));
-                        serverpl.setPacketWaitTimeout(SHELLPORT, 350);
+                        serverpl.setPacketWaitTimeout(SHELLPORT, 50);
                         serverpl.setPacketWaitBuffer(SHELLPORT,1);
                         serverpl.sendProtocolPacket(cphandle.getSync(nextIndex));
 
