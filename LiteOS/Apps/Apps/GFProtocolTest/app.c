@@ -11,13 +11,15 @@
 uint8_t msg[20];
 uint8_t fromnode;
 uint8_t tonode; 
+volatile uint8_t counter; 
 
 int main()
 {
  uint16_t nodeid; 
- uint16_t counter; 
+ 
  uint8_t destx, desty; 
-
+ counter = 0; 
+ 
  fromnode = tonode = 100;
  
  
@@ -35,7 +37,9 @@ int main()
       {    
 
             destx = tonode%256;
+            
 			desty = tonode/256;
+			counter++; 
 			msg[0] = destx;
 			msg[1] = desty; 
 			msg[2] = fromnode; 
@@ -43,12 +47,15 @@ int main()
 			msg[4] = 80;
 			msg[5] = 0xff;
 			msg[6] = 0xff;
-			msg[7] = 'h';
-			msg[8] = 'e';
-			msg[9] = 'l';
+			msg[7] = counter; 
+		
+			msg[8] = 'h';
+			msg[9] = 'e';
 			msg[10] = 'l';
-			msg[11] = 'o';
-			msg[12] = 0;
+			msg[11] = 'l';
+			msg[12] = 'o';
+			msg[13] = 0;
+			
 	        radioSend(10, 0, 16, msg);
 			redToggle(); 
 			 
