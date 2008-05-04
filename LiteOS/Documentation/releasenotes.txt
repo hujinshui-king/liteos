@@ -3,6 +3,27 @@ by LiteOS developers
 www.liteos.net
 
 ***********************************************************
+May 3 2008 Version 0.3.3
+
+Software changes:
+	New features:
+				Added the compilation mode for iris (under development, support for iris nodes)
+			 	Added express mode for the installer
+			 	Added CPU counter for measuring the CPU idleness (requires recompilation of the kernel to use, by turning on #define PLATFORM_CPU_MEASURE 1 in makefile)
+	Improvements:
+				Better detection of memory conflicts during compilation
+				Several minor bug fixes throughout the system for optimization
+	Documentation changes:
+				Updated to 0.3.3
+			
+				
+
+***********************************************************
+March 12 Version 0.3.2
+
+Bug fix release
+
+***********************************************************
 Feb 28 2008 version 0.31
 
 Software changes£»
