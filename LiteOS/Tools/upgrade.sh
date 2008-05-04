@@ -3,8 +3,8 @@ echo "Configuring uisp..."
 
 cd ./uisp
 ./configure
-make
-make install
+./make
+./make install
 
 echo "Configuring build script for applications..."
 

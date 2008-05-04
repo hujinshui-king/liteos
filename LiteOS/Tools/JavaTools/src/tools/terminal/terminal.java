@@ -169,7 +169,7 @@ public class terminal {
         serverpl = new ServerPort(packetsource);
         String [] elements = null;
 
-        colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "LiteOS Version 0.31");
+        colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "LiteOS Version 0.3.3 build 05032008");
         init();
 
         while (nextCommand == true) {
