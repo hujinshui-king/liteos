@@ -79,8 +79,11 @@ volatile LITE_sched_entry_T LITE_queue[ LITE_MAX_TASKS ];
 
 
 volatile uint8_t LITE_sched_num;
-
-
+ 
+ 
+#ifdef PLATFORM_CPU_MEASURE
+uint32_t cpucounter;
+#endif  
 
 void initScheduling( void ) {
    int i;
@@ -88,6 +91,11 @@ void initScheduling( void ) {
    for ( i = 0; i < LITE_MAX_TASKS; i ++ ) {
       LITE_queue[ i ].tp = ( void* )0;
    } 
+   
+   #ifdef PLATFORM_CPU_MEASURE
+ 	 cpucounter = 0; 
+	 #endif  
+
 }
 
 //-------------------------------------------------------------------------
@@ -134,7 +142,13 @@ bool runNextTask() {
     {
       _atomic_end( fInterruptFlags );
       _enable_interrupt(); 
-      nodeSleep(); 
+       
+       #ifdef PLATFORM_CPU_MEASURE
+ 	     cpucounter ++;
+ 	     #else
+	      nodeSleep(); 
+	     #endif
+	     
       return FALSE;
    }
    for ( tmp = 0; tmp < LITE_MAX_TASKS; tmp ++ ) {

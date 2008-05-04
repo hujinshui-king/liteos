@@ -241,7 +241,10 @@ int main() {
   
    
    create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell", 0, 0 );
- //  GenericTimerStart(9, TIMER_REPEAT, 100);
+   
+    #ifdef PLATFORM_CPU_MEASURE
+   GenericTimerStart(9, TIMER_REPEAT, 100);
+    #endif
       
    _avr_enable_interrupt();
 

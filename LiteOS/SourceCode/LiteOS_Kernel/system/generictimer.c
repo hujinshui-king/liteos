@@ -121,7 +121,16 @@ inline result_t GenericTimerFired(uint8_t id)
 	  break;
 
 	  case 9:
-	
+	 
+	   #ifdef PLATFORM_CPU_MEASURE
+	  {
+	     _atomic_t currentatomic;
+	     currentatomic = _atomic_start();
+       usartPutLong(cpucounter); 
+		  _atomic_end(currentatomic); 
+		}
+     #endif
+     
 	  break;
     
    

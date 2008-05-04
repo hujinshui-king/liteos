@@ -53,7 +53,6 @@ void initUSART() {
    UCSR0C |= _BV( UCSZ01 ) | _BV( UCSZ00 ); // 8 data-bits, 1 stop-bit
    UCSR0B |= _BV( RXCIE0 ) | _BV( RXEN0 ) | _BV( TXEN0); // Enable recieve/transmit/interrupts
    cFlag = 1;
-   //	  currentindex = 0; 
    previous = 0;
    status = 0;
 }
@@ -64,16 +63,16 @@ void usartPrint( uint8_t c )
    if ( cFlag == 0 ) {
       initUSART();
    } 
-   // Loop until UDR register is empty
+  
    while (( UCSR0A& ( 1 << UDRE0 )) == 0 )
       ;
-   // Transmit letter a
+  
    UDR0 = c;
 }
 
 //-------------------------------------------------------------------------
 void printString( char *p ) {
-   //usartPrint(0);
+   
    while (( *p ) != '\0' ) {
       usartPrint( *p );
       p ++;
@@ -88,7 +87,9 @@ void printStringN( char *p, uint8_t n ) {
       p ++;
    }
 }
-//This function prints the value of uint8_t using '0','1',...'f'
+
+
+
 void usartPutChipHex( uint8_t cChip ) {
    if ( cChip > 9 ) {
       usartPrint( 'a' + cChip - 10 );
@@ -96,12 +97,16 @@ void usartPutChipHex( uint8_t cChip ) {
       usartPrint( '0' + cChip );
    }
 }
-//this function outputs the value of c
+
+
+
 void usartPutHex( uint8_t c ) {
    usartPutChipHex( c >> 4 );
    usartPutChipHex( c& 0xf );
 }
-//this function outputs the value of l . note avr is small-endian so the result is from the right-hand start 
+
+
+
 void usartPutLong( uint32_t l ) {
    uint8_t *pcByte = (( uint8_t* )( &l )) + 3;
    usartPrint( '0' );

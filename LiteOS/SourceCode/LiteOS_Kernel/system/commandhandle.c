@@ -91,8 +91,8 @@ char filename[ 13 ];
 uint16_t nodeid; 
 
 
-static uint16_t kernelromsize = 41131;
-static uint16_t kernelramsize = 2275; 
+static uint16_t kernelromsize = 44307;
+static uint16_t kernelramsize = 2200; 
 
 //-------------------------------------------------------------------------
 
