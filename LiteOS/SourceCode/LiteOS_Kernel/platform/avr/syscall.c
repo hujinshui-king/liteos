@@ -39,7 +39,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../system/bytestorage.h"
 #include "../../system/nodeconfig.h"
 #include "../../system/generictimer.h"
-
+#include "../micaz/sounder.h"
 #include "./bootloader.h"
 
 uint16_t variable_debug;
@@ -2185,6 +2185,72 @@ void removeTracePointLong()
    asm volatile( "nop":: );
    asm volatile( "ret":: );
 }
+
+
+
+
+/* added by Qi Mi (qm8e@virginia.edu) */
+
+void sounderOn_Logger()
+{
+	  uint8_t currentindex; 
+   _atomic_t _atomic = _atomic_start();
+   currentindex = getThreadIndexAddress();
+    _atomic_end(_atomic); 
+ 
+   addTrace(TRACE_SYSCALL_SOUNDERONFUNCTION, currentindex); 
+   micaz_sounderOn(); 
+}
+
+
+/**\ingroup syscall 
+     Turn the sounder on. 
+*/
+void sounderonfunction()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void sounderonfunction() {
+  #ifdef TRACE_ENABLE_SYSCALLEVENT
+   #ifdef TRACE_ENABLE_SYSCALL_SOUNDERONFUNCTION
+     sounderOn_Logger(); //defined in avr\syscall.c
+   #endif
+   #else
+   //micaz_sounder();
+   micaz_sounderOn(); //defined in micaz\sounder.c
+   #endif
+   
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
+
+void sounderOff_Logger()
+{
+	
+	  uint8_t currentindex; 
+ _atomic_t _atomic = _atomic_start();
+ currentindex = getThreadIndexAddress();
+ _atomic_end(_atomic); 
+   addTrace(TRACE_SYSCALL_SOUNDEROFFFUNCTION, currentindex); 
+   micaz_sounderOff(); 
+}
+
+
+/**\ingroup syscall 
+      Turn the sounder off. 
+*/
+void sounderofffunction()__attribute__(( section( ".systemcall" )))__attribute__(( naked ));
+void sounderofffunction() {
+   #ifdef TRACE_ENABLE_SYSCALLEVENT
+   #ifdef TRACE_ENABLE_SYSCALL_SOUNDEROFFFUNCTION
+     sounderOff_Logger(); //defined in avr\syscall.c
+   #endif
+   #else
+   micaz_sounder();
+   micaz_sounderOff(); //defined in micaz\sounder.c
+   #endif
+   asm volatile( "nop":: );
+   asm volatile( "ret":: );
+}
+
 
 
 
