@@ -192,10 +192,13 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #define GET_KERNEL_STACK_PTR_ADDRESS						0xEB08
 
-
 #define SYSCALL_USER_REMOVE_TRACE_POINT         0xEB0C
 
 #define SYSCALL_USER_REMOVE_TRACE_POINT_LONG    0xEB10
+	
+#define SOUNDER_ON_FUNCTION									0xEB14
+
+#define SOUNDER_OFF_FUNCTION									0xEB18
 	
 
 typedef struct mutex{
