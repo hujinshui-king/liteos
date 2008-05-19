@@ -123,6 +123,18 @@ inline
 result_t HPLClock_Clock_setRate(char interval, char scale);
 
 
+void HPLClock_Timer3_Start();
+
+
+void HPLClock_Timer3_Stop();
+
+
+uint16_t HPLClock_readTimeCounterHigh();
+
+
+uint32_t HPLClock_readTimeCounterLow();
+
+
 /*@}*/
 
 #endif
