@@ -88,7 +88,7 @@ void hibernateThread();
  
    Create a new thread 
 */
-void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t priority, char *threadname);
+void createThread(void (*fp)(), uint8_t* ram_start, uint8_t *stack_ptr, uint8_t priority, const char *threadname);
 
 
 

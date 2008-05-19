@@ -347,7 +347,7 @@ typedef struct thread_create_block
   uint8_t* ram_start;
   uint8_t *stack_ptr;
   uint8_t priority;
-  char *threadname; 
+  const char *threadname; 
 } thread_create_block_type;
 
 
