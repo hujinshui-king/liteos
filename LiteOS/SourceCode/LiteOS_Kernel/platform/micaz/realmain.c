@@ -44,6 +44,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../types/string.h"
 #include "../../system/generictimer.h"
 #include "../../utilities/eventlogger.h"
+#include "../../system/globaltiming.h"
 
 
 //MicaZ specific inclusions
@@ -220,6 +221,8 @@ int main() {
    initRadioHandle();
 
    InitShell();
+   
+   GenericTimingStart(); 
 
    initTrace(); 
 
