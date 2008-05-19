@@ -85,10 +85,125 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "timerraw.h"
 #include "../../system/threads.h"
+#include "../../system/stdserial.h"
+#include "../../system/globaltiming.h"
 
 extern volatile uint16_t * old_stack_ptr ;
 
 extern volatile uint16_t *stackinterrupt_ptr; 
+
+
+
+
+//Added to support 16-bit timing 
+
+
+volatile uint16_t highcounter; 
+volatile uint16_t lowcounter; 
+
+
+
+void HPLClock_Timer3_Start()
+{
+	//Prescaler 0
+  //TCCR1B |= (1 << 0); // Timer1 (Clock)
+  //Set up the tccr to be driven by the clock with cycle wise driven 
+  sbi(TCCR3B, CS30);
+
+  //Configure Timer1 to be CTC mode 
+  sbi(TCCR3B, WGM32); 
+
+  //Enable interrupt 
+  sbi(ETIMSK, OCIE3A); 
+
+
+  //Once the 50000 compared, then itnerrupt 
+  //So one interrupt every 50000 cpu cycles 
+  OCR3A = 50000; 
+
+  
+  //Counters 
+  lowcounter = highcounter = 0; 
+
+  //Zero timer
+  TCNT3=0;
+
+}
+
+void HPLClock_Timer3_Stop()
+{
+	//stop the timer 
+	cbi(TCCR3B, CS30);
+}
+
+
+
+uint16_t HPLClock_readTimeCounterHigh()
+{
+	return highcounter; 
+	
+}
+
+
+
+
+inline uint32_t HPLClock_readTimeCounterLow()
+{
+   uint16_t temp;
+   uint16_t m; 
+
+   uint32_t retval; 
+   uint16_t tempcounter; 
+
+   unsigned char sreg; 
+
+   sreg = SREG;
+
+  //Disable interrupt
+   asm volatile( "cli" ); 
+
+   temp = TCNT3; 
+
+ 
+   
+   //check against the problem when the read of TCNT is not atomic 
+    m = temp&0xff; 
+
+   if ((m == 0xfe)||(m==0xff))
+   {
+    
+	temp = temp-0x100; 
+    
+   }
+
+
+
+
+   //Solve the problem that the counter might should have increased 
+
+   if (temp <=1)
+      tempcounter = lowcounter+1; 
+   else
+      tempcounter = lowcounter; 
+
+   //get the return value 
+   retval = (((uint32_t)tempcounter) *50000) + (uint32_t)temp; 
+
+
+   //restore sreg
+    SREG = sreg; 
+
+    //return 
+	return retval; 
+
+
+}
+
+
+
+
+
+
 
 inline   
 uint8_t HPLClock_Clock_readCounter(void)
@@ -164,7 +279,7 @@ _INTERRUPT(SIG_OUTPUT_COMPARE0)
   _atomic_t _atomic;
   uint8_t isthreadtrue; 
   
-   
+   //SHOWME(timer 0 start\n);
   isthreadtrue = 0;
   
    _atomic = _atomic_start();
@@ -201,6 +316,8 @@ _INTERRUPT(SIG_OUTPUT_COMPARE0)
   //thread_yield();
  }
  _atomic_end(_atomic); 
+ 
+  //SHOWME(timer 0 end\n);
 
 }
 
@@ -209,5 +326,26 @@ _INTERRUPT(SIG_OUTPUT_COMPARE0)
 //void __attribute((interrupt))   __vector_15(void)
 
 
+
+
+
+ISR(TIMER3_COMPA_vect){
+
+  
+    
+   _atomic_t _atomic;
+ 
+   _atomic = _atomic_start_avr();
+   lowcounter++; 
+   if (lowcounter == 50000)
+   {
+   highcounter++;
+   lowcounter = 0; 
+   }
+
+   _atomic_end_avr(_atomic); 
+
+
+}
 
 
