@@ -129,6 +129,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../system/amradio.h"
 #include "../../types/byteorder.h"
 #include "../../system/threads.h"
+#include "../../system/stdserial.h"
+#include "../../system/globaltiming.h"
+
 
 
 extern volatile uint16_t *old_stack_ptr;
@@ -162,15 +165,46 @@ uint8_t hplcc2420interruptm_CCALastState;
 //void  __vector_7(void) __attribute__((signal, used,   externally_visible)); 
 //void __attribute((signal, used, externally_visible)) __vector_7(void)
 
+
+/*
+extern volatile uint32_t interruptcost; 
+
+volatile uint32_t alcounter;
+volatile uint16_t ahcounter; 
+volatile uint32_t alcounter2; 
+volatile uint16_t ahcounter2; 
+
+*/
+
+
 SIGNAL( INT6_vect )
  {
    
    result_t val = SUCCESS;
    uint8_t isthreadtrue;
 
-
    _atomic_t _atomic ; 
+ 
+ 
+   /*
+   __asm__ __volatile__ ("sei" ::);
+   	
+   	
+   	 timing code currently commented out 
+   	
+   {
+     _atomic_t _atomic;
+     _atomic = _atomic_start();
+	   alcounter = getCurrentResolution();
+	   ahcounter = getCurrentCounterHigh();
+  	 _atomic_end(_atomic); 
+   }
 
+
+  */
+
+   
+   
    isthreadtrue = 0; 
     
     _atomic = _atomic_start();
@@ -202,8 +236,30 @@ SIGNAL( INT6_vect )
    }
     _atomic_end( _atomic );
 
-	
-
+   
+   
+   /*
+   timing code currently commented out 
+   
+   {
+     _atomic_t _atomic;
+     _atomic = _atomic_start();
+	   alcounter2 = getCurrentResolution();
+	   ahcounter2 = getCurrentCounterHigh();
+	   
+	   if (ahcounter2 == ahcounter)
+	   	 interruptcost +=alcounter2 - alcounter; 
+	   else
+	   	 interruptcost += ((uint32_t)(ahcounter2-ahcounter))*50000*50000 + alcounter2 - alcounter; 
+  	
+  	_atomic_end(_atomic); 
+    }
+   
+   
+   
+    __asm__ __volatile__ ("cli" ::);
+    
+    */
 }
 
 
