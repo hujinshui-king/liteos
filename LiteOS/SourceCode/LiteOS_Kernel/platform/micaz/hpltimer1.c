@@ -98,6 +98,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "hpltimer1.h"
 #include "../../types/types.h"
 #include "../../system/threads.h"
+#include "../../system/stdserial.h"
+#include "../../system/globaltiming.h"
 
 
 extern volatile uint16_t *stackinterrupt_ptr; 
@@ -108,8 +110,16 @@ extern volatile uint16_t *old_stack_ptr;
 //only the capture interface is used and has a reverse link 
 //To do  is to add the headers and ge tthe function calls outside 
 
+/*The timing measurement code now commented out 
 
+used for global timing 
 
+volatile uint32_t lcounter, lcounter2;
+volatile uint16_t hcounter, hcounter2; 
+
+extern volatile uint32_t interruptcost; 
+
+*/
 
 
 uint8_t HPLTimer1M_set_flag;
@@ -306,6 +316,19 @@ SIGNAL(TIMER1_CAPT_vect)
 
    _atomic_t _atomic;
    
+   /* 
+    __asm__ __volatile__ ("sei" ::);
+   	
+    {
+      _atomic_t _atomic;
+     _atomic = _atomic_start();
+	   lcounter = getCurrentResolution();
+	   hcounter = getCurrentCounterHigh();
+  	  _atomic_end(_atomic); 
+   }
+   
+   */
+   
    isthreadtrue = 0; 
    _atomic = _atomic_start();
 
@@ -329,7 +352,25 @@ SIGNAL(TIMER1_CAPT_vect)
    // thread_yield();   
    }
     _atomic_end( _atomic );
-  
+    
+    /* 	
+     {
+      _atomic_t _atomic;
+     _atomic = _atomic_start();
+	   lcounter2 = getCurrentResolution();
+	   hcounter2 = getCurrentCounterHigh();
+	   
+	   if (hcounter2 == hcounter)
+	   	 interruptcost += lcounter2 - lcounter; 
+	   else
+	   	 interruptcost += ((uint32_t)(hcounter2-hcounter))*50000*50000 + lcounter2 - lcounter; 
+  	
+  	_atomic_end(_atomic); 
+    }
+   
+  __asm__ __volatile__ ("cli" ::);     
+    
+  */
 }
 
 
@@ -376,7 +417,16 @@ ISR(TIMER1_COMPA_vect)
 
 
    _atomic_t _atomic;
+   
    uint8_t isthreadtrue; 
+
+   /*   
+    __asm__ __volatile__ ("sei" ::);
+   	
+   SHOWME(int12 start\n);
+  
+  */ 
+   
    isthreadtrue = 0; 
    _atomic = _atomic_start();
 
@@ -416,7 +466,13 @@ ISR(TIMER1_COMPA_vect)
   //  thread_yield();   
    }
     _atomic_end( _atomic );
+    
+    
+  /*      	
+   SHOWME(int12 end\n);
+   
+  __asm__ __volatile__ ("cli" ::);     
 
-
+  */
 }
 
