@@ -54,7 +54,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = filesocket.o fs_structure.o fsapi.o fsconfig.o fsstring.o inode.o stdfsa.o vectorflash.o vectornode.o serialprint.o cc2420controlm.o cc2420radiom.o avrhardware.o bootloader.o clockraw.o syscall.o timerraw.o adcdriver.o adcsocket.o atmelflash.o hplcc2420fifom.o hplcc2420interruptm.o hplcc2420m.o hpltimer1.o ioeeprom.o leds.o micazhardware.o realmain.o amradio.o bytestorage.o commandhandle.o generictimer.o nodeconfig.o packethandler.o pagestorage.o scheduling.o socket.o stdserial.o stdserialhandler.o threaddata.o threads.o byteorder.o string.o types.o eventlogger.o math.o sounder.o
+OBJECTS =  globaltiming.o  filesocket.o fs_structure.o fsapi.o fsconfig.o fsstring.o inode.o stdfsa.o vectorflash.o vectornode.o serialprint.o cc2420controlm.o cc2420radiom.o avrhardware.o bootloader.o clockraw.o syscall.o timerraw.o adcdriver.o adcsocket.o atmelflash.o hplcc2420fifom.o hplcc2420interruptm.o hplcc2420m.o hpltimer1.o ioeeprom.o leds.o micazhardware.o realmain.o amradio.o bytestorage.o commandhandle.o generictimer.o nodeconfig.o packethandler.o pagestorage.o scheduling.o socket.o stdserial.o stdserialhandler.o threaddata.o threads.o byteorder.o string.o types.o eventlogger.o math.o sounder.o
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -174,6 +174,9 @@ pagestorage.o: ../system/pagestorage.c
 scheduling.o: ../system/scheduling.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
+globaltiming.o: ../system/globaltiming.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+	
 socket.o: ../system/socket.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
