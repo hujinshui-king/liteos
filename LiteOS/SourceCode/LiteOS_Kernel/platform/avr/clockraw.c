@@ -279,7 +279,6 @@ _INTERRUPT(SIG_OUTPUT_COMPARE0)
   _atomic_t _atomic;
   uint8_t isthreadtrue; 
   
-   //SHOWME(timer 0 start\n);
   isthreadtrue = 0;
   
    _atomic = _atomic_start();
