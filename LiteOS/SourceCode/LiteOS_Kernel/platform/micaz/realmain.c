@@ -46,12 +46,12 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../utilities/eventlogger.h"
 #include "../../system/globaltiming.h"
 
-
 //MicaZ specific inclusions
 #include <stdlib.h>
 #include "../../system/packethandler.h"
 #include "../../io/cc2420/cc2420controlm.h"
 #include "leds.h"
+#include "./atmelflash.h"
 
 
 
@@ -101,8 +101,10 @@ int main() {
    //going to be system independent, and may connect to radio on platforms where 
    //serial port is not available 
    
-   printfstr( "System start!\n" );
-   
+  
+
+
+
    _avr_enable_interrupt(); 
    
    //for the following, read from else section, which defaults to the 0xff as the MicaZ is first initied by reprogramming
@@ -180,29 +182,30 @@ int main() {
       
       /* The following is for debugging the kernel , where no reprogramming overboard is used 
       */
-      #ifdef PLATFORM_AVR_IRIS
+      //#ifdef PLATFORM_AVR_IRIS
 	  
-	    Leds_redToggle();
+	
+      Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
       mystrncpy( networkid, "sn01\0", 5 );
       mystrncpy( filenameid, "nodeK\0", 6 );
-	    CURRENT_NODE_ID = 1;
+      CURRENT_NODE_ID = 1;
       nodeid = CURRENT_NODE_ID; 
-	    srand( nodeid );
-	    formatSystem();
+      srand( nodeid );
+      formatSystem();
       buildRootNode();
       buildDeviceDirectory();
-	    genericwriteBytes ( NETWORKNAMEOFFSET, 16, networkid );
+      genericwriteBytes ( NETWORKNAMEOFFSET, 16, networkid );
       genericwriteBytes ( NODEFILENAMEOFFSET,    16,  filenameid );
       node_writenodeid ( nodeid );
-	    node_setinitstatus(MICAZCONFIGMESSAGERECEIVED); 
-	    node_setradiochannel(20); 
-	    Leds_redToggle();
+      node_setinitstatus(MICAZCONFIGMESSAGERECEIVED); 
+      node_setradiochannel(19); 
+      Leds_redToggle();
       Leds_greenToggle();
       Leds_yellowToggle();
       
-      #endif
+      //#endif
   }
    
    
@@ -222,9 +225,17 @@ int main() {
 
    InitShell();
    
-   GenericTimingStart(); 
 
    initTrace(); 
+
+  //for global timing purpose use
+
+  // GenericTimingStart(); 
+   
+
+   
+  
+
 
   {
    uint8_t currentchannel;  
@@ -245,16 +256,29 @@ int main() {
    
    create_thread( ShellThread, ( uint16_t* )shellbuffer, STACK_TOP( shellbuffer ), 0, 15, "sysshell", 0, 0 );
    
-    #ifdef PLATFORM_CPU_MEASURE
-   GenericTimerStart(9, TIMER_REPEAT, 100);
-    #endif
+    //#ifdef PLATFORM_CPU_MEASURE
+   //GenericTimerStart(12, TIMER_REPEAT, 30000);
+
+   //GenericTimerStart(15, TIMER_REPEAT, 500);
+    //#endif
+    
+    
+    //sleeping configureation 
       
+  // sbi(MCUCR, SM0);
+
+  // sbi(MCUCR, SM1);
+  // cbi(MCUCR, SM2); 
+  // sbi(MCUCR, SE);
+
+
+  
    _avr_enable_interrupt();
+  
+  
 
    while ( 1 ) {
       runNextTask();
    }
    return 0;
 }
-////////////////
-
