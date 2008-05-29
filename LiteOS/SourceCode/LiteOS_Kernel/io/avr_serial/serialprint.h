@@ -76,6 +76,12 @@ void printString(char *p);
 void printStringN(char *p, uint8_t n); 
 
 
+void printInteger32(int32_t a);
+
+
+void printIntegerU32(uint32_t l);
+
+
 ///Print a char through the serial port 
 void usartPrint(uint8_t c);
 
@@ -83,6 +89,9 @@ void initUSART();
 
 
 void usartPutLong( uint32_t l );
+
+
+
 
 
 #ifdef PLATFORM_AVR_IRIS

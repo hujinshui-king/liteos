@@ -73,19 +73,27 @@ void usartPrint( uint8_t c )
 //-------------------------------------------------------------------------
 void printString( char *p ) {
    
+   usartPrint(0xFC); 
+   
    while (( *p ) != '\0' ) {
       usartPrint( *p );
       p ++;
    }
+   
+  usartPrint(0xFC); 
 }
 
 //-------------------------------------------------------------------------
 void printStringN( char *p, uint8_t n ) {
    uint8_t i;
+   
+   usartPrint(0xFC); 
    for ( i = 0; i < n; i ++ ) {
       usartPrint( *p );
       p ++;
    }
+   
+   usartPrint(0xFC); 
 }
 
 
@@ -100,11 +108,43 @@ void usartPutChipHex( uint8_t cChip ) {
 
 
 
+void usartPutLong2( uint32_t l ) {
+	  
+	 uint8_t *pcByte = (( uint8_t* )( &l )) + 3;
+	 usartPrint(*pcByte); 
+	 pcByte--;
+	 usartPrint(*pcByte); 
+	 pcByte--;
+	 usartPrint(*pcByte); 
+	 pcByte--;
+	 usartPrint(*pcByte); 
+}
+	
 void usartPutHex( uint8_t c ) {
    usartPutChipHex( c >> 4 );
    usartPutChipHex( c& 0xf );
 }
 
+void printInteger32(int32_t a)
+{
+  	 usartPrint(0xFD); 
+  	 usartPutLong2( *( uint32_t* )( &a ));
+  	 usartPrint(0xFD); 
+	
+}
+
+
+
+void printIntegerU32(uint32_t l)
+
+{
+    usartPrint(0xFE); 	
+    usartPutLong2(l); 
+    usartPrint(0xFE); 
+    
+	
+	
+}
 
 
 void usartPutLong( uint32_t l ) {
