@@ -352,10 +352,12 @@ inline result_t TimerM_Clock_fire(void)
   { _atomic_t _atomic = _atomic_start();
     {
 
-      if (TimerM_interval_outstanding == 0) {
-        postTask(TimerM_HandleFire,7);
+     if (TimerM_interval_outstanding ==0 ) 
+	   {
+        postTask(TimerM_HandleFire,12);
         }
       else {
+
         }
       ;
 
