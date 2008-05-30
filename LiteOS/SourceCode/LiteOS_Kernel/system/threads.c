@@ -25,9 +25,14 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "generictimer.h"
 #include "packethandler.h"
 #include "../utilities/eventlogger.h"
+#include "../system/stdserial.h"
 #include "../types/string.h"
 #include "nodeconfig.h"
+//#include "energycontrol.h"
+
 #include "socket.h"
+#include "../system/stdserial.h"
+#include "../system/globaltiming.h"
 
 
 #ifdef PLATFORM_AVR
@@ -44,6 +49,17 @@ extern volatile mutex *m_unlock;
 
 
 
+//for energy accounting 
+/*
+extern volatile uint16_t lastswitchtime_h; 
+extern volatile uint32_t lastswitchtime_l;
+extern volatile uint32_t interruptcost; 
+
+extern volatile uint8_t energyround; 
+
+volatile uint32_t cost1, cost2; 
+
+*/
 //stores the maximum thread bound updated when adding thread
 volatile uint16_t *maxthreadrambound; 
 
@@ -76,6 +92,18 @@ thread_create_block_type newthreadblock;
 
 volatile mutex m_createthreadlock; 
 
+/*
+uint32_t timediff;
+
+uint32_t switchFromThreadTime , switchToThreadTime; 
+
+uint16_t counterFrom, counterTo; 
+
+#define READTIMINGOFFSET 0
+
+uint8_t countindex; 
+
+*/
 
 //-------------------------------------------------------------------------
 void thread_init() {
@@ -234,6 +262,17 @@ int create_thread( void( *fcn )(), uint16_t *ram_start, uint16_t *stack_ptr, uin
    current_thread->romstart = romstart; 
    current_thread->romsize = romsize; 
    
+   /*
+   {
+   	uint8_t tempecb;
+   	ecb_block *tempptr; 
+   	
+   	tempecb =  get_ecb_block(); 
+   	tempptr =  get_ecb_address( tempecb ); 
+   	current_thread->ecbptr = tempptr;    	
+   }
+   	
+   	*/
    //COPY file name 
    {
       uint8_t templen;
@@ -335,6 +374,10 @@ void __attribute__(( noinline ))lite_switch_to_user_thread() /* __attribute__((n
 
   #ifdef PLATFORM_AVR   
    
+   
+
+     
+   
    PUSH_REG_STATUS();
    PUSH_GPR();
    SWAP_STACK_PTR( old_stack_ptr, current_thread->sp );
@@ -358,6 +401,21 @@ void __attribute__(( noinline ))thread_yield() /* __attribute__((noinline))*/ {
    SWAP_STACK_PTR( current_thread->sp, old_stack_ptr );
    POP_GPR();
    POP_REG_STATUS();
+
+//   switchFromThreadTime = getCurrentResolution();
+
+//   timediff = switchFromThreadTime - switchToThreadTime - READTIMINGOFFSET; 
+/*
+   
+   if (current_thread -> remainingenergy > timediff /1000000 * CYCLEENERGY)
+      current_thread  -> remainenergy -= timediff / 1000000 * CYCLEENERGY; 
+   else
+      {
+	  current_thread->remainenergy = 0; 
+	  current_thread->state = STATE_SUSPEND; 
+	  }
+
+*/
    #endif
    
    #ifdef TRACE_ENABLE
@@ -412,7 +470,7 @@ void threads_handle_service() /*__attribute__((noinline))*/ {
       return ;
    }
    
-   postTask( thread_task, 2 );
+      postTask( thread_task, 2 );
    _atomic_end( currentatomic );
 }
 
@@ -529,6 +587,7 @@ int check_for_memory_corrupt( int i )
    return i;
 }
 
+
 //-------------------------------------------------------------------------
 void thread_task() {
    int i;
@@ -548,11 +607,13 @@ void thread_task() {
 
    current_thread = &( thread_table[ i ] );
    lite_switch_to_user_thread();
-   current_thread = 0;
-   //postTask
-   threads_handle_service();
-   return ;
+
+     current_thread = 0;
+     //postTask
+     threads_handle_service();
+     return ;
 }
+
 
 
 
