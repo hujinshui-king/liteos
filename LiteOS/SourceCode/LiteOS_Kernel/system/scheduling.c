@@ -64,6 +64,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "scheduling.h"
 #include "nodeconfig.h"
+#include "stdserial.h"
+
 
 typedef struct {
    void( *tp )( void );
@@ -147,6 +149,8 @@ bool runNextTask() {
  	     cpucounter ++;
  	     #else
 	      nodeSleep(); 
+       //   printfstr("ABOUT TO SLEEP!!\n");
+          
 	     #endif
 	     
       return FALSE;
