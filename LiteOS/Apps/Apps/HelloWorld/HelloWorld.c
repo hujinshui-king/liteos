@@ -7,17 +7,23 @@
 
 
 
-
 int main()
 {
     int i;
 	//or (i=0;i<100;i++)
-	
+
+ /*	
+   sbi(MCUCR, SM0);
+   sbi(MCUCR, SM1);
+   cbi(MCUCR, SM2); 
+   sbi(MCUCR, SE);
+   
+ */ 
+      
 	while (1)
 	{
   radioSend_string("Hello, world!\n"); 
-	greenToggle();
-	sleepThread(100);
+  sleepThread(100);
 	}
 	return 0; 
 }
