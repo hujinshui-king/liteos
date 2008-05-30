@@ -158,7 +158,7 @@ void StandardSocketSend( uint16_t port, uint16_t address, uint8_t msglength, uin
    
    SocketRadioSend();
    
-   sleepThread( 20 );
+   sleepThread( 40 );
    
    restoreRadioState(); 
    
