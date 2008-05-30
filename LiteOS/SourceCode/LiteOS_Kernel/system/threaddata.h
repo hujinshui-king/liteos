@@ -29,6 +29,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #include "../types/types.h"
+//#include "./energycontrol.h"
 
 /**\ingroup thread*/
 
@@ -55,6 +56,7 @@ typedef struct thread{
   
   uint16_t romstart; 
   uint16_t romsize; 
+  
   
   volatile union{
     void (*tp) ();
@@ -100,6 +102,8 @@ typedef struct thread{
 
 	}filedata; 
 
+// 	ecb_block *ecbptr;  
+
 }thread;
 
 
@@ -122,7 +126,8 @@ enum {
   STATE_IO = 6,       //This thread is blocked until I/O Completion
   STATE_FILE = 7,
   STATE_BREAK = 8,
-  STATE_MEM_ERROR = 9
+  STATE_MEM_ERROR = 9,
+  //STATE_SUSPEND = 10
 };
 
 
