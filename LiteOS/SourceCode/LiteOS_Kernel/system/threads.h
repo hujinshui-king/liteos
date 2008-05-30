@@ -123,5 +123,4 @@ void setThreadTerminateFunction(uint8_t currentindex, void (*fp)());
 
 void ** getKernelStackAddress(); 
 
-
 #endif
