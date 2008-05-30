@@ -201,6 +201,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #define SOUNDER_OFF_FUNCTION									0xEB18
 	
 
+
+
 typedef struct mutex{
   volatile uint8_t lock;
   volatile uint8_t waiting;
@@ -248,6 +250,10 @@ typedef struct {
   void (*handlefunc) (void);
   
 }serialhandletype;
+
+
+
+
 
 
 
@@ -309,11 +315,9 @@ typedef struct thread{
 	  uint8_t *fileptr;
 	  int offset; 
 	  int position; 
-	}fileseekstate;
+	  }fileseekstate;
 
    }filedata; 
-
-
 }thread;
 
 
@@ -337,7 +341,8 @@ enum {
   STATE_SLEEP = 5,
   STATE_IO = 6,        //This thread is blocked until I/O Completion
   STATE_FILE = 7,
-  STATE_BREAK = 8
+  STATE_BREAK = 8,
+  STATE_MEM_ERROR = 9, 
 };
 
 
@@ -349,6 +354,7 @@ typedef struct thread_create_block
   uint8_t priority;
   const char *threadname; 
 } thread_create_block_type;
+
 
 
 
