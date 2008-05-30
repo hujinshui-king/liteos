@@ -1,6 +1,8 @@
 #include "threads.h"
 #include "generictimer.h"
-
+#include "globaltiming.h"
+#include "stdserial.h"
+#include "scheduling.h"
 
 
  #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
@@ -11,6 +13,7 @@
  
  #ifdef PLATFORM_AVR
    #include "../platform/avr/timerraw.h"
+   #include "../platform/avr/clockraw.h"
    #include "../platform/micaz/leds.h"
  #endif
 
@@ -59,7 +62,7 @@ void  setTimerCallBackFunction(uint8_t currentthreadindex, uint16_t period,  uin
 {
     timercallback[currentthreadindex] = fp; 
 
-    GenericTimerStart(currentthreadindex + 12, type,  period);
+    GenericTimerStart(currentthreadindex + 18, type,  period);
    
 
 }
@@ -67,7 +70,7 @@ void  setTimerCallBackFunction(uint8_t currentthreadindex, uint16_t period,  uin
 
 void timercallbackinvoke(uint8_t id)
 {
-   uint8_t index = id-12; 
+   uint8_t index = id-18; 
    if (timercallback[index] != NULL)
      (*timercallback[index])(); 
 
@@ -126,7 +129,7 @@ inline result_t GenericTimerFired(uint8_t id)
 	  {
 	     _atomic_t currentatomic;
 	     currentatomic = _atomic_start();
-       usartPutLong(cpucounter); 
+         usartPutLong(cpucounter); 
 		  _atomic_end(currentatomic); 
 		}
      #endif
@@ -142,7 +145,22 @@ inline result_t GenericTimerFired(uint8_t id)
     case 11:
       hplcc2420interruptm_CCATimer_fired();
 	  break;
-   #endif 
+   #endif
+   
+    
+	case 12:
+	   //Leds_redToggle();
+	   //postTask(rechargetask, 10); 
+	   
+	   //(Periodic\n);
+       
+
+	   break;  
+
+   case 15:
+       //showstatus();
+	   break; 
+
    
    default:
       timercallbackinvoke(id); 
@@ -150,7 +168,6 @@ inline result_t GenericTimerFired(uint8_t id)
      }
   return SUCCESS;	 
 }
-
 
 
 
