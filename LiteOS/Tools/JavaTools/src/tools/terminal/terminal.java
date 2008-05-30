@@ -921,7 +921,7 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
-                    int NORMALTIME = 60;
+                    int NORMALTIME = 100;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
                     serverpl.setPacketWaitBuffer(SHELLPORT, 60);
@@ -1011,7 +1011,7 @@ public class terminal {
                         //System.out.println("Now trying to send sync");
                         colorOutput.println(colorOutput.COLOR_YELLOW ,"Now trying to send sync");
                        // pl.write(cphandle.getSync(nextIndex));
-                        serverpl.setPacketWaitTimeout(SHELLPORT, 50);
+                        serverpl.setPacketWaitTimeout(SHELLPORT, 150);
                         serverpl.setPacketWaitBuffer(SHELLPORT,1);
                         serverpl.sendProtocolPacket(cphandle.getSync(nextIndex));
 
