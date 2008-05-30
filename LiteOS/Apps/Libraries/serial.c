@@ -17,7 +17,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+//#include <avr/io.h>
+//#include <avr/interrupt.h>
 #include "serial.h"
 #include "system.h"
 #include "liteoscommon.h"
@@ -38,6 +39,12 @@ void sendSerialMsg()
 
 
 
+
+
+
+
+
+
 //This function sends out a string
 
 void serialSend_string(uint8_t *msg)
@@ -47,6 +54,9 @@ void serialSend_string(uint8_t *msg)
 	return serialSend(temp, msg);
 
 }
+
+
+
 
 
 void serialSend_uint16(uint16_t value)
@@ -113,7 +123,6 @@ serialinfotype* getCurrentSerialInfo()
 
 
 
-
 void serialSend(uint8_t length, uint8_t *msg)
 {
 
@@ -136,7 +145,7 @@ void serialSend(uint8_t length, uint8_t *msg)
 
    sendSerialMsg();
 
-   sleepThread(30);
+   sleepThread(20);
 
 
    Mutex_unlock(mserialsend);
