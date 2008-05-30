@@ -26,3 +26,20 @@ void printfval(uint8_t val) {
 	#endif
 }
 
+
+
+void printfinteger32(int32_t val) {
+	#ifdef PLATFORM_AVR
+	 printInteger32(val);
+	#endif
+}
+
+
+
+void printfintegeru32(uint32_t val) {
+	#ifdef PLATFORM_AVR
+	 printIntegerU32(val);
+	#endif
+}
+
+
