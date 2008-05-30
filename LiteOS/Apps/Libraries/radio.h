@@ -131,4 +131,7 @@ void setRadioChannel(uint8_t channel);
 
 void setRadioPower(uint8_t power);
 
+
+//void radioSend_energywrapper(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg); 
+
 #endif
