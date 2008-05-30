@@ -40,6 +40,7 @@ void radioSend_string(uint8_t *msg)
 {
     uint8_t temp = (uint8_t)String_length((char *)msg);
 	return radioSend(1, 0xffff, temp, msg);
+	//return radioSend_energywrapper(1, 0xffff, temp, msg);
 }
 
 void radioSend_uint16(uint16_t value)
@@ -177,6 +178,8 @@ void disableRadioState()
 }
 
 
+
+
 void radioSend(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg)
 {
 
@@ -205,7 +208,7 @@ void radioSend(uint16_t port, uint16_t address, uint8_t length, uint8_t *msg)
 
    sendRadioMsg();
 
-   sleepThread(30);
+   sleepThread(20);
 
    disableRadioState();
 
