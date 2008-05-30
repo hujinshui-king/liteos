@@ -50,6 +50,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #endif
  
 
+//extern volatile uint8_t energyround; 
+
+
 extern volatile uint16_t *old_stack_ptr;
 
 extern void (*timercallback[8])(); 
@@ -839,6 +842,8 @@ void reply_killthread( uint8_t *receivebuffer ) {
 
        }
 
+    cbi(MCUCR, SE);
+
    if (timercallback[index] != NULL)
       {
 	    timercallback[index] = NULL; 
@@ -907,6 +912,7 @@ void reply_search( uint8_t *receivebuffer ) {
 //-------------------------------------------------------------------------
 void createNewThread() {
    create_thread( createtaskthread, createramstart, createstackpointer, createstaticdatasize, 1, (char *)createthreadname, createflashromstart, createflashromsize);
+   //energyround = 0; 
 }
 
 
@@ -1008,9 +1014,15 @@ void create_thread_task() {
       createstackpointer = ( uint16_t* )ramstackend;
       mystrncpy( (char *)createthreadname, filename, mystrlen( filename ) + 1 );
 
-      
+            
+/*
+      postTask( createNewThread, 10 );
 
-      postTask( createNewThread, 1 );
+	  filename[4] = filename[4]+1; 
+	  if (filename[4] < '3')
+	   postTask(create_thread_task, 9); 
+	   
+*/
    }
    // reply[0] = 4; 
    //	reply[1] = 231;
