@@ -204,6 +204,10 @@ void mfwrite(MYFILE *fp, void *buffer, int nBytes)
    current_thread = getCurrentThread();
    currentthreadindex = getCurrentThreadIndex();
    mfile = getFileMutexAddress();
+   
+  
+     
+	// (*current_thread)->ecbptr->remainenergy -= (uint16_t)FILE_WRITE * (uint16_t)nBytes;          
 
 
    Mutex_lock(mfile);
@@ -214,7 +218,10 @@ void mfwrite(MYFILE *fp, void *buffer, int nBytes)
    writeFileSysCall();
 
    Barrier_block(7, 4);
+   
    Mutex_unlock(mfile);
+   
+   //sleepThread(20);
 
    return;
 }
