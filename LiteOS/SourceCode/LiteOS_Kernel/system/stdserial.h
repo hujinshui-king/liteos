@@ -18,5 +18,13 @@ void printfstrlen(char *str, uint8_t len);
 */
 void printfval(uint8_t val); 
 
+
+void printfinteger32(int32_t val);
+
+
+
+void printfintegeru32(uint32_t val); 
+
+
 #endif 
 
