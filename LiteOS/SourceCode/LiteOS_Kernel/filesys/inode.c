@@ -255,15 +255,6 @@ void deleteNode(int addr)
                 }
             }
         }
-        /*   for (i=0;i<8;i++)
-           {
-           readpage = read8uint(addr, FILE_ADDRPAGEOFFSET+i);
-           if (readpage==0)
-           break;
-           else
-           releaseFlashPage(readpage);
-           }
-         */
         for (i = 0; i < 8; i++)
         {
             readpage = fsread8uint(addr, FILE_ADDRPAGEOFFSET + i);
@@ -279,7 +270,6 @@ void deleteNode(int addr)
         {
             uint8_t currentaddr;
 
-            //         uint8_t currentstep;
             currentaddr = addr;
             while (1)
             {
