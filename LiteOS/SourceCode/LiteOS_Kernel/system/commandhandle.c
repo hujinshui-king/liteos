@@ -69,8 +69,8 @@ unsigned char reply[32];
 uint8_t blockid;
 char filename[13];
 uint16_t nodeid;
-static uint16_t kernelromsize = 44307;
-static uint16_t kernelramsize = 2200;
+static uint16_t kernelromsize = 22516;
+static uint16_t kernelramsize = 2318;
 
 //-------------------------------------------------------------------------
 void reply_devicehandling(uint8_t * receivebuffer)
@@ -975,7 +975,9 @@ void create_thread_task()
     uint16_t entryaddr;
     uint16_t ramstackend;
     uint16_t ramstackstart;
-
+     
+     
+   // printString("task received \n"); 
     newblockid = existBlockAddr(filename, (int)blockid);
     if (newblockid == 0)
     {
@@ -1018,6 +1020,7 @@ void create_thread_task()
     if ((createflashromstart <= kernelromsize) || (ramstackstart <=
                                                    kernelramsize + 256))
     {
+    	  //printString("error checking 1\n"); 
         fclose2(fp);
         //reply[ 0 ] = 4;
         //reply[ 1 ] = 231;
@@ -1029,6 +1032,7 @@ void create_thread_task()
     if (memory_conflict_detect(createflashromstart, createflashromsize,
                                ramstackstart, ramstackend) == 1)
     {
+    	//  printString("error checking 2\n"); 
         fclose2(fp);
         //reply[ 0 ] = 4;
         //reply[ 1 ] = 231;
@@ -1063,8 +1067,9 @@ void create_thread_task()
         createramstart = (uint16_t *) ramstackstart;
         createstackpointer = (uint16_t *) ramstackend;
         mystrncpy((char *)createthreadname, filename, mystrlen(filename) + 1);
-        /*
+        
            postTask( createNewThread, 10 );
+     /*
            filename[4] = filename[4]+1; 
            if (filename[4] < '3')
            postTask(create_thread_task, 9); 
