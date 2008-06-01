@@ -1,25 +1,20 @@
-/* LiteOS Version 0.3 */
+/* The LiteOS Operating System Kernel */
 /*
-The following is the license of LiteOS.
-
-This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
-
-LiteOS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-LiteOS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
- /*									tab:4
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*                                                                      tab:4
  * "Copyright (c) 2000-2003 The Regents of the University  of California.  
  * All rights reserved.
  *
@@ -48,12 +43,12 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  * 94704.  Attention:  Intel License Inquiry.
  */
 /*
- * Authors:		Jason Hill, David Gay, Philip Levis, Nelson Lee
+ * Authors:             Jason Hill, David Gay, Philip Levis, Nelson Lee
  * Date last modified:  6/25/02
  *
  *
  */
- /*
+/*
  * Copyright (c) 2002-2003 Intel Corporation
  * All rights reserved.
  *
@@ -73,44 +68,31 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
- * @author Su Ping
- * @author (converted to nesC by Sam Madden)
- * @author David Gay
- * @author Intel Research Berkeley Lab
- * @author Phil Levis
- */ 
- 
-
+* @author Su Ping
+* @author (converted to nesC by Sam Madden)
+* @author David Gay
+* @author Intel Research Berkeley Lab
+* @author Phil Levis
+*/
 #ifndef HPLTIMERH
 #define HPLTIMERH
-
-
 #include "../../types/types.h"
 #include "../../system/amcommon.h"
-
 /* \ingroup clock */
 /* @{ */
-
-enum __nesc_unnamed4266 {
-  TCLK_CPU_OFF = 0, 
-  TCLK_CPU_DIV1 = 1, 
-  TCLK_CPU_DIV8 = 2, 
-  TCLK_CPU_DIV64 = 3, 
-  TCLK_CPU_DIV256 = 4, 
-  TCLK_CPU_DIV1024 = 5
+enum __nesc_unnamed4266
+{
+    TCLK_CPU_OFF = 0, TCLK_CPU_DIV1 = 1, TCLK_CPU_DIV8 = 2, TCLK_CPU_DIV64 = 3,
+    TCLK_CPU_DIV256 = 4, TCLK_CPU_DIV1024 = 5
 };
-enum __nesc_unnamed4267 {
-  TIMER1_DEFAULT_SCALE = TCLK_CPU_DIV64, 
-  TIMER1_DEFAULT_INTERVAL = 255
+enum __nesc_unnamed4267
+{
+    TIMER1_DEFAULT_SCALE = TCLK_CPU_DIV64, TIMER1_DEFAULT_INTERVAL = 255
 };
-
 
 /* @} */
-
-
 /* \addtogroup clock */
 /* @{ */
-
 inline result_t HPLTimer1M_StdControl_init(void);
 inline result_t HPLTimer1M_StdControl_start(void);
 inline result_t HPLTimer1M_StdControl_stop(void);
@@ -125,6 +107,5 @@ inline void HPLTimer1M_CaptureT1_captured(uint16_t arg_0xa4d7ac0);
 inline bool HPLTimer1M_CaptureT1_isOverflowPending(void);
 inline void HPLTimer1M_CaptureT1_setEdge(uint8_t LowToHigh);
 
-/*@}*/
-#endif 
-
+/*@} */
+#endif

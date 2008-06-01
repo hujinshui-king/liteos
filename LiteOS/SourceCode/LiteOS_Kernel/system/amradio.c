@@ -1,25 +1,20 @@
-/* LiteOS Version 0.3 */
+/* The LiteOS Operating System Kernel */
 /*
-The following is the license of LiteOS.
-
-This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
-
-LiteOS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-LiteOS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/*									tab:4
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*                                                                      tab:4
  * "Copyright (c) 2000-2003 The Regents of the University  of California.  
  * All rights reserved.
  *
@@ -49,24 +44,20 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 /*
  *
- * Authors:		Jason Hill, David Gay, Philip Levis
+ * Authors:             Jason Hill, David Gay, Philip Levis
  * Date last modified:  6/25/02
  *
  */
-
 //This is an AM messaging layer implementation that understands multiple
 // output devices.  All packets addressed to TOS_UART_ADDR are sent to the UART
 // instead of the radio.
 
-
 /**
- * @author Jason Hill
- * @author David Gay
- * @author Philip Levis
- */
- 
- 
- /*									tab:4
+* @author Jason Hill
+* @author David Gay
+* @author Philip Levis
+*/
+/*                                                                      tab:4
  *  IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.  By
  *  downloading, copying, installing or using the software you agree to
  *  this license.  If you do not agree to this license, do not download,
@@ -80,9 +71,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  *  modification, are permitted provided that the following conditions are
  *  met:
  * 
- *	Redistributions of source code must retain the above copyright
+ *      Redistributions of source code must retain the above copyright
  *  notice, this list of conditions and the following disclaimer.
- *	Redistributions in binary form must reproduce the above copyright
+ *      Redistributions in binary form must reproduce the above copyright
  *  notice, this list of conditions and the following disclaimer in the
  *  documentation and/or other materials provided with the distribution.
  *      Neither the name of the Intel Corporation nor the names of its
@@ -105,19 +96,17 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 /*
  *
- * Authors:		Joe Polastre
+ * Authors:             Joe Polastre
  * Date last modified:  $Revision: 1.6 $
  *
  * 
  */
+
 /**
- * @author Joe Polastre
- * @author Alan Broad
- */
-
-
+* @author Joe Polastre
+* @author Alan Broad
+*/
 //These included files are platform independent 
- 
 #include "nodeconfig.h"
 #include "scheduling.h"
 #include "amcommon.h"
@@ -127,14 +116,8 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../types/types.h"
 #include "packethandler.h"
 #include "../utilities/eventlogger.h"
-
-
-
-
-
 //These included files are platform dependent and only apply for cc2420 on MicaZ 
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
-
 #include "../io/cc2420/cc2420const.h"
 #include "../io/cc2420/cc2420controlm.h"
 #include "../io/cc2420/cc2420radiom.h"
@@ -142,208 +125,214 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "../platform/micaz/hplcc2420interruptm.h"
 #include "../platform/micaz/hplcc2420m.h"
 #include "../platform/micaz/hpltimer1.h"
-
-#endif 
-
-
-
-
+#endif
 bool AMStandard_state;
 Radio_MsgPtr AMStandard_buffer;
 uint16_t AMStandard_lastCount;
 uint16_t AMStandard_counter;
 
-
-
 //-------------------------------------------------------------------------
-inline bool AMStandard_Control_init( void ) {
-   result_t ok2;
-   
-   #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
-   ok2 = cc2420radiom_SplitControl_init();
-   #endif 
-   
-   AMStandard_state = FALSE;
-   AMStandard_lastCount = 0;
-   AMStandard_counter = 0;
-   return ok2;
+inline bool AMStandard_Control_init(void)
+{
+    result_t ok2;
+
+#if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
+    ok2 = cc2420radiom_SplitControl_init();
+#endif
+    AMStandard_state = FALSE;
+    AMStandard_lastCount = 0;
+    AMStandard_counter = 0;
+    return ok2;
 }
 
 //-------------------------------------------------------------------------
-inline result_t AMStandard_RadioControl_start( void ) {
-   unsigned char result;
-   
-   #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
-   result = cc2420radiom_StdControl_start();
-   #endif 
-   
-   return result;
+inline result_t AMStandard_RadioControl_start(void)
+{
+    unsigned char result;
+
+#if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
+    result = cc2420radiom_StdControl_start();
+#endif
+    return result;
 }
 
 //-------------------------------------------------------------------------
-inline 
-bool AMStandard_Control_start( void )
- {
-   result_t ok2 = AMStandard_RadioControl_start();
-   AMStandard_state = FALSE;
-   return ok2;
+inline bool AMStandard_Control_start(void)
+{
+    result_t ok2 = AMStandard_RadioControl_start();
+
+    AMStandard_state = FALSE;
+    return ok2;
 }
 
 //-------------------------------------------------------------------------
-inline result_t AMStandard_RadioSend_send( Radio_MsgPtr arg_0xa3c31f8 ) {
-   unsigned char result;
-   #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
-   result = cc2420radiom_Send_send( arg_0xa3c31f8 );
-   #endif
-   return result;
+inline result_t AMStandard_RadioSend_send(Radio_MsgPtr arg_0xa3c31f8)
+{
+    unsigned char result;
+
+#if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
+    result = cc2420radiom_Send_send(arg_0xa3c31f8);
+#endif
+    return result;
 }
 
 //-------------------------------------------------------------------------
-inline 
-void AMStandard_sendTask( void )
- {
-   result_t ok;
-   Radio_MsgPtr buf;
-   buf = AMStandard_buffer;
-   ok = AMStandard_RadioSend_send( buf );
-   if ( ok == FAIL ) {
-      AMStandard_reportSendDone( AMStandard_buffer, FAIL );
-   }
-}
+inline void AMStandard_sendTask(void)
+{
+    result_t ok;
+    Radio_MsgPtr buf;
 
+    buf = AMStandard_buffer;
+    ok = AMStandard_RadioSend_send(buf);
+    if (ok == FAIL)
+    {
+        AMStandard_reportSendDone(AMStandard_buffer, FAIL);
+    }
+}
 
 //addr means the current broadcast address, et. id is the port 
 //Send out a message and takes a while to complete 
-result_t AMStandard_SendMsg_send( uint16_t port, uint16_t addr, uint8_t length, Radio_MsgPtr data )
- {
-   #ifdef TRACE_ENABLE
-      #ifdef TRACE_ENABLE_RADIOEVENT
-       addTrace(TRACE_RADIOEVENT_SENDPACKET, 100);     
-	  #endif
-   #endif
-
-   if (  ! AMStandard_state ) {
-      AMStandard_state = TRUE;
-      if ( length > DATA_LENGTH ) {
-         AMStandard_state = FALSE;
-         return FAIL;
-      }
-      if (  ! postTask( AMStandard_sendTask, 20 )) {
-         {}
-         ;
-         AMStandard_state = FALSE;
-         return FAIL;
-      } else {
-         //length is the first one that means the actual data length
-         //adr is the next hop id
-         //type is the port
-         //group is manmade result 
-         AMStandard_buffer = data;
-         data->length = length;
-         data->addr = addr;
-         data->port = port;
-      }
-      return SUCCESS;
-   }
-   return FAIL;
+result_t AMStandard_SendMsg_send(uint16_t port, uint16_t addr, uint8_t length,
+                                 Radio_MsgPtr data)
+{
+#ifdef TRACE_ENABLE
+#ifdef TRACE_ENABLE_RADIOEVENT
+    addTrace(TRACE_RADIOEVENT_SENDPACKET, 100);
+#endif
+#endif
+    if (!AMStandard_state)
+    {
+        AMStandard_state = TRUE;
+        if (length > DATA_LENGTH)
+        {
+            AMStandard_state = FALSE;
+            return FAIL;
+        }
+        if (!postTask(AMStandard_sendTask, 20))
+        {
+            {
+            }
+            ;
+            AMStandard_state = FALSE;
+            return FAIL;
+        }
+        else
+        {
+            //length is the first one that means the actual data length
+            //adr is the next hop id
+            //type is the port
+            //group is manmade result 
+            AMStandard_buffer = data;
+            data->length = length;
+            data->addr = addr;
+            data->port = port;
+        }
+        return SUCCESS;
+    }
+    return FAIL;
 }
 
 //-------------------------------------------------------------------------
-inline 
-result_t AMStandard_SendMsg_default_sendDone( uint8_t id, Radio_MsgPtr msg, result_t success )
- {
-   return SUCCESS;
+inline result_t AMStandard_SendMsg_default_sendDone(uint8_t id, Radio_MsgPtr
+                                                    msg, result_t success)
+{
+    return SUCCESS;
 }
 
 //-------------------------------------------------------------------------
-inline result_t AMStandard_SendMsg_sendDone( uint16_t arg_0xa3b8f90, Radio_MsgPtr arg_0xa31a0a0, result_t arg_0xa31a1f0 ) {
-   return 0;
+inline result_t AMStandard_SendMsg_sendDone(uint16_t arg_0xa3b8f90,
+                                            Radio_MsgPtr arg_0xa31a0a0,
+                                            result_t arg_0xa31a1f0)
+{
+    return 0;
 }
 
 //-------------------------------------------------------------------------
-inline 
-result_t AMStandard_default_sendDone( void )
- {
-   return SUCCESS;
+inline result_t AMStandard_default_sendDone(void)
+{
+    return SUCCESS;
 }
 
 //-------------------------------------------------------------------------
-inline result_t AMStandard_sendDone( void ) {
-   unsigned char result;
-   result = AMStandard_default_sendDone();
-   return result;
+inline result_t AMStandard_sendDone(void)
+{
+    unsigned char result;
+
+    result = AMStandard_default_sendDone();
+    return result;
 }
 
 //-------------------------------------------------------------------------
-inline 
-Radio_MsgPtr AMStandard_ReceiveMsg_default_receive( uint8_t id, Radio_MsgPtr msg )
- {
-   return msg;
+inline Radio_MsgPtr AMStandard_ReceiveMsg_default_receive(uint8_t id,
+                                                          Radio_MsgPtr msg)
+{
+    return msg;
 }
+
 //Another critical function that bridges to the application 
-inline Radio_MsgPtr AMStandard_ReceiveMsg_receive( uint16_t port, Radio_MsgPtr msg ) {
-   return msg;
+inline Radio_MsgPtr AMStandard_ReceiveMsg_receive(uint16_t port, Radio_MsgPtr
+                                                  msg)
+{
+    return msg;
 }
+
 //This function is really really critical to the correct behaviro of the radio stack 
 //Basically it returns a radio message pointer that must be reused 
 //and the content of the packet is the correct packet parsed, and is useful 
 //The content starts with a length that is the actual payload length and all information are correct
 //Must copy this content to the user supplied buffer, put the user action into a task, and then return this buffer to the recevie module 
-Radio_MsgPtr received( Radio_MsgPtr packet )
- {
-   uint16_t addr = CURRENT_NODE_ID;
+Radio_MsgPtr received(Radio_MsgPtr packet)
+{
+    uint16_t addr = CURRENT_NODE_ID;
 
-   
-   #ifdef TRACE_ENABLE
-      #ifdef TRACE_ENABLE_RADIOEVENT
-       addTrace(TRACE_RADIOEVENT_RECEIVEPACKET, 100);     
-      #endif
-   #endif
+#ifdef TRACE_ENABLE
+#ifdef TRACE_ENABLE_RADIOEVENT
+    addTrace(TRACE_RADIOEVENT_RECEIVEPACKET, 100);
+#endif
+#endif
+    AMStandard_counter++;
+    if (packet->crc == 1 && (packet->addr == BCAST_ADDRESS || packet->addr ==
+                             addr))
+    {
+        uint16_t port = packet->port;
+        Radio_MsgPtr tmp;
 
-
-   AMStandard_counter ++;
-   if ( 
-   packet->crc == 1 && ( packet->addr == BCAST_ADDRESS || packet->addr == addr )) {
-      uint16_t port = packet->port;
-      Radio_MsgPtr tmp;
-      tmp = Standard_Receive_Packet( port, packet );
-      if ( tmp ) {
-         packet = tmp;
-      }
-   }
-   return packet;
+        tmp = Standard_Receive_Packet(port, packet);
+        if (tmp)
+        {
+            packet = tmp;
+        }
+    }
+    return packet;
 }
 
 //-------------------------------------------------------------------------
-inline 
-Radio_MsgPtr AMStandard_RadioReceive_receive( Radio_MsgPtr packet )
- {
-   return received( packet );
+inline Radio_MsgPtr AMStandard_RadioReceive_receive(Radio_MsgPtr packet)
+{
+    return received(packet);
 }
 
 //-------------------------------------------------------------------------
-inline 
-result_t AMStandard_RadioSend_sendDone( Radio_MsgPtr msg, result_t success )
- {
-   return AMStandard_reportSendDone( msg, success );
+inline result_t AMStandard_RadioSend_sendDone(Radio_MsgPtr msg, result_t
+                                              success)
+{
+    return AMStandard_reportSendDone(msg, success);
 }
 
 //-------------------------------------------------------------------------
-result_t AMStandard_reportSendDone( Radio_MsgPtr msg, result_t success )
- {
-   AMStandard_state = FALSE;
-   //  AMStandard_SendMsg_sendDone(msg->port, msg, success);
-   //  AMStandard_sendDone();
-   return SUCCESS;
+result_t AMStandard_reportSendDone(Radio_MsgPtr msg, result_t success)
+{
+    AMStandard_state = FALSE;
+    //  AMStandard_SendMsg_sendDone(msg->port, msg, success);
+    //  AMStandard_sendDone();
+    return SUCCESS;
 }
 
-
-inline void restoreRadioState() {
-   AMStandard_state = FALSE;
-   #if defined(PLATFORM_AVR) && defined (RADIO_CC2420)
-     restorecc2420state(); 
-   #endif 
+//-------------------------------------------------------------------------
+inline void restoreRadioState()
+{
+    AMStandard_state = FALSE;
+#if defined(PLATFORM_AVR) && defined (RADIO_CC2420)
+    restorecc2420state();
+#endif
 }
-
-
-

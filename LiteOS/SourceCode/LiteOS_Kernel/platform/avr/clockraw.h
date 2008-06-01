@@ -1,27 +1,20 @@
-/* LiteOS Version 0.3 */
+/* The LiteOS Operating System Kernel */
 /*
-The following is the license of LiteOS.
-
-This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
-
-LiteOS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-LiteOS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
- 
-/*									tab:4
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*                                                                      tab:4
  * "Copyright (c) 2000-2003 The Regents of the University  of California.  
  * All rights reserved.
  *
@@ -50,12 +43,12 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  * 94704.  Attention:  Intel License Inquiry.
  */
 /*
- * Authors:		Jason Hill, David Gay, Philip Levis, Nelson Lee
+ * Authors:             Jason Hill, David Gay, Philip Levis, Nelson Lee
  * Date last modified:  6/25/02
  *
  *
  */
- /*
+/*
  * Copyright (c) 2002-2003 Intel Corporation
  * All rights reserved.
  *
@@ -75,66 +68,35 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
- * @author Su Ping
- * @author (converted to nesC by Sam Madden)
- * @author David Gay
- * @author Intel Research Berkeley Lab
- * @author Phil Levis
- */
-
+* @author Su Ping
+* @author (converted to nesC by Sam Madden)
+* @author David Gay
+* @author Intel Research Berkeley Lab
+* @author Phil Levis
+*/
 #ifndef CLOCKH
 #define CLOCKH
-
-
 #include "avrhardware.h"
 #include "../../types/types.h"
-
-
 /*\defgroup clock Clock operations 
-This module defines the data structures and operations to control the hardware timers to implement clocks 
-*/
-
-
+   This module defines the data structures and operations to control the hardware timers to implement clocks 
+ */
 /*@{ */
-
 uint8_t HPLClock_set_flag;
 uint8_t HPLClock_mscale;
 uint8_t HPLClock_nextScale;
 uint8_t HPLClock_minterval;
 
-
-
 /** This function reads the counter of the clock */
-
-inline   
-uint8_t HPLClock_Clock_readCounter(void);
-
-inline   
-uint8_t HPLClock_Clock_getInterval(void);
-
-
-inline  result_t HPLClock_Clock_fire(void);
-
-
-inline   
-void HPLClock_Clock_setInterval(uint8_t value);
-
-inline
-result_t HPLClock_Clock_setRate(char interval, char scale);
-
-
+inline uint8_t HPLClock_Clock_readCounter(void);
+inline uint8_t HPLClock_Clock_getInterval(void);
+inline result_t HPLClock_Clock_fire(void);
+inline void HPLClock_Clock_setInterval(uint8_t value);
+inline result_t HPLClock_Clock_setRate(char interval, char scale);
 void HPLClock_Timer3_Start();
-
-
 void HPLClock_Timer3_Stop();
-
-
 uint16_t HPLClock_readTimeCounterHigh();
-
-
 uint32_t HPLClock_readTimeCounterLow();
 
-
-/*@}*/
-
+/*@} */
 #endif

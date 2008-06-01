@@ -1,25 +1,20 @@
-/* LiteOS Version 0.3 */
+/* The LiteOS Operating System Kernel */
 /*
-The following is the license of LiteOS.
-
-This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
-
-LiteOS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-LiteOS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
- 
-/*									tab:4
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*                                                                      tab:4
  * "Copyright (c) 2000-2003 The Regents of the University  of California.  
  * All rights reserved.
  *
@@ -49,58 +44,36 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 /*
  *
- * Authors:		Jason Hill, David Gay, Philip Levis
+ * Authors:             Jason Hill, David Gay, Philip Levis
  * Date last modified:  6/2/03
  *
  */
 
 /**
- * @author Jason Hill
- * @author David Gay
- * @author Philip Levis
- */
-
-
-
-
+* @author Jason Hill
+* @author David Gay
+* @author Philip Levis
+*/
 #ifndef LedsH
 #define LedsH
 #include "../../types/types.h"
 
 /** \defgroup leds LED Operations 
 */
+
 /** @{ */
-
 void Leds_Leds();
-
-
 void Leds_redOn();
-
-
 void Leds_redOff();
-
-
 void Leds_redToggle();
-
-
 void Leds_greenOn();
-
-
 void Leds_greenOff();
-
-
 void Leds_greenToggle();
-
-
 void Leds_yellowOn();
-
-
 void Leds_yellowOff();
 
 ///This function relies on adc_parameter to set led, used only by the interactive commanding 
 void set_led_task();
-
-
 void Leds_yellowToggle();
 
 /** @} */

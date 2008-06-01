@@ -1,28 +1,20 @@
-/* LiteOS Version 0.3 */
+/* The LiteOS Operating System Kernel */
 /*
-The following is the license of LiteOS.
-
-This file is part of LiteOS.
-Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
-
-LiteOS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-LiteOS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
-
-/*									tab:4
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*                                                                      tab:4
  * "Copyright (c) 2000-2003 The Regents of the University  of California.  
  * All rights reserved.
  *
@@ -52,28 +44,23 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 /*
  *
- * Authors:		Jason Hill, Philip Levis
- * Revision:		$Id: sched.c,v 1.8 2005/06/20 22:08:24 idgay Exp $
+ * Authors:             Jason Hill, Philip Levis
+ * Revision:            $Id: sched.c,v 1.8 2005/06/20 22:08:24 idgay Exp $
  * Modifications:       Removed unecessary code, cleanup.(5/30/02)
  *
  *                      Moved from non-blocking list to simple
  *                      critical section.  Changed task queue to
  *                      length 8 (more efficient). (3/10/02)
  */
-
-
 #ifndef SCHEDULING
 #define SCHEDULING
-
 #include "../types/types.h"
 
 /**\defgroup scheduling Thread sheduling and task scheduling */
 
 /** @{ */
 
-
 /**Init the scheduler */
-
 void initScheduling(void);
 
 /**post a new task with a priority */
@@ -83,7 +70,4 @@ bool postTask(void (*tp) (void), uint8_t priority);
 bool runNextTask(void);
 
 /** @} */
-
-
-#endif 
-
+#endif
