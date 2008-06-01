@@ -1,130 +1,137 @@
 #include "fsconfig.h"
 #include "../system/bytestorage.h"
 
-
-uint8_t  fsread8uint (int inode, int offset)
+//-------------------------------------------------------------------------
+uint8_t fsread8uint(int inode, int offset)
 {
-  uint16_t addr; 
-  addr = inode * INODESIZE + offset;
-  return read8uint(addr);  
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    return read8uint(addr);
 }
 
-
-int8_t   fsread8int  (int inode, int offset)
+//-------------------------------------------------------------------------
+int8_t fsread8int(int inode, int offset)
 {
-  uint16_t addr; 
-  addr = inode * INODESIZE + offset; 
-  return read8int(addr); 
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    return read8int(addr);
 }
 
-
+//-------------------------------------------------------------------------
 uint16_t fsread16uint(int inode, int offset)
 {
-  uint16_t addr;
-  addr = inode * INODESIZE + offset; 
-  return read16uint(addr); 
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    return read16uint(addr);
 }
 
-
-int16_t  fsread16int (int inode, int offset)
+//-------------------------------------------------------------------------
+int16_t fsread16int(int inode, int offset)
 {
-  uint16_t addr;
-  addr = inode * INODESIZE + offset; 
-  return read16int(addr);   
-  
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    return read16int(addr);
 }
 
-
+//-------------------------------------------------------------------------
 uint32_t fsread32uint(int inode, int offset)
 {
-  uint16_t addr; 
-  addr = inode * INODESIZE + offset; 
-  return read32uint(addr);  
-}
+    uint16_t addr;
 
-
-int32_t  fsread32int (int inode, int offset)
-{
-   uint16_t addr; 
-   addr = inode * INODESIZE + offset;
-   return read32int(addr); 
-
-}
-
-
-
-void  fswrite8uint (int inode, int offset, uint8_t value)
-{
-    uint16_t addr; 
     addr = inode * INODESIZE + offset;
-    write8uint(addr, value);  
+    return read32uint(addr);
 }
 
-
-void  fswrite8int  (int inode, int offset, int8_t value)
+//-------------------------------------------------------------------------
+int32_t fsread32int(int inode, int offset)
 {
-    uint16_t addr; 
+    uint16_t addr;
+
     addr = inode * INODESIZE + offset;
-    write8int(addr, value);  
+    return read32int(addr);
 }
 
-
-void  fswrite16uint(int inode, int offset, uint16_t value)
+//-------------------------------------------------------------------------
+void fswrite8uint(int inode, int offset, uint8_t value)
 {
-    uint16_t addr; 
+    uint16_t addr;
+
     addr = inode * INODESIZE + offset;
-    write16uint(addr, value);  
-
+    write8uint(addr, value);
 }
 
-
-void  fswrite16int (int inode, int offset, int16_t value)
+//-------------------------------------------------------------------------
+void fswrite8int(int inode, int offset, int8_t value)
 {
-    uint16_t addr; 
+    uint16_t addr;
+
     addr = inode * INODESIZE + offset;
-    write16int(addr, value);  
+    write8int(addr, value);
 }
 
-
-
-void  fswrite32uint(int inode, int offset, uint32_t value)
+//-------------------------------------------------------------------------
+void fswrite16uint(int inode, int offset, uint16_t value)
 {
-    uint16_t addr; 
+    uint16_t addr;
+
     addr = inode * INODESIZE + offset;
-    write32uint(addr, value);  
+    write16uint(addr, value);
 }
 
-
-void  fswrite32int (int inode, int offset, int32_t value)
+//-------------------------------------------------------------------------
+void fswrite16int(int inode, int offset, int16_t value)
 {
-    uint16_t addr; 
+    uint16_t addr;
+
     addr = inode * INODESIZE + offset;
-    write32uint(addr, value);  
+    write16int(addr, value);
 }
 
-
-void fsreadBytes (int inode, int offset, int nBytes, void *buffer)
+//-------------------------------------------------------------------------
+void fswrite32uint(int inode, int offset, uint32_t value)
 {
-   uint16_t addr;
-   addr = inode * INODESIZE + offset;
-   genericreadBytes( addr, nBytes, buffer);
+    uint16_t addr;
 
+    addr = inode * INODESIZE + offset;
+    write32uint(addr, value);
 }
 
+//-------------------------------------------------------------------------
+void fswrite32int(int inode, int offset, int32_t value)
+{
+    uint16_t addr;
 
+    addr = inode * INODESIZE + offset;
+    write32uint(addr, value);
+}
+
+//-------------------------------------------------------------------------
+void fsreadBytes(int inode, int offset, int nBytes, void *buffer)
+{
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    genericreadBytes(addr, nBytes, buffer);
+}
+
+//-------------------------------------------------------------------------
 void fswriteBytes(int inode, int offset, int nBytes, void *buffer)
 {
-   uint16_t addr;
-   addr = inode * INODESIZE + offset; 
-   genericwriteBytes ( addr, nBytes, buffer); 
+    uint16_t addr;
+
+    addr = inode * INODESIZE + offset;
+    genericwriteBytes(addr, nBytes, buffer);
 }
 
-
-void fsinitBytes( int inode, int offset, int nBytes, uint8_t value)
+//-------------------------------------------------------------------------
+void fsinitBytes(int inode, int offset, int nBytes, uint8_t value)
 {
-   uint16_t addr; 
-   addr = inode * INODESIZE + offset; 
-   initBytes(addr, nBytes, value); 
-	
-}
+    uint16_t addr;
 
+    addr = inode * INODESIZE + offset;
+    initBytes(addr, nBytes, value);
+}
