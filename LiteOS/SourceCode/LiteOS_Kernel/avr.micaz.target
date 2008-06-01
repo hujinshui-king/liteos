@@ -33,6 +33,11 @@ CFLAGS = $(COMMON)
 CFLAGS += -Wall -gdwarf-2          -DPLATFORM_AVR  -DRADIO_CC2420     -DF_CPU=8000000UL -Os -fsigned-char -fno-strict-aliasing
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
+##Used by the syscall module
+CFLAGS0 = $(COMMON)
+CFLAGS0 += -Wall -gdwarf-2          -DPLATFORM_AVR  -DRADIO_CC2420     -DF_CPU=8000000UL -O0 -fsigned-char -fno-strict-aliasing
+CFLAGS0 += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
+
 ## Assembly specific flags
 ASMFLAGS = $(COMMON)
 ASMFLAGS += $(CFLAGS)
@@ -109,7 +114,7 @@ clockraw.o: ../platform/avr/clockraw.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 syscall.o: ../platform/avr/syscall.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+	$(CC) $(INCLUDES) $(CFLAGS0) -c  $<
 
 timerraw.o: ../platform/avr/timerraw.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
