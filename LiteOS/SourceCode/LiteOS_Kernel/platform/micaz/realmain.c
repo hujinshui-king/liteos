@@ -22,7 +22,7 @@
 #include "../../system/scheduling.h"
 #include "../../system/amradio.h"
 #include "../../system/socket.h"
-#include "../../f0ilesys/inode.h"
+#include "../../filesys/inode.h"
 #include "../../filesys/fsapi.h"
 #include "../../system/commandhandle.h"
 #include "../avr/bootloader.h"

@@ -589,6 +589,7 @@ void **getKernelStackAddress()
     void **addr;
 
     addr = (void **)&old_stack_ptr;
+    
     return addr;
 }
 

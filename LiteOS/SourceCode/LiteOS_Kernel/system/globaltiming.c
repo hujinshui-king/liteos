@@ -15,6 +15,7 @@
    along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "globaltiming.h"
+
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
 #include "../platform/micaz/hplcc2420interruptm.h"
 #include "../io/avr_serial/serialprint.h"
@@ -24,8 +25,10 @@
 #include "../platform/avr/clockraw.h"
 #include "../platform/micaz/leds.h"
 #endif
+
 static currentTimeUnit internaltime1, internaltime2;
 static uint8_t timeselect;
+
 currentTimeUnit *getCurrentTimeStamp()
 {
 #ifdef PLATFORM_AVR

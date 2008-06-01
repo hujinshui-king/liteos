@@ -34,7 +34,7 @@
 ///the relative position from next to current 
 #define relativeAddr(current,next) (((next)-(current)+INODENUM)%INODENUM)
 ///the absolute addr from using current and the offset 
-#define absoluteAddr(current,offset) ((current) + (offset) > INODENUM ? (
+#define absoluteAddr(current,offset) ((current) + (offset) > INODENUM ? (\
 (current) + (offset) - INODENUM):((current) + (offset)))
 
 /** @} */

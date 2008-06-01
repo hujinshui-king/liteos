@@ -852,6 +852,7 @@ void reply_killthread(uint8_t * receivebuffer)
     uint8_t *start, *end;
     uint8_t index;
 
+    index = 0; 
     start = NULL;
     end = NULL;
     receivebuffer[receivebuffer[0]] = '\0';

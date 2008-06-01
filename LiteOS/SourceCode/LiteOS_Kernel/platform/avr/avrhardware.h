@@ -152,8 +152,7 @@ inline void LITE_MAKE_##alias##_INPUT()  {LITE_MAKE_##connector##_INPUT();}
 void signame() __attribute__ ((signal, spontaneous, C/*, used,  
              externally_visible)*/))
 #define _INTERRUPT(signame)				\
-void   signame(void) __attribute__((interrupt/*, used,   externally_visible*/))
-;
+void   signame(void) __attribute__((interrupt/*, used,   externally_visible*/)); \
 void signame(void)
 
 /** Watchdog Prescaler
