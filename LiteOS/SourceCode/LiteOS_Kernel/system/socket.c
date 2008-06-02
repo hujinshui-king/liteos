@@ -121,7 +121,7 @@ void StandardSocketSend(uint16_t port, uint16_t address, uint8_t msglength,
     radioinfo.socket_msg_len = msglength;
     radioinfo.socket_msg = msg;
     SocketRadioSend();
-    sleepThread(40);
+    sleepThread(20);
     restoreRadioState();
     Socket_Mutex_unlock(&radio_mutex);
     return;
