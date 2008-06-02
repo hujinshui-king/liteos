@@ -16,7 +16,7 @@ int main()
    for (index = 0;index <100;index++)
    	{
 	   greenToggle();      
-	   sleepThread(100);
+	   sleepThread(1000);
     }
    
 	return 0; 
