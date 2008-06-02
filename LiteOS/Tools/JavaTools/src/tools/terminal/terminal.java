@@ -921,7 +921,7 @@ public class terminal {
 
                 if ((commandName.compareTo("cp") == 0)) {
 
-                    int NORMALTIME = 100;
+                    int NORMALTIME = 60;
                     //pl.setWait(NORMALTIME);
                     serverpl.setPacketWaitTimeout(SHELLPORT, NORMALTIME);
                     serverpl.setPacketWaitBuffer(SHELLPORT, 60);
@@ -1096,7 +1096,7 @@ public class terminal {
                     serverpl.setPacketWaitBuffer(SHELLPORT, 2);
                     //speed optimization for cp
                    ///Tuning place change to 100 as an tuning
-                    serverpl.setPacketWaitTimeout(SHELLPORT, 50);
+                    serverpl.setPacketWaitTimeout(SHELLPORT, 100);
                    // System.out.println("Now prepare to get incoming data");
                    // System.out.println("Reading port");
 
@@ -1121,7 +1121,7 @@ public class terminal {
                    serverpl.setPacketWaitBuffer(SHELLPORT, 1);
                    //speed optimization for cp
                     ///Tuning place change to 100 as an tuning
-                   serverpl.setPacketWaitTimeout(SHELLPORT, 50);
+                   serverpl.setPacketWaitTimeout(SHELLPORT, 100);
 
 
                     //System.out.println("Now Patching");
