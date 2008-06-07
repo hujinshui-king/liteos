@@ -63,7 +63,7 @@
   /** Access parameters for sub-register TRX_STATUS in register @ref RG_TRX_STATUS
    * @ingroup apiHalPHY230Sreg
    */
-# define SR_TRX_STATUS                0x01, 0x1f, 0
+#define SR_TRX_STATUS                0x01, 0x1f, 0
    /** Constant P_ON for sub-register @ref SR_TRX_STATUS
     * @ingroup apiHalPHY230Const
     */
@@ -128,11 +128,11 @@
   /** Access parameters for sub-register TRAC_STATUS in register @ref RG_TRX_STATE
    * @ingroup apiHalPHY230Sreg
    */
-# define SR_TRAC_STATUS               0x02, 0xe0, 5
+#define SR_TRAC_STATUS               0x02, 0xe0, 5
   /** Access parameters for sub-register TRX_CMD in register @ref RG_TRX_STATE
    * @ingroup apiHalPHY230Sreg
    */
-# define SR_TRX_CMD                   0x02, 0x1f, 0
+#define SR_TRX_CMD                   0x02, 0x1f, 0
    /** Constant CMD_NOP for sub-register @ref SR_TRX_CMD
     * @ingroup apiHalPHY230Const
     */

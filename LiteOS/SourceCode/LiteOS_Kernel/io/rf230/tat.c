@@ -1,4 +1,22 @@
-/* This file has been prepared for Doxygen automatic documentation generation.*/
+/* The LiteOS Operating System Kernel */
+/*
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ 
+ /* This file has been prepared for Doxygen automatic documentation generation.*/
 /*! \file *********************************************************************
  *
  * \brief This files implements the Transceiver Access Toolbox.
@@ -46,14 +64,18 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 /*============================ INCLDUE =======================================*/
-#include <stdint.h>
-#include <stdbool.h>
-
+//#include <stdint.h>
+//#include <stdbool.h>
+#include "../../types/types.h"
 #include "at86rf230_registermap.h"
 
 #include "compiler.h"
 #include "tat.h"
 #include "hal.h"
+#include "../../system/amcommon.h"
+
+//#include "Leds.h"
+
 /*============================ MACROS ========================================*/
 #define TAT_CCA_DONE_MASK     ( 1 << 7 ) //!< Mask used to check the CCA_DONE bit.
 #define TAT_CCA_IDLE_MASK     ( 1 << 6 ) //!< Mask used to check the CCA_STATUS bit.
@@ -89,7 +111,7 @@ typedef enum{
 }tat_trx_timing_t;
 /*============================ VARIABLES =====================================*/
 /*============================ PROTOTYPES ====================================*/
-static bool is_sleeping( void );
+static bool2 is_sleeping( void );
 
 /*! \brief  Initialize the Transceiver Access Toolbox and lower layers.
  *
@@ -108,8 +130,10 @@ static bool is_sleeping( void );
  *
  *  \ingroup tat
  */
+ //Debug-tat_init() work correctly now!
+ 
 tat_status_t tat_init( void ){
-    
+    uint8_t radio_status=50;
     tat_status_t init_status = TAT_SUCCESS;
     
     delay_us( TIME_TO_ENTER_P_ON );
@@ -119,11 +143,29 @@ tat_status_t tat_init( void ){
     
     tat_reset_trx( ); //Do HW reset of radio transeiver.
     
+    /*//Debug
+    printfstr ("\n *radio_status pre"); 
+    radio_status=tat_get_trx_state( );
+    printfintegeru32(radio_status);*/
+    
     //Force transition to TRX_OFF.
     hal_subregister_write( SR_TRX_CMD, CMD_FORCE_TRX_OFF );
     delay_us( TIME_P_ON_TO_TRX_OFF ); //Wait for the transition to be complete.
     
+    //Debug read SR_TRX_CMD Subregister
+   // radio_status=hal_subregister_read( SR_TRX_CMD );
+    
+    //printfstr ("\n TRX_CMD Reg: "); 
+    //printfintegeru32(radio_status);
+        
+   /*  //Debug 
+     printfstr ("\n *radio_status post"); 
+     radio_status=tat_get_trx_state( );
+     printfintegeru32(radio_status);*/
+    
     if (tat_get_trx_state( ) != TRX_OFF) {
+       // Leds_redToggle();  //Debug--Redtoggle Upon
+        
         init_status = TAT_TIMED_OUT;    
     } else {
     
@@ -138,6 +180,13 @@ tat_status_t tat_init( void ){
                 init_status = TAT_UNSUPPORTED_DEVICE;
             } else {
                 hal_register_write( RG_IRQ_MASK, RF230_SUPPORTED_INTERRUPT_MASK );
+                 /*//Debug   				            
+				 //Leds_yellowToggle(); 
+				 //Debug--Redtoggle Upon Sucess Init
+                 //printfstr ("\n Init Status: "); 
+                 //printfintegeru32(init_status);*/
+                 //Return TAT_SUCCESS Here!!
+                 
             } // end: if (hal_register_read( RG_MAN_ID_0 ) != ...
         } // end: if ((version_number != RF230_REVA ) ...
     } // end: if (tat_get_trx_state( ) ...
@@ -432,7 +481,7 @@ uint8_t tat_batmon_get_voltage_range( void ){
  *                               bounds (Not within [0 - 15]).
  *  \ingroup tat
  */
-tat_status_t tat_batmon_configure( bool range, uint8_t voltage_threshold ){
+tat_status_t tat_batmon_configure( bool2 range, uint8_t voltage_threshold ){
      
     /*Check function parameters and state.*/
     if (voltage_threshold > BATTERY_MONITOR_HIGHEST_VOLTAGE) {
@@ -511,7 +560,7 @@ uint8_t tat_get_clock_speed( void ){
  *  
  * \ingroup tat
  */
-tat_status_t tat_set_clock_speed( bool direct, uint8_t clock_speed ){
+tat_status_t tat_set_clock_speed( bool2 direct, uint8_t clock_speed ){
     
     /*Check function parameter and current clock speed.*/
     if (clock_speed > CLKM_16MHZ) { return TAT_INVALID_ARGUMENT; }
@@ -641,6 +690,9 @@ tat_status_t tat_calibrate_pll( void ){
  *  \ingroup tat
  */
 uint8_t tat_get_trx_state( void ){
+	//Debug
+	    //printfstr ("\n GET STATUS"); 
+      //printfintegeru32(hal_subregister_read( SR_TRX_STATUS ));
     return hal_subregister_read( SR_TRX_STATUS );
 }
 
@@ -652,9 +704,9 @@ uint8_t tat_get_trx_state( void ){
  *   
  *  \ingroup tat
  */
-static bool is_sleeping( void ){
+static bool2 is_sleeping( void ){
     
-    bool sleeping = false;
+    bool2 sleeping = false;
     
     //The radio transceiver will be at SLEEP or one of the *_NOCLK states only if
     //the SLP_TR pin is high.
@@ -837,7 +889,7 @@ void tat_reset_trx( void ){
  *
  *  \ingroup tat
  */
-void tat_use_auto_tx_crc( bool auto_crc_on ){
+void tat_use_auto_tx_crc( bool2 auto_crc_on ){
     
     if (auto_crc_on == true) {
         hal_subregister_write( SR_TX_AUTO_CRC_ON, 1 );
@@ -864,15 +916,29 @@ void tat_use_auto_tx_crc( bool auto_crc_on ){
 __x tat_status_t tat_send_data( uint8_t data_length, uint8_t *data ){
     
     /*Check function parameters and current state.*/
-    if (data_length > RF230_MAX_TX_FRAME_LENGTH) { return TAT_INVALID_ARGUMENT; }
+    if (data_length > RF230_MAX_TX_FRAME_LENGTH) {
+    	 //Leds_redToggle();  //Debug--Redtoggle Upon-Good here
+    	 return TAT_INVALID_ARGUMENT;
+    	  }
     
-    if ((tat_get_trx_state( ) != PLL_ON)) { return TAT_WRONG_STATE; }
+    if ((tat_get_trx_state( ) != PLL_ON)) { 
+    	/* //Debug-Not go into this condition-Correct
+    	 //Leds_redToggle();  //Debug--Redtoggle Upon-Good here
+    	  printfstr ("\n Send Wrong Status: "); 
+        printfintegeru32(tat_get_trx_state( ));*/
+    	return TAT_WRONG_STATE; 
+    	}
       
     /*Do frame transmission.*/
     //Toggle the SLP_TR pin to initiate the frame transmission.
+    /*//Debug    
+    // Leds_redToggle();  //Debug--Redtoggle Upon   
+     printfstr ("\n Send Correct Status: "); 
+     printfintegeru32((uint32_t)tat_get_trx_state( ));*/
+   
     hal_set_slptr_high( );
     hal_set_slptr_low( );
-            
+   // Leds_redToggle();  //Debug--Redtoggle Upon        
     hal_frame_write( data, data_length ); //Then write data to the frame buffer.
            
     return TAT_SUCCESS; 
@@ -897,7 +963,7 @@ uint8_t tat_get_device_role( void ){
  *                              False disables the same feature.
  *  \ingroup tat
  */
-void tat_set_device_role( bool i_am_coordinator ){
+void tat_set_device_role( bool2 i_am_coordinator ){
     
     if (i_am_coordinator == true) {
         hal_subregister_write( SR_I_AM_COORD, 0);
@@ -1090,7 +1156,7 @@ __x tat_status_t tat_send_data_with_retry( uint8_t frame_length, uint8_t *frame,
     hal_set_slptr_low( );
     hal_frame_write( frame, frame_length ); //Then write data to the frame buffer.
     
-    bool retry = false; // Variable used to control the retry loop.
+    bool2 retry = false; // Variable used to control the retry loop.
     
     /*Do retry if requested.*/
     do{
@@ -1132,4 +1198,48 @@ __x tat_status_t tat_send_data_with_retry( uint8_t frame_length, uint8_t *frame,
     
     return task_status;                                       
 }
+
+
+/* Receive and Read frame Function
+
+ * Author: Dong Wang
+ * Date: May 14, 2008
+
+*/
+
+/*! \brief  This function will receive a frame from the radio transceiver's 
+ *          recieve buffer and read it.
+ *
+ *  
+ *  \param  *data   Pointer to the data to receive
+ *
+ *  \retval TAT_SUCCESS Frame receive and read successfully.
+ * 
+ *  \retval TAT_WRONG_STATE It is only possible to use this function in the 
+ *                          RX_ON  state. If any other state is 
+ *                          detected this error message will be returned.
+ *
+ *  \ingroup tat
+ */
+ 
+ /*
+__x Radio_MsgPtr tat_receive_data( hal_rx_frame_t *rx_frame ){
+    
+   
+    //To make sure if status check is needed or not
+    //if ((tat_get_trx_state( ) != RX_ON)) { return TAT_WRONG_STATE; }
+      
+    //Wait for trx_end interupt to signal the end of receive
+      while (hal_get_trx_end_flag( ) == 0) {;}
+     
+    // Read frame to MCU        
+    hal_frame_read( rx_frame ); //Then read data to the MCU.
+    result = AMStandard_RadioReceive_receive ( (Radio_MsgPtr *) rx_frame->data);
+           
+    return result; 
+}
+
+
+*/
+
 /*EOF*/

@@ -1,4 +1,22 @@
-/* This file has been prepared for Doxygen automatic documentation generation.*/
+/* The LiteOS Operating System Kernel */
+/*
+   The following is the license of LiteOS.
+   This file is part of LiteOS.
+   Copyright Qing Cao, 2007-2008, University of Illinois , qcao2@uiuc.edu
+   LiteOS is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   LiteOS is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ 
+ /* This file has been prepared for Doxygen automatic documentation generation.*/
 /*! \file *********************************************************************
  *
  * \brief This files defines the API for the Transceiver Access Toolbox.
@@ -99,10 +117,13 @@
 #ifndef TAT_H
 #define TAT_H
 /*============================ INCLUDE =======================================*/
-#include <stdint.h>
-#include <stdbool.h>
-
+//#include <stdint.h>
+//#include <stdbool.h>
+#include "hal.h"
 #include "compiler.h"
+#include "../../system/amcommon.h"
+#include "../../types/types.h"
+
 /*============================ MACROS ========================================*/
 #define SUPPORTED_PART_NUMBER                   ( 2 )
 #define RF230_REVA                              ( 1 )
@@ -229,11 +250,11 @@ tat_status_t  tat_get_rssi_value( uint8_t *rssi );
 
 uint8_t tat_batmon_get_voltage_threshold( void );
 uint8_t tat_batmon_get_voltage_range( void );
-tat_status_t tat_batmon_configure( bool range, uint8_t voltage_threshold );
+tat_status_t tat_batmon_configure( bool2 range, uint8_t voltage_threshold );
 tat_status_t tat_batmon_get_status( void );
 
 uint8_t tat_get_clock_speed( void );
-tat_status_t tat_set_clock_speed( bool direct, uint8_t clock_speed );
+tat_status_t tat_set_clock_speed( bool2 direct, uint8_t clock_speed );
 tat_status_t tat_calibrate_filter( void );
 tat_status_t tat_calibrate_pll( void );
 
@@ -244,11 +265,12 @@ tat_status_t tat_leave_sleep_mode( void );
 void tat_reset_state_machine( void );
 void tat_reset_trx( void );
 
-void tat_use_auto_tx_crc( bool auto_crc_on );
+void tat_use_auto_tx_crc( bool2 auto_crc_on );
 __x tat_status_t tat_send_data( uint8_t data_length, uint8_t *data );
+//__x Radio_MsgPtr tat_receive_data( hal_rx_frame_t *rx_frame ); //Added Receive Function
 
 uint8_t tat_get_device_role( void );
-void tat_set_device_role( bool i_am_coordinator );
+void tat_set_device_role( bool2 i_am_coordinator );
 uint16_t tat_get_pan_id( void );
 void tat_set_pan_id( uint16_t new_pan_id );
 uint16_t tat_get_short_address( void );
