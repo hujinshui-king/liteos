@@ -25,6 +25,11 @@
 #include "../../system/amcommon.h"
 #include "../../system/threads.h"
 #include "../../system/packethandler.h"
+
+#if defined(PLATFORM_AVR_IRIS) && defined(PLATFORM_IRIS_BASE)
+#include "../../system/commandprocessor.h"
+#endif
+
 static char cFlag;
 static uint8_t receivebuffer[33];
 static uint8_t previous;
@@ -32,10 +37,8 @@ static uint8_t status;
 extern volatile uint16_t *stackinterrupt_ptr;
 extern volatile uint16_t *old_stack_ptr;
 
-#ifdef PLATFORM_AVR_IRIS
-uint8_t dataToSend[128];
-#endif
 //No need to be called from main 
+//This function is called when the system is being initilized and prints system start 
 void initUSART()
 {
     UBRR0H = 0;
@@ -61,16 +64,29 @@ void usartPrint(uint8_t c)
     UDR0 = c;
 }
 
+void usartPrint_base(uint8_t c)
+{
+    if (cFlag == 0)
+    {
+        initUSART();
+    }
+    while ((UCSR0A & (1 << UDRE0)) == 0)
+        ;
+    UDR0 = c;
+}
+
+
+
 //-------------------------------------------------------------------------
 void printString(char *p)
 {
-    usartPrint(0xFC);
+   // usartPrint(0xFC);
     while ((*p) != '\0')
     {
         usartPrint(*p);
         p++;
     }
-    usartPrint(0xFC);
+   // usartPrint(0xFC);
 }
 
 //-------------------------------------------------------------------------
@@ -78,14 +94,32 @@ void printStringN(char *p, uint8_t n)
 {
     uint8_t i;
 
-    usartPrint(0xFC);
+    //usartPrint(0xFC);
     for (i = 0; i < n; i++)
     {
         usartPrint(*p);
         p++;
     }
-    usartPrint(0xFC);
+    //usartPrint(0xFC);
 }
+
+
+//-------------------------------------------------------------------------
+void printStringN_base(char *p, uint8_t n)
+{
+    uint8_t i;
+
+    //usartPrint(0xFC);
+    for (i = 0; i < n; i++)
+    {
+        usartPrint_base(*p);
+        p++;
+    }
+    //usartPrint(0xFC);
+}
+
+
+
 
 //-------------------------------------------------------------------------
 void usartPutChipHex(uint8_t cChip)
@@ -163,38 +197,14 @@ void printInteger(int32_t a, int32_t b, int32_t c, int32_t d)
     usartPutLong(*(uint32_t *) (&d));
 }
 
-/*
-   int main()
-   {
-   printString("hello, world! Here ai amdfasdsafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\n");
-   printInteger(-32, 32, 0,0);
-   printInteger(-332, 2232, -232,0);
-   printInteger(332, 1132, 340,0);
-   printInteger(432, 111132, 3430,0);
-   printInteger(532, 343432, 0,45);
-   while(1);
-   return 0; 
-   }
- */
-/*
-   SIGNAL(SIG_UART0_RECV)
-   {
-   uint8_t dummy = UDR0; 
-   currentindex ++; 
-   if (currentindex ==3)
-   {  printString("hello, reply\n\0"); 
-   currentindex = 0;
-   }
-   } 
- */
 ///Must get two sync to begin record. 
 ///Receive two sync to stop record. ad then use the commandHandle to handle it. 
 ///Serves two goals:
 ///1 the initilization starts with z 2 the comm where two starting bytes tell the port and the message length 
-//SIGNAL( SIG_UART0_RECV ) {
-#ifdef SERIAL_COMMAND_REPLY
-Radio_Msg broadcastmsg;
-#endif
+
+
+
+
 #if defined(PLATFORM_AVR_IRIS) && (SERIAL_COMMAND_REPLY)
 SIGNAL(USART0_RX_vect)
 {
@@ -270,7 +280,58 @@ SIGNAL(USART0_RX_vect)
 }
 
 //-------------------------------------------------------------------------
+
+#elif defined(PLATFORM_AVR_IRIS) && defined(PLATFORM_IRIS_BASE)
+
+//this part is for compiling the base station 
+
+
+SIGNAL(USART0_RX_vect)
+{
+
+
+
+ uint8_t dummy = UDR0;
+ uint8_t currentindex = 0; 
+ uint8_t i; 
+
+ if (dummy == 'a')
+  {
+
+   _atomic_t _atomic = _atomic_start();
+
+    for (i=0;i<31;i++)
+	{
+    while (!(UCSR0A & (1<<RXC0)));
+	receivebuffer[currentindex++] = UDR0; 
+	}  
+
+   _atomic_end(_atomic); 
+		
+		broadcastCommand(receivebuffer, currentindex); 
+
+  }
+ else if (dummy == 'l')
+  {
+   _atomic_t _atomic = _atomic_start();
+    for (i=0;i<63;i++)
+	{
+    while (!(UCSR0A & (1<<RXC0)));
+	receivebuffer[currentindex++] = UDR0; 
+	}  
+    _atomic_end(_atomic); 
+
+		broadcastCommand(receivebuffer, currentindex); 
+   }
+ 
+
+} 
+
+
+
+
 #elif defined(PLATFORM_AVR)
+//this is exclusively for micaz
 SIGNAL(USART0_RX_vect)
 {
     uint8_t dummy = UDR0;
@@ -344,77 +405,4 @@ SIGNAL(USART0_RX_vect)
     // }
 }
 
-//-------------------------------------------------------------------------
-#endif
-#ifdef PLATFORM_AVR_IRIS
-void senddata(uint8_t length)
-{
-    printStringN((char *)dataToSend, length);
-}
-
-//-------------------------------------------------------------------------
-Radio_MsgPtr Broadcast2SerialAlternative(Radio_MsgPtr msg)
-{
-    uint8_t *pack;
-    uint8_t currentlength;
-    uint8_t i;
-    uint8_t currentindex;
-
-    {
-        _atomic_t _atomic = _atomic_start();
-
-        pack = (uint8_t *) (msg);
-        currentlength = pack[0];
-        currentindex = 0;
-        dataToSend[currentindex++] = 0x7e;
-        dataToSend[currentindex++] = 0x42;
-        for (i = 6; i < 4 + 6; i++)
-        {
-            uint8_t temp = pack[i];
-
-            if (temp == 0x7e)
-            {
-                dataToSend[currentindex++] = 0x7d;
-                dataToSend[currentindex++] = 0x5e;
-            }
-            else if (temp == 0x7d)
-            {
-                dataToSend[currentindex++] = 0x7d;
-                dataToSend[currentindex++] = 0x5d;
-            }
-            else
-            {
-                dataToSend[currentindex++] = temp;
-            }
-        }
-        dataToSend[currentindex++] = currentlength;
-        for (i = 4 + 6; i < currentlength + 4 + 6; i++)
-        {
-            uint8_t temp = pack[i];
-
-            if (temp == 0x7e)
-            {
-                dataToSend[currentindex++] = 0x7d;
-                dataToSend[currentindex++] = 0x5e;
-            }
-            else if (temp == 0x7d)
-            {
-                dataToSend[currentindex++] = 0x7d;
-                dataToSend[currentindex++] = 0x5d;
-            }
-            else
-            {
-                dataToSend[currentindex++] = temp;
-            }
-        }
-        dataToSend[currentindex++] = 0;
-        dataToSend[currentindex++] = 0;
-        dataToSend[currentindex++] = 0x7e;
-        _atomic_end(_atomic);
-    }
-    senddata(currentindex);
-    return msg;
-}
-
-//-------------------------------------------------------------------------
 #endif

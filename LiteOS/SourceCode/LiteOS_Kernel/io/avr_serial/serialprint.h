@@ -58,6 +58,9 @@ void usartPrint(uint8_t c);
 void initUSART();
 void usartPutLong(uint32_t l);
 
+void printStringN_base(char *p, uint8_t n);
+
+
 #ifdef PLATFORM_AVR_IRIS
 Radio_MsgPtr Broadcast2SerialAlternative(Radio_MsgPtr msg);
 #endif
