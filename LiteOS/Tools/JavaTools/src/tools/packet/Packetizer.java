@@ -282,7 +282,7 @@ public class Packetizer extends AbstractSource implements Runnable {
 		    return packet;
 		}
 		else {
-		    message(name + ": bad packet");
+		    message(name + ": bad packet in packetizer");
 		    /* We don't lose sync here. If we did, garbage on the line
 		       at startup will cause loss of the first packet. */
 		    count = 0;

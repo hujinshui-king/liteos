@@ -78,7 +78,7 @@ public class cpCommand implements cmdcontrol {
 
     private byte[] reply = new byte[64];
 
-    final int SIZEOFDATA = 50;
+    final int SIZEOFDATA = 20;
 
     private int copyType = 0;
 
