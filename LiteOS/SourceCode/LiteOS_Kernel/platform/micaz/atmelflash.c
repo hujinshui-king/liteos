@@ -412,6 +412,30 @@ uint16_t atmel_flash_crc(uint32_t count)
 
 /** @brief Write one bit of data.
 */
+
+#ifdef PLATFORM_AVR_IRIS
+
+#define WRITEBIT(n)					\
+PORTD = clrClkAndData;				\
+asm __volatile__					\
+(  "sbrc %2," #n "\n"				\
+"\tsbi 11,3\n"					\
+"\tsbi 11,5\n"					\
+: "=d" (spiIn) : "0" (spiIn), "r" (spiOut))
+
+/** @brief Read one bit of data.
+*/
+#define READBIT(n)				\
+PORTD = clrClkAndData;			\
+asm __volatile__				\
+("\tsbi 11,5\n"				\
+"\tsbic 9,2\n"				\
+"\tori %0,1<<" #n "\n"			\
+: "=d" (spiIn) : "0" (spiIn))
+
+
+#else
+
 #define WRITEBIT(n)					\
 PORTD = clrClkAndData;				\
 asm __volatile__					\
@@ -429,6 +453,11 @@ asm __volatile__				\
 "\tsbic 16,2\n"				\
 "\tori %0,1<<" #n "\n"			\
 : "=d" (spiIn) : "0" (spiIn))
+
+
+#endif 
+
+
 
 /** @brief Retrieve 1 byte of data from the external flash.
 */

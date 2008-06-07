@@ -41,7 +41,19 @@
 //MicaZ specific inclusions
 #include <stdlib.h>
 #include "../../system/packethandler.h"
+
+#ifdef RADIO_CC2420
 #include "../../io/cc2420/cc2420controlm.h"
+#endif 
+
+#ifdef RADIO_RF230
+#include "../../io/rf230/at86rf230_registermap.h"
+#include "../../io/rf230/tat.h"
+#endif
+
+
+
+
 #include "leds.h"
 #include "./atmelflash.h"
 #define MICAZCONFIGMESSAGERECEIVED 10
@@ -139,6 +151,11 @@ int main()
         Leds_yellowToggle();
         mystrncpy(networkid, "sn01\0", 5);
         mystrncpy(filenameid, "nodeK\0", 6);
+
+
+
+
+
         CURRENT_NODE_ID = 1;
         nodeid = CURRENT_NODE_ID;
         srand(nodeid);
@@ -186,7 +203,14 @@ int main()
 
 
     //#ifdef PLATFORM_CPU_MEASURE
-    //GenericTimerStart(12, TIMER_REPEAT, 30000);
+    
+    #ifdef PLATFORM_IRIS_BASE
+      {}    
+    #else
+    // GenericTimerStart(12, TIMER_REPEAT, 5000);
+	  {}
+    #endif
+    
     //GenericTimerStart(15, TIMER_REPEAT, 500);
     //#endif
 
@@ -195,6 +219,17 @@ int main()
     // sbi(MCUCR, SM1);
     // cbi(MCUCR, SM2); 
     // sbi(MCUCR, SE);
+
+
+    
+
+   #ifdef PLATFORM_AVR_IRIS
+    AMStandard_Control_init();
+   	
+  	if (tat_set_trx_state( RX_ON )==TAT_SUCCESS) printfstr ("\n directly go to RX_ON sucessfully "); 
+   	  	else printfstr ("\n directly go to RX_ON fail "); 
+   #endif	  	
+
 
     _avr_enable_interrupt();
     while (1)
