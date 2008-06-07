@@ -11,6 +11,7 @@ import sys
 import os
 import string
 import shutil
+import glob
 import fileinput
 
 #Modify type of target to add support for other platforms, such as iris and telos
@@ -36,6 +37,25 @@ def processArguments():
     if temp == 'iris':
         typeOfTarget = 2
         return
+                
+    if temp == 'base':
+    	typeOfTarget = 3
+    	return
+
+    if temp == 'all':
+        cmdtemp = "./build micaz"
+        fout = os.popen(cmdtemp)
+        resultoutput = fout.read()
+        print resultoutput
+        cmdtemp = "./build iris"
+        fout = os.popen(cmdtemp)
+        resultoutput = fout.read()
+        print resultoutput
+        cmdtemp = "./build base"
+        fout = os.popen(cmdtemp)
+        resultoutput = fout.read()
+        print resultoutput
+        sys.exit(1)
 
 
     #if temp == 'iris':
@@ -53,19 +73,25 @@ def processArguments():
 if __name__ == "__main__":
     processArguments()
     
-    if os.path.isdir("bin") == True:
-        shutil.rmtree("./bin")
-
-    os.mkdir("bin")
+    if os.path.isdir("bin") == False:
+       os.mkdir("bin")
     os.chdir("./bin")
+    if os.path.isdir("dep") == True:
+       os.system("rm -r dep")
 
     #Add new types of targets here.
-    
+    cmdtemp = "rm *.*"
+    fout = os.popen(cmdtemp)
+    resultoutput = fout.read()
     if typeOfTarget == 1:
         shutil.copyfile("../avr.micaz.target", "./Makefile")
 
     if typeOfTarget == 2:
         shutil.copyfile("../avr.iris.target", "./Makefile")
+    
+    if typeOfTarget == 3:
+    	shutil.copyfile("../avr.base.target", "./Makefile")
+        
 
     print "Please wait... This will take a few seconds..."
         
@@ -91,14 +117,41 @@ if __name__ == "__main__":
     shutil.move("./bin/LiteOS.elf", "LiteOS.elf")
     shutil.move("./bin/LiteOS.lss", "LiteOS.lss")
     
-    shutil.rmtree("./bin")
-
-    os.mkdir("bin")
+    #shutil.rmtree("./bin")
+		
+    #os.mkdir("bin")
     os.chdir("./bin")
-    shutil.move("../LiteOS.hex", "./LiteOS.hex")
-    shutil.move("../LiteOS.elf", "./LiteOS.elf")
-    shutil.move("../LiteOS.lss", "./LiteOS.lss")
-    shutil.copy("../extract.pl", "./extract.pl")
+    os.system("rm *.*")
+    os.system("rm makefile")
+    os.system("rm -r dep")
+    
+    if typeOfTarget == 1:
+        if os.path.isdir("micaz") == False:
+            os.mkdir("micaz")
+        os.chdir("./micaz")
+        shutil.move("../../LiteOS.hex", "./LiteOS.hex")
+    	shutil.move("../../LiteOS.elf", "./LiteOS.elf")
+    	shutil.move("../../LiteOS.lss", "./LiteOS.lss")
+    	shutil.copy("../../extract.pl", "./extract.pl")
+
+    if typeOfTarget == 2:
+        if os.path.isdir("iris") == False:
+            os.mkdir("iris")
+       	os.chdir("./iris")
+       	shutil.move("../../LiteOS.hex", "./LiteOS.hex")
+    	shutil.move("../../LiteOS.elf", "./LiteOS.elf")
+    	shutil.move("../../LiteOS.lss", "./LiteOS.lss")
+    	shutil.copy("../../extract.pl", "./extract.pl")
+    
+    if typeOfTarget == 3:
+    	if os.path.isdir("base") == False:
+    	    os.mkdir("base")
+    	os.chdir("./base")
+        shutil.move("../../LiteOS.hex", "./Base.hex")
+    	shutil.move("../../LiteOS.elf", "./Base.elf")
+    	shutil.move("../../LiteOS.lss", "./Base.lss")
+    	shutil.copy("../../extract.pl", "./extract.pl")
+    
     
     print "The files have been generated in the bin directory"
    
