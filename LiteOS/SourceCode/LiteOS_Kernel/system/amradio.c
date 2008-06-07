@@ -126,6 +126,13 @@
 #include "../platform/micaz/hplcc2420m.h"
 #include "../platform/micaz/hpltimer1.h"
 #endif
+
+#if defined(PLATFORM_AVR) && defined(RADIO_RF230)
+#include "../io/rf230/rf230radiom.h"
+#endif
+
+
+
 bool AMStandard_state;
 Radio_MsgPtr AMStandard_buffer;
 uint16_t AMStandard_lastCount;
@@ -135,10 +142,17 @@ uint16_t AMStandard_counter;
 inline bool AMStandard_Control_init(void)
 {
     result_t ok2;
+	ok2 = 0; 
+
 
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
     ok2 = cc2420radiom_SplitControl_init();
 #endif
+
+#if defined(PLATFORM_AVR) && defined(RADIO_RF230)
+    ok2 = trx_init();
+#endif 
+
     AMStandard_state = FALSE;
     AMStandard_lastCount = 0;
     AMStandard_counter = 0;
@@ -149,6 +163,7 @@ inline bool AMStandard_Control_init(void)
 inline result_t AMStandard_RadioControl_start(void)
 {
     unsigned char result;
+	result = 0; 
 
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
     result = cc2420radiom_StdControl_start();
@@ -173,6 +188,12 @@ inline result_t AMStandard_RadioSend_send(Radio_MsgPtr arg_0xa3c31f8)
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
     result = cc2420radiom_Send_send(arg_0xa3c31f8);
 #endif
+
+#if defined(PLATFORM_AVR)&& defined(RADIO_RF230)
+   trx_init();
+   result = rf230radio_Send_send(arg_0xa3c31f8);
+#endif
+
     return result;
 }
 
@@ -306,10 +327,100 @@ Radio_MsgPtr received(Radio_MsgPtr packet)
     return packet;
 }
 
+
+
+
+//IRIS-This function is really really critical to the correct behaviro of the radio stack 
+//Basically it returns a radio message pointer that must be reused 
+//and the content of the packet is the correct packet parsed, and is useful 
+//The content starts with a length that is the actual payload length and all information are correct
+//Must copy this content to the user supplied buffer, put the user action into a task, and then return this buffer to the recevie module 
+Radio_MsgPtr received_iris( Radio_MsgPtr packet )
+ {
+   uint16_t addr = CURRENT_NODE_ID;
+   int i=0;
+   
+   #ifdef TRACE_ENABLE
+      #ifdef TRACE_ENABLE_RADIOEVENT
+       addTrace(TRACE_RADIOEVENT_RECEIVEPACKET, 100);     
+      #endif
+   #endif
+
+
+   AMStandard_counter ++;
+   
+   //Debug
+   /*
+        printfstr ("\n #####Rcv Packet CRC####### \n "); 
+        printfintegeru32((uint32_t)packet->crc);
+        printfstr ("\n #####Rcv Packet ADDR####### \n "); 
+        printfintegeru32((uint32_t)packet->addr);
+        
+   */
+   
+   #if defined(PLATFORM_AVR_IRIS) && defined(PLATFORM_IRIS_BASE)
+        {
+        Radio_MsgPtr tmp;
+        if ((packet->addr == BCAST_ADDRESS)&&(packet->port == 0xefef))
+        	 {
+        	 	packet->length = packet->length + MSG_HEADER_SIZE; 
+        	  tmp = Broadcast2SerialAlternative(packet); 
+        	   if ( tmp ) {
+               packet = tmp;
+             } 
+             return packet; 
+        	 }
+         } 	 
+    
+   
+   #endif 
+   
+   
+   if ( ( packet->addr == BCAST_ADDRESS || packet->addr == addr )) { //Not check CRC Now
+      uint16_t port = packet->port;
+      Radio_MsgPtr tmp;
+      tmp = Standard_Receive_Packet( port, packet );
+      
+        
+      if ( tmp ) {
+      	//Debug
+      	//printfstr ("\n ######Packet=Tmp####### \n "); 
+         packet = tmp;
+      }
+   }
+    // Leds_yellowToggle();  //Upon Receiving Packet in received fun
+     
+      //printfstr ("\n #####Rcv Packet PORT####### \n "); 
+       //printfintegeru32((uint32_t)packet->port);
+     
+   //Debug
+ 
+    /*    printfstr ("\n ######Receive Packet Length####### \n "); 
+        printfintegeru32((uint32_t)packet->length);
+   	  	printfstr ("\n----Received Packet Data----- \n"); 
+        for (i=0;i<packet->length-MSG_HEADER_SIZE;i++)
+        {
+        printfintegeru32((uint32_t) packet->data[i]); 
+        printfstr ("\n"); 
+        }
+    */
+   return packet;
+}
+
+
+
 //-------------------------------------------------------------------------
 inline Radio_MsgPtr AMStandard_RadioReceive_receive(Radio_MsgPtr packet)
 {
-    return received(packet);
+   #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
+   return received( packet );
+   #endif
+   
+   #if defined(PLATFORM_AVR) && defined(RADIO_RF230)
+   return received_iris( packet );
+   #endif
+
+     
 }
 
 //-------------------------------------------------------------------------
