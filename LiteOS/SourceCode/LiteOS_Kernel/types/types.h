@@ -72,6 +72,7 @@ typedef unsigned long long uint64_t;
 typedef unsigned int size_t;
 typedef unsigned char bool;
 typedef unsigned char boolean;
+typedef unsigned char bool2; 
 typedef uint8_t result_t;
 typedef uint8_t _atomic_t;
 
