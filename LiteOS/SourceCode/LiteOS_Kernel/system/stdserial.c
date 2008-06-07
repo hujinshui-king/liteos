@@ -36,6 +36,14 @@ void printfstrlen(char *str, uint8_t len)
 #endif
 }
 
+void printfstrlen_base(char *str, uint8_t len)
+{
+#ifdef PLATFORM_AVR
+    printStringN_base(str, len);
+#endif
+}
+
+
 //-------------------------------------------------------------------------
 void printfval(uint8_t val)
 {

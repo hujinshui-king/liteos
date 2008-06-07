@@ -73,6 +73,9 @@ static void send_task()
 {
     struct msgData *dataPayloadPtr_currentMsg;
 
+    //debugrf230
+    Leds_greenToggle(); 
+	 
     dataPayloadPtr_currentMsg = (struct msgData *)currentMsg.data;
     if (radioinfo.socket_msg_len == 0)
     {
@@ -80,14 +83,20 @@ static void send_task()
     }
     mystrncpy((char *)dataPayloadPtr_currentMsg, (char *)radioinfo.socket_msg,
               radioinfo.socket_msg_len);
-#if defined(PLATFORM_AVR_IRIS)
+
+
+/*#if defined(PLATFORM_AVR_IRIS)
     {
         currentMsg.length = radioinfo.socket_msg_len;
         currentMsg.addr = radioinfo.socket_addr;
         currentMsg.port = radioinfo.socket_port;
         Broadcast2SerialAlternative(&currentMsg);
     }
+
+
 #elif defined(PLATFORM_AVR)
+  */
+  
     if (radioinfo.socket_addr != 0)
     {
         AMStandard_SendMsg_send(radioinfo.socket_port, radioinfo.socket_addr,
@@ -100,12 +109,16 @@ static void send_task()
         currentMsg.port = radioinfo.socket_port;
         Standard_Receive_Packet(radioinfo.socket_port, &currentMsg);
     }
-#endif
+//#endif
 }
 
 //-------------------------------------------------------------------------
 void SocketRadioSend()
 {
+   
+   	//debugrf230
+    Leds_redToggle(); 
+
     postTask(send_task, 9);
     //After it is woken up, return
     return;
@@ -114,7 +127,11 @@ void SocketRadioSend()
 //-------------------------------------------------------------------------
 void StandardSocketSend(uint16_t port, uint16_t address, uint8_t msglength,
                         uint8_t * msg)
-{
+{   
+    #ifdef PLATFORM_AVR_IRIS
+     sleepThread(20);
+    #endif 
+
     Socket_Mutex_lock(&radio_mutex);
     radioinfo.socket_port = port;
     radioinfo.socket_addr = address;
@@ -155,6 +172,8 @@ void serial_send_task()
 //-------------------------------------------------------------------------
 void SocketSerialSend()
 {
+    //debugrf230
+    //Leds_redToggle(); 
     postTask(serial_send_task, 9);
     //After it is woken up, return
     return;
