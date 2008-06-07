@@ -35,10 +35,13 @@
 #include "../filesys/vectorflash.h"
 #include "../system/nodeconfig.h"
 #include "../utilities/math.h"
+
 #ifdef PLATFORM_AVR
 #include "../platform/avr/bootloader.h"
 #include "../platform/avr/avrhardware.h"
 #include "../platform/micaz/micazhardware.h"
+#include "../platform/micaz/leds.h"
+
 #include <stdlib.h>
 #endif
 //extern volatile uint8_t energyround; 
@@ -71,6 +74,7 @@ char filename[13];
 uint16_t nodeid;
 static uint16_t kernelromsize = 22516;
 static uint16_t kernelramsize = 2318;
+
 
 //-------------------------------------------------------------------------
 void reply_devicehandling(uint8_t * receivebuffer)
@@ -516,6 +520,8 @@ void reply_ls_long(uint8_t block)
         reply[4] = seq;
         seq++;
         finfonode((char *)&reply[5], (int)childblock);
+	    sleepThread(20);
+	
         StandardSocketSend(0xefef, 0xffff, 32, reply);
         //     printStringN(reply,32); 
     }
@@ -536,6 +542,7 @@ void reply_mkdir(uint8_t * receivebuffer)
     reply[1] = 141;
     reply[2] = nodeid;
     reply[3] = newblockid;
+	 sleepThread(20);
     StandardSocketSend(0xefef, 0xffff, 32, reply);
     // printStringN(reply,32);      
 }
@@ -561,6 +568,7 @@ void reply_cp_fromPCtoNode_type1(uint8_t * receivebuffer)
     fid = getFreeFid();
     openFile(newblockid, fid, 2);
     openedfile = &fidtable[fid];
+	 sleepThread(20);
     // printStringN(reply,32);      
     StandardSocketSend(0xefef, 0xffff, 32, reply);
 }
@@ -1011,6 +1019,10 @@ void create_thread_task()
         (uint16_t) (hex2value(sysinfo[10])) * 256 +
         (uint16_t) (hex2value(sysinfo[11])) * 16 +
         (uint16_t) (hex2value(sysinfo[12]));
+
+    ramstackstart = ramstackstart *2;
+	ramstackend = ramstackend * 2; 
+
     createstaticdatasize =
         (uint16_t) (hex2value(sysinfo[13])) * 100 +
         (uint16_t) (hex2value(sysinfo[14])) * 10 +
@@ -1164,6 +1176,8 @@ void commandHandle(uint8_t * receivebuffer, uint8_t total)
        resetNode();
        }
      */
+
+	//Leds_redToggle();
     if (!((receivebuffer[2] == 0) || (receivebuffer[2] == nodeid)))
     {
         return;
