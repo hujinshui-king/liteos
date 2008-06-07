@@ -50,8 +50,8 @@ def processHexFile():
     tryoutFFFF = True
     Num1 = pageNum
     Num2 = int(pageNum)*128+70
-    Num3 = int(ramStart)
-    Num4 = int(ramStart)+int(ramSize)
+    Num3 = int(ramStart)/2
+    Num4 = (int(ramStart)+int(ramSize))/2
     Num5 = int(staticdatasize)
 
     prefix = str(Num1) + hex(Num2)[2:]+ hex(Num3)[2:] + hex(Num4)[2:] + '%(#)03d'%{"#":Num5}
