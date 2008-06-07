@@ -19,6 +19,10 @@
 #include "globaltiming.h"
 #include "stdserial.h"
 #include "scheduling.h"
+#include "../types/types.h"
+#include "amradio.h"
+#include "amcommon.h"
+
 #if defined(PLATFORM_AVR) && defined(RADIO_CC2420)
 #include "../platform/micaz/hplcc2420interruptm.h"
 #include "../io/avr_serial/serialprint.h"
@@ -32,6 +36,12 @@
 //Implementing platform related modules 
 //This part assumes that LITE_MAX_THREAD is 8
 void (*timercallback[8]) ();
+
+//debugging for iris
+//struct Radio_Msg Packetd;
+//struct Radio_Msg *pktptr=&Packetd;
+
+
 inline result_t GenericTimerInit(void)
 {
     uint8_t i;
@@ -115,6 +125,7 @@ inline result_t GenericTimerFired(uint8_t id)
         ServiceTimerFired(7);
         break;
     case 9:
+
 #ifdef PLATFORM_CPU_MEASURE
         {
             _atomic_t currentatomic;
@@ -134,8 +145,22 @@ inline result_t GenericTimerFired(uint8_t id)
         break;
 #endif
     case 12:
-        //Leds_redToggle();
-        break;
+    	//debugging for iris. 
+/*    {
+	int i; 		
+   	for(i=0;i<10;i++)
+   	  pktptr->data[i]=i+10;
+   	  
+	  pktptr->length=10;
+   	  pktptr->dsn=15; //first sequence number
+   	  AMStandard_Control_init();
+   	  //Send Option
+  	  AMStandard_RadioSend_send (pktptr);
+    }  	
+    
+  */
+  	  break;
+
     case 15:
         //Leds_redToggle(); 
         break;
