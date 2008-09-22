@@ -30,7 +30,9 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #define CURRENTADDRESS 1
 
-//yied function
+//yied function for giving up the current thread. 
+//calls yieldfunction()
+
 #define YIELD_FUNCTION  												0xEA00
 
 //green toggle function 
@@ -40,27 +42,36 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #define RED_LED_TOGGLE_FUNCTION  								0xEA08
 
 //get current thread address
+//calls getCurrentThreadAddress();
 #define GET_CURRENT_THREAD_ADDRESS_FUNCTION 		0xEA0C
 
 //get the radio mutex address
+//calls getRadioMutex() function
 #define GET_RADIO_MUTEX_ADDRESS_FUNCTION 				0xEA10
 
 //send by radio 
+//getRadioSendFunction, then calls SocketRadioSend()
+//Assumed to be putting the data into radio data structure then send
+
 #define SOCKET_RADIO_SEND_FUNCTION 							0xEA14
 
 //unlock the mutex
+//unlockMutex() is called 
 #define MUTEX_UNLOCK_FUNCTION										0xEA18
 
 //get the index of the current thread 
 #define GET_CURRENT_THREAD_INDEX_FUNCTION			  0xEA1C
 
 //get the file path parameter address
+//calls getFilePathAddr()
 #define GET_FILE_PATH_ADDRESS										0xEA20
 
 //get the file mode parameter address
+//calls getFileModeAddr
 #define GET_FILE_MODE_ADDRESS 									0xEA24
 
 //get the file operation mutex address
+//calls getFileMutexAddr
 #define GET_FILE_MUTEX_ADDRESS									0xEA28
 
 //open a file
@@ -100,7 +111,7 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #define GET_CURRENT_RADIO_HANDLE_ADDR 					0xEA60
 
 //Register the radio receive event 
-
+//calls setCurrentRadioHandle
 #define REGISTER_RADIO_RECEIVE_EVENT 						0xEA64
 
 //Post a new thread task to the kernel to continue thread scheduling 
@@ -127,12 +138,14 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 #define GET_SERIAL_MUTEX_ADDRESS_FUNCTION 			0xEA90
 
+//calls getCurrentSerialInfoAddress()
 #define GET_SERIAL_SEND_STRUCTURE_ADDRESS				0xEA94
 
 #define SERIAL_SEND_FUNCTION 										0xEA98
 
 #define GET_SERIAL_RECEIVE_HANDLE 							0xEA9C
 	
+// calls setCurrentSerialHandleAddress()
 #define REGISTER_SERIAL_RECEIVE_EVENT 					0xEAA0
 
 #define GET_EEPROM_STRUCTURE_HANDLE 						0xEAA4
@@ -167,10 +180,13 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 
 //No logging for the remaining
 	
+//getInternalTracingBlockAddressSyscall() function is called
 #define GET_LOGGER_BLOCK_ADDRESS  							0xEAE0
 
+//enableTracingSyscall
 #define ENABLE_TRACING_SYSCALL									0xEAE4
 
+//disableTracingSyscall
 #define DISABLE_TRACING_SYSCALL									0xEAE8
 
 #define POST_TASK_WITHOUT_LOGGING								0xEAEC
@@ -180,24 +196,34 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 //This is for the purpose of jumping to the user trace handler 
 //The prelimnary trace hanlder is included in the current version for use
 
+//jumpToTracePointSyscall()
 #define SYSCALL_TRACE_POINT_USER								0xEAF4
 
+//insertTracePointToUser()
 #define SYSCALL_USER_ADD_TRACE_POINT						0xEAF8
 
+//insertTracePointToUserLong()
 #define SYSCALL_USER_ADD_TRACE_POINT_LONG				0xEAFC
 
+//terminateThreadFunction()
 #define SYSCALL_USER_THREAD_TERMINATE_TASK			0xEB00
 
+//setTimerFunction()
 #define SYSCALL_TIMER_FIRE_TASK	 								0xEB04
 
+//getStackPtr()
 #define GET_KERNEL_STACK_PTR_ADDRESS						0xEB08
 
+//removeTracePoint()
 #define SYSCALL_USER_REMOVE_TRACE_POINT         0xEB0C
 
+//removeTracePointLong()
 #define SYSCALL_USER_REMOVE_TRACE_POINT_LONG    0xEB10
 	
+//sounderonfunction()
 #define SOUNDER_ON_FUNCTION									0xEB14
 
+//sounderofffunction()
 #define SOUNDER_OFF_FUNCTION									0xEB18
 	
 
