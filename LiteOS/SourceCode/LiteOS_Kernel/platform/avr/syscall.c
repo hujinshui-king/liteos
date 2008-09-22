@@ -1972,6 +1972,7 @@ void getInternalTracingBlockAddressSyscall()
 
 /**\ingroup syscall 
 */
+
 void enableTracingSyscall() __attribute__ ((section(".systemcall")))
     __attribute__ ((naked));
 void enableTracingSyscall()
