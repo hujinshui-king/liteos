@@ -21,15 +21,16 @@
  */
 
 //@author Cory Sharp <cssharp@eecs.berkeley.edu>
-
 package tools.sf;
 
-public interface SFRenderer
-{
-  public void message( String msg );
-  public void updatePacketsRead( int n );
-  public void updatePacketsWritten( int n );
-  public void updateNumClients( int n );
-  public void updateListenServerStatus( boolean listening );
-}
+public interface SFRenderer {
+	public void message(String msg);
 
+	public void updatePacketsRead(int n);
+
+	public void updatePacketsWritten(int n);
+
+	public void updateNumClients(int n);
+
+	public void updateListenServerStatus(boolean listening);
+}

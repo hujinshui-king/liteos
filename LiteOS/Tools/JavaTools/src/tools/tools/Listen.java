@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.tools;
 
 import java.io.*;
@@ -41,48 +40,48 @@ import tools.packet.*;
 import tools.util.*;
 import tools.message.*;
 
-
 public class Listen {
-          static long nowtime, previoustime;
+	static long nowtime, previoustime;
 
-    public static void main(String args[]) throws IOException {
+	public static void main(String args[]) throws IOException {
 
+		if (args.length > 0) {
+			System.err.println("usage: java tools.tools.Listen");
+			System.exit(2);
+		}
 
-    if (args.length > 0) {
-	    System.err.println("usage: java tools.tools.Listen");
-	    System.exit(2);
+		PacketSource reader = BuildSource.makePacketSource();
+		if (reader == null) {
+			System.err
+					.println("Invalid packet source (check your MOTECOM environment variable)");
+			System.exit(2);
+		}
+
+		try {
+			reader.open(PrintStreamMessenger.err);
+			for (;;) {
+				byte[] packet = reader.readPacket();
+
+				Calendar cal = Calendar.getInstance();
+
+				// SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+
+				// System.out.println("Now:  "+ sdf.format(cal.getTime()) +
+				// " counter: "+String.valueOf(total) + " diff "+
+				// String.valueOf(total-lastvalue));
+				Date now = new Date();
+				nowtime = now.getTime();
+				System.out.println("The time elpased is "
+						+ (nowtime - previoustime) + "\n");
+
+				previoustime = nowtime;
+				Dump.printPacket(System.out, packet);
+
+				System.out.println();
+				System.out.flush();
+			}
+		} catch (IOException e) {
+			System.err.println("Error on " + reader.getName() + ": " + e);
+		}
 	}
-
-	PacketSource reader = BuildSource.makePacketSource();
-	if (reader == null) {
-	    System.err.println("Invalid packet source (check your MOTECOM environment variable)");
-	    System.exit(2);
-	}
-
-	try {
-	  reader.open(PrintStreamMessenger.err);
-	  for (;;) {
-	    byte[] packet = reader.readPacket();
-
-       Calendar cal = Calendar.getInstance();
-
-       //SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
-
-                  //System.out.println("Now:  "+ sdf.format(cal.getTime()) + " counter: "+String.valueOf(total) + " diff "+ String.valueOf(total-lastvalue));
-      Date now = new Date();
-     nowtime = now.getTime();
-     System.out.println("The time elpased is "+ (nowtime - previoustime) +  "\n");
-
-     previoustime = nowtime; 
-      Dump.printPacket(System.out, packet);
-
-        System.out.println();
-	    System.out.flush();
-	  }
-	}
-	catch (IOException e) {
-	    System.err.println("Error on " + reader.getName() + ": " + e);
-	}
-    }
 }
-

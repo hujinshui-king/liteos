@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 /**
  * 
  *
@@ -38,13 +37,17 @@
  */
 
 package tools.util;
+
 import java.io.IOException;
 
-public interface SerialStub
-{
-    public void Write(byte[] pack) throws IOException;
-    public void Read ( ) throws IOException;
-    public void Open ( ) throws Exception;
-    public void Close ( ) throws Exception;
-    public void registerPacketListener ( PacketListenerIF listener );
+public interface SerialStub {
+	public void Write(byte[] pack) throws IOException;
+
+	public void Read() throws IOException;
+
+	public void Open() throws Exception;
+
+	public void Close() throws Exception;
+
+	public void registerPacketListener(PacketListenerIF listener);
 }

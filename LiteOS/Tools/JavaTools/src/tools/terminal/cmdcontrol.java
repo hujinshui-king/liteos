@@ -16,10 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
@@ -30,44 +27,59 @@ import java.util.ArrayList;
  */
 public interface cmdcontrol {
 
-    /**
-     * Set up a new command for a particular command class
-     *
-     * @param options        the list of options using a String[] array
-     * @param optioncount    the number of options stored in the options array
-     * @param parameters     the list of parameters using a parameters String[] array
-     * @param parametercount the number of parameters
-     * @param fdir           the current directory structure for update and cache
-     * @return return the number of commands to be sent over the radio. if 0, then no message is needed.
-     */
+	/**
+	 * Set up a new command for a particular command class
+	 * 
+	 * @param options
+	 *            the list of options using a String[] array
+	 * @param optioncount
+	 *            the number of options stored in the options array
+	 * @param parameters
+	 *            the list of parameters using a parameters String[] array
+	 * @param parametercount
+	 *            the number of parameters
+	 * @param fdir
+	 *            the current directory structure for update and cache
+	 * @return return the number of commands to be sent over the radio. if 0,
+	 *         then no message is needed.
+	 */
 
-    int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir);
+	int setNewCommand(String[] options, int optioncount, String[] parameters,
+			int parametercount, fileDirectory fdir);
 
-    /**
-     * Get the delay for this command
-     *
-     * @return the required delay in milliseconds
-     */
-    int getDelay();
+	/**
+	 * Get the delay for this command
+	 * 
+	 * @return the required delay in milliseconds
+	 */
+	int getDelay();
 
-    /**
-     * Get a particular command.      *
-     *
-     * @param index of this command list
-     * @return the command in byte array
-     */
-    byte [] getNewCommand(int index);
+	/**
+	 * Get a particular command. *
+	 * 
+	 * @param index
+	 *            of this command list
+	 * @return the command in byte array
+	 */
+	byte[] getNewCommand(int index);
 
-    /**
-     * Handle the response using this particular class for a command.
-     *
-     * @param options        the original options
-     * @param optioncount    the original number of options
-     * @param parameters     the original parameters
-     * @param parametercount the original number of parameters
-     * @param reply          the reply array data structure
-     * @param fdir           the current directory
-     */
-    void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir);
+	/**
+	 * Handle the response using this particular class for a command.
+	 * 
+	 * @param options
+	 *            the original options
+	 * @param optioncount
+	 *            the original number of options
+	 * @param parameters
+	 *            the original parameters
+	 * @param parametercount
+	 *            the original number of parameters
+	 * @param reply
+	 *            the reply array data structure
+	 * @param fdir
+	 *            the current directory
+	 */
+	void handleresponse(String[] options, int optioncount, String[] parameters,
+			int parametercount, ArrayList reply, fileDirectory fdir);
 
 }

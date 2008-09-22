@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.io.*;
@@ -37,38 +36,36 @@ import java.io.*;
 /**
  * "dummy" packet source
  */
-class DummySource extends AbstractSource
-{
-    private byte[] dummyPacket = null;
-    private int nReadDelay  = 1000;
-    final static int dummySize = 4;
+class DummySource extends AbstractSource {
+	private byte[] dummyPacket = null;
+	private int nReadDelay = 1000;
+	final static int dummySize = 4;
 
-    /**
-     * Packetizers are built using the makeXXX methods in BuildSource
-     */
-    DummySource() {
-	super("dummy");
-    }
-
-    protected void openSource() {
-        dummyPacket = new byte[dataOffset + dummySize];
-        dummyPacket[0] = (byte)0x7E;
-
-        for (int i = 1; i < dummyPacket.length - 2; i++)
-	    dummyPacket[i] = (byte)i;
-	dummyPacket[lengthOffset] = dummySize;
-    }
-
-    protected void closeSource() {
-    }
-
-    protected byte[] readSourcePacket() throws IOException {
-	try {
-	    Thread.currentThread ().sleep( nReadDelay );
+	/**
+	 * Packetizers are built using the makeXXX methods in BuildSource
+	 */
+	DummySource() {
+		super("dummy");
 	}
-	catch (InterruptedException e ) {
-	    throw new IOException("interrupted");
+
+	protected void openSource() {
+		dummyPacket = new byte[dataOffset + dummySize];
+		dummyPacket[0] = (byte) 0x7E;
+
+		for (int i = 1; i < dummyPacket.length - 2; i++)
+			dummyPacket[i] = (byte) i;
+		dummyPacket[lengthOffset] = dummySize;
 	}
-	return dummyPacket;
-    }
+
+	protected void closeSource() {
+	}
+
+	protected byte[] readSourcePacket() throws IOException {
+		try {
+			Thread.currentThread().sleep(nReadDelay);
+		} catch (InterruptedException e) {
+			throw new IOException("interrupted");
+		}
+		return dummyPacket;
+	}
 }

@@ -29,9 +29,7 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 //Not Done yet
-
 package tools.packet;
 
 import java.util.*;
@@ -41,44 +39,46 @@ import java.io.*;
  * Read packets from a database. Unfinished.
  */
 class DBSource extends AbstractSource {
-    private DBReader dbReader;
+	private DBReader dbReader;
 
-    /**
-     * Packetizers are built using the makeXXX methods in BuildSource
-     */
-    DBSource(String user, String pass, boolean postgresSql) {
-	super("db@" + user);
-        dbReader = new DBReader(user, pass, postgresSql);
-    }
-
-    protected void openSource() throws IOException {
-	if (!dbReader.Connect()) {
-	    throw new IOException("database connection failed");
-	}
-    }
-
-    protected void closeSource() { 
-	dbReader.Close();
-    }
-
-    protected byte[] readSourcePacket() throws IOException {
-	java.sql.Timestamp lastTimestamp = null;
-	java.sql.Timestamp crrntTimestamp = null;
-
-	byte[] packet = dbReader.NextPacket();
-	crrntTimestamp = dbReader.GetTimestamp ();
-	if (packet == null || crrntTimestamp == null) {
-	    throw new IOException("database packet read failed");
-	}
-	lastTimestamp = crrntTimestamp;
-
-	int sleep = (int)(crrntTimestamp.getTime() - lastTimestamp.getTime());
-	if (sleep > 0) {
-	    message("Sleeping for: " + sleep);
-	    try { Thread.currentThread().sleep (sleep); }
-	    catch (Exception e) { }
+	/**
+	 * Packetizers are built using the makeXXX methods in BuildSource
+	 */
+	DBSource(String user, String pass, boolean postgresSql) {
+		super("db@" + user);
+		dbReader = new DBReader(user, pass, postgresSql);
 	}
 
-        return packet;
-    }
+	protected void openSource() throws IOException {
+		if (!dbReader.Connect()) {
+			throw new IOException("database connection failed");
+		}
+	}
+
+	protected void closeSource() {
+		dbReader.Close();
+	}
+
+	protected byte[] readSourcePacket() throws IOException {
+		java.sql.Timestamp lastTimestamp = null;
+		java.sql.Timestamp crrntTimestamp = null;
+
+		byte[] packet = dbReader.NextPacket();
+		crrntTimestamp = dbReader.GetTimestamp();
+		if (packet == null || crrntTimestamp == null) {
+			throw new IOException("database packet read failed");
+		}
+		lastTimestamp = crrntTimestamp;
+
+		int sleep = (int) (crrntTimestamp.getTime() - lastTimestamp.getTime());
+		if (sleep > 0) {
+			message("Sleeping for: " + sleep);
+			try {
+				Thread.currentThread().sleep(sleep);
+			} catch (Exception e) {
+			}
+		}
+
+		return packet;
+	}
 }

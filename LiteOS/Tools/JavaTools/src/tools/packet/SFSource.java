@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.io.*;
@@ -39,35 +38,35 @@ import java.net.*;
  * Packet source (tcp/ip client) for the new serial forwarder protocol
  */
 class SFSource extends SFProtocol {
-    private Socket socket;
-    private String host;
-    private int port;
+	private Socket socket;
+	private String host;
+	private int port;
 
-    /**
-     * Packetizers are built using the makeXXX methods in BuildSource
-     */
-    SFSource(String host, int port) {
-	super("sf@" + host + ":" + port);
-	this.host = host;
-	this.port = port;
-    }
+	/**
+	 * Packetizers are built using the makeXXX methods in BuildSource
+	 */
+	SFSource(String host, int port) {
+		super("sf@" + host + ":" + port);
+		this.host = host;
+		this.port = port;
+	}
 
-    protected void openSource() throws IOException {
-	 try {
-        socket = new Socket(host, port);
-     }
-     catch (java.net.ConnectException e){
-         System.out.println("Cannot connect to the serial forwarder. You must start serial forwarder before " +
-                  "invoking this terminal. To start the serial forwarder, use java tools.sf.SerialForwarder -comm serial@$YOURPORT$:57600\n"+
-                  "If you are working under the virtual machine environment, double click the LaunchLiteOSInstaller.bat icon on the desktop to start the serial forwarder.");
-         System.exit(1);
-     }
-    is = socket.getInputStream();
-	os = socket.getOutputStream();
-	super.openSource();
-    }
+	protected void openSource() throws IOException {
+		try {
+			socket = new Socket(host, port);
+		} catch (java.net.ConnectException e) {
+			System.out
+					.println("Cannot connect to the serial forwarder. You must start serial forwarder before "
+							+ "invoking this terminal. To start the serial forwarder, use java tools.sf.SerialForwarder -comm serial@$YOURPORT$:57600\n"
+							+ "If you are working under the virtual machine environment, double click the LaunchLiteOSInstaller.bat icon on the desktop to start the serial forwarder.");
+			System.exit(1);
+		}
+		is = socket.getInputStream();
+		os = socket.getOutputStream();
+		super.openSource();
+	}
 
-    protected void closeSource() throws IOException {
-	socket.close();
-    }
+	protected void closeSource() throws IOException {
+		socket.close();
+	}
 }

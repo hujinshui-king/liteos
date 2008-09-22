@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.io.*;
@@ -37,36 +36,35 @@ import java.io.*;
 /**
  * The old, broken, serial-forwarder protocol on an arbitrary stream
  */
-abstract class StreamSource extends AbstractSource
-{
-    protected InputStream is;
-    protected OutputStream os;
-    protected int packetSize;
+abstract class StreamSource extends AbstractSource {
+	protected InputStream is;
+	protected OutputStream os;
+	protected int packetSize;
 
-    protected BrokenPacketizer bp;
+	protected BrokenPacketizer bp;
 
-    protected StreamSource(String name, int packetSize) {
-	super(name);
-	this.packetSize = packetSize;
-	bp = new BrokenPacketizer(name, packetSize, null);
-    }
-
-    protected byte[] readSourcePacket() throws IOException {
-	byte[] packet = new byte[packetSize];
-	int offset = 0;
-
-	while (offset < packetSize) {
-	  int count = is.read(packet, offset, packetSize - offset);
-
-	  if (count == -1)
-	    throw new IOException("end-of-stream");
-	  offset += count;
+	protected StreamSource(String name, int packetSize) {
+		super(name);
+		this.packetSize = packetSize;
+		bp = new BrokenPacketizer(name, packetSize, null);
 	}
-	return bp.collapsePacket(packet);
-    }
 
-    protected boolean writeSourcePacket(byte[] packet) throws IOException {
-	os.write(bp.expandPacket(packet, packetSize));
-	return true;
-    }
+	protected byte[] readSourcePacket() throws IOException {
+		byte[] packet = new byte[packetSize];
+		int offset = 0;
+
+		while (offset < packetSize) {
+			int count = is.read(packet, offset, packetSize - offset);
+
+			if (count == -1)
+				throw new IOException("end-of-stream");
+			offset += count;
+		}
+		return bp.collapsePacket(packet);
+	}
+
+	protected boolean writeSourcePacket(byte[] packet) throws IOException {
+		os.write(bp.expandPacket(packet, packetSize));
+		return true;
+	}
 }

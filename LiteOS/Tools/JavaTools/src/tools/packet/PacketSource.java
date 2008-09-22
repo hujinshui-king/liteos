@@ -29,76 +29,82 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 /** This interface specifies the generic behaviour of a packet mediator.
-    The read and write operations are blocking. 
-    Reads and writes may fail (e.g., for communications failure), which
-    implicitly closes the mediator. It is not possible to reopen a mediator
-    after it is closed (instead, a new mediator should be created).
+ The read and write operations are blocking. 
+ Reads and writes may fail (e.g., for communications failure), which
+ implicitly closes the mediator. It is not possible to reopen a mediator
+ after it is closed (instead, a new mediator should be created).
 
-    The packet byte array must have the following format:
-    - a TinyOS TOS_Msg header (5 bytes):
-      address: 2 bytes, little endian
-      AM type: 1 byte
-      group: 1 byte
-      length: 1 byte
-    - 'length' data bytes
+ The packet byte array must have the following format:
+ - a TinyOS TOS_Msg header (5 bytes):
+ address: 2 bytes, little endian
+ AM type: 1 byte
+ group: 1 byte
+ length: 1 byte
+ - 'length' data bytes
 
-    PacketSources are point-to-point and have "at most once" semantics.
-    writePacket should return true only if the packet has been received
-    Note that checking this is not possible with some of our broken,
-    legacy protocols, and that we will optimistically assume that packets
-    sent over reliable links (e.g., tcp/ip socket to a serial forwarder)
-    will be reliably delivered by tcp/ip.
+ PacketSources are point-to-point and have "at most once" semantics.
+ writePacket should return true only if the packet has been received
+ Note that checking this is not possible with some of our broken,
+ legacy protocols, and that we will optimistically assume that packets
+ sent over reliable links (e.g., tcp/ip socket to a serial forwarder)
+ will be reliably delivered by tcp/ip.
  */
 package tools.packet;
 
 import java.io.*;
 import tools.util.*;
 
-public interface PacketSource
-{
-    /**
-     * Get PacketSource name
-     * @return the name of this packet source, valid for use with
-     * <code>BuildSource.makeSource</code>.
-     */
-    public String getName();
+public interface PacketSource {
+	/**
+	 * Get PacketSource name
+	 * 
+	 * @return the name of this packet source, valid for use with
+	 *         <code>BuildSource.makeSource</code>.
+	 */
+	public String getName();
 
-    /**
-     * Open a packet source
-     * @param messages A destination for informative messages from the
-     *   packet source, or null to discard these.
-     * @exception IOException If the source could not be opened
-     */
-    public void open(Messenger messages) throws IOException;
+	/**
+	 * Open a packet source
+	 * 
+	 * @param messages
+	 *            A destination for informative messages from the packet source,
+	 *            or null to discard these.
+	 * @exception IOException
+	 *                If the source could not be opened
+	 */
+	public void open(Messenger messages) throws IOException;
 
-    /**
-     * Close a packet source. Closing a source must force any 
-     * running <code>readPacket</code> and <code>writePacket</code>
-     * operations to terminate with an IOException
-     * @excpetion IOException Thrown if a problem occured during closing.
-     *   The source is considered closed even if thos occurs.
-     *   Closing a closed source does not cause this exception
-     */
-    public void close() throws IOException;
+	/**
+	 * Close a packet source. Closing a source must force any running
+	 * <code>readPacket</code> and <code>writePacket</code> operations to
+	 * terminate with an IOException
+	 * 
+	 * @excpetion IOException Thrown if a problem occured during closing. The
+	 *            source is considered closed even if thos occurs. Closing a
+	 *            closed source does not cause this exception
+	 */
+	public void close() throws IOException;
 
-    /**
-     * Read a packet
-     * @return The packet read (newly allocated). The format is described
-     *   above
-     * @exception IOException If the source detected a problem. The source
-     *   is automatically closed.
-     */
-    public byte[] readPacket() throws IOException;
+	/**
+	 * Read a packet
+	 * 
+	 * @return The packet read (newly allocated). The format is described above
+	 * @exception IOException
+	 *                If the source detected a problem. The source is
+	 *                automatically closed.
+	 */
+	public byte[] readPacket() throws IOException;
 
-    /**
-     * Write a packet
-     * @param The packet to write. The format is decribed above.
-     * @return Some packet sources will return false if the packet
-     *   could not be written.
-     */
-    public boolean writePacket(byte[] packet) throws IOException;
+	/**
+	 * Write a packet
+	 * 
+	 * @param The
+	 *            packet to write. The format is decribed above.
+	 * @return Some packet sources will return false if the packet could not be
+	 *         written.
+	 */
+	public boolean writePacket(byte[] packet) throws IOException;
 
-    public int getPlatform(); 
+	public int getPlatform();
 }

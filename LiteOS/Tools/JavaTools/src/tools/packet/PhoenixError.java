@@ -41,18 +41,20 @@
 package tools.packet;
 
 /**
- * CommError interface (report MoteIF errors).<p>
- *
- * An interface for listening to messages built from
- * tools.message.Message
- *
- * @version	1, 1 Aug 2003
- * @author	David Gay
+ * CommError interface (report MoteIF errors).
+ * <p>
+ * 
+ * An interface for listening to messages built from tools.message.Message
+ * 
+ * @version 1, 1 Aug 2003
+ * @author David Gay
  */
 public interface PhoenixError {
-    /**
-     * This method is called to signal a problem with a packet source
-     * @param e The IOExcpetion that occured
-     */
-    public void error(java.io.IOException e);
+	/**
+	 * This method is called to signal a problem with a packet source
+	 * 
+	 * @param e
+	 *            The IOExcpetion that occured
+	 */
+	public void error(java.io.IOException e);
 }

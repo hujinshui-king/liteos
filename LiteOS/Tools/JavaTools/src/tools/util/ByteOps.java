@@ -40,34 +40,37 @@
 package tools.util;
 
 public final class ByteOps {
-	
-    /**
-     * Combines two bytes into an unsigned int
-     *  @param hibyte is the most significant byte of the integer
-     *  @param lowbyte is the least significant byte
-     */
-    public static int makeInt(byte lowbyte, byte hibyte) {
-	return unsign(lowbyte) + (unsign(hibyte) << 8);
-    }
-	
-    /**
-     * Combines four bytes into an unsigned long
-     */
-    public static long makeLong(byte lsb, byte b2, byte b3, byte msb) {
-	return unsign(lsb) + (unsign(b2) << 8) +
-	    (unsign(b3) << 16) + (unsign(msb) << 24);
-		
-    }
-    
-    /* Given a byte, convert it to an unsigned int in the range 0 - 255*/
-    public static int unsign(byte b) {
-	if (b < 0) return (int)(b & 0x7f) + 128;
-	else return (int)b;
-    }
-    /*
-      public static int unsign(int b) {
-      if (b < 0) return (int)((b & 0x7f)) + 128;
-      else return (int)b;
-      }*/
-}
 
+	/**
+	 * Combines two bytes into an unsigned int
+	 * 
+	 * @param hibyte
+	 *            is the most significant byte of the integer
+	 * @param lowbyte
+	 *            is the least significant byte
+	 */
+	public static int makeInt(byte lowbyte, byte hibyte) {
+		return unsign(lowbyte) + (unsign(hibyte) << 8);
+	}
+
+	/**
+	 * Combines four bytes into an unsigned long
+	 */
+	public static long makeLong(byte lsb, byte b2, byte b3, byte msb) {
+		return unsign(lsb) + (unsign(b2) << 8) + (unsign(b3) << 16)
+				+ (unsign(msb) << 24);
+
+	}
+
+	/* Given a byte, convert it to an unsigned int in the range 0 - 255 */
+	public static int unsign(byte b) {
+		if (b < 0)
+			return (int) (b & 0x7f) + 128;
+		else
+			return (int) b;
+	}
+	/*
+	 * public static int unsign(int b) { if (b < 0) return (int)((b & 0x7f)) +
+	 * 128; else return (int)b; }
+	 */
+}

@@ -16,104 +16,106 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
 import java.util.regex.Pattern;
 
 /**
- *  The file directory is composed of fileNode. Each node stores info on the files. The default location is the root
+ * The file directory is composed of fileNode. Each node stores info on the
+ * files. The default location is the root
  */
 public class fileDirectory {
 
-    private fileNode root;
-    private fileNode currentNode = null;
+	private fileNode root;
+	private fileNode currentNode = null;
 
-    /**
-     * Default constructor of the file directory class
-     */
-    public fileDirectory() {
-        root = new fileNode("root", "root");
-    }
+	/**
+	 * Default constructor of the file directory class
+	 */
+	public fileDirectory() {
+		root = new fileNode("root", "root");
+	}
 
-    /**
-     * Get the current node of the directory, i.e. the current directory
-     *
-     * @return a file node that is the current node
-     */
-    public fileNode getCurrentNode() {
-        return currentNode;
-    }
+	/**
+	 * Get the current node of the directory, i.e. the current directory
+	 * 
+	 * @return a file node that is the current node
+	 */
+	public fileNode getCurrentNode() {
+		return currentNode;
+	}
 
-    /**
-     * Get the root node of the file directory
-     *
-     * @return the root node
-     */
-    public fileNode getRoot() {
-        return root;
-    }
+	/**
+	 * Get the root node of the file directory
+	 * 
+	 * @return the root node
+	 */
+	public fileNode getRoot() {
+		return root;
+	}
 
-    /**
-     * Change the directory of the file structure
-     *
-     * @param p the directory that wants to change to
-     */
-    public void setCurrentNode(fileNode p) {
-        currentNode = p;
-    }
+	/**
+	 * Change the directory of the file structure
+	 * 
+	 * @param p
+	 *            the directory that wants to change to
+	 */
+	public void setCurrentNode(fileNode p) {
+		currentNode = p;
+	}
 
+	private fileNode relativeAddress(String fileLocation, fileNode start,
+			fileNode defaultnode) {
+		String REGEX = "/";
+		Pattern p = Pattern.compile(REGEX);
+		String[] items = p.split(fileLocation);
+		for (int i = 0; i < items.length; i++) {
+			start = start.enterSubDirectory(items[i]);
+			if (start == null)
+				return defaultnode;
+		}
+		return start;
 
-    private fileNode relativeAddress(String fileLocation, fileNode start, fileNode defaultnode) {
-        String REGEX = "/";
-        Pattern p = Pattern.compile(REGEX);
-        String[] items = p.split(fileLocation);
-        for (int i = 0; i < items.length; i++) {
-            start = start.enterSubDirectory(items[i]);
-            if (start == null)
-             return defaultnode;
-        }
-        return start;
+	}
 
-    }
+	/**
+	 * Change the directory
+	 * 
+	 * @param fileLocation
+	 *            the directory to be changed to
+	 */
+	public void changeDir(String fileLocation) {
 
+		if (fileLocation.startsWith("/")) {
+			this.currentNode = relativeAddress(fileLocation, this.root,
+					this.currentNode);
+		}
 
-    /**
-     * Change the directory
-     *
-     * @param fileLocation the directory to be changed to
-     */
-    public void changeDir(String fileLocation) {
+		else if (fileLocation.startsWith("../")) {
+			this.currentNode = relativeAddress(fileLocation.substring(2),
+					this.currentNode.getParent(), this.currentNode);
 
-        if (fileLocation.startsWith("/")) {
-            this.currentNode = relativeAddress(fileLocation, this.root, this.currentNode);
-        }
+		} else if (fileLocation.startsWith("./")) {
+			if (this.currentNode.getType().startsWith("file") == true)
+				this.currentNode = relativeAddress(fileLocation.substring(1),
+						this.currentNode.getParent(), this.currentNode);
+			else
+				this.currentNode = relativeAddress(fileLocation.substring(1),
+						this.currentNode, this.currentNode);
 
-        else if (fileLocation.startsWith("../")) {
-            this.currentNode = relativeAddress(fileLocation.substring(2), this.currentNode.getParent(), this.currentNode);
+		} else if (fileLocation.compareTo("..") == 0) {
+			this.currentNode = this.currentNode.getParent();
 
-        }
-        else if (fileLocation.startsWith("./")) {
-            if (this.currentNode.getType().startsWith("file") == true)
-                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode.getParent(), this.currentNode);
-            else
-                this.currentNode = relativeAddress(fileLocation.substring(1), this.currentNode, this.currentNode);
+		} else if (fileLocation.compareTo(".") == 0) {
+			if (this.currentNode.getType().startsWith("file") == true)
+				this.currentNode = this.currentNode.getParent();
+		} else {
+			this.currentNode = relativeAddress(fileLocation, this.currentNode,
+					this.currentNode);
+		}
 
-        }
-        else if (fileLocation.compareTo("..") == 0) {
-            this.currentNode = this.currentNode.getParent();
-
-        } else if (fileLocation.compareTo(".") == 0) {
-            if (this.currentNode.getType().startsWith("file") == true)
-                this.currentNode = this.currentNode.getParent();
-        } else {
-            this.currentNode = relativeAddress(fileLocation, this.currentNode, this.currentNode);
-        }
-
-    }
+	}
 
 }

@@ -47,175 +47,165 @@ import java.io.*;
 import java.util.*;
 
 public class MessageSelection {
-    private String[] paths;
-    private Message[] messages = new Message[0];
-    private Vector vector = new Vector();
-    private Class messageClass;
-    
-    public static final int MAX_DEPTH = 12;
+	private String[] paths;
+	private Message[] messages = new Message[0];
+	private Vector vector = new Vector();
+	private Class messageClass;
 
-    public MessageSelection() {
-	paths = getPaths();
-	loadMessages();
-    }
-    
-    public Message[] messages() {
-	return messages;
-    }
+	public static final int MAX_DEPTH = 12;
 
-    public String[] getPaths() {
-	String classPath = System.getProperty("java.class.path");
-	if (classPath.indexOf(":\\") == -1) { 
-	    classPath = classPath.replace(':', ' ');
-	}
-	else {
-	    classPath = classPath.replace(';', ' ');
-	}
-	Vector vector = new Vector();
-	while (classPath.length() > 0) {
-	    String path;
-	    int end  = classPath.indexOf(" ");
-	    if (end == -1) {
-		path = classPath;
-		end = classPath.length() - 1;
-	    }
-	    else {
-		path = classPath.substring(0, end);
-	    }
-	    classPath = classPath.substring(end + 1);
-	    vector.addElement(path);
+	public MessageSelection() {
+		paths = getPaths();
+		loadMessages();
 	}
 
-	String[] paths = new String[vector.size()];
-	for (int i = 0; i < vector.size(); i++) {
-	    paths[i] = (String)vector.elementAt(i);
+	public Message[] messages() {
+		return messages;
 	}
 
-	return paths;
-    }
-    
-
-    private void loadMessages() {
-	for (int i = 0; i < paths.length; i++) {
-	    try {
-		File rootFile = new File(paths[i]);
-		Message m = new Message(0);
-		this.messageClass = m.getClass();
-		
-		findMessages(paths[i], rootFile, 0);
-		messages = new Message[vector.size()];
-		for (int j = 0; j < vector.size(); j++) {
-		    messages[j] = (Message)vector.elementAt(j);
+	public String[] getPaths() {
+		String classPath = System.getProperty("java.class.path");
+		if (classPath.indexOf(":\\") == -1) {
+			classPath = classPath.replace(':', ' ');
+		} else {
+			classPath = classPath.replace(';', ' ');
 		}
-	    }
-	    catch (IOException exception) {
-		System.err.println(exception);
-		messages = new Message[0];
-	    }
-	    catch (InstantiationException exception) {
-		System.err.println(exception);
-		messages = new Message[0];
-	    }
-	    catch (ClassNotFoundException exception) {
-		System.err.println(exception);
-		messages = new Message[0];
-	    }
-	    catch (IllegalAccessException exception) {
-		System.err.println(exception);
-		messages = new Message[0];
-	    }
-	}
-    }
-
-    private boolean isRelated(Class subC, Class superC) {
-	if (subC == superC) {return false;}
-	for (Class tmp = subC.getSuperclass(); tmp != null; tmp = tmp.getSuperclass()) {
-	    if (tmp.equals(superC)) {
-		return true;
-	    }
-	}
-	return false;
-    }
-
-    private boolean alreadyHave(Class c) {
-	Enumeration elements = vector.elements();
-	while (elements.hasMoreElements()) {
-	    Message m = (Message)elements.nextElement();
-	    if (m.getClass().getName().equals(c.getName())) {
-		return true;
-	    }
-	}
-	return false;
-    }
-    
-    private void findMessages(String root, File file, int depth)
-	throws IOException,
-	       ClassNotFoundException,
-	       InstantiationException,
-	       IllegalAccessException {
-
-	String indent = "";
-	for (int cnt = 0; cnt < depth; cnt++) {
-	    indent += "  ";
-	}
-	
-	if (depth > MAX_DEPTH) {
-	    System.err.println("Maximum search depth (" + MAX_DEPTH + ") reached by: " + file.getName());
-	}
-
-	else if (file.isDirectory() && 
-		  !file.getName().equals("sim")) {
-	    String[] dirents = file.list();
-	    for (int i = 0; i < dirents.length; i++) {
-		File subFile = new File(file.getPath() + "/" + dirents[i]);
-		findMessages(root, subFile, depth + 1);
-	    }
-	}
-	
-	else if (file.isFile() && // Could be a Java class
-		 file.getPath().endsWith("Msg.class")) { // Only messages
-	    String fileName = file.getPath();
-
-	    // Cut off leading path stuff
-	    if (fileName.startsWith(root)) {
-		fileName = fileName.substring(root.length() + 1);
-	    }
-	    else if (file.getCanonicalPath().startsWith(root)) {
-		fileName = file.getCanonicalPath().substring(root.length() + 1);
-	    }
-	    
-	    String classEnd = ".class";
-	    if (fileName.endsWith(classEnd)) {
-		// Cut off the .class,
-		// then change '/'s in path to '.'s
-		String className = fileName.substring(0, fileName.length() - classEnd.length());
-		className = className.replace('/', '.');
-		className = className.replace('\\', '.');
-		try {
-		    Class newClass = Class.forName(className);
-		    if (isRelated(newClass, messageClass) &&
-			!alreadyHave(newClass)) {
-			Message m = (Message)newClass.newInstance();
-			vector.addElement(m);
-		    }
+		Vector vector = new Vector();
+		while (classPath.length() > 0) {
+			String path;
+			int end = classPath.indexOf(" ");
+			if (end == -1) {
+				path = classPath;
+				end = classPath.length() - 1;
+			} else {
+				path = classPath.substring(0, end);
+			}
+			classPath = classPath.substring(end + 1);
+			vector.addElement(path);
 		}
-		catch (NoClassDefFoundError e) {
-			//System.out.println("  not defined.");
-		}
-		catch (ClassNotFoundException e) {
-			//System.out.println("  not found.");
-		}
-		catch (SecurityException e) {
-		    //System.out.println("  mistaken path with java in it.");
-		}
-	    }
-	}
-	else {
-	    //System.out.println(indent + "Unknown file type: " + file + "!");
-	}
-    }
 
-    public static void main(String[] args) {
-	MessageSelection ms = new MessageSelection();
-    }
+		String[] paths = new String[vector.size()];
+		for (int i = 0; i < vector.size(); i++) {
+			paths[i] = (String) vector.elementAt(i);
+		}
+
+		return paths;
+	}
+
+	private void loadMessages() {
+		for (int i = 0; i < paths.length; i++) {
+			try {
+				File rootFile = new File(paths[i]);
+				Message m = new Message(0);
+				this.messageClass = m.getClass();
+
+				findMessages(paths[i], rootFile, 0);
+				messages = new Message[vector.size()];
+				for (int j = 0; j < vector.size(); j++) {
+					messages[j] = (Message) vector.elementAt(j);
+				}
+			} catch (IOException exception) {
+				System.err.println(exception);
+				messages = new Message[0];
+			} catch (InstantiationException exception) {
+				System.err.println(exception);
+				messages = new Message[0];
+			} catch (ClassNotFoundException exception) {
+				System.err.println(exception);
+				messages = new Message[0];
+			} catch (IllegalAccessException exception) {
+				System.err.println(exception);
+				messages = new Message[0];
+			}
+		}
+	}
+
+	private boolean isRelated(Class subC, Class superC) {
+		if (subC == superC) {
+			return false;
+		}
+		for (Class tmp = subC.getSuperclass(); tmp != null; tmp = tmp
+				.getSuperclass()) {
+			if (tmp.equals(superC)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean alreadyHave(Class c) {
+		Enumeration elements = vector.elements();
+		while (elements.hasMoreElements()) {
+			Message m = (Message) elements.nextElement();
+			if (m.getClass().getName().equals(c.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void findMessages(String root, File file, int depth)
+			throws IOException, ClassNotFoundException, InstantiationException,
+			IllegalAccessException {
+
+		String indent = "";
+		for (int cnt = 0; cnt < depth; cnt++) {
+			indent += "  ";
+		}
+
+		if (depth > MAX_DEPTH) {
+			System.err.println("Maximum search depth (" + MAX_DEPTH
+					+ ") reached by: " + file.getName());
+		}
+
+		else if (file.isDirectory() && !file.getName().equals("sim")) {
+			String[] dirents = file.list();
+			for (int i = 0; i < dirents.length; i++) {
+				File subFile = new File(file.getPath() + "/" + dirents[i]);
+				findMessages(root, subFile, depth + 1);
+			}
+		}
+
+		else if (file.isFile() && // Could be a Java class
+				file.getPath().endsWith("Msg.class")) { // Only messages
+			String fileName = file.getPath();
+
+			// Cut off leading path stuff
+			if (fileName.startsWith(root)) {
+				fileName = fileName.substring(root.length() + 1);
+			} else if (file.getCanonicalPath().startsWith(root)) {
+				fileName = file.getCanonicalPath().substring(root.length() + 1);
+			}
+
+			String classEnd = ".class";
+			if (fileName.endsWith(classEnd)) {
+				// Cut off the .class,
+				// then change '/'s in path to '.'s
+				String className = fileName.substring(0, fileName.length()
+						- classEnd.length());
+				className = className.replace('/', '.');
+				className = className.replace('\\', '.');
+				try {
+					Class newClass = Class.forName(className);
+					if (isRelated(newClass, messageClass)
+							&& !alreadyHave(newClass)) {
+						Message m = (Message) newClass.newInstance();
+						vector.addElement(m);
+					}
+				} catch (NoClassDefFoundError e) {
+					// System.out.println("  not defined.");
+				} catch (ClassNotFoundException e) {
+					// System.out.println("  not found.");
+				} catch (SecurityException e) {
+					// System.out.println("  mistaken path with java in it.");
+				}
+			}
+		} else {
+			// System.out.println(indent + "Unknown file type: " + file + "!");
+		}
+	}
+
+	public static void main(String[] args) {
+		MessageSelection ms = new MessageSelection();
+	}
 }

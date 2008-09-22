@@ -16,59 +16,50 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
+ */
 
 package tools.terminal;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Qing Cao
- * Date: Sep 1, 2007
- * Time: 9:02:38 PM
+ * Created by IntelliJ IDEA. User: Qing Cao Date: Sep 1, 2007 Time: 9:02:38 PM
  * To change this template use File | Settings | File Templates.
  */
 public class historyCommand {
 
-    String[] history = new String[100];
-    static int currentIndex = 0;
-    static int lastselect = 0;
+	String[] history = new String[100];
+	static int currentIndex = 0;
+	static int lastselect = 0;
 
+	public historyCommand() {
 
-    public historyCommand()
-    {
+		int i;
+		for (i = 0; i < 100; i++)
+			history[i] = null;
+	}
 
-        int i;
-        for (i=0 ;i < 100;i ++)
-         history[i]  = null;
-    }
+	public void addCommand(String command) {
+		history[currentIndex++] = command.substring(0);
+		if (currentIndex == 100)
+			currentIndex = 0;
+	}
 
-    public void addCommand(String command)
-    {
-        history[currentIndex++] = command.substring(0);
-        if (currentIndex == 100)
-        currentIndex = 0;
-    }
+	public void printCommand() {
 
-    public void printCommand()
-    {
+		colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
+				"The previous commands are as follows.");
+		int start = (currentIndex - 20 + 100) % 100;
+		if (history[start] == null)
+			start = 0;
+		for (int i = start; i < currentIndex; i++)
+			colorOutput.println(colorOutput.COLOR_YELLOW, "" + (i - start)
+					+ ": " + history[i]);
+		lastselect = start;
 
-         colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "The previous commands are as follows.");
-        int start = (currentIndex-20+100)%100;
-        if (history[start]== null)
-          start = 0;
-        for (int i=start;i<currentIndex;i++)
-          colorOutput.println(colorOutput.COLOR_YELLOW, ""+(i-start)+": "+ history[i]);
-        lastselect = start;
+	}
 
+	public String getCommand(String input) {
+		return history[lastselect + Integer.parseInt(input)];
 
-    }
-
-    public String getCommand(String input)
-    {
-            return history[lastselect+Integer.parseInt(input)];
-
-    }
+	}
 
 }

@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.util.*;
@@ -37,113 +36,107 @@ import java.io.*;
 import javax.comm.*;
 
 /**
- * A serial port byte source, with extra special hack to deal with
- * broken javax.comm implementations (IBM's javax.comm does not set the
- * port to raw mode, on Linux, at least in some implementations - call
- * an external program (tinyos-serial-configure) to "fix" this)
+ * A serial port byte source, with extra special hack to deal with broken
+ * javax.comm implementations (IBM's javax.comm does not set the port to raw
+ * mode, on Linux, at least in some implementations - call an external program
+ * (tinyos-serial-configure) to "fix" this)
  */
-public class SerialByteSource extends StreamByteSource implements SerialPortEventListener
-{
-    private SerialPort serialPort;
-    private String portName;
-    private int baudRate;
+public class SerialByteSource extends StreamByteSource implements
+		SerialPortEventListener {
+	private SerialPort serialPort;
+	private String portName;
+	private int baudRate;
 
-    public SerialByteSource(String portName, int baudRate) {
-	this.portName = portName;
-	this.baudRate = baudRate;
-    }
-
-    public void openStreams() throws IOException {
-	CommPortIdentifier portId;
-	try {
-	    portId = CommPortIdentifier.getPortIdentifier(portName);
-	}
-	catch (NoSuchPortException e) {
-	    throw new IOException("Invalid port. " + allPorts());
-	}
-	try {
-	    serialPort = (SerialPort)portId.open("SerialByteSource",
-						 CommPortIdentifier.PORT_SERIAL);
-	}
-	catch (PortInUseException e) {
-	    throw new IOException("Port " + portName + " busy");
+	public SerialByteSource(String portName, int baudRate) {
+		this.portName = portName;
+		this.baudRate = baudRate;
 	}
 
-	try {
-	    serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-	    serialPort.setSerialPortParams(baudRate,
-					   SerialPort.DATABITS_8,
-					   SerialPort.STOPBITS_1,
-					   SerialPort.PARITY_NONE);
-
-	    serialPort.addEventListener(this);
-	    serialPort.notifyOnDataAvailable(true);
-	}
-	catch (Exception e) {
-	    serialPort.close();
-	    throw new IOException("Couldn't configure " + portName);
-	}
-
-	// Try & run external program to setup serial port correctly
-	// (necessary on Linux, IBM's javax.comm leaves port in cooked mode)
-	try {
-	    Runtime.getRuntime().exec("tinyos-serial-configure " + portName);
-	}
-	catch (IOException e) { }
-
-	is = serialPort.getInputStream();
-	os = serialPort.getOutputStream();
-    }
-
-    public void closeStreams() throws IOException {
-	serialPort.close();
-    }
-
-    public String allPorts() {
-	Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-	if (ports == null)
-	    return "No comm ports found!";
-
-	boolean  noPorts = true;
-	String portList = "Known serial ports:\n";
-	while (ports.hasMoreElements()) {
-	    CommPortIdentifier port = (CommPortIdentifier)ports.nextElement();
-
-	    if (port.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-		portList += "- " + port.getName() + "\n";
-		noPorts = false;
-	    }
-	}
-	if (noPorts)
-	    return "No comm ports found!";
-	else
-	    return portList;
-    }
-
-    Object sync = new Object();
-
-    public byte readByte() throws IOException {
-	// On Linux at least, javax.comm input streams are not interruptible.
-	// Make them so, relying on the DATA_AVAILABLE serial event.
-	synchronized (sync) {
-	    while (is.available() == 0) {
+	public void openStreams() throws IOException {
+		CommPortIdentifier portId;
 		try {
-		    sync.wait();
+			portId = CommPortIdentifier.getPortIdentifier(portName);
+		} catch (NoSuchPortException e) {
+			throw new IOException("Invalid port. " + allPorts());
 		}
-		catch (InterruptedException e) {
-		    close();
-		    throw new IOException("interrupted");
+		try {
+			serialPort = (SerialPort) portId.open("SerialByteSource",
+					CommPortIdentifier.PORT_SERIAL);
+		} catch (PortInUseException e) {
+			throw new IOException("Port " + portName + " busy");
 		}
-	    }
+
+		try {
+			serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+			serialPort.setSerialPortParams(baudRate, SerialPort.DATABITS_8,
+					SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+
+			serialPort.addEventListener(this);
+			serialPort.notifyOnDataAvailable(true);
+		} catch (Exception e) {
+			serialPort.close();
+			throw new IOException("Couldn't configure " + portName);
+		}
+
+		// Try & run external program to setup serial port correctly
+		// (necessary on Linux, IBM's javax.comm leaves port in cooked mode)
+		try {
+			Runtime.getRuntime().exec("tinyos-serial-configure " + portName);
+		} catch (IOException e) {
+		}
+
+		is = serialPort.getInputStream();
+		os = serialPort.getOutputStream();
 	}
 
-	return super.readByte();
-    }
-
-    public void serialEvent(SerialPortEvent ev) {
-	synchronized (sync) {
-	    sync.notify();
+	public void closeStreams() throws IOException {
+		serialPort.close();
 	}
-    }
+
+	public String allPorts() {
+		Enumeration ports = CommPortIdentifier.getPortIdentifiers();
+		if (ports == null)
+			return "No comm ports found!";
+
+		boolean noPorts = true;
+		String portList = "Known serial ports:\n";
+		while (ports.hasMoreElements()) {
+			CommPortIdentifier port = (CommPortIdentifier) ports.nextElement();
+
+			if (port.getPortType() == CommPortIdentifier.PORT_SERIAL) {
+				portList += "- " + port.getName() + "\n";
+				noPorts = false;
+			}
+		}
+		if (noPorts)
+			return "No comm ports found!";
+		else
+			return portList;
+	}
+
+	Object sync = new Object();
+
+	public byte readByte() throws IOException {
+		// On Linux at least, javax.comm input streams are not interruptible.
+		// Make them so, relying on the DATA_AVAILABLE serial event.
+		synchronized (sync) {
+			while (is.available() == 0) {
+				try {
+					sync.wait();
+				} catch (InterruptedException e) {
+					close();
+					throw new IOException("interrupted");
+				}
+			}
+		}
+
+		return super.readByte();
+	}
+
+	public void serialEvent(SerialPortEvent ev) {
+		synchronized (sync) {
+			sync.notify();
+		}
+	}
 
 }

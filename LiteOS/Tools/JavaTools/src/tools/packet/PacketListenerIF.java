@@ -29,17 +29,16 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 /**
  * 
  * The listener interface receives incoming packets.
- *
- * @author  <A HREF="http://www.cs.berkeley.edu/~mikechen/">Mike Chen</A> 
- * @since   1.1.6
+ * 
+ * @author <A HREF="http://www.cs.berkeley.edu/~mikechen/">Mike Chen</A>
+ * @since 1.1.6
  */
 
 public interface PacketListenerIF extends java.util.EventListener {
-  public void packetReceived(byte[] packet);
+	public void packetReceived(byte[] packet);
 }

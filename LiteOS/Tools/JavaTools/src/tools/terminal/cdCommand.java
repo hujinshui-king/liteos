@@ -16,27 +16,24 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
 /**
- * The class for the cd command.
- * This command handles the change of directory operations.
+ * The class for the cd command. This command handles the change of directory
+ * operations.
  */
 public class cdCommand {
 
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		if (parametercount == 1) {
+			fdir.changeDir(parameters[0]);
+		}
 
-        if (parametercount == 1) {
-            fdir.changeDir(parameters[0]);
-        }
-
-        return 0;
-    }
+		return 0;
+	}
 
 }

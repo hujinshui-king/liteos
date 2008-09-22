@@ -22,47 +22,51 @@
 package tools.mcenter;
 
 /**
- *
- * @author  nadand
+ * 
+ * @author nadand
  */
-public class MessageCenterInternalFrame extends javax.swing.JInternalFrame{
+public class MessageCenterInternalFrame extends javax.swing.JInternalFrame {
 
-    protected MessageCenterInternalFrame frameInstance;
-    
-    /** Creates a new instance of messageCenterInternalFrame */
-    public MessageCenterInternalFrame(String title) {
-        frameInstance = this;
-        this.title = title;
-        MessageCenter.instance().registerChildFrame(this);
-        setIconifiable(true);
-        setMaximizable(true);
-        setClosable(true);
-        setResizable(true);
-        this.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter(){
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent e){
-                MessageCenter.instance().removeChildFrame(frameInstance);
-                SerialConnector.instance().removePacketListener(frameInstance);
-            }
-        });
-    }
+	protected MessageCenterInternalFrame frameInstance;
 
-    
-    public MessageCenterInternalFrame() {
-        frameInstance = this;
-        this.title = "MessageCenterInternalFrame";
-        MessageCenter.instance().registerChildFrame(this);
-        setIconifiable(true);
-        setMaximizable(true);
-        setClosable(true);
-        setResizable(true);
-        this.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter(){
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent e){
-                MessageCenter.instance().removeChildFrame(frameInstance);
-            }
-        });
+	/** Creates a new instance of messageCenterInternalFrame */
+	public MessageCenterInternalFrame(String title) {
+		frameInstance = this;
+		this.title = title;
+		MessageCenter.instance().registerChildFrame(this);
+		setIconifiable(true);
+		setMaximizable(true);
+		setClosable(true);
+		setResizable(true);
+		this
+				.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
+					public void internalFrameClosing(
+							javax.swing.event.InternalFrameEvent e) {
+						MessageCenter.instance()
+								.removeChildFrame(frameInstance);
+						SerialConnector.instance().removePacketListener(
+								frameInstance);
+					}
+				});
+	}
 
-    }
+	public MessageCenterInternalFrame() {
+		frameInstance = this;
+		this.title = "MessageCenterInternalFrame";
+		MessageCenter.instance().registerChildFrame(this);
+		setIconifiable(true);
+		setMaximizable(true);
+		setClosable(true);
+		setResizable(true);
+		this
+				.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
+					public void internalFrameClosing(
+							javax.swing.event.InternalFrameEvent e) {
+						MessageCenter.instance()
+								.removeChildFrame(frameInstance);
+					}
+				});
 
-    
-    
+	}
+
 }

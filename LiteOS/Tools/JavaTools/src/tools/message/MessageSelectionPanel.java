@@ -40,7 +40,6 @@
 
 package tools.message;
 
-
 import java.awt.*;
 import java.lang.reflect.*;
 import java.util.*;
@@ -49,80 +48,75 @@ import javax.swing.text.*;
 import tools.util.TinyLook;
 
 public class MessageSelectionPanel extends JPanel {
-    private MessageSelection selection;
-    private JTabbedPane pane;
+	private MessageSelection selection;
+	private JTabbedPane pane;
 
-    public MessageSelectionPanel() {
-	super();
-	try {
-	    selection = new MessageSelection();
-	    pane = new JTabbedPane(JTabbedPane.LEFT);
-	    pane.setFont(TinyLook.smallFont());
-	    addPackets();
-	    add(pane);
-	    pane.setAlignmentX(LEFT_ALIGNMENT);
+	public MessageSelectionPanel() {
+		super();
+		try {
+			selection = new MessageSelection();
+			pane = new JTabbedPane(JTabbedPane.LEFT);
+			pane.setFont(TinyLook.smallFont());
+			addPackets();
+			add(pane);
+			pane.setAlignmentX(LEFT_ALIGNMENT);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	catch (Exception e) {
-	    e.printStackTrace();
-	}
-    }
 
-    public MessageSelectionPanel(MessageSelection selection) {
-	super();
-	try {
-	    this.selection = selection;
-	    pane = new JTabbedPane(JTabbedPane.LEFT);
-	    addPackets();
-	    add(pane);
-	    pane.setAlignmentX(LEFT_ALIGNMENT);
-    	}
-	catch (Exception e) {
-	    e.printStackTrace();
+	public MessageSelectionPanel(MessageSelection selection) {
+		super();
+		try {
+			this.selection = selection;
+			pane = new JTabbedPane(JTabbedPane.LEFT);
+			addPackets();
+			add(pane);
+			pane.setAlignmentX(LEFT_ALIGNMENT);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-    }
 
-    public Message getMessage() throws Exception {
-	MessagePanel p = (MessagePanel)pane.getSelectedComponent();
-	return p.getMessage();
-    }
-    
-    private void addPackets() throws Exception {
-	Message[] messages = selection.messages();
-	for (int i = 0; i < messages.length; i++) {
-	    MessagePanel panel = new MessagePanel(messages[i]);
-	    String name = messages[i].getClass().getName();
-	    panel.setFont(TinyLook.constFont());
-	    name = name.substring(name.lastIndexOf('.') + 1);
-	    pane.add(panel, name);
+	public Message getMessage() throws Exception {
+		MessagePanel p = (MessagePanel) pane.getSelectedComponent();
+		return p.getMessage();
 	}
-    }
 
-    public static void main(String[] args) {
-	try {
-	    MessageSelectionPanel panel = new MessageSelectionPanel();
-	    JFrame frame = new JFrame();
-	    JScrollPane pane = new JScrollPane(panel);
-	    frame.getContentPane().add(pane);
-	    Dimension size = pane.getPreferredSize();
-	    if (size.getHeight() > 380) {
-		size.setSize(size.getWidth(), 400);
-	    }
-	    else {
-		size.setSize(size.getWidth(), size.getHeight() + 20);
-	    }
-	    if (size.getWidth() > 980) {
-		size.setSize(1000, size.getHeight());
-	    }
-	    else {
-		size.setSize(size.getWidth() + 20, size.getHeight());
-	    }
-	    pane.setPreferredSize(size);
-	    frame.pack();
-	    frame.setVisible(true);
-	    
+	private void addPackets() throws Exception {
+		Message[] messages = selection.messages();
+		for (int i = 0; i < messages.length; i++) {
+			MessagePanel panel = new MessagePanel(messages[i]);
+			String name = messages[i].getClass().getName();
+			panel.setFont(TinyLook.constFont());
+			name = name.substring(name.lastIndexOf('.') + 1);
+			pane.add(panel, name);
+		}
 	}
-	catch (Exception e) {
-	    e.printStackTrace();
+
+	public static void main(String[] args) {
+		try {
+			MessageSelectionPanel panel = new MessageSelectionPanel();
+			JFrame frame = new JFrame();
+			JScrollPane pane = new JScrollPane(panel);
+			frame.getContentPane().add(pane);
+			Dimension size = pane.getPreferredSize();
+			if (size.getHeight() > 380) {
+				size.setSize(size.getWidth(), 400);
+			} else {
+				size.setSize(size.getWidth(), size.getHeight() + 20);
+			}
+			if (size.getWidth() > 980) {
+				size.setSize(1000, size.getHeight());
+			} else {
+				size.setSize(size.getWidth() + 20, size.getHeight());
+			}
+			pane.setPreferredSize(size);
+			frame.pack();
+			frame.setVisible(true);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-    }
 }

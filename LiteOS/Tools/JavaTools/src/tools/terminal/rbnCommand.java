@@ -16,48 +16,47 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
+ */
 
 package tools.terminal;
 
 import java.util.ArrayList;
 
 /**
- * The du command class that allows the current directory information to be displayed.
+ * The du command class that allows the current directory information to be
+ * displayed.
  */
 public class rbnCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentNode = fdir.getCurrentNode();
+		reply[0] = 3;
+		reply[2] = (new Integer(currentNode.getNodeAddress())).byteValue();
+		reply[1] = (byte) 242;
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        fileNode currentNode = fdir.getCurrentNode();
-        reply[0] = 3;
-        reply[2] = (new Integer(currentNode.getNodeAddress())).byteValue();
-        reply[1] = (byte) 242;
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 32; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 32;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
-
-
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-
-    }
+	}
 
 }
-

@@ -16,8 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */
 
 package tools.terminal;
 
@@ -28,77 +27,85 @@ import java.util.ArrayList;
  */
 public class touchCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	// Return the total number of commands will be used
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
+		int currentBlock = currentnode.getBlock();
 
-    //Return the total number of commands will be used
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		byte[] dirname = parameters[0].getBytes();
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
-        int currentBlock = currentnode.getBlock();
+		reply[0] = (new Integer(dirname.length + 4)).byteValue();
+		reply[1] = (byte) 151;
+		reply[2] = (new Integer(currentAddress)).byteValue();
+		reply[3] = (new Integer(currentBlock)).byteValue();
 
-        byte[] dirname = parameters[0].getBytes();
+		System.arraycopy(dirname, 0, reply, 4, dirname.length);
 
-        reply[0] = (new Integer(dirname.length + 4)).byteValue();
-        reply[1] = (byte) 151;
-        reply[2] = (new Integer(currentAddress)).byteValue();
-        reply[3] = (new Integer(currentBlock)).byteValue();
+		// if (currentnode.duplicateChild(parameters[0]) == false)
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+		// else {
+		// System.out.println("Duplicated file or directory");
+		// colorOutput.println(colorOutput.COLOR_YELLOW,
+		// "Duplicated file or directory");
+		// return 0;
+		// }
+	}
 
-        System.arraycopy(dirname, 0, reply, 4, dirname.length);
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 3200; // To change body of implemented methods use File |
+						// Settings | File Templates.
+	}
 
-      //  if (currentnode.duplicateChild(parameters[0]) == false)
-            return 1;  //To change body of implemented methods use File | Settings | File Templates.
-      //  else {
-            //System.out.println("Duplicated file or directory");
-        //     colorOutput.println(colorOutput.COLOR_YELLOW,  "Duplicated file or directory");
-        //    return 0;
-       // }
-    }
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 3200;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
+		// To change body of implemented methods use File | Settings | File
+		// Templates.
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+		int start = 5;
+		fileNode cnode = fdir.getCurrentNode();
+		String filenodeName = parameters[0];
 
+		while (reply.size() > 0) {
+			byte[] response = (byte[]) reply.remove(0);
+			int msgLength = (0x000000FF & ((int) response[start]));
+			int blockaddress = (0x000000FF & ((int) response[start + 3]));
 
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-        //To change body of implemented methods use File | Settings | File Templates.
+			if (blockaddress == 0) {
+				colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+						"Duplicate file name, touch fails.");
+				continue;
+			}
 
-        int start = 5;
-        fileNode cnode = fdir.getCurrentNode();
-        String filenodeName = parameters[0];
+			if (blockaddress == 255) {
+				colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+						"The current directory is full. Touch fails. ");
+				continue;
+			}
 
-       while (reply.size() > 0)
-       {
-            byte[] response = (byte [])reply.remove(0);
-            int msgLength = (0x000000FF & ((int) response[start]));
-            int blockaddress = (0x000000FF & ((int) response[start + 3]));
+			if (cnode.duplicateChild(filenodeName) == false) {
+				{
+					cnode.addChild(new fileNode(filenodeName, "file", cnode
+							.getNodeAddress(), blockaddress));
+					colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
+							"creating file complete");
+				}
+			}
+		}
+		// System.out.println("make file complete");
 
-            if (blockaddress == 0)
-            {    colorOutput.println(colorOutput.COLOR_BRIGHT_RED,   "Duplicate file name, touch fails.");
-                 continue;
-            }
-
-            if (blockaddress == 255)
-            {    colorOutput.println(colorOutput.COLOR_BRIGHT_RED,   "The current directory is full. Touch fails. ");
-                 continue;
-            }
-
-            if (cnode.duplicateChild(filenodeName) == false) {
-                {cnode.addChild(new fileNode(filenodeName, "file", cnode.getNodeAddress(), blockaddress));
-                colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,  "creating file complete");
-                }
-            }
-        }
-        //System.out.println("make file complete");
-
-        return;
-    }
+		return;
+	}
 }

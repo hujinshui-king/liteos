@@ -38,8 +38,6 @@
  * @author Philip Levis
  */
 
-
-
 package tools.tools;
 
 import java.util.*;
@@ -50,142 +48,141 @@ import tools.util.*;
 import tools.message.*;
 
 public class ListenRaw {
-    private static String CLASS_NAME = "tools.tools.ListenRaw";
-    private static final int MAX_MSG_SIZE = 36;
-    private static final int PORT_SPEED_MICA2 = 57600;
-    private static final int PORT_SPEED_MICA2DOT = 19200;
-    private static final int PORT_SPEED_MICA = 19200;
-    private static final int PORT_SPEED_RENE = 19200;
-    private static final int LENGTH_OFFSET = 4;
-    private int packetLength;
-    private int portSpeed;
+	private static String CLASS_NAME = "tools.tools.ListenRaw";
+	private static final int MAX_MSG_SIZE = 36;
+	private static final int PORT_SPEED_MICA2 = 57600;
+	private static final int PORT_SPEED_MICA2DOT = 19200;
+	private static final int PORT_SPEED_MICA = 19200;
+	private static final int PORT_SPEED_RENE = 19200;
+	private static final int LENGTH_OFFSET = 4;
+	private int packetLength;
+	private int portSpeed;
 
-    private CommPortIdentifier portId;
-    private SerialPort port;
-    private String portName;
-    private InputStream in;
-    private OutputStream out;
+	private CommPortIdentifier portId;
+	private SerialPort port;
+	private String portName;
+	private InputStream in;
+	private OutputStream out;
 
-    public ListenRaw(String portName, int portSpeed) {
-	this.portName = portName;
-	this.portSpeed = portSpeed;
-    }
-
-
-    public void open() throws NoSuchPortException, PortInUseException, IOException, UnsupportedCommOperationException {
-	System.out.println("Opening port " + portName);
-	portId = CommPortIdentifier.getPortIdentifier(portName);
-	port = (SerialPort)portId.open(CLASS_NAME, 0);
-	in = port.getInputStream();
-	out = port.getOutputStream();
-	
-	port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-	port.disableReceiveFraming();
-	//printPortStatus();
-	// These are the mote UART parameters
-	port.setSerialPortParams(portSpeed,
-				 SerialPort.DATABITS_8,
-				 SerialPort.STOPBITS_1,
-				 SerialPort.PARITY_NONE);
-	printPortStatus();
-	System.out.println();
-    }
-    
-    private void printPortStatus() {
-	System.out.println(" baud rate: " + port.getBaudRate());
-	System.out.println(" data bits: " + port.getDataBits());
-	System.out.println(" stop bits: " + port.getStopBits());
-	System.out.println(" parity:    " + port.getParity());
-    }
-
-    private static void printAllPorts() {
-	Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-	
-	if (ports == null) {
-	    System.out.println("No comm ports found!");
-	    return;
+	public ListenRaw(String portName, int portSpeed) {
+		this.portName = portName;
+		this.portSpeed = portSpeed;
 	}
-	
-	// print out all ports
-	System.out.println("printing all ports...");
-	while (ports.hasMoreElements()) {
-	    System.out.println("  " + ((CommPortIdentifier)ports.nextElement()).getName());
-	}
-    }
 
-    
-    
-    public void read() throws IOException {
-	int i; 
-	int count = 0;
-	byte[] packet = new byte[MAX_MSG_SIZE];
-	
-	while ((i = in.read()) != -1) {
-	    if (i == 0x7e) {
+	public void open() throws NoSuchPortException, PortInUseException,
+			IOException, UnsupportedCommOperationException {
+		System.out.println("Opening port " + portName);
+		portId = CommPortIdentifier.getPortIdentifier(portName);
+		port = (SerialPort) portId.open(CLASS_NAME, 0);
+		in = port.getInputStream();
+		out = port.getOutputStream();
+
+		port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+		port.disableReceiveFraming();
+		// printPortStatus();
+		// These are the mote UART parameters
+		port.setSerialPortParams(portSpeed, SerialPort.DATABITS_8,
+				SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+		printPortStatus();
 		System.out.println();
-	    }
-	    Dump.printByte(System.out, i);
-	}
-    }
-
-    private static void printUsage() {
-	System.err.println("usage: java tools.tools.ListenRaw [options] <port>");
-	System.err.println("options are:");
-	System.err.println("  -h, --help:    usage help");
-	System.err.println("  -p:            print available ports");
-	System.err.println("  -mica2:        Mica2 ("+PORT_SPEED_MICA2+" bps) [default]");
-	System.err.println("  -mica2dot:        Mica2Dot ("+PORT_SPEED_MICA2DOT+" bps)");
-	System.err.println("  -mica:         Mica ("+PORT_SPEED_MICA+" bps)");
-	System.err.println("  -rene:         Rene ("+PORT_SPEED_RENE+" bps)");
-	System.exit(-1);
-    }
-
-
-    public static void main(String args[]) {
-	int speed = PORT_SPEED_MICA2;
-
-	if ((args.length < 1) || (args.length > 3)) {
-	    printUsage();
-	}
-	
-	for (int i = 0; i < args.length; i++) {
-	    if (args[i].equals("-h") || args[i].equals("--help")) {
-		printUsage();
-	    }
-	    if (args[i].equals("-p")) {
-		printAllPorts();
-	    }
-	    if (args[i].equals("-mica2")) {
-	        speed = PORT_SPEED_MICA2;
-	    }
-	    if (args[i].equals("-mica2dot")) {
-	        speed = PORT_SPEED_MICA2DOT;
-	    }
-	    if (args[i].equals("-mica")) {
-	        speed = PORT_SPEED_MICA;
-	    }
-	    if (args[i].equals("-rene")) {
-	        speed = PORT_SPEED_RENE;
-	    }
 	}
 
-	if (args[args.length - 1].charAt(0) == '-') {
-	    return; // No port specified
+	private void printPortStatus() {
+		System.out.println(" baud rate: " + port.getBaudRate());
+		System.out.println(" data bits: " + port.getDataBits());
+		System.out.println(" stop bits: " + port.getStopBits());
+		System.out.println(" parity:    " + port.getParity());
 	}
-	
-	ListenRaw reader = new ListenRaw(args[args.length - 1], speed);
-	try {
-	    reader.open();
+
+	private static void printAllPorts() {
+		Enumeration ports = CommPortIdentifier.getPortIdentifiers();
+
+		if (ports == null) {
+			System.out.println("No comm ports found!");
+			return;
+		}
+
+		// print out all ports
+		System.out.println("printing all ports...");
+		while (ports.hasMoreElements()) {
+			System.out.println("  "
+					+ ((CommPortIdentifier) ports.nextElement()).getName());
+		}
 	}
-	catch (Exception e) {
-	    e.printStackTrace();
+
+	public void read() throws IOException {
+		int i;
+		int count = 0;
+		byte[] packet = new byte[MAX_MSG_SIZE];
+
+		while ((i = in.read()) != -1) {
+			if (i == 0x7e) {
+				System.out.println();
+			}
+			Dump.printByte(System.out, i);
+		}
 	}
-	
-	try {
-	    reader.read();
+
+	private static void printUsage() {
+		System.err
+				.println("usage: java tools.tools.ListenRaw [options] <port>");
+		System.err.println("options are:");
+		System.err.println("  -h, --help:    usage help");
+		System.err.println("  -p:            print available ports");
+		System.err.println("  -mica2:        Mica2 (" + PORT_SPEED_MICA2
+				+ " bps) [default]");
+		System.err.println("  -mica2dot:        Mica2Dot ("
+				+ PORT_SPEED_MICA2DOT + " bps)");
+		System.err.println("  -mica:         Mica (" + PORT_SPEED_MICA
+				+ " bps)");
+		System.err.println("  -rene:         Rene (" + PORT_SPEED_RENE
+				+ " bps)");
+		System.exit(-1);
 	}
-	catch (Exception e) {
-	    e.printStackTrace();
+
+	public static void main(String args[]) {
+		int speed = PORT_SPEED_MICA2;
+
+		if ((args.length < 1) || (args.length > 3)) {
+			printUsage();
+		}
+
+		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("-h") || args[i].equals("--help")) {
+				printUsage();
+			}
+			if (args[i].equals("-p")) {
+				printAllPorts();
+			}
+			if (args[i].equals("-mica2")) {
+				speed = PORT_SPEED_MICA2;
+			}
+			if (args[i].equals("-mica2dot")) {
+				speed = PORT_SPEED_MICA2DOT;
+			}
+			if (args[i].equals("-mica")) {
+				speed = PORT_SPEED_MICA;
+			}
+			if (args[i].equals("-rene")) {
+				speed = PORT_SPEED_RENE;
+			}
+		}
+
+		if (args[args.length - 1].charAt(0) == '-') {
+			return; // No port specified
+		}
+
+		ListenRaw reader = new ListenRaw(args[args.length - 1], speed);
+		try {
+			reader.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			reader.read();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-    }
 }

@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.io.*;
@@ -38,135 +37,134 @@ import tools.util.*;
 import tools.message.*;
 
 /**
- * Provide a standard, generic implementation of PacketSource. Subclasses
- * need only implement low-level open and close operations, and packet
- * reading and writing. This class provides the automatic close-on-error
- * functionality, general error checking, and standard messages.
+ * Provide a standard, generic implementation of PacketSource. Subclasses need
+ * only implement low-level open and close operations, and packet reading and
+ * writing. This class provides the automatic close-on-error functionality,
+ * general error checking, and standard messages.
  */
-abstract public class AbstractSource implements PacketSource
-{
-    protected String name;
-    protected int platform = Platform.defaultPlatform;
-    protected boolean opened = false;
-    protected Messenger messages;
+abstract public class AbstractSource implements PacketSource {
+	protected String name;
+	protected int platform = Platform.defaultPlatform;
+	protected boolean opened = false;
+	protected Messenger messages;
 
-    public int lengthOffset = 4;
-    public int dataOffset = 5;
+	public int lengthOffset = 4;
+	public int dataOffset = 5;
 
-    protected void message(String s) {
-	if (messages != null)
-	    messages.message(s);
-    }
-
-    protected AbstractSource(String name) {
-	this.name = name;
-    }
-
-    public String getName() {
-	return name;
-    }
-
-    public int getPlatform() {
-	return platform;
-    }
-
-    synchronized public void open(Messenger messages) throws IOException {
-	if (opened)
-	    throw new IOException("already open");
-	this.messages = messages;
-	openSource();
-	// At this point we actually know the plaftorm that we're running on.
-	// Fixup the offsets
-	MessageFactory mf = new MessageFactory(this);
-	TOSMsg msg = mf.createTOSMsg(10);
-	lengthOffset = msg.offset_length();
-	dataOffset = msg.offset_data(0);
-	opened = true;
-
-    }
-
-    synchronized public void close() throws IOException {
-	if (opened) {
-	    opened = false;
-	    closeSource();
+	protected void message(String s) {
+		if (messages != null)
+			messages.message(s);
 	}
-    }
 
-    protected void failIfClosed() throws IOException {
-	if (!opened)
-	    throw new IOException("closed");
-    }
-
-    public byte[] readPacket() throws IOException {
-	failIfClosed();
-
-	try {
-	  //  return check(readSourcePacket());
-        return readSourcePacket();
-    }
-	catch (IOException e) {
-	    close();
-	    throw e;
+	protected AbstractSource(String name) {
+		this.name = name;
 	}
-    }
 
-    synchronized public boolean writePacket(byte[] packet) throws IOException {
-	failIfClosed();
-
-	try {
-	    return writeSourcePacket(packet);
+	public String getName() {
+		return name;
 	}
-	catch (IOException e) {
-	    close();
-	    throw e;
+
+	public int getPlatform() {
+		return platform;
 	}
-    }
 
-    protected byte[] check(byte[] packet) throws IOException {
-	// Check packet length
-	if (false) {
-	    System.err.println("Length offset " + lengthOffset +"\n"+
-			       "Packet Length " + packet.length +"\n" +
-			       "Data offset " + dataOffset+"\n"+
-			       "Estimated payload "+ ((packet[lengthOffset] & 0xff) + dataOffset) +"\n");
-	    for (int i = 0; i< packet.length; i++) {
-		System.err.print(Integer.toHexString(packet[i] & 0xff)+" ");
-	    }
-	    System.err.print("\n");
+	synchronized public void open(Messenger messages) throws IOException {
+		if (opened)
+			throw new IOException("already open");
+		this.messages = messages;
+		openSource();
+		// At this point we actually know the plaftorm that we're running on.
+		// Fixup the offsets
+		MessageFactory mf = new MessageFactory(this);
+		TOSMsg msg = mf.createTOSMsg(10);
+		lengthOffset = msg.offset_length();
+		dataOffset = msg.offset_data(0);
+		opened = true;
+
 	}
-	
-	if (lengthOffset >= packet.length)
-	    throw new IOException("short packet");
-	
-	int realBytes = (packet[lengthOffset] & 0xff) + dataOffset;
-	
-	if (realBytes != packet.length) {
-	    System.err.println("TOS_Msg length is invalid: header_length=" + realBytes + ",real_length=" + packet.length + " ... modifying msg to fit");
-			       
-	    Dump.dump("Received message", packet);
 
-	    if (realBytes < packet.length) {
-	      byte[] newPacket = new byte[realBytes];
-	      System.arraycopy(packet, 0, newPacket, 0, realBytes);
-	      packet = newPacket;
-	    } else if (realBytes > packet.length) {
-	      packet[lengthOffset] = (byte) ((packet.length - dataOffset) & 0xff);
-	    }
+	synchronized public void close() throws IOException {
+		if (opened) {
+			opened = false;
+			closeSource();
+		}
 	}
-	
-	return packet;
-    }
 
-    // Implementation interfaces
-    abstract protected void openSource() throws IOException;
-    abstract protected void closeSource() throws IOException;
+	protected void failIfClosed() throws IOException {
+		if (!opened)
+			throw new IOException("closed");
+	}
 
-    protected boolean writeSourcePacket(byte[] packet) throws IOException {
-        // Default writer swallows packets
-        return true;
-    }
+	public byte[] readPacket() throws IOException {
+		failIfClosed();
 
-    abstract protected byte[] readSourcePacket() throws IOException;
+		try {
+			// return check(readSourcePacket());
+			return readSourcePacket();
+		} catch (IOException e) {
+			close();
+			throw e;
+		}
+	}
 
- 
+	synchronized public boolean writePacket(byte[] packet) throws IOException {
+		failIfClosed();
+
+		try {
+			return writeSourcePacket(packet);
+		} catch (IOException e) {
+			close();
+			throw e;
+		}
+	}
+
+	protected byte[] check(byte[] packet) throws IOException {
+		// Check packet length
+		if (false) {
+			System.err.println("Length offset " + lengthOffset + "\n"
+					+ "Packet Length " + packet.length + "\n" + "Data offset "
+					+ dataOffset + "\n" + "Estimated payload "
+					+ ((packet[lengthOffset] & 0xff) + dataOffset) + "\n");
+			for (int i = 0; i < packet.length; i++) {
+				System.err.print(Integer.toHexString(packet[i] & 0xff) + " ");
+			}
+			System.err.print("\n");
+		}
+
+		if (lengthOffset >= packet.length)
+			throw new IOException("short packet");
+
+		int realBytes = (packet[lengthOffset] & 0xff) + dataOffset;
+
+		if (realBytes != packet.length) {
+			System.err.println("TOS_Msg length is invalid: header_length="
+					+ realBytes + ",real_length=" + packet.length
+					+ " ... modifying msg to fit");
+
+			Dump.dump("Received message", packet);
+
+			if (realBytes < packet.length) {
+				byte[] newPacket = new byte[realBytes];
+				System.arraycopy(packet, 0, newPacket, 0, realBytes);
+				packet = newPacket;
+			} else if (realBytes > packet.length) {
+				packet[lengthOffset] = (byte) ((packet.length - dataOffset) & 0xff);
+			}
+		}
+
+		return packet;
+	}
+
+	// Implementation interfaces
+	abstract protected void openSource() throws IOException;
+
+	abstract protected void closeSource() throws IOException;
+
+	protected boolean writeSourcePacket(byte[] packet) throws IOException {
+		// Default writer swallows packets
+		return true;
+	}
+
+	abstract protected byte[] readSourcePacket() throws IOException;
+
 }

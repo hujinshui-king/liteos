@@ -16,9 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
+ */
 
 package tools.terminal;
 
@@ -27,146 +25,131 @@ import java.util.ArrayList;
 
 public class debugCommand implements cmdcontrol {
 
+	variable variables[] = new variable[1002];
+	String localdirectory = null;
+	static int sizeOfVariables;
+	static boolean isSetUp;
 
- variable  variables[] = new variable[1002];
- String localdirectory = null;
- static int sizeOfVariables;
- static boolean isSetUp;
+	public debugCommand() {
+		sizeOfVariables = 0;
+		isSetUp = false;
 
- public  debugCommand()
- {
-       sizeOfVariables = 0;
-       isSetUp = false;
+	}
 
- }
+	public String getLocalDirectory() {
+		return localdirectory;
+	}
 
- public String getLocalDirectory()
- {
-      return localdirectory;      
- }
+	public boolean isSetUp() {
+		return isSetUp;
 
- public boolean isSetUp()
- {
-     return isSetUp;
+	}
 
- }
+	public variable getVariable(int num) {
+		return variables[num];
 
- public variable getVariable(int num)
- {
-     return variables[num];
+	}
 
- }
+	public int getNumOfVariables() {
+		return sizeOfVariables;
+	}
 
- public int getNumOfVariables()
- {
-     return sizeOfVariables;
- }
+	public void cleanUp() {
+		sizeOfVariables = 0;
+		isSetUp = false;
 
- public void cleanUp()
- {
-     sizeOfVariables = 0;
-     isSetUp = false;
+	}
 
- }
+	public void printAll() {
+		int i;
+		for (i = 0; i < sizeOfVariables; i++) {
+			variables[i].print();
 
- public void printAll()
- {
-      int i;
-     for (i=0;i<sizeOfVariables; i++)
-     {
-         variables[i].print();
+		}
 
-     }
+	}
 
- }
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
+		// the parameters[0] should contain the file directory location of the
+		// target file.
 
- public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
-       //the parameters[0] should contain the file directory location of the target file.
+		int kerneldebug = 0;
+		String destDir = parameters[0];
+		sizeOfVariables = 0;
 
-        int kerneldebug = 0;
-        String destDir = parameters[0];
-       sizeOfVariables = 0;
+		destDir = cpCommand.stdFileName(destDir);
 
-       destDir = cpCommand.stdFileName(destDir);
+		File a = new File(destDir + "\\build\\extract.pl");
+		File b = new File(destDir + "\\build\\App.elf");
+		if ((a.exists() == false) || (b.exists() == false)) {
+			a = new File(destDir + "\\bin\\extract.pl");
+			b = new File(destDir + "\\bin\\LiteOS.elf");
+			if ((a.exists() == false) || (b.exists() == false)) {
+				colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+						"Directory error. File does not exist. ");
+				return 0;
+			} else
+				kerneldebug = 1;
 
+		}
 
+		isSetUp = true;
+		localdirectory = new String(destDir);
 
+		try {
+			String line;
+			Process p;
 
-       File a = new File(destDir+"\\build\\extract.pl");
-       File b = new File(destDir+"\\build\\App.elf");
-     if ((a.exists() == false )||(b.exists()==false))
-     {
-           a = new File(destDir+"\\bin\\extract.pl");
-           b = new File(destDir+"\\bin\\LiteOS.elf");
-           if ((a.exists() == false )||(b.exists()==false))
-           {
-           colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Directory error. File does not exist. ");
-           return 0;
-           }
-         else
-           kerneldebug = 1;
+			if (kerneldebug == 0)
+				p = Runtime.getRuntime().exec(
+						"perl " + destDir + "\\build\\extract.pl " + destDir
+								+ "\\build\\App.elf");
+			else
+				p = Runtime.getRuntime().exec(
+						"perl " + destDir + "\\bin\\extract.pl " + destDir
+								+ "\\bin\\LiteOS.elf");
 
-     }
+			BufferedReader input = new BufferedReader(new InputStreamReader(p
+					.getInputStream()));
 
+			while ((line = input.readLine()) != null) {
+				// System.out.println(line);
+				variables[sizeOfVariables++] = new variable(line);
+			}
 
-        isSetUp = true;
-        localdirectory = new String(destDir);
+			input.close();
+		} catch (Exception err) {
+			err.printStackTrace();
+		}
 
+		// printAll();
+		return 0;
+	}
 
+	// Return the delay in milliseconds
+	public int getDelay() {
 
+		return 0;
 
-     try {
-      String line;
-      Process p;
+	}
 
-     if (kerneldebug == 0)
-          p = Runtime.getRuntime().exec
-        ("perl "+ destDir +"\\build\\extract.pl "+ destDir  +"\\build\\App.elf" );
-      else
-             p = Runtime.getRuntime().exec
-        ("perl "+ destDir +"\\bin\\extract.pl "+ destDir  +"\\bin\\LiteOS.elf" );
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
 
-     BufferedReader input =
-       new BufferedReader
-         (new InputStreamReader(p.getInputStream()));
+		return null;
 
-     while ((line = input.readLine()) != null) {
-      // System.out.println(line);
-       variables[sizeOfVariables++] = new variable(line);
-       }
+	}
 
+	// This function must handle multiple cases, for type I, II, and III
+	// respectively.
 
-     input.close();
-     }
-    catch (Exception err) {
-     err.printStackTrace();
-     }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
 
-   // printAll();
-    return 0;
-    }
+		return;
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-
-        return 0;
-
-    }
-
-
-   //return the command will be used
-    public byte[] getNewCommand(int index) {
-
-       return null;
-
-   }
-    //This function must handle multiple cases, for type I, II, and III respectively.
-
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-
-       return ;
-
-    }
-
+	}
 
 }

@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.util.*;
@@ -40,22 +39,22 @@ import java.net.*;
  * A tcp/ip (client) byte-source
  */
 public class NetworkByteSource extends StreamByteSource {
-    private Socket socket;
-    private String host;
-    private int port;
+	private Socket socket;
+	private String host;
+	private int port;
 
-    public NetworkByteSource(String host, int port) {
-	this.host = host;
-	this.port = port;
-    }
+	public NetworkByteSource(String host, int port) {
+		this.host = host;
+		this.port = port;
+	}
 
-    protected void openStreams() throws IOException {
-	socket = new Socket(host, port);
-	is = socket.getInputStream();
-	os = socket.getOutputStream();
-    }
+	protected void openStreams() throws IOException {
+		socket = new Socket(host, port);
+		is = socket.getInputStream();
+		os = socket.getOutputStream();
+	}
 
-    protected void closeStreams() throws IOException {
-	socket.close();
-    }
+	protected void closeStreams() throws IOException {
+		socket.close();
+	}
 }

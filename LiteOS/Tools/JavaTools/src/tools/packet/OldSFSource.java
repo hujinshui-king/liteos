@@ -29,34 +29,33 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.io.*;
 import java.net.*;
 
 /**
- * Packet source for the old, broken serial forwarder protocol
- * (the new protocol does not require knowledge of the packet size)
+ * Packet source for the old, broken serial forwarder protocol (the new protocol
+ * does not require knowledge of the packet size)
  */
 class OldSFSource extends StreamSource {
-    private Socket socket;
-    private String host;
-    private int port;
+	private Socket socket;
+	private String host;
+	private int port;
 
-    public OldSFSource(String host, int port, int packetSize) {
-	super("old-sf@" + host + ":" + port, packetSize);
-	this.host = host;
-	this.port = port;
-    }
+	public OldSFSource(String host, int port, int packetSize) {
+		super("old-sf@" + host + ":" + port, packetSize);
+		this.host = host;
+		this.port = port;
+	}
 
-    protected void openSource() throws IOException {
-	socket = new Socket(host, port);
-	is = socket.getInputStream();
-	os = socket.getOutputStream();
-    }
+	protected void openSource() throws IOException {
+		socket = new Socket(host, port);
+		is = socket.getInputStream();
+		os = socket.getOutputStream();
+	}
 
-    protected void closeSource() throws IOException {
-	socket.close();
-    }
+	protected void closeSource() throws IOException {
+		socket.close();
+	}
 }

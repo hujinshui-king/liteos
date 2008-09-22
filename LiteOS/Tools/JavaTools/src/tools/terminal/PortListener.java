@@ -16,173 +16,155 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
 import java.util.*;
 import java.io.*;
 
-
 import javax.comm.*;
 
-
 /**
- * The class for listening to the serial port.
- * Bsaically it allows two paraemters, the timeout, and the number of bytes to be listened to,
- * as the criteria for return from the listening mode. Once one of these two criteria are met,
- * the code will return and continue.
- * It is interesting to note that here we use a large enough serial buffer, 2M bytes, which is large
- * enough for most purposes of the applciation running.
+ * The class for listening to the serial port. Bsaically it allows two
+ * paraemters, the timeout, and the number of bytes to be listened to, as the
+ * criteria for return from the listening mode. Once one of these two criteria
+ * are met, the code will return and continue. It is interesting to note that
+ * here we use a large enough serial buffer, 2M bytes, which is large enough for
+ * most purposes of the applciation running.
  */
 public class PortListener {
 
-    private static String CLASS_NAME = "PortListener";
-    private static final int MAX_MSG_SIZE = 36;
-    //private static final int PORT_SPEED_MICAZ = 57600;
-    private static final int PORT_SPEED_MICAZ = 57600;
-    private static final int PORT_SPEED_RENE = 19200;
-    private static final int LENGTH_OFFSET = 4;
-    private int packetLength;
-    private int portSpeed;
+	private static String CLASS_NAME = "PortListener";
+	private static final int MAX_MSG_SIZE = 36;
+	// private static final int PORT_SPEED_MICAZ = 57600;
+	private static final int PORT_SPEED_MICAZ = 57600;
+	private static final int PORT_SPEED_RENE = 19200;
+	private static final int LENGTH_OFFSET = 4;
+	private int packetLength;
+	private int portSpeed;
 
-    private CommPortIdentifier portId;
-    private SerialPort port;
-    private String portName;
-    private InputStream in;
-    private int receiveCount;
-    private OutputStream outstream;
-    private int WaitTime;
+	private CommPortIdentifier portId;
+	private SerialPort port;
+	private String portName;
+	private InputStream in;
+	private int receiveCount;
+	private OutputStream outstream;
+	private int WaitTime;
 
-    private byte[] serBuf = new byte[2000000];
+	private byte[] serBuf = new byte[2000000];
 
-    public PortListener(String portName, int portSpeed) {
-        this.portName = portName;
-        this.portSpeed = portSpeed;
-    }
+	public PortListener(String portName, int portSpeed) {
+		this.portName = portName;
+		this.portSpeed = portSpeed;
+	}
 
+	public void open() throws NoSuchPortException, PortInUseException,
+			IOException, UnsupportedCommOperationException {
 
-    public void open() throws NoSuchPortException, PortInUseException, IOException, UnsupportedCommOperationException {
+		// System.out.println("Now listening to bytes from " + portName);
+		colorOutput.println(colorOutput.COLOR_YELLOW, "Now using " + portName
+				+ " as the primary channel");
+		try {
+			portId = CommPortIdentifier.getPortIdentifier(portName);
+			port = (SerialPort) portId.open(CLASS_NAME, 0);
+		}
 
-        //System.out.println("Now listening to bytes from " + portName);
-        colorOutput.println(colorOutput.COLOR_YELLOW,  "Now using "+portName +" as the primary channel");
-        try {
-            portId = CommPortIdentifier.getPortIdentifier(portName);
-            port = (SerialPort) portId.open(CLASS_NAME, 0);
-        }
+		catch (javax.comm.NoSuchPortException e) {
+			// System.out.println("No such port");
+			colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "No such port");
+		} catch (javax.comm.PortInUseException e) {
+			// System.out.println("Port in use");
+			colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Port in use");
+		}
 
-        catch (javax.comm.NoSuchPortException e) {
-            //System.out.println("No such port");
-           colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "No such port");
-        }
-        catch (javax.comm.PortInUseException e) {
-            //System.out.println("Port in use");
-           colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "Port in use");
-        }
+		catch (Exception e) {
+			// System.out.println("error!");
+			colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Error!");
+		}
 
-        catch (Exception e) {
-           // System.out.println("error!");
-            colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "Error!");
-        }
+		port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+		port.disableReceiveFraming();
 
-        port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-        port.disableReceiveFraming();
+		port.setSerialPortParams(portSpeed, SerialPort.DATABITS_8,
+				SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
-        port.setSerialPortParams(portSpeed,
-                SerialPort.DATABITS_8,
-                SerialPort.STOPBITS_1,
-                SerialPort.PARITY_NONE);
+		port.enableReceiveThreshold(1024000);
+		port.setInputBufferSize(2048);
+		port.enableReceiveTimeout(30000);
 
-        port.enableReceiveThreshold(1024000);
-        port.setInputBufferSize(2048);
-        port.enableReceiveTimeout(30000);
+		try {
+			in = port.getInputStream();
+			outstream = port.getOutputStream();
 
-        try {
-            in = port.getInputStream();
-            outstream = port.getOutputStream();
+		} catch (Exception e) {
+		}
 
-        }
-        catch (Exception e) {
-        }
+		System.out.println();
+	}
 
-        System.out.println();
-    }
+	public void setWait(int wait) {
+		this.WaitTime = wait;
+		try {
+			port.enableReceiveTimeout(this.WaitTime);
+		} catch (javax.comm.UnsupportedCommOperationException e) {
+		}
+	}
 
+	public void read() throws IOException {
 
-    public void setWait(int wait) {
-        this.WaitTime = wait;
-        try {
-            port.enableReceiveTimeout(this.WaitTime);
-        }
-        catch (javax.comm.UnsupportedCommOperationException e) {
-        }
-    }
+		int count = 0;
 
-    public void read() throws IOException {
+		count = in.read(serBuf, 0, serBuf.length);
 
-        int count = 0;
+		receiveCount = count;
 
-        count = in.read(serBuf, 0, serBuf.length);
+	}
 
-        receiveCount = count;
+	public void setThreshold(int bytes) {
+		try {
+			port.enableReceiveThreshold(bytes);
+		} catch (javax.comm.UnsupportedCommOperationException e) {
+			// System.out.println("Port Operation Unsupported");
+			colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+					"Port Operation Unsupported!");
+		}
+	}
 
+	public void write(byte[] data) {
+		int length = (int) data[0];
+		byte[] sync = new byte[2];
+		byte[] padding = new byte[32];
 
-    }
+		for (int i = 0; i < 32; i++) {
+			padding[i] = (byte) (i + 30);
 
-    public void setThreshold(int bytes) {
-        try {
-            port.enableReceiveThreshold(bytes);
-        }
-        catch (javax.comm.UnsupportedCommOperationException e) {
-            //System.out.println("Port Operation Unsupported");
-             colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "Port Operation Unsupported!");
-        }
-    }
+		}
 
+		if (length <= 32)
+			sync[0] = 'a';
+		else
+			sync[0] = 'l';
 
-    public void write(byte [] data) {
-        int length = (int) data[0];
-        byte[] sync = new byte[2];
-        byte[] padding = new byte[32];
+		try {
+			outstream.write(sync, 0, 1);
 
+			outstream.write(data, 0, length);
 
-        for (int i = 0; i < 32; i++) {
-            padding[i] = (byte) (i + 30);
+			if (length <= 32)
+				outstream.write(padding, 0, 31 - length);
+			else
+				outstream.write(padding, 0, 63 - length);
 
-        }
+		} catch (IOException e) {
+		}
+	}
 
-        if (length <= 32)
-            sync[0] = 'a';
-        else
-            sync[0] = 'l';
+	public int getCount() {
+		return receiveCount;
+	}
 
-
-        try {
-            outstream.write(sync, 0, 1);
-
-            outstream.write(data, 0, length);
-
-            if (length <= 32)
-                outstream.write(padding, 0, 31 - length);
-            else
-                outstream.write(padding, 0, 63 - length);
-
-        }
-        catch (IOException e) {
-        }
-    }
-
-
-    public int getCount() {
-        return receiveCount;
-    }
-
-    public byte[] getData() {
-        return serBuf;
-    }
+	public byte[] getData() {
+		return serBuf;
+	}
 }
-
-

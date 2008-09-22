@@ -31,5 +31,5 @@
 package tools.util;
 
 public interface Messenger {
-  public void message(String s);
+	public void message(String s);
 }

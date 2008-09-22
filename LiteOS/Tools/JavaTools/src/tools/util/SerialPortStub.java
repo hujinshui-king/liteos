@@ -32,7 +32,6 @@
 //==============================================================================
 //===   SerialPortStub.java   ==============================================
 
-
 package tools.util;
 
 import java.util.*;
@@ -42,152 +41,146 @@ import javax.comm.*;
 /**
  * 
  * Init the serial port and reads data from it.
- *
- * @author  <A HREF="http://www.cs.berkeley.edu/~mikechen/">Mike Chen</A> 
- *		(<A HREF="mailto:mikechen@cs.berkeley.edu">mikechen@cs.berkeley.edu</A>)
- * @since   1.1.6
+ * 
+ * @author <A HREF="http://www.cs.berkeley.edu/~mikechen/">Mike Chen</A> (<A
+ *         HREF="mailto:mikechen@cs.berkeley.edu">mikechen@cs.berkeley.edu</A>)
+ * @since 1.1.6
  * @deprecated Use tools.packet.BuildSource instead
  */
 
-
 public class SerialPortStub implements SerialStub {
 
-    //=========================================================================
-    //=   CONSTANTS   =========================================================
-  
-    private static final String  CLASS_NAME = "SerialPortStub";
+	// =========================================================================
+	// = CONSTANTS =========================================================
 
-    //size of a message, in bytes
-    private int msgSize = 36;
+	private static final String CLASS_NAME = "SerialPortStub";
 
-    //=========================================================================
-    //=   PRIVATE VARIABLES   =================================================
+	// size of a message, in bytes
+	private int msgSize = 36;
 
-    CommPortIdentifier portId;
-    SerialPort port;
-    String portName;
+	// =========================================================================
+	// = PRIVATE VARIABLES =================================================
+
+	CommPortIdentifier portId;
+	SerialPort port;
+	String portName;
 	int baudrate = 19200;
-    InputStream in;
-    OutputStream out;
-    public static int debug = 0;
-    private Vector listeners = new Vector();
+	InputStream in;
+	OutputStream out;
+	public static int debug = 0;
+	private Vector listeners = new Vector();
 
+	// = CONSTRUCTORS ======================================================
+	// =========================================================================
 
-    //=   CONSTRUCTORS   ======================================================
-    //=========================================================================
-
-    public SerialPortStub(String portName) {
-	this.portName = portName;
-    }
-
-
-    public SerialPortStub(String portName, int packetSize)
-    {
-	this.portName = portName;
-	this.msgSize = packetSize;
-    }
-
-    public SerialPortStub(String portName, int packetSize, int baudrate)
-    {
-	this.portName = portName;
-	this.msgSize = packetSize;
-	this.baudrate = baudrate;
-    }
-
-    //=========================================================================
-
-    public void Open() throws NoSuchPortException, PortInUseException, IOException, UnsupportedCommOperationException {
-	portId = CommPortIdentifier.getPortIdentifier(portName);
-	port = (SerialPort)portId.open(CLASS_NAME, 0);
-	in = port.getInputStream();
-	out = port.getOutputStream();
-	port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-
-	port.setSerialPortParams(baudrate, SerialPort.DATABITS_8,
-				 SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-	printPortStatus();
-    }
-
-    public void Close() throws Exception {
-	in.close();
-	out.close();
-	port.close();
-    }
-    
-    private void printPortStatus() {
-	System.err.println("baud rate: " + port.getBaudRate());
-	System.err.println("data bits: " + port.getDataBits());
-	System.err.println("stop bits: " + port.getStopBits());
-	System.err.println("parity:    " + port.getParity());
-    }
-
-    //=========================================================================
-
-    /*
-     *  Get an enumeration of all of the comm ports 
-     *  on the machine
-     */
-  
-    public void printAllPorts() {
-	Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-  
-	if (ports == null) {
-	    System.out.println("No comm ports found!");
-	    return;
+	public SerialPortStub(String portName) {
+		this.portName = portName;
 	}
-  
-	// print out all ports
-	System.out.println("printing all ports...");
-	while (ports.hasMoreElements()) {
-	    System.out.println("-  " + ((CommPortIdentifier)ports.nextElement()).getName());
+
+	public SerialPortStub(String portName, int packetSize) {
+		this.portName = portName;
+		this.msgSize = packetSize;
 	}
-	System.out.println("done.");
-    }
 
-  
-    //=======================================================================  
+	public SerialPortStub(String portName, int packetSize, int baudrate) {
+		this.portName = portName;
+		this.msgSize = packetSize;
+		this.baudrate = baudrate;
+	}
 
-    public void registerPacketListener(PacketListenerIF listener) {
-        if (debug > 0)
-	    System.err.println("SPS: Adding listener: "+listener);
-	listeners.add(listener);
-    }
+	// =========================================================================
 
+	public void Open() throws NoSuchPortException, PortInUseException,
+			IOException, UnsupportedCommOperationException {
+		portId = CommPortIdentifier.getPortIdentifier(portName);
+		port = (SerialPort) portId.open(CLASS_NAME, 0);
+		in = port.getInputStream();
+		out = port.getOutputStream();
+		port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 
-    //=======================================================================  
+		port.setSerialPortParams(baudrate, SerialPort.DATABITS_8,
+				SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+		printPortStatus();
+	}
 
-    public synchronized void Read() throws IOException {
-	int i; 
-	int count = 0;
-	byte[] packet = new byte[msgSize];
-	if (debug > 0)
-	    System.out.print("!");
+	public void Close() throws Exception {
+		in.close();
+		out.close();
+		port.close();
+	}
 
-	while ((i = in.read()) != -1) {
-	    if (debug > 0)
-		System.out.print("!");
-	    packet[count] = (byte)i;
-	    count++;
-	    if (count == msgSize) {
-		count = 0;
-		Enumeration e = listeners.elements();
-		while (e.hasMoreElements()) {
-		    PacketListenerIF listener = (PacketListenerIF)e.nextElement();
-		    listener.packetReceived(packet);
+	private void printPortStatus() {
+		System.err.println("baud rate: " + port.getBaudRate());
+		System.err.println("data bits: " + port.getDataBits());
+		System.err.println("stop bits: " + port.getStopBits());
+		System.err.println("parity:    " + port.getParity());
+	}
+
+	// =========================================================================
+
+	/*
+	 * Get an enumeration of all of the comm ports on the machine
+	 */
+
+	public void printAllPorts() {
+		Enumeration ports = CommPortIdentifier.getPortIdentifiers();
+
+		if (ports == null) {
+			System.out.println("No comm ports found!");
+			return;
 		}
-	    }
-	    else if(count == 1 && i != 0x7e) {
-		count = 0;
-		if (debug > 0)
-		    System.out.print("?");
-	    }
-	}
-    }
 
-    public  void Write(byte [] packet ) throws IOException {
-	if (debug > 0)
-	    System.out.print("-");
-	out.write(packet);
-	out.flush();
-    }
+		// print out all ports
+		System.out.println("printing all ports...");
+		while (ports.hasMoreElements()) {
+			System.out.println("-  "
+					+ ((CommPortIdentifier) ports.nextElement()).getName());
+		}
+		System.out.println("done.");
+	}
+
+	// =======================================================================
+
+	public void registerPacketListener(PacketListenerIF listener) {
+		if (debug > 0)
+			System.err.println("SPS: Adding listener: " + listener);
+		listeners.add(listener);
+	}
+
+	// =======================================================================
+
+	public synchronized void Read() throws IOException {
+		int i;
+		int count = 0;
+		byte[] packet = new byte[msgSize];
+		if (debug > 0)
+			System.out.print("!");
+
+		while ((i = in.read()) != -1) {
+			if (debug > 0)
+				System.out.print("!");
+			packet[count] = (byte) i;
+			count++;
+			if (count == msgSize) {
+				count = 0;
+				Enumeration e = listeners.elements();
+				while (e.hasMoreElements()) {
+					PacketListenerIF listener = (PacketListenerIF) e
+							.nextElement();
+					listener.packetReceived(packet);
+				}
+			} else if (count == 1 && i != 0x7e) {
+				count = 0;
+				if (debug > 0)
+					System.out.print("?");
+			}
+		}
+	}
+
+	public void Write(byte[] packet) throws IOException {
+		if (debug > 0)
+			System.out.print("-");
+		out.write(packet);
+		out.flush();
+	}
 }

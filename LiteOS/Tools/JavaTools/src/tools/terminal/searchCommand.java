@@ -16,10 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
@@ -31,77 +28,81 @@ import java.util.ArrayList;
 
 public class searchCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	// Return the total number of commands will be used
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
+		int currentBlock = currentnode.getBlock();
 
-    //Return the total number of commands will be used
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		byte[] filename = parameters[0].getBytes();
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
-        int currentBlock = currentnode.getBlock();
+		reply[0] = (new Integer(filename.length + 3)).byteValue();
+		reply[1] = (byte) 221;
+		reply[2] = (new Integer(currentAddress)).byteValue();
 
-        byte[] filename = parameters[0].getBytes();
+		System.arraycopy(filename, 0, reply, 3, filename.length);
 
-        reply[0] = (new Integer(filename.length + 3)).byteValue();
-        reply[1] = (byte) 221;
-        reply[2] = (new Integer(currentAddress)).byteValue();
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        System.arraycopy(filename, 0, reply, 3, filename.length);
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 500; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 500;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
+		// To change body of implemented methods use File | Settings | File
+		// Templates.
+		fileNode cnode = fdir.getCurrentNode();
+		String filenodeName = parameters[0];
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+		int start = 5;
 
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-        //To change body of implemented methods use File | Settings | File Templates.
-        fileNode cnode = fdir.getCurrentNode();
-        String filenodeName = parameters[0];
+		while (reply.size() > 0) {
+			byte[] response = (byte[]) reply.remove(0);
+			int msgLength = (0x000000FF & ((int) response[start]));
+			int namelength = msgLength - 3;
+			String nameofthefile = (new String(response)).substring(3 + start,
+					3 + start + namelength);
 
-        int start = 5;
+			fileNode[] temp = new fileNode[24];
+			int tempcount = 0;
+			fileNode current = fdir.getCurrentNode();
+			String commonprefix = "";
+			while (current.getType().compareTo("noderoot") != 0) {
+				current = current.getParent();
+			}
 
-       while (reply.size() > 0)
-       {
-            byte [] response = (byte [])reply.remove(0);
-            int msgLength = (0x000000FF & ((int) response[start]));
-            int namelength = msgLength - 3;
-            String nameofthefile = (new String(response)).substring(3 + start, 3 + start + namelength);
+			while (current.getName().compareTo("root") != 0) {
 
-            fileNode [] temp = new fileNode [24];
-            int tempcount = 0;
-            fileNode current = fdir.getCurrentNode();
-            String commonprefix = "";
-            while (current.getType().compareTo("noderoot") != 0) {
-                current = current.getParent();
-            }
+				temp[tempcount++] = current;
+				current = current.getParent();
+			}
 
-            while (current.getName().compareTo("root") != 0) {
-
-                temp[tempcount++] = current;
-                current = current.getParent();
-            }
-
-            for (int i = tempcount - 1; i >= 0; i--) {
-                commonprefix += "/";
-                commonprefix += temp[i].getName();
-            }
-              commonprefix += "/";
-            //System.out.print(commonprefix);
-             colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN, commonprefix);
-          //  System.out.println(nameofthefile);
-             colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, nameofthefile);
-        }
-        System.out.println();
-        return;
-    }
+			for (int i = tempcount - 1; i >= 0; i--) {
+				commonprefix += "/";
+				commonprefix += temp[i].getName();
+			}
+			commonprefix += "/";
+			// System.out.print(commonprefix);
+			colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN, commonprefix);
+			// System.out.println(nameofthefile);
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, nameofthefile);
+		}
+		System.out.println();
+		return;
+	}
 }

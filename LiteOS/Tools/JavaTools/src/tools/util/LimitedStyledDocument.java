@@ -32,7 +32,6 @@
  *
  */
 
-
 /**
  * LimitedStyleDocument is used with a JTextPane to constrain the width of the
  * text.
@@ -41,26 +40,26 @@
 
 package tools.util;
 
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.*;
 
 public class LimitedStyledDocument extends DefaultStyledDocument {
-    private int size;
-    
-    public LimitedStyledDocument(int size) {
-	this.size = size;
-    }
-    
-    public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-	if ((getLength() + str.length()) <= size) {
-	    super.insertString(offs, str, a);
-	}
-	else {
-	    System.err.println("Tried to make field " + (getLength() + str.length()) + " characters long when max length is " + size);
-	    Toolkit.getDefaultToolkit().beep();
-	}
-    }
-}
+	private int size;
 
+	public LimitedStyledDocument(int size) {
+		this.size = size;
+	}
+
+	public void insertString(int offs, String str, AttributeSet a)
+			throws BadLocationException {
+		if ((getLength() + str.length()) <= size) {
+			super.insertString(offs, str, a);
+		} else {
+			System.err.println("Tried to make field "
+					+ (getLength() + str.length())
+					+ " characters long when max length is " + size);
+			Toolkit.getDefaultToolkit().beep();
+		}
+	}
+}

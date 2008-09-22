@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 /** 
  * Simple byte I/O interface for use with PacketSource packetizers
  */
@@ -37,10 +36,12 @@ package tools.packet;
 
 import java.io.*;
 
-public interface ByteSource
-{
-    public void open() throws IOException;
-    public void close();
-    public byte readByte() throws IOException;
-    public void writeBytes(byte[] bytes) throws IOException;
+public interface ByteSource {
+	public void open() throws IOException;
+
+	public void close();
+
+	public byte readByte() throws IOException;
+
+	public void writeBytes(byte[] bytes) throws IOException;
 }

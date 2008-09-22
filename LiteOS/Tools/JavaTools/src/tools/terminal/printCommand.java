@@ -16,146 +16,140 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
 import java.util.ArrayList;
 
 /**
- * The du command class that allows the current directory information to be displayed.
+ * The du command class that allows the current directory information to be
+ * displayed.
  */
-public class printCommand  {
+public class printCommand {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir,
+			debugCommand debughandle) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir, debugCommand debughandle) {
+		int numOfVar = debughandle.getNumOfVariables();
+		int i;
+		variable temp;
+		temp = null;
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
+		for (i = 0; i < numOfVar; i++) {
+			temp = debughandle.getVariable(i);
+			if (temp.getName().compareTo(parameters[0]) == 0)
+				break;
+		}
 
+		if (i == numOfVar) {
+			System.out.println("The variable is not found!");
+			return 0;
+		}
 
-        int numOfVar = debughandle.getNumOfVariables();
-        int i;
-        variable temp;
-        temp = null;
+		if (temp == null) {
+			System.out.println("The variable is not found!");
+			return 0;
+		}
+		int addr = temp.getaddr();
+		int sizeofvar = temp.getSize();
 
+		int addrhigh = addr / 256;
+		int addrlow = addr % 256;
+		int sizehigh = sizeofvar / 256;
+		int sizelow = sizeofvar % 256;
 
-        for (i=0;i<numOfVar; i++)
-        {
-             temp = debughandle.getVariable(i);
-             if (temp.getName().compareTo(parameters[0]) == 0)
-               break;
-        }
+		reply[0] = (byte) 7;
+		reply[1] = (byte) 91;
+		reply[2] = (new Integer(currentAddress)).byteValue();
+		reply[3] = (new Integer(addrhigh)).byteValue();
+		reply[4] = (new Integer(addrlow)).byteValue();
+		reply[5] = (new Integer(sizehigh)).byteValue();
+		reply[6] = (new Integer(sizelow)).byteValue();
 
-        if (i==numOfVar)
-        {     System.out.println("The variable is not found!");
-          return 0;
-        }
+		// System.arraycopy(filename, 0, reply, 3, filename.length);
 
+		// reply[3+filename.length] = (byte)0;
 
-        if (temp==null)
-        { System.out.println("The variable is not found!");
-          return 0;
-        }
-        int addr = temp.getaddr();
-        int sizeofvar = temp.getSize();
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        int addrhigh = addr/256;
-        int addrlow = addr%256;
-        int sizehigh = sizeofvar/256;
-        int sizelow = sizeofvar%256;
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 500; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-        reply[0] = (byte) 7;
-        reply[1] = (byte) 91;
-        reply[2] = (new Integer(currentAddress)).byteValue();
-        reply[3] = (new Integer(addrhigh)).byteValue();
-        reply[4] =  (new Integer(addrlow)).byteValue();
-        reply[5] = (new Integer(sizehigh)).byteValue();
-        reply[6] = (new Integer(sizelow)).byteValue();
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir, debugCommand debughandle) {
 
+		fileNode cnode = fdir.getCurrentNode();
+		String nodeName = cnode.getNodeName();
+		byte[] targetData = new byte[3000];
+		int targetDataindex;
 
-        //System.arraycopy(filename, 0, reply, 3, filename.length);
+		int start = 5;
+		int gotmsg = 0;
+		int chunkindex;
+		int totalsizelow = 0;
+		int totalsizehigh = 0;
+		int totalsize = 0;
+		// System.out.println("There are " + length +" bytes received");
 
-        //reply[3+filename.length] = (byte)0;
+		byte[] response = null;
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+		targetDataindex = 0;
+		// for (int start = 0; start + 32 <= length; start += 32) {
+		while (reply.size() > 0) {
+			response = (byte[]) reply.remove(0);
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 500;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+			if (response[start + 1] != 91)
+				continue;
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+			gotmsg++;
+			// totalsize = response[start + 4];
+			totalsizehigh = (0x000000FF & ((int) response[start + 4]));
+			totalsizelow = (0x000000FF & ((int) response[start + 5]));
+			totalsize = totalsizelow + totalsizehigh * 256;
 
+			chunkindex = response[start + 3];
 
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply ,fileDirectory fdir, debugCommand debughandle) {
+			System.arraycopy(response, start + 6, targetData, targetDataindex,
+					24);
+			targetDataindex += 24;
+			// break;
+		}
 
-        fileNode cnode = fdir.getCurrentNode();
-        String nodeName = cnode.getNodeName();
-        byte [] targetData = new byte[3000];
-        int targetDataindex;
+		// int lengthdata = response[start + 0] - 3;
 
-        int start = 5;
-        int gotmsg = 0;
-        int chunkindex;
-        int totalsizelow  =0 ;
-        int totalsizehigh = 0;
-        int totalsize = 0;
-        //System.out.println("There are " + length +" bytes received");
+		if ((gotmsg * 24 < totalsize) || (totalsize == 0)) {
+			colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,
+					"Print failure due to message loss\n");
+			return;
+		}
 
-        byte [] response = null;
+		colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN, "Variable length "
+				+ totalsize + " : ");
+		for (int i = 0; i < totalsize; i++) {
+			colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN, "0x"
+					+ Integer.toString(targetData[i] & 0xFF, 16) + " ,");
 
-        targetDataindex = 0;
-       // for (int start = 0; start + 32 <= length; start += 32) {
-        while (reply.size() > 0)
-        {
-            response = (byte [])reply.remove(0);
+		}
+		colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN, "\n");
 
-            if (response[start + 1] != 91)
-            continue;
-
-            gotmsg ++;
-            //totalsize = response[start + 4];
-            totalsizehigh = (0x000000FF & ((int) response[start+4]));
-            totalsizelow = (0x000000FF & ((int) response[start+5]));
-            totalsize = totalsizelow  + totalsizehigh * 256;
-
-            chunkindex = response[start + 3];
-
-            System.arraycopy(response, start + 6, targetData, targetDataindex, 24);
-            targetDataindex += 24;
-            //break;
-        }
-
-
-      //  int lengthdata = response[start + 0] - 3;
-
-
-        if ((gotmsg * 24  < totalsize) || ( totalsize == 0))
-        {   colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "Print failure due to message loss\n");
-            return;
-        }
-
-        colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "Variable length " + totalsize + " : ");
-        for (int i=0;i < totalsize; i++)
-        {
-               colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "0x" + Integer.toString(targetData[i] & 0xFF, 16) + " ,");
-
-        }
-        colorOutput.print(colorOutput.COLOR_BRIGHT_GREEN,  "\n");
-
-          return;
-    }
+		return;
+	}
 }
-

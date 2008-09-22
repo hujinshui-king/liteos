@@ -16,11 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
-
+ */
 
 package tools.terminal;
 
@@ -31,69 +27,72 @@ import java.util.ArrayList;
  */
 public class installCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	// Return the total number of commands will be used
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
+		int currentBlock = currentnode.getBlock();
 
-    //Return the total number of commands will be used
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		byte[] filename = parameters[0].getBytes();
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
-        int currentBlock = currentnode.getBlock();
+		reply[0] = (new Integer(filename.length + 4)).byteValue();
+		reply[1] = (byte) 231;
+		reply[2] = (new Integer(currentAddress)).byteValue();
+		reply[3] = (new Integer(currentBlock)).byteValue();
 
-        byte[] filename = parameters[0].getBytes();
+		System.arraycopy(filename, 0, reply, 4, filename.length);
 
-        reply[0] = (new Integer(filename.length + 4)).byteValue();
-        reply[1] = (byte) 231;
-        reply[2] = (new Integer(currentAddress)).byteValue();
-        reply[3] = (new Integer(currentBlock)).byteValue();
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        System.arraycopy(filename, 0, reply, 4, filename.length);
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 300; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 300;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
+		// To change body of implemented methods use File | Settings | File
+		// Templates.
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+		fileNode cnode = fdir.getCurrentNode();
+		String filenodeName = parameters[0];
+		int length = reply.size();
 
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-        //To change body of implemented methods use File | Settings | File Templates.
+		if (length == 0) {
+			colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+					"No installation info received");
+			return;
+		}
+		int start = 5;
+		// for (int start = 0; start + 32 <= length; start += 32) {
+		while (reply.size() > 0) {
+			byte[] response = (byte[]) reply.remove(0);
 
-        fileNode cnode = fdir.getCurrentNode();
-        String filenodeName = parameters[0];
-        int length = reply.size();
+			int success = (0x000000FF & ((int) response[start + 3]));
+			if (success == 0) {
+				colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+						"Process executation fails. check system settings.");
+			} else {
+				colorOutput
+						.println(
+								colorOutput.COLOR_GREEN,
+								"Process execution request received. Please use ps to check if the command has been correctly executed. If there is no process running, it may be because of file not found or memory corrupt detected.");
 
-        if (length == 0)
-        {
-          colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "No installation info received");
-          return;
-        }
-        int start = 5;
-        //for (int start = 0; start + 32 <= length; start += 32) {
-        while (reply.size() >0)
-        {
-            byte [] response = (byte[])reply.remove(0);
-
-
-            int success = (0x000000FF & ((int) response[start + 3]));
-            if (success == 0)
-            {
-                colorOutput.println(colorOutput.COLOR_BRIGHT_RED, "Process executation fails. check system settings.");
-            }
-            else
-            {
-                colorOutput.println(colorOutput.COLOR_GREEN, "Process execution request received. Please use ps to check if the command has been correctly executed. If there is no process running, it may be because of file not found or memory corrupt detected.");
-                
-            }
-        }
-        return;
-    }
+			}
+		}
+		return;
+	}
 }

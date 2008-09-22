@@ -29,73 +29,70 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 package tools.packet;
 
 import java.util.*;
 import java.io.*;
 
-abstract public class StreamByteSource implements ByteSource
-{
-    protected InputStream is;
-    protected OutputStream os;
-    private boolean opened;
+abstract public class StreamByteSource implements ByteSource {
+	protected InputStream is;
+	protected OutputStream os;
+	private boolean opened;
 
-    protected StreamByteSource() {
-    }
-
-    abstract protected void openStreams() throws IOException;
-    abstract protected void closeStreams() throws IOException;
-
-    public void open() throws IOException {
-	openStreams();
-	opened = true;
-    }
-
-    public void close() {
-	if (opened) {
-	    opened = false;
-	    try { 
-		os.close(); 
-		is.close();
-		closeStreams();
-	    }
-	    catch (Exception e) { }
-	}
-    }
-
-    public byte readByte() throws IOException {
-	int serialByte;
-
-	if (!opened)
-	    throw new IOException("not open");
-
-	try {
-	    serialByte = is.read();
-	}
-	catch (IOException e) {
-	    serialByte = -1;
+	protected StreamByteSource() {
 	}
 
-	if (serialByte == -1) {
-	    close();
-	    throw new IOException("read error");
+	abstract protected void openStreams() throws IOException;
+
+	abstract protected void closeStreams() throws IOException;
+
+	public void open() throws IOException {
+		openStreams();
+		opened = true;
 	}
 
-	return (byte)serialByte;
-    }
-
-    public void writeBytes(byte[] bytes) throws IOException {
-	if (!opened)
-	    throw new IOException("not open");
-
-	try {
-	    os.write(bytes);
-	    os.flush();
+	public void close() {
+		if (opened) {
+			opened = false;
+			try {
+				os.close();
+				is.close();
+				closeStreams();
+			} catch (Exception e) {
+			}
+		}
 	}
-	catch (IOException e) {
-	    close();
-	    throw new IOException("write error");
+
+	public byte readByte() throws IOException {
+		int serialByte;
+
+		if (!opened)
+			throw new IOException("not open");
+
+		try {
+			serialByte = is.read();
+		} catch (IOException e) {
+			serialByte = -1;
+		}
+
+		if (serialByte == -1) {
+			close();
+			throw new IOException("read error");
+		}
+
+		return (byte) serialByte;
 	}
-    }
+
+	public void writeBytes(byte[] bytes) throws IOException {
+		if (!opened)
+			throw new IOException("not open");
+
+		try {
+			os.write(bytes);
+			os.flush();
+		} catch (IOException e) {
+			close();
+			throw new IOException("write error");
+		}
+	}
 }

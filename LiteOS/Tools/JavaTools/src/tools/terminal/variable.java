@@ -16,62 +16,54 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */
 
 package tools.terminal;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Qing Cao
- * Date: 2007-9-21
- * Time: 18:17:13
- * To change this template use File | Settings | File Templates.
+ * Created by IntelliJ IDEA. User: Qing Cao Date: 2007-9-21 Time: 18:17:13 To
+ * change this template use File | Settings | File Templates.
  */
 public class variable {
-    private int addr;
-    private int size;
-    private String name;
+	private int addr;
+	private int size;
+	private String name;
 
-    public variable()
-    {
-        addr = size = 0;
-        name = null;
-    }
+	public variable() {
+		addr = size = 0;
+		name = null;
+	}
 
-    public variable(String line)
-    {
-         String [] elements = new String[100];
-         String[] temp = new String[10];
-         elements = line.split("\\s+");
-       //  System.out.println(elements[0] + ":" + elements[1]+ ":" + elements[2]);
-         this.addr = Integer.parseInt(elements[0],16) - Integer.parseInt("800000",16);
-         this.size = Integer.parseInt(elements[1], 16);
-         temp = elements[2].split("\\.");
-         this.name = temp[0];
+	public variable(String line) {
+		String[] elements = new String[100];
+		String[] temp = new String[10];
+		elements = line.split("\\s+");
+		// System.out.println(elements[0] + ":" + elements[1]+ ":" +
+		// elements[2]);
+		this.addr = Integer.parseInt(elements[0], 16)
+				- Integer.parseInt("800000", 16);
+		this.size = Integer.parseInt(elements[1], 16);
+		temp = elements[2].split("\\.");
+		this.name = temp[0];
 
-    }
+	}
 
-   public String getName()
-   {
-       return name;
-   }
+	public String getName() {
+		return name;
+	}
 
-    public int getSize()
-    {
-        return size;
-    }
+	public int getSize() {
+		return size;
+	}
 
-    public int getaddr()
-    {
-        return addr;
-    }
+	public int getaddr() {
+		return addr;
+	}
 
-    public void print()
-    {
-        System.out.println("This variable has name of "+ name + " and size of " + size);
+	public void print() {
+		System.out.println("This variable has name of " + name
+				+ " and size of " + size);
 
-    }
-
+	}
 
 }

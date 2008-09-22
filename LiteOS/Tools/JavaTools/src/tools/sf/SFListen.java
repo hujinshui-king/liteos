@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 /**
  * File: ListenServer.java
  *
@@ -53,119 +52,118 @@ import java.util.*;
 import tools.packet.*;
 
 public class SFListen extends Thread implements PacketListenerIF, PhoenixError {
-    PhoenixSource source;
-    private ServerSocket serverSocket;
-    private Vector clients  = new Vector();
-    private SerialForwarder sf;
+	PhoenixSource source;
+	private ServerSocket serverSocket;
+	private Vector clients = new Vector();
+	private SerialForwarder sf;
 
-    public SFListen(SerialForwarder sf) {
-        this.sf = sf;
-    }
-
-    // IO error on packet source, restart it
-    // This is essentially the same as the standard resurrection error
-    // handler, but sends the error message to a different location
-    // (sf.message vs sf.verbose.message)
-    public void error(IOException e) {
-	sf.message(source.getPacketSource().getName() +
-		   " died - restarting (" + e + ")");
-	try {
-	    sleep(5000);
+	public SFListen(SerialForwarder sf) {
+		this.sf = sf;
 	}
-	catch (InterruptedException ie) { }
-	
-    }
 
-    public void run() {
-	try {
-	    sf.verbose.message("Listening to " + sf.motecom);
-
-	    source = BuildSource.makePhoenix(sf.motecom, sf.verbose);
-	    if (source == null) {
-		sf.message("Invalid source " + sf.motecom + ", pick one of:");
-		sf.message(BuildSource.sourceHelp());
-		return;
-	    }
-	    source.setPacketErrorHandler(this);
-	    source.registerPacketListener(this);
-	    source.start();
-	
-	    sf.verbose.message("Platform " + Platform.getPlatformName(source.getPacketSource().getPlatform()));
-	    // open up our server socket
-	    try {
-		serverSocket = new ServerSocket(sf.serverPort);
-	    }
-	    catch (Exception e) {
-		sf.message("Could not listen on port: " + sf.serverPort);
-		source.shutdown();
-		return;
-	    }
-
-	    sf.verbose.message("Listening for client connections on port " + sf.serverPort);
-	    try {
-		for (;;) {
-		    Socket currentSocket = serverSocket.accept();
-		    SFClient newServicer =
-			new SFClient(currentSocket, sf, this, (source.getPacketSource()).getPlatform());
-		    clients.add(newServicer);
-		    newServicer.start();
+	// IO error on packet source, restart it
+	// This is essentially the same as the standard resurrection error
+	// handler, but sends the error message to a different location
+	// (sf.message vs sf.verbose.message)
+	public void error(IOException e) {
+		sf.message(source.getPacketSource().getName() + " died - restarting ("
+				+ e + ")");
+		try {
+			sleep(5000);
+		} catch (InterruptedException ie) {
 		}
-	    }
-	    catch (IOException e) { }
-	}
-        finally {
-	    cleanup();
-            sf.verbose.message("--------------------------");
-        }
-    }
 
-    private void cleanup() {
-	shutdownAllSFClients();
-	sf.verbose.message("Closing source");
-	if (source != null) {
-	    source.shutdown();
 	}
-	sf.verbose.message("Closing socket");
-	if (serverSocket != null) {
-	    try {
-		serverSocket.close();
-	    }
-	    catch (IOException e) { }
-	}
-	sf.listenServerStopped();
-    }
 
-    private void shutdownAllSFClients() {
-        sf.verbose.message("Shutting down all client connections");
-        SFClient crrntServicer;
-        while (clients.size() != 0) {
-	    crrntServicer = (SFClient)clients.firstElement();
-	    crrntServicer.shutdown();
-	    try {
-		crrntServicer.join(1000);
-	    }
-	    catch (InterruptedException e) {
-		e.printStackTrace();
-	    }
-	}
-    }
+	public void run() {
+		try {
+			sf.verbose.message("Listening to " + sf.motecom);
 
-    public void removeSFClient(SFClient clientS) {
-        clients.remove(clientS);
-    }
+			source = BuildSource.makePhoenix(sf.motecom, sf.verbose);
+			if (source == null) {
+				sf.message("Invalid source " + sf.motecom + ", pick one of:");
+				sf.message(BuildSource.sourceHelp());
+				return;
+			}
+			source.setPacketErrorHandler(this);
+			source.registerPacketListener(this);
+			source.start();
 
-    public void packetReceived(byte[] packet) {
-	sf.incrementPacketsRead();
-    }
+			sf.verbose.message("Platform "
+					+ Platform.getPlatformName(source.getPacketSource()
+							.getPlatform()));
+			// open up our server socket
+			try {
+				serverSocket = new ServerSocket(sf.serverPort);
+			} catch (Exception e) {
+				sf.message("Could not listen on port: " + sf.serverPort);
+				source.shutdown();
+				return;
+			}
 
-    public void shutdown() {
-	try {
-	    if (serverSocket != null) {
-		serverSocket.close();
-	    }
+			sf.verbose.message("Listening for client connections on port "
+					+ sf.serverPort);
+			try {
+				for (;;) {
+					Socket currentSocket = serverSocket.accept();
+					SFClient newServicer = new SFClient(currentSocket, sf,
+							this, (source.getPacketSource()).getPlatform());
+					clients.add(newServicer);
+					newServicer.start();
+				}
+			} catch (IOException e) {
+			}
+		} finally {
+			cleanup();
+			sf.verbose.message("--------------------------");
+		}
 	}
-	catch (IOException e) {
-	    sf.debug.message("shutdown error " + e);
+
+	private void cleanup() {
+		shutdownAllSFClients();
+		sf.verbose.message("Closing source");
+		if (source != null) {
+			source.shutdown();
+		}
+		sf.verbose.message("Closing socket");
+		if (serverSocket != null) {
+			try {
+				serverSocket.close();
+			} catch (IOException e) {
+			}
+		}
+		sf.listenServerStopped();
 	}
-    }
+
+	private void shutdownAllSFClients() {
+		sf.verbose.message("Shutting down all client connections");
+		SFClient crrntServicer;
+		while (clients.size() != 0) {
+			crrntServicer = (SFClient) clients.firstElement();
+			crrntServicer.shutdown();
+			try {
+				crrntServicer.join(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void removeSFClient(SFClient clientS) {
+		clients.remove(clientS);
+	}
+
+	public void packetReceived(byte[] packet) {
+		sf.incrementPacketsRead();
+	}
+
+	public void shutdown() {
+		try {
+			if (serverSocket != null) {
+				serverSocket.close();
+			}
+		} catch (IOException e) {
+			sf.debug.message("shutdown error " + e);
+		}
+	}
 }

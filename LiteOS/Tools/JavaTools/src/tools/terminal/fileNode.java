@@ -16,10 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
@@ -28,253 +25,261 @@ package tools.terminal;
  */
 public class fileNode {
 
-    //File name is the name of the file. It could be test, whatever
+	// File name is the name of the file. It could be test, whatever
 
-    private String FileName;
+	private String FileName;
 
-    //The type of the file
-    private String FileType;
+	// The type of the file
+	private String FileType;
 
-    //the actual size
-    private int size;
+	// the actual size
+	private int size;
 
-    private int block;
-    private int address;
+	private int block;
+	private int address;
 
-    //children and parent relationship
-    private fileNode[] children = new fileNode[32];
-    private fileNode parent;
-    private int childNum = 0;
+	// children and parent relationship
+	private fileNode[] children = new fileNode[32];
+	private fileNode parent;
+	private int childNum = 0;
 
-    //initilization
-    private boolean listed = false;
+	// initilization
+	private boolean listed = false;
 
+	/**
+	 * The default constructor for the file node
+	 */
+	public fileNode() {
+		FileName = null;
+		FileType = "unknown";
+		listed = false;
+	}
 
-    /**
-     * The default constructor for the file node
-     */
-    public fileNode() {
-        FileName = null;
-        FileType = "unknown";
-        listed = false;
-    }
+	/**
+	 * Another constructor for the file node with file name and file type
+	 * 
+	 * @param fileName
+	 *            file name
+	 * @param fileType
+	 *            type of the file
+	 */
+	public fileNode(String fileName, String fileType) {
+		FileName = fileName;
+		FileType = fileType;
+		listed = false;
+	}
 
+	/**
+	 * The third constructor for the file node with more info
+	 * 
+	 * @param fileName
+	 * @param fileType
+	 * @param address
+	 * @param block
+	 */
+	public fileNode(String fileName, String fileType, int address, int block) {
+		FileName = fileName;
+		FileType = fileType;
+		this.address = address;
+		this.block = block;
+		listed = false;
+	}
 
-    /**
-     * Another constructor for the file node with file name and file type
-     *
-     * @param fileName file name
-     * @param fileType type of the file
-     */
-    public fileNode(String fileName, String fileType) {
-        FileName = fileName;
-        FileType = fileType;
-        listed = false;
-    }
+	/**
+	 * Another constructor of the file node with info
+	 * 
+	 * @param fileName
+	 * @param fileType
+	 * @param address
+	 * @param block
+	 * @param size
+	 */
+	public fileNode(String fileName, String fileType, int address, int block,
+			int size) {
+		FileName = fileName;
+		FileType = fileType;
+		this.address = address;
+		this.block = block;
+		this.size = size;
+		listed = false;
+	}
 
+	/**
+	 * Set the parent of a file node
+	 * 
+	 * @param p
+	 */
+	public void setParent(fileNode p) {
+		parent = p;
+	}
 
-    /**
-     * The third constructor for the file node with more info
-     *
-     * @param fileName
-     * @param fileType
-     * @param address
-     * @param block
-     */
-    public fileNode(String fileName, String fileType, int address, int block) {
-        FileName = fileName;
-        FileType = fileType;
-        this.address = address;
-        this.block = block;
-        listed = false;
-    }
+	/**
+	 * Get the parent of a file node
+	 * 
+	 * @return the parent of the file node
+	 */
+	public fileNode getParent() {
+		if (FileName.compareTo("root") == 0)
+			return this;
+		else
+			return this.parent;
+	}
 
+	/**
+	 * Add a child of a file node
+	 * 
+	 * @param p
+	 *            The child of the file node
+	 */
 
-    /**
-     * Another constructor of the file node with info
-     *
-     * @param fileName
-     * @param fileType
-     * @param address
-     * @param block
-     * @param size
-     */
-    public fileNode(String fileName, String fileType, int address, int block, int size) {
-        FileName = fileName;
-        FileType = fileType;
-        this.address = address;
-        this.block = block;
-        this.size = size;
-        listed = false;
-    }
+	public void addChild(fileNode p) {
+		this.children[childNum++] = p;
+		p.setParent(this);
+	}
 
+	/**
+	 * Delete a child of a file node
+	 * 
+	 * @param name
+	 *            the child file node name
+	 */
+	public void deleteChildByName(String name) {
+		int ret = this.findChild(name);
+		this.removeChild(ret);
+	}
 
-    /**
-     * Set the parent of a file node
-     *
-     * @param p
-     */
-    public void setParent(fileNode p) {
-        parent = p;
-    }
+	/**
+	 * Remove a child node file by index
+	 * 
+	 * @param index
+	 */
+	public void removeChild(int index) {
+		for (int i = index; i < this.childNum - 1; i++)
+			this.children[i] = this.children[i + 1];
+		this.childNum--;
+	}
 
+	public String getName() {
+		return FileName;
+	}
 
-    /**
-     * Get the parent of a file node
-     *
-     * @return the parent of the file node
-     */
-    public fileNode getParent() {
-        if (FileName.compareTo("root") == 0)
-          return this;
-        else
-          return this.parent;
-    }
+	public String getType() {
+		return FileType;
+	}
 
-    /**
-     * Add a child of a file node
-     *
-     * @param p The child of the file node
-     */
+	public int getBlock() {
+		return block;
+	}
 
-    public void addChild(fileNode p) {
-        this.children[childNum++] = p;
-        p.setParent(this);
-    }
+	public int getNodeAddress() {
+		return address;
+	}
 
+	public void cleanAll() {
+		this.childNum = 0;
 
-    /**
-     * Delete a child of a file node
-     *
-     * @param name the child file node name
-     */
-    public void deleteChildByName(String name) {
-        int ret = this.findChild(name);
-        this.removeChild(ret);
-    }
+	}
 
+	public boolean duplicateChild(String name) {
+		for (int i = 0; i < this.childNum; i++) {
+			if (this.children[i].FileName.compareTo(name) == 0) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    /**
-     * Remove a child node file by index
-     *
-     * @param index
-     */
-    public void removeChild(int index) {
-        for (int i = index; i < this.childNum - 1; i++)
-            this.children[i] = this.children[i + 1];
-        this.childNum--;
-    }
+	public int findChild(String name) {
+		for (int i = 0; i < this.childNum; i++) {
+			if (this.children[i].FileName.compareTo(name) == 0) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
-    public String getName() {
-        return FileName;
-    }
+	public fileNode enterSubDirectory(String name) {
+		for (int i = 0; i < this.childNum; i++) {
+			if ((this.children[i].getName().compareTo(name) == 0)
+					&& (this.children[i].getType().compareTo("file") != 0)) {
+				// System.out.println("cd command successful");
+				colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
+						"cd command successful");
 
-    public String getType() {
-        return FileType;
-    }
+				return this.children[i];
+			}
+		}
+		// System.out.println("No such subdirectory exists");
+		colorOutput
+				.println(
+						colorOutput.COLOR_BRIGHT_RED,
+						"No subdirectory exists when trying to enter it. Probably you have not used the ls command to list such directory. Currently cd only works for directories that are listed using ls.");
 
-    public int getBlock() {
-        return block;
-    }
+		return null;
+	}
 
-    public int getNodeAddress() {
-        return address;
-    }
+	public void printChildren(String option) {
+		if (option.compareTo("short") == 0) {
+			for (int i = 0; i < this.childNum; i++) {
+				// System.out.println(this.children[i].FileName);
+				colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
+						this.children[i].FileName);
+			}
+			System.out.println();
+		}
+		if (option.compareTo("long") == 0) {
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
+					"Name\tType\tSize\tProtection\n");
+			for (int i = 0; i < this.childNum; i++) {
+				this.children[i].printLong();
+			}
+			System.out.println();
 
-    public void cleanAll()
-    {
-         this.childNum = 0; 
+		}
+	}
 
-    }
-    public boolean duplicateChild(String name) {
-        for (int i = 0; i < this.childNum; i++) {
-            if (this.children[i].FileName.compareTo(name) == 0) {
-                return true;
-            }
-        }
-        return false;
-    }
+	public void printChildren() {
+		this.printChildren("short");
+	}
 
-    public int findChild(String name) {
-        for (int i = 0; i < this.childNum; i++) {
-            if (this.children[i].FileName.compareTo(name) == 0) {
-                return i;
-            }
-        }
-        return -1;
-    }
+	public void printLong() {
 
+		if (this.FileType.compareTo("network") == 0)
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName
+					+ "  " + this.FileType + "   " + "--" + "     "
+					+ "rwxrwxrwx");
+		else if (this.FileType.compareTo("noderoot") == 0) {
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName
+					+ "  " + this.FileType + "   " + "--" + "     "
+					+ "rwxrwxrwx");
+		} else if (this.FileType.compareTo("directory") == 0) {
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName
+					+ "  " + this.FileType + "   " + "--" + "     "
+					+ "rwxrwxrwx");
+		} else if (this.FileType.startsWith("file") == true) {
+			colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName
+					+ "  " + this.FileType + "   " + this.size + "     "
+					+ "rwxrwxrwx");
+		}
 
-    public fileNode enterSubDirectory(String name) {
-        for (int i = 0; i < this.childNum; i++) {
-            if ((this.children[i].getName().compareTo(name) == 0)&&(this.children[i].getType().compareTo("file")!=0)) {
-                //System.out.println("cd command successful");
-                colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,  "cd command successful");
+	}
 
-                return this.children[i];
-            }
-        }
-       //System.out.println("No such subdirectory exists");
-        colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "No subdirectory exists when trying to enter it. Probably you have not used the ls command to list such directory. Currently cd only works for directories that are listed using ls.");
+	public void setListed() {
+		listed = true;
+	}
 
-        return null;
-    }
+	public boolean getListed() {
+		return listed;
+	}
 
-
-    public void printChildren(String option) {
-        if (option.compareTo("short") == 0) {
-            for (int i = 0; i < this.childNum; i++) {
-                //System.out.println(this.children[i].FileName);
-            colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.children[i].FileName);
-            }
-            System.out.println();
-        }
-        if (option.compareTo("long") == 0) {
-            colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "Name\tType\tSize\tProtection\n");
-            for (int i = 0; i < this.childNum; i++) {
-                this.children[i].printLong();
-            }
-            System.out.println();
-
-        }
-    }
-
-
-    public void printChildren() {
-        this.printChildren("short");
-    }
-
-    public void printLong() {
-
-        if (this.FileType.compareTo("network") == 0)
-           colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName + "  " + this.FileType+"   "+ "--"+"     " +"rwxrwxrwx");
-        else if (this.FileType.compareTo("noderoot") == 0) {
-             colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName + "  " + this.FileType+"   "+ "--"+"     " +"rwxrwxrwx");
-        } else if (this.FileType.compareTo("directory") == 0) {
-            colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName + "  " + this.FileType+"   "+ "--"+"     " +"rwxrwxrwx");
-        } else if (this.FileType.startsWith("file") == true) {
-             colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, this.FileName + "  " + this.FileType +"   "+ this.size+"     " +"rwxrwxrwx");
-        }
-
-    }
-
-    public void setListed() {
-        listed = true;
-    }
-
-    public boolean getListed() {
-        return listed;
-    }
-
-
-    public String getNodeName() {
-        fileNode p;
-        p = this;
-        while (true) {
-            if (p.getType().compareTo("noderoot") == 0)
-                return p.getName();
-            else
-                p = p.getParent();
-        }
-    }
+	public String getNodeName() {
+		fileNode p;
+		p = this;
+		while (true) {
+			if (p.getType().compareTo("noderoot") == 0)
+				return p.getName();
+			else
+				p = p.getParent();
+		}
+	}
 }

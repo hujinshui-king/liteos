@@ -16,56 +16,58 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
+ */
 
 package tools.terminal;
 
 import java.util.ArrayList;
 
 /**
- * The du command class that allows the current directory information to be displayed.
+ * The du command class that allows the current directory information to be
+ * displayed.
  */
 public class channelSelectCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	channelSelectCommand() {
+		reply[0] = 3;
+		reply[1] = 2;
+		reply[2] = 0;
+	}
 
-    channelSelectCommand() {
-        reply[0] = 3;
-        reply[1] = 2;
-        reply[2] = 0;
-    }            
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		fileNode currentNode = fdir.getCurrentNode();
+		int channel;
+		channel = new Integer(parameters[0]).intValue();
+		// System.out.println("The channel is " +channel);
 
-        fileNode currentNode = fdir.getCurrentNode();
-        int channel;
-        channel = new Integer(parameters[0]).intValue();
-        //System.out.println("The channel is " +channel);
+		reply[0] = 3;
+		reply[2] = new Integer(channel).byteValue();
+		reply[1] = 2;
+		// System.out.println(" 0 " + reply[0] + " 1 "+reply[1] + " 2 "+
+		// reply[2] );
 
-        reply[0] = 3;
-        reply[2] = new Integer(channel).byteValue();
-        reply[1] = 2;
-        //System.out.println(" 0 " +  reply[0] + " 1 "+reply[1] + " 2 "+ reply[2] );
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public int getDelay() {
+		return 32; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
-    public int getDelay() {
-        return 32;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
 
-
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-
-    }
+	}
 
 }
-

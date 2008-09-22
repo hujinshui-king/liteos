@@ -36,94 +36,94 @@ import java.io.*;
 import java.lang.reflect.Method;
 
 /**
- * A packet source for the old, broken mote-PC protocol. Requires a
- * ByteSource for low-level I/O
+ * A packet source for the old, broken mote-PC protocol. Requires a ByteSource
+ * for low-level I/O
  */
 public class BrokenPacketizer extends AbstractSource {
-    final static int SYNC_BYTE = 0x7e;
-    private int packetSize;
-    private MessageFactory messageFactory;
-    private TOSMsg template;
-    private int msg_size_crc;
-    ByteSource io;
+	final static int SYNC_BYTE = 0x7e;
+	private int packetSize;
+	private MessageFactory messageFactory;
+	private TOSMsg template;
+	private int msg_size_crc;
+	ByteSource io;
 
-    /**
-     * Packetizers are built using the makeXXX methods in BuildSource
-     */
-    public BrokenPacketizer(String name, int packetSize, ByteSource io) {
-	super(name + "," + packetSize);
-	this.packetSize = packetSize;
-	this.io = io;
-	messageFactory = new MessageFactory();
-	template = messageFactory.createTOSMsg();
-	try {
-	    Class tcls = template.getClass();
-	    Method m = tcls.getMethod("size_crc", null); 
-	    Integer i = (Integer) m.invoke(tcls, null);
-	    msg_size_crc = i.intValue();
-	} catch (Exception e) {
-	    msg_size_crc = 2;
+	/**
+	 * Packetizers are built using the makeXXX methods in BuildSource
+	 */
+	public BrokenPacketizer(String name, int packetSize, ByteSource io) {
+		super(name + "," + packetSize);
+		this.packetSize = packetSize;
+		this.io = io;
+		messageFactory = new MessageFactory();
+		template = messageFactory.createTOSMsg();
+		try {
+			Class tcls = template.getClass();
+			Method m = tcls.getMethod("size_crc", null);
+			Integer i = (Integer) m.invoke(tcls, null);
+			msg_size_crc = i.intValue();
+		} catch (Exception e) {
+			msg_size_crc = 2;
+		}
 	}
-    }
 
-    protected void openSource() throws IOException {
-	io.open();
-	messageFactory = new MessageFactory(this);
-	template = messageFactory.createTOSMsg(packetSize);
-	try {
-	    Class tcls = template.getClass();
-	    Method m = tcls.getMethod("size_crc", null); 
-	    Integer i = (Integer) m.invoke(tcls, null);
-	    msg_size_crc = i.intValue();
-	} catch (Exception e) {
-	    msg_size_crc = 2;
+	protected void openSource() throws IOException {
+		io.open();
+		messageFactory = new MessageFactory(this);
+		template = messageFactory.createTOSMsg(packetSize);
+		try {
+			Class tcls = template.getClass();
+			Method m = tcls.getMethod("size_crc", null);
+			Integer i = (Integer) m.invoke(tcls, null);
+			msg_size_crc = i.intValue();
+		} catch (Exception e) {
+			msg_size_crc = 2;
+		}
 	}
-    }
 
-    protected void closeSource() {
-        io.close();
-    }
+	protected void closeSource() {
+		io.close();
+	}
 
-    protected byte[] readSourcePacket() throws IOException {
-	byte[] packet = new byte[packetSize];
-	int count = 0;
+	protected byte[] readSourcePacket() throws IOException {
+		byte[] packet = new byte[packetSize];
+		int count = 0;
 
-	do {
-	    while (count < packetSize) {
-		byte b = io.readByte();
+		do {
+			while (count < packetSize) {
+				byte b = io.readByte();
 
-		// Rather broken form of sync
-		if (count == 0 && b != SYNC_BYTE)
-		    continue;
-		packet[count++] = b;
-	    }
-	    // Drop packets where the crc field is not 1
-	} while (packet[packetSize - msg_size_crc] != 1);
+				// Rather broken form of sync
+				if (count == 0 && b != SYNC_BYTE)
+					continue;
+				packet[count++] = b;
+			}
+			// Drop packets where the crc field is not 1
+		} while (packet[packetSize - msg_size_crc] != 1);
 
-	return collapsePacket(packet);
-    }
+		return collapsePacket(packet);
+	}
 
-    protected boolean writeSourcePacket(byte[] packet) throws IOException {
-	io.writeBytes(expandPacket(packet, packetSize));
-	return true;
-    }
+	protected boolean writeSourcePacket(byte[] packet) throws IOException {
+		io.writeBytes(expandPacket(packet, packetSize));
+		return true;
+	}
 
-    public byte[] collapsePacket(byte[] oldPacket) throws IOException {
-	// Make a PacketSource-format byte array from the full packet
-	int size = (oldPacket[lengthOffset] & 0xff) + dataOffset;
-	if (size > oldPacket.length)
-	    throw new IOException("TOS_Msg length is too long for packet");
-	byte[] psPacket = new byte[size];
-	System.arraycopy(oldPacket, 0, psPacket, 0, size);
+	public byte[] collapsePacket(byte[] oldPacket) throws IOException {
+		// Make a PacketSource-format byte array from the full packet
+		int size = (oldPacket[lengthOffset] & 0xff) + dataOffset;
+		if (size > oldPacket.length)
+			throw new IOException("TOS_Msg length is too long for packet");
+		byte[] psPacket = new byte[size];
+		System.arraycopy(oldPacket, 0, psPacket, 0, size);
 
-	return psPacket;
-    }
+		return psPacket;
+	}
 
-    public byte[] expandPacket(byte[] psPacket, int packetSize) {
-	// Make a full TOS_Msg from the PacketSource-format byte array
-	TOSMsg tmsg = messageFactory.createTOSMsg(packetSize);
-	tmsg.dataSet(psPacket, 0, 0, psPacket.length);
-	tmsg.set_crc(Crc.calc(tmsg.dataGet(), tmsg.get_length() + dataOffset));
-	return tmsg.dataGet();
-    }
+	public byte[] expandPacket(byte[] psPacket, int packetSize) {
+		// Make a full TOS_Msg from the PacketSource-format byte array
+		TOSMsg tmsg = messageFactory.createTOSMsg(packetSize);
+		tmsg.dataSet(psPacket, 0, 0, psPacket.length);
+		tmsg.set_crc(Crc.calc(tmsg.dataGet(), tmsg.get_length() + dataOffset));
+		return tmsg.dataGet();
+	}
 }

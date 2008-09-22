@@ -31,48 +31,49 @@
 package tools.util;
 
 public class Crc {
-    public static int calcByte(int crc, int b) {
-      crc = crc ^ (int)b << 8;
+	public static int calcByte(int crc, int b) {
+		crc = crc ^ (int) b << 8;
 
-      for (int i = 0; i < 8; i++) {
-	if ((crc & 0x8000) == 0x8000)
-	  crc = crc << 1 ^ 0x1021;
-	else
-	  crc = crc << 1;
-      }
+		for (int i = 0; i < 8; i++) {
+			if ((crc & 0x8000) == 0x8000)
+				crc = crc << 1 ^ 0x1021;
+			else
+				crc = crc << 1;
+		}
 
-      return crc & 0xffff;
-    }
-
-    public static int calc(byte[] packet, int index, int count) {
-	int crc = 0;
-	int i;
-
-	while (count > 0) {
-	    crc = calcByte(crc, packet[index++]);
-	    count--;
+		return crc & 0xffff;
 	}
-	return crc;
-    }
 
-    public static int calc(byte[] packet, int count) {
-	return calc(packet, 0, count);
-    }
+	public static int calc(byte[] packet, int index, int count) {
+		int crc = 0;
+		int i;
 
-    public static void set(byte[] packet) {
-        int crc = Crc.calc(packet, packet.length - 2);
+		while (count > 0) {
+			crc = calcByte(crc, packet[index++]);
+			count--;
+		}
+		return crc;
+	}
 
-        packet[packet.length - 2] = (byte) (crc & 0xFF);
-        packet[packet.length - 1] = (byte) ((crc >> 8) & 0xFF);
-    }
+	public static int calc(byte[] packet, int count) {
+		return calc(packet, 0, count);
+	}
 
-    public static void main(String[] args) {
-	byte[] ia = new byte[args.length];
+	public static void set(byte[] packet) {
+		int crc = Crc.calc(packet, packet.length - 2);
 
-	for (int i = 0; i < args.length; i++)
-	    try {
-		ia[i] = Integer.decode(args[i]).byteValue();
-	    } catch (NumberFormatException e) { }
-	System.out.println(Integer.toHexString(calc(ia, ia.length)));
-    }
+		packet[packet.length - 2] = (byte) (crc & 0xFF);
+		packet[packet.length - 1] = (byte) ((crc >> 8) & 0xFF);
+	}
+
+	public static void main(String[] args) {
+		byte[] ia = new byte[args.length];
+
+		for (int i = 0; i < args.length; i++)
+			try {
+				ia[i] = Integer.decode(args[i]).byteValue();
+			} catch (NumberFormatException e) {
+			}
+		System.out.println(Integer.toHexString(calc(ia, ia.length)));
+	}
 }

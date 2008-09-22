@@ -22,18 +22,19 @@
 package tools.mcenter;
 
 /**
- *
- * @author  nadand
+ * 
+ * @author nadand
  */
 public interface PacketDecoder {
-    
-    public java.lang.String decode(byte[] packet);
-    
-    public void setNoid(boolean noid);
-    public boolean getNoid();
-    
-    public void setDelimiter(java.lang.String delimiter);
-    public java.lang.String getDelimiter();
-    
-    
+
+	public java.lang.String decode(byte[] packet);
+
+	public void setNoid(boolean noid);
+
+	public boolean getNoid();
+
+	public void setDelimiter(java.lang.String delimiter);
+
+	public java.lang.String getDelimiter();
+
 }

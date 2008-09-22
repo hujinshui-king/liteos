@@ -21,71 +21,59 @@
  */
 
 //@author Cory Sharp <cssharp@eecs.berkeley.edu>
-
 package tools.sf;
 
-public class SFConsoleRenderer implements SFRenderer
-{
-  boolean statusLine = false;
-  boolean listening = false;
-  int nclients = 0;
-  int nread = 0;
-  int nwritten = 0;
+public class SFConsoleRenderer implements SFRenderer {
+	boolean statusLine = false;
+	boolean listening = false;
+	int nclients = 0;
+	int nread = 0;
+	int nwritten = 0;
 
-  public void SFConsoleRenderer()
-  {
-  }
+	public void SFConsoleRenderer() {
+	}
 
-  void clearStatus()
-  {
-    if( statusLine )
-    {
-      System.out.print("\r                                                                              \r");
-      statusLine = false;
-    }
-  }
+	void clearStatus() {
+		if (statusLine) {
+			System.out
+					.print("\r                                                                              \r");
+			statusLine = false;
+		}
+	}
 
-  void updateStatus()
-  {
-    clearStatus();
-    System.out.print( (listening?"SF enabled":"SF disabled") + ", "
-      + nclients + " " + (nclients==1?"client":"clients") + ", "
-      + nread + " " + (nread==1?"packet":"packets") + " read, "
-      + nwritten + " " + (nwritten==1?"packet":"packets") + " written"
-      + " "
-    );
-    statusLine = true;
-  }
+	void updateStatus() {
+		clearStatus();
+		System.out.print((listening ? "SF enabled" : "SF disabled") + ", "
+				+ nclients + " " + (nclients == 1 ? "client" : "clients")
+				+ ", " + nread + " " + (nread == 1 ? "packet" : "packets")
+				+ " read, " + nwritten + " "
+				+ (nwritten == 1 ? "packet" : "packets") + " written" + " ");
+		statusLine = true;
+	}
 
-  public void message( String msg )
-  {
-    clearStatus();
-    System.out.println(msg);
-    updateStatus();
-  }
+	public void message(String msg) {
+		clearStatus();
+		System.out.println(msg);
+		updateStatus();
+	}
 
-  public void updatePacketsRead( int n )
-  {
-    nread = n;
-    updateStatus();
-  }
+	public void updatePacketsRead(int n) {
+		nread = n;
+		updateStatus();
+	}
 
-  public void updatePacketsWritten( int n )
-  {
-    nwritten = n;
-    updateStatus();
-  }
+	public void updatePacketsWritten(int n) {
+		nwritten = n;
+		updateStatus();
+	}
 
-  public void updateNumClients( int n )
-  {
-    nclients = n;
-    updateStatus();
-  }
+	public void updateNumClients(int n) {
+		nclients = n;
+		updateStatus();
+	}
 
-  public void updateListenServerStatus( boolean b )
-  {
-    listening = b;
-    updateStatus();
-  }
+	public void updateListenServerStatus(boolean b) {
+		listening = b;
+		updateStatus();
+	}
 }
-

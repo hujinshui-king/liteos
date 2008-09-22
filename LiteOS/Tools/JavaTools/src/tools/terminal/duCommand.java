@@ -16,83 +16,83 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
-
+ */
 
 package tools.terminal;
 
 import java.util.ArrayList;
 
 /**
- * The du command class that allows the current directory information to be displayed.
+ * The du command class that allows the current directory information to be
+ * displayed.
  */
 public class duCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
+		int currentBlock = currentnode.getBlock();
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		byte[] filename = parameters[0].getBytes();
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
-        int currentBlock = currentnode.getBlock();
+		reply[0] = 3;
+		reply[1] = (byte) 211;
+		reply[2] = (new Integer(currentAddress)).byteValue();
 
-        byte[] filename = parameters[0].getBytes();
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        reply[0] = 3;
-        reply[1] = (byte) 211;
-        reply[2] = (new Integer(currentAddress)).byteValue();
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 200; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 200;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+		fileNode cnode = fdir.getCurrentNode();
+		String nodeName = cnode.getNodeName();
+		int eepromusage = 0;
+		int flashusage1 = 0;
+		int flashusage2 = 0;
+		int start = 5;
 
+		int packetnum = reply.size();
 
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
+		colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "The reply has "
+				+ packetnum + " packets.");
 
-        fileNode cnode = fdir.getCurrentNode();
-        String nodeName = cnode.getNodeName();
-        int eepromusage = 0;
-        int flashusage1 = 0;
-        int flashusage2 = 0;
-        int start = 5;
+		// for (int start = 0; start + 32 <= length; start += 32) {
+		while (reply.size() > 0) {
+			byte[] response = (byte[]) reply.remove(0);
+			eepromusage = (0x000000FF & ((int) response[start + 3]));
+			flashusage1 = (0x000000FF & ((int) response[start + 4]));
+			flashusage2 = (0x000000FF & ((int) response[start + 5]));
 
-       int packetnum = reply.size();
+		}
 
-         colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,  "The reply has "+ packetnum + " packets.");
+		double v1 = (double) eepromusage / 96;
+		double v2 = (double) (flashusage1 + flashusage2) / 256;
 
-        //for (int start = 0; start + 32 <= length; start += 32) {
-        while (reply.size() > 0)
-        {
-            byte[] response = (byte[])reply.remove(0);    
-            eepromusage = (0x000000FF & ((int) response[start + 3]));
-            flashusage1 = (0x000000FF & ((int) response[start + 4]));
-            flashusage2 = (0x000000FF & ((int) response[start + 5]));
+		int v11 = (int) (v1 * 100);
+		int v21 = (int) (v2 * 100);
 
-        }
-
-        double v1 = (double) eepromusage / 96;
-        double v2 = (double) (flashusage1 + flashusage2) / 256;
-
-        int v11 = (int) (v1 * 100);
-        int v21 = (int) (v2 * 100);
-
-        //System.out.println("Node " + nodeName + " remains " + v11 + "% of EEPROM and " + v21 + "% of Flash");
-        colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,  "Node " + nodeName + " remains " + v11 + "% of EEPROM and " + v21 + "% of Flash");
-        return;
-    }
+		// System.out.println("Node " + nodeName + " remains " + v11 +
+		// "% of EEPROM and " + v21 + "% of Flash");
+		colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN, "Node " + nodeName
+				+ " remains " + v11 + "% of EEPROM and " + v21 + "% of Flash");
+		return;
+	}
 }
-

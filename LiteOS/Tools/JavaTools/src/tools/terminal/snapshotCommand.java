@@ -16,80 +16,80 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
+ */
 
 package tools.terminal;
 
 import java.util.ArrayList;
 
 /**
- * The du command class that allows the current directory information to be displayed.
+ * The du command class that allows the current directory information to be
+ * displayed.
  */
 public class snapshotCommand implements cmdcontrol {
 
+	private byte[] reply = new byte[64];
 
-    private byte[] reply = new byte[64];
+	public int setNewCommand(String[] options, int optioncount,
+			String[] parameters, int parametercount, fileDirectory fdir) {
 
+		fileNode currentnode = fdir.getCurrentNode();
+		int currentAddress = currentnode.getNodeAddress();
+		int currentBlock = currentnode.getBlock();
 
-    public int setNewCommand(String[] options, int optioncount, String [] parameters, int parametercount, fileDirectory fdir) {
+		byte[] filename = parameters[0].getBytes();
+		byte[] targetfilename = parameters[1].getBytes();
 
-        fileNode currentnode = fdir.getCurrentNode();
-        int currentAddress = currentnode.getNodeAddress();
-        int currentBlock = currentnode.getBlock();
+		int lengthoffilename = filename.length;
+		int lengthoffilenametarget = targetfilename.length;
 
-        byte[] filename = parameters[0].getBytes();
-        byte[] targetfilename = parameters[1].getBytes();
+		reply[0] = (byte) (new Integer(lengthoffilename).byteValue() + (byte) 6 + new Integer(
+				lengthoffilenametarget).byteValue());
+		reply[1] = (byte) 94;
+		reply[2] = (new Integer(currentAddress)).byteValue();
+		reply[3] = (byte) lengthoffilename;
+		reply[4] = (byte) lengthoffilenametarget;
 
-        int lengthoffilename = filename.length;
-        int lengthoffilenametarget = targetfilename.length;
+		System.arraycopy(filename, 0, reply, 5, lengthoffilename);
+		reply[5 + lengthoffilename] = 0;
+		System.arraycopy(targetfilename, 0, reply, 5 + lengthoffilename + 1,
+				lengthoffilenametarget);
 
-        reply[0] =(byte)( new Integer(lengthoffilename).byteValue() + (byte)6 + new Integer(lengthoffilenametarget).byteValue());
-        reply[1] = (byte) 94;
-        reply[2] = (new Integer(currentAddress)).byteValue();
-        reply[3] = (byte)lengthoffilename;
-        reply[4] = (byte)lengthoffilenametarget;
+		return 1; // To change body of implemented methods use File | Settings |
+					// File Templates.
+	}
 
-        System.arraycopy(filename, 0, reply, 5, lengthoffilename);
-        reply[5+lengthoffilename] = 0;
-        System.arraycopy(targetfilename, 0, reply, 5 + lengthoffilename + 1, lengthoffilenametarget);
+	// Return the delay in milliseconds
+	public int getDelay() {
+		return 200; // To change body of implemented methods use File | Settings
+					// | File Templates.
+	}
 
+	// return the command will be used
+	public byte[] getNewCommand(int index) {
+		return reply;
+	}
 
+	public void handleresponse(String[] options, int optioncount,
+			String[] parameters, int parametercount, ArrayList reply,
+			fileDirectory fdir) {
 
-        return 1;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+		fileNode cnode = fdir.getCurrentNode();
+		String nodeName = cnode.getNodeName();
+		int testtrue = 0;
 
-    //Return the  delay in milliseconds
-    public int getDelay() {
-        return 200;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+		int start = 5;
+		// for (int start = 0; start + 32 <= length; start += 32) {
+		while (reply.size() > 0) {
+			byte[] response = (byte[]) reply.remove(0);
+			testtrue = (0x000000FF & ((int) response[start + 3]));
+		}
 
-    //return the command will be used
-    public byte[] getNewCommand(int index) {
-        return reply;
-    }
+		if (testtrue == 0)
+			colorOutput
+					.println(colorOutput.COLOR_BRIGHT_RED,
+							"The thread is not found. The snapshot operation probably fails.");
 
-
-    public void handleresponse(String[] options, int optioncount, String [] parameters, int parametercount, ArrayList reply, fileDirectory fdir) {
-
-        fileNode cnode = fdir.getCurrentNode();
-        String nodeName = cnode.getNodeName();
-        int testtrue = 0;
-
-        int start = 5;
-        //for (int start = 0; start + 32 <= length; start += 32) {
-        while (reply.size() > 0)
-        {
-            byte[] response = (byte [])reply.remove(0);
-            testtrue  = (0x000000FF & ((int) response[start + 3]));
-        }
-
-        if (testtrue==0)
-        colorOutput.println(colorOutput.COLOR_BRIGHT_RED,  "The thread is not found. The snapshot operation probably fails.");
-
-        return;
-    }
+		return;
+	}
 }
-

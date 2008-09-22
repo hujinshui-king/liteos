@@ -38,65 +38,90 @@
  * @author Phil Levis
  */
 
-
 package tools.util;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class TinyLook {
-    
-    private static Font defaultFont;
-    private static Font labelFont;
-    private static Font constLabelFont;
-    private static Font smallFont;
-    private static Font constFont;
-    private static Font boldConstFont;
-    private static Font boldFont;
-    private static Color paleBlue;
 
-    static {
-	defaultFont = new Font("Helvetica", Font.PLAIN, 10);
-	labelFont = new Font("Helvetica", Font.BOLD, 11);
-	constLabelFont = new Font("Courier", Font.PLAIN, 11);
-	smallFont = new Font("Helvetica", Font.PLAIN, 9);
-	constFont = new Font("Courier", Font.PLAIN, 9);
-	boldConstFont = new Font("Courier", Font.BOLD, 9);
-	boldFont = new Font("Helvetica", Font.BOLD, 10);
-	paleBlue = new Color(0x97, 0x97, 0xc8);
-    }
-    
-    public static Font defaultFont() {return defaultFont;}
-    public static Font labelFont() {return labelFont;}
-    public static Font constLabelFont() {return constLabelFont;}
-    public static Font smallFont() {return smallFont;}
-    public static Font constFont() {return constFont;}
-    public static Font boldConstFont() {return boldConstFont;}
-    public static Font boldFont() {return boldFont;}
-    public static Color getColor() {return paleBlue;}
+	private static Font defaultFont;
+	private static Font labelFont;
+	private static Font constLabelFont;
+	private static Font smallFont;
+	private static Font constFont;
+	private static Font boldConstFont;
+	private static Font boldFont;
+	private static Color paleBlue;
 
-    public static void setLookAndFeel(java.awt.Component component) {
-	try {
-	    Class oclass = Class.forName("com.oyoaha.swing.plaf.oyoaha.OyoahaLookAndFeel");
-	    Object olnf = oclass.newInstance();
-	    //java.net.URL otm_res = olnf.getClass().getResource("slushy8.otm");
-	    java.io.File otm_res = new java.io.File("slushy8.otm");
-	    if(otm_res != null) {
-		Class params[] = new Class[1];
-		params[0] = otm_res.getClass();
-		Object args[] = new Object[1];
-		args[0] = otm_res;
-		java.lang.reflect.Method meth = oclass.getMethod("setOyoahaTheme", params);
-		meth.invoke(olnf, args);
-		System.err.println("set theme OK");
-	    }
-	    UIManager.setLookAndFeel((javax.swing.LookAndFeel)olnf);
-	    System.err.println("Set L&F");
-	} catch (Exception e) {
-	    System.err.println("Got exception loading Oyoaha: "+e);
-	    System.err.println("Using default look and feel");
-	    e.printStackTrace();
+	static {
+		defaultFont = new Font("Helvetica", Font.PLAIN, 10);
+		labelFont = new Font("Helvetica", Font.BOLD, 11);
+		constLabelFont = new Font("Courier", Font.PLAIN, 11);
+		smallFont = new Font("Helvetica", Font.PLAIN, 9);
+		constFont = new Font("Courier", Font.PLAIN, 9);
+		boldConstFont = new Font("Courier", Font.BOLD, 9);
+		boldFont = new Font("Helvetica", Font.BOLD, 10);
+		paleBlue = new Color(0x97, 0x97, 0xc8);
 	}
-    }
-    
+
+	public static Font defaultFont() {
+		return defaultFont;
+	}
+
+	public static Font labelFont() {
+		return labelFont;
+	}
+
+	public static Font constLabelFont() {
+		return constLabelFont;
+	}
+
+	public static Font smallFont() {
+		return smallFont;
+	}
+
+	public static Font constFont() {
+		return constFont;
+	}
+
+	public static Font boldConstFont() {
+		return boldConstFont;
+	}
+
+	public static Font boldFont() {
+		return boldFont;
+	}
+
+	public static Color getColor() {
+		return paleBlue;
+	}
+
+	public static void setLookAndFeel(java.awt.Component component) {
+		try {
+			Class oclass = Class
+					.forName("com.oyoaha.swing.plaf.oyoaha.OyoahaLookAndFeel");
+			Object olnf = oclass.newInstance();
+			// java.net.URL otm_res =
+			// olnf.getClass().getResource("slushy8.otm");
+			java.io.File otm_res = new java.io.File("slushy8.otm");
+			if (otm_res != null) {
+				Class params[] = new Class[1];
+				params[0] = otm_res.getClass();
+				Object args[] = new Object[1];
+				args[0] = otm_res;
+				java.lang.reflect.Method meth = oclass.getMethod(
+						"setOyoahaTheme", params);
+				meth.invoke(olnf, args);
+				System.err.println("set theme OK");
+			}
+			UIManager.setLookAndFeel((javax.swing.LookAndFeel) olnf);
+			System.err.println("Set L&F");
+		} catch (Exception e) {
+			System.err.println("Got exception loading Oyoaha: " + e);
+			System.err.println("Using default look and feel");
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -41,21 +41,24 @@
 package tools.message;
 
 /**
- * MessageListener interface (listen to tinyos messages).<p>
- *
- * An interface for listening to messages built from
- * tools.message.Message
- *
- * @version	1, 15 Jul 2002
- * @author	David Gay
+ * MessageListener interface (listen to tinyos messages).
+ * <p>
+ * 
+ * An interface for listening to messages built from tools.message.Message
+ * 
+ * @version 1, 15 Jul 2002
+ * @author David Gay
  */
 public interface MessageListener {
-    /**
-     * This method is called to signal message reception. to is
-     * the destination of message m.
-     * @param to the destination of the message (Note: to is only valid
-     *   when using TOSBase base stations)
-     * @param m the received message
-     */
-    public void messageReceived(int to, Message m);
+	/**
+	 * This method is called to signal message reception. to is the destination
+	 * of message m.
+	 * 
+	 * @param to
+	 *            the destination of the message (Note: to is only valid when
+	 *            using TOSBase base stations)
+	 * @param m
+	 *            the received message
+	 */
+	public void messageReceived(int to, Message m);
 }

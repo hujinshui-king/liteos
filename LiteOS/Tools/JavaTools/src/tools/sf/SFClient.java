@@ -29,7 +29,6 @@
  * 94704.  Attention:  Intel License Inquiry.
  */
 
-
 /**
  * File: ServerReceivingThread.java
  *
@@ -52,90 +51,88 @@ import java.util.*;
 import tools.packet.*;
 
 public class SFClient extends SFProtocol implements Runnable, PacketListenerIF {
-    private Thread thread;
-    private Socket socket = null;
-    private SerialForwarder sf;
-    private SFListen listenServer;
+	private Thread thread;
+	private Socket socket = null;
+	private SerialForwarder sf;
+	private SFListen listenServer;
 
-    public SFClient(Socket socket, SerialForwarder serialForward,
-		    SFListen listenSvr) {
-	this(socket, serialForward, listenSvr, Platform.defaultPlatform);
-    }
-
-    public SFClient(Socket socket, SerialForwarder serialForward,
-		    SFListen listenSvr, int plat) {
-	super("", plat);
-	thread = new Thread(this);
-        sf = serialForward;
-        listenServer = listenSvr;
-        this.socket = socket;
-        InetAddress addr = socket.getInetAddress();
-	name = "client at " + addr.getHostName() +
-	    " (" + addr.getHostAddress() + ")";
-        sf.debug.message("new " + name);
-    }
-
-    protected void openSource() throws IOException {
-        is = socket.getInputStream();
-        os = socket.getOutputStream();
-	super.openSource();
-    }
- 
-    protected void closeSource() throws IOException {
-        socket.close();
-    }
-
-    private void init() throws IOException {
-	sf.incrementClients();
-	open(sf);
-	listenServer.source.registerPacketListener(this);
-    }
-
-    public void shutdown() {
-	try {
-	    close();
+	public SFClient(Socket socket, SerialForwarder serialForward,
+			SFListen listenSvr) {
+		this(socket, serialForward, listenSvr, Platform.defaultPlatform);
 	}
-	catch (IOException e) { }
-    }
 
-    public void start() {
-	thread.start();
-    }
-
-    public final void join(long millis) throws InterruptedException {
-	thread.join(millis);
-    }
-
-    public void run() {
-	try {
-	    init();
-	    readPackets();
+	public SFClient(Socket socket, SerialForwarder serialForward,
+			SFListen listenSvr, int plat) {
+		super("", plat);
+		thread = new Thread(this);
+		sf = serialForward;
+		listenServer = listenSvr;
+		this.socket = socket;
+		InetAddress addr = socket.getInetAddress();
+		name = "client at " + addr.getHostName() + " (" + addr.getHostAddress()
+				+ ")";
+		sf.debug.message("new " + name);
 	}
-	catch (IOException e) { }
-	finally {
-	    listenServer.source.deregisterPacketListener(this);
-	    listenServer.removeSFClient(this);
-	    sf.decrementClients();
-	    shutdown();
-	}
-    }
 
-    private void readPackets() throws IOException {
-	for (;;) {
-	    byte[] packet = readPacket();
-
-	    sf.incrementPacketsWritten();
-	    if (!listenServer.source.writePacket(packet))
-		sf.verbose.message("write failed");
-        }
-    }
-
-    public void packetReceived(byte[] packet) {
-	try {
-	    writeSourcePacketSF(packet);
+	protected void openSource() throws IOException {
+		is = socket.getInputStream();
+		os = socket.getOutputStream();
+		super.openSource();
 	}
-	catch (IOException e) {
-	    shutdown();
+
+	protected void closeSource() throws IOException {
+		socket.close();
 	}
-    }
+
+	private void init() throws IOException {
+		sf.incrementClients();
+		open(sf);
+		listenServer.source.registerPacketListener(this);
+	}
+
+	public void shutdown() {
+		try {
+			close();
+		} catch (IOException e) {
+		}
+	}
+
+	public void start() {
+		thread.start();
+	}
+
+	public final void join(long millis) throws InterruptedException {
+		thread.join(millis);
+	}
+
+	public void run() {
+		try {
+			init();
+			readPackets();
+		} catch (IOException e) {
+		} finally {
+			listenServer.source.deregisterPacketListener(this);
+			listenServer.removeSFClient(this);
+			sf.decrementClients();
+			shutdown();
+		}
+	}
+
+	private void readPackets() throws IOException {
+		for (;;) {
+			byte[] packet = readPacket();
+
+			sf.incrementPacketsWritten();
+			if (!listenServer.source.writePacket(packet))
+				sf.verbose.message("write failed");
+		}
+	}
+
+	public void packetReceived(byte[] packet) {
+		try {
+			writeSourcePacketSF(packet);
+		} catch (IOException e) {
+			shutdown();
+		}
+	}
 }

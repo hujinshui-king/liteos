@@ -48,11 +48,12 @@
 
 package tools.message;
 
-abstract public class ByteArray
-{
-    /**
-     * Get the index'th byte of this array
-     * @param index: index of byte to fetch
-     */
-    public abstract byte get(int index);
+abstract public class ByteArray {
+	/**
+	 * Get the index'th byte of this array
+	 * 
+	 * @param index
+	 *            : index of byte to fetch
+	 */
+	public abstract byte get(int index);
 }
