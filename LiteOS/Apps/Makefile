@@ -13,6 +13,9 @@ TARGET = App.elf
 
 OSTYPE = $(shell uname -o)
 
+CC = avr-gcc.exe
+AVRSIZE = avr-size.exe
+
 ## Check if this is linux machine
 ifeq ($(OSTYPE), GNU/Linux)
 	CC = avr-gcc
@@ -20,10 +23,11 @@ ifeq ($(OSTYPE), GNU/Linux)
 endif
 
 ## Check if this is cygwin machine
-ifeq ($(OSTYPE), Cygwin)
-	CC = C:/WinAVR/bin/avr-gcc.exe
-	AVRSIZE = C:/WinAVR/bin/avr-size.exe
-endif
+
+#ifeq ($(OSTYPE), Cygwin)
+#	CC = avr-gcc.exe
+#	AVRSIZE = avr-size.exe
+#endif
 
 ## Options common to compile, link and assembly rules
 COMMON = -mmcu=$(MCU)
@@ -72,7 +76,7 @@ $(TARGET):
 	avr-objcopy -O ihex $(HEX_FLASH_FLAGS)  $< $@
 
 %.eep: $(TARGET)
-	-avr-objcopy $(HEX_EEPROM_FLAGS) -O ihex $< $@ || exit 0
+	avr-objcopy $(HEX_EEPROM_FLAGS) -O ihex $< $@ || exit 0
 
 %.lss: $(TARGET)
 	avr-objdump -h -S $< > $@
