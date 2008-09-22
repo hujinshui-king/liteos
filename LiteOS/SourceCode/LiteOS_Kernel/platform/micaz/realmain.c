@@ -153,9 +153,6 @@ int main()
         mystrncpy(filenameid, "nodeK\0", 6);
 
 
-
-
-
         CURRENT_NODE_ID = 1;
         nodeid = CURRENT_NODE_ID;
         srand(nodeid);
@@ -219,7 +216,7 @@ int main()
     // sbi(MCUCR, SM1);
     // cbi(MCUCR, SM2); 
     // sbi(MCUCR, SE);
-
+    
 
     
 
