@@ -80,13 +80,13 @@ void usartPrint_base(uint8_t c)
 //-------------------------------------------------------------------------
 void printString(char *p)
 {
-   // usartPrint(0xFC);
+    usartPrint(0xFC);
     while ((*p) != '\0')
     {
         usartPrint(*p);
         p++;
     }
-   // usartPrint(0xFC);
+    usartPrint(0xFC);
 }
 
 //-------------------------------------------------------------------------
@@ -94,13 +94,13 @@ void printStringN(char *p, uint8_t n)
 {
     uint8_t i;
 
-    //usartPrint(0xFC);
+    usartPrint(0xFC);
     for (i = 0; i < n; i++)
     {
         usartPrint(*p);
         p++;
     }
-    //usartPrint(0xFC);
+    usartPrint(0xFC);
 }
 
 
