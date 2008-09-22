@@ -23,7 +23,9 @@ int main()
 	while (1)
 	{
   radioSend_string("Hello, world!\n"); 
-  sleepThread(100);
+ // serialSend_string("hello\n");
+ // serialSend_uint16(32323); 
+ // sleepThread(1000);
 	}
 	return 0; 
 }
