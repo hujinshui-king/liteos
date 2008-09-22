@@ -20,8 +20,8 @@ endif
 
 ## Check if this is cygwin machine
 ifeq ($(OSTYPE), Cygwin)
-	CC = C:/Programs/WinAVR/bin/avr-gcc.exe
-	AVRSIZE = C:/Programs/WinAVR/bin/avr-size.exe
+	CC = avr-gcc.exe
+	AVRSIZE = avr-size.exe
 endif
 
 ## Options common to compile, link and assembly rules
@@ -29,7 +29,7 @@ COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -DPLATFORM_AVR   -DPLATFORM_AVR_IRIS  -DRADIO_RF230                         -DF_CPU=8000000UL -Os -fsigned-char
+CFLAGS += -Wall -gdwarf-2 -DPLATFORM_AVR   -DPLATFORM_AVR_IRIS  -DRADIO_RF230  -DAVR_STACK_PREPARE_LENGTH=34  -DF_CPU=8000000UL -Os -fsigned-char
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
 ## Assembly specific flags
