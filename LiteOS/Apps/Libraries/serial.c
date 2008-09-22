@@ -27,7 +27,74 @@ along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
 #include "thread.h"
 
 
+
+void itoa(int value, char*  str, int radix)
+{
+	  
+    int  rem = 0;
+    int  pos = 0;
+    char ch  = '!' ;
+    int i; 
+    do
+    {
+        rem    = value % radix ;
+        value /= radix;
+        if ( 16 == radix )
+        {
+            if( rem >= 10 && rem <= 15 )
+            {
+                switch( rem )
+                {
+                    case 10:
+                        ch = 'a' ;
+                        break;
+                    case 11:
+                        ch ='b' ;
+                        break;
+                    case 12:
+                        ch = 'c' ;
+                        break;
+                    case 13:
+                        ch ='d' ;
+                        break;
+                    case 14:
+                        ch = 'e' ;
+                        break;
+                    case 15:
+                        ch ='f' ;
+                        break;
+                }
+            }
+        }
+        if( '!' == ch )
+        {
+            str[pos++] = (char) ( rem + 0x30 );
+        }
+        else
+        {
+            str[pos++] = ch ;
+        }
+    }while( value != 0 );
+    str[pos] = '\0' ;
+    
+    i=0; 
+    
+    while (i<pos/2)
+    {
+        *(str+pos) = *(str+i);       //uses the null character as the temporary storage.
+        *(str+i) = *(str + pos - i -1);
+        *(str+pos-i-1) = *(str+pos);
+        i++;
+    }
+    *(str+pos) = '\0';
+    
+    return; 
+}
+
+
+
 uint8_t serial_buffer[32];
+
 
 thread* mythreadserial;
 
@@ -61,6 +128,7 @@ void serialSend_string(uint8_t *msg)
 
 void serialSend_uint16(uint16_t value)
 {
+	/*
   uint8_t temp1,temp2;
   temp1 = (uint8_t) (value >> 8);
   temp2 = (uint8_t) (value & 0x00ff);
@@ -68,6 +136,9 @@ void serialSend_uint16(uint16_t value)
   serial_buffer[0] = temp1;
   serial_buffer[1] = temp2;
   serial_buffer[2] = serial_buffer[3] = 0xee;
+  */
+  
+  itoa(value, serial_buffer, 10); 
 
   return serialSend(16, serial_buffer);
 
