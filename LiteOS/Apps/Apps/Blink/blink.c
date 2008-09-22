@@ -13,7 +13,8 @@ int main()
  uint8_t index;  
  __asm__ __volatile__("sei" ::); 
  
-   for (index = 0;index <100;index++)
+   //for (index = 0;index <100;index++)
+   while(1)
    	{
 	   greenToggle();      
 	   sleepThread(1000);
