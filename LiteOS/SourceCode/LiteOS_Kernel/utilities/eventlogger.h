@@ -28,8 +28,10 @@
 // #define TRACE_ENABLE_LEDEVENT
 // #define TRACE_ENABLE_THREADCREATE
 // #define TRACE_ENABLE_THREADDESTROY
+
+
 //Works at top level without being affected by TRACE_ENABLE
-// #define TRACE_ENABLE_SYSCALLEVENT
+#define TRACE_ENABLE_SYSCALLEVENT
 //Now this is a list of possible events under tracking
 //PLATFORM SPECIFIC
 //////////////////////////////////////////////////////////////////////
