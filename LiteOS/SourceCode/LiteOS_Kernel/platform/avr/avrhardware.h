@@ -276,7 +276,7 @@ __asm__("out __SP_H__,%B0\n\t out __SP_L__,%A0"::"r"(NEW))
 #define PREPARE_REG_FOR_STACK()                               \
 SWAP_STACK_PTR(old_stack_ptr, current_thread->sp);  \
 __asm__("push %A0\n push %B0"::"r"(thread_func_dispatcher));\
-for(i=0;i<34;i++)                                   \
+for(i=0;i<AVR_STACK_PREPARE_LENGTH;i++)                                   \
 __asm__("push __zero_reg__");                     \
 SWAP_STACK_PTR(current_thread->sp, old_stack_ptr)
 
