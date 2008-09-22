@@ -25,6 +25,8 @@
 #include "packethandler.h"
 #include "stdserial.h"
 #include "../filesys/filesocket.h"
+#include "../platform/micaz/leds.h"
+
 #ifdef SERIAL_COMMAND_REPLY
 #include "../io/avr_serial/serialprint.h"
 #endif

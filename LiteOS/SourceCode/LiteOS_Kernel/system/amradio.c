@@ -338,7 +338,7 @@ Radio_MsgPtr received(Radio_MsgPtr packet)
 Radio_MsgPtr received_iris( Radio_MsgPtr packet )
  {
    uint16_t addr = CURRENT_NODE_ID;
-   int i=0;
+  
    
    #ifdef TRACE_ENABLE
       #ifdef TRACE_ENABLE_RADIOEVENT
