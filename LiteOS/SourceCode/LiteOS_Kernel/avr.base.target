@@ -11,19 +11,19 @@ TARGET = LiteOS.elf
 ## Fedora core 7 : GNU/Linux 
 ## Cygwin: Cygwin
 
-OSTYPE = $(shell uname -o)
+#OSTYPE = $(shell uname -o)
 
 ## Check if this is linux machine
-ifeq ($(OSTYPE), GNU/Linux)
+#ifeq ($(OSTYPE), GNU/Linux)
 	CC = avr-gcc
 	AVRSIZE = avr-size
-endif
+#endif
 
 ## Check if this is cygwin machine
-ifeq ($(OSTYPE), Cygwin)
-	CC = C:/Programs/WinAVR/bin/avr-gcc.exe
-	AVRSIZE = C:/Programs/WinAVR/bin/avr-size.exe
-endif
+#ifeq ($(OSTYPE), Cygwin)
+	#CC = C:/Programs/WinAVR/bin/avr-gcc.exe
+	#AVRSIZE = C:/Programs/WinAVR/bin/avr-size.exe
+#endif
 
 ## Options common to compile, link and assembly rules
 COMMON = -mmcu=$(MCU)

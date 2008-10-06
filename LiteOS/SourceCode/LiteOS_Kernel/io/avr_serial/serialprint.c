@@ -19,7 +19,7 @@
 #define xtal 8000000L
 #define baud 57600
 #include "serialprint.h"
-#include "../../platform/micaz/realmain.h"
+#include "../../platform/avr/realmain.h"
 #include "../../platform/avr/avrhardware.h"
 #include "../../system/stdserialhandler.h"
 #include "../../system/amcommon.h"
