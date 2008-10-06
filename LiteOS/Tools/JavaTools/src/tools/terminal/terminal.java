@@ -164,7 +164,7 @@ public class terminal {
 		String[] elements = null;
 
 		colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
-				"LiteOS Version 0.3.3 build 05032008");
+				"LiteOS Version 1.0");
 		init();
 
 		while (nextCommand == true) {
@@ -864,7 +864,7 @@ public class terminal {
 			}
 
 			// print command
-			if (commandName.compareTo("memory") == 0) {
+			if (commandName.compareTo("memory") ==0 ||commandName.compareTo("coredump") == 0) {
 
 				serverpl.setPacketWaitTimeout(SHELLPORT, memhandle.getDelay());
 				serverpl.setPacketWaitBuffer(SHELLPORT, 100);

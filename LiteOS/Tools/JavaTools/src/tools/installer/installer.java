@@ -164,37 +164,18 @@ public class installer {
 				System.exit(1);
 			}
 
-			colorOutput
-					.println(
-							colorOutput.COLOR_YELLOW,
-							"Please input the channel for communication. (11-26, only used by the kernel installation)");
-
-			try {
-				tempid = br.readLine();
-			} catch (IOException ioe) {
-				System.out
-						.println("Error trying to read node ID. The installer is terminated now.");
-				System.exit(1);
-			}
-
-			try {
-				nodechannel = Integer.parseInt(tempid);
-			} catch (NumberFormatException e) {
-				colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
-						"Unexpected number format error. Exit now. ");
-				System.exit(1);
-			}
+			
 
 			while (true) {
 				colorOutput
 						.println(
 								colorOutput.COLOR_YELLOW,
-								"Please input the binary image name (ending with hex). Leave blank or CTRL-C to exit");
+								"Please input the binary image name (ending with hex). By default, MicaZ has a kernel image of LiteOS_micaz.hex, and a base image of Base_micaz.hex. Iris has a kernel image of LiteOS_iris.hex, and a base image of Base_iris.hex. Leave blank or CTRL-C to exit");
 				try {
 					binaryimage = br.readLine();
 					if (binaryimage.compareTo("") == 0) {
 						colorOutput.println(colorOutput.COLOR_BRIGHT_GREEN,
-								"Installation completes. Bye.");
+								"Installation not complete because of empty input. Bye.");
 						System.exit(0);
 
 					}
@@ -313,8 +294,32 @@ public class installer {
 				System.out.println("IO error trying to read your input.");
 				System.exit(1);
 			}
-		}
+			
+			String tempid = null;
+			
+			colorOutput
+			.println(
+					colorOutput.COLOR_YELLOW,
+					"Please input the channel for communication. (11-26, only used by the kernel)");
 
+	         try {
+		       tempid = br.readLine();
+	        } catch (IOException ioe) {
+		   System.out
+			 	.println("Error trying to read channel. The installer is terminated now.");
+	  	   System.exit(1);
+	       }
+
+	        try {
+		      nodechannel = Integer.parseInt(tempid);
+	        } catch (NumberFormatException e) {
+		    colorOutput.println(colorOutput.COLOR_BRIGHT_RED,
+				"Unexpected number format error. Exit now. ");
+		   System.exit(1);
+	        }
+	
+		}
+            
 		if (expressmode && (networkname == null))
 			System.exit(1);
 		// what is the node id
