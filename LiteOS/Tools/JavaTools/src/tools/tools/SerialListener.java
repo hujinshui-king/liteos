@@ -21,54 +21,59 @@ package tools.tools;
 
 import javax.comm.*;
 import java.io.InputStream;
+import java.io.FileOutputStream;
 
 /**
  * @author Hossein Ahmadi
- * 			SerialListener class provides a recording mechanism to record serial 
+ * 			SerialListener class provides a recording mechanism to record serial
  * 			port logs comming from LiteOS Kernel and Application. Given an specific
- * 			port, it displays the mote serial output and add timestamp to each line  
+ * 			port, it displays the mote serial output and add timestamp to each line
  */
 
 public class SerialListener implements SerialPortEventListener  {
 	private InputStream stream;
 	private boolean newline;
-	private String port_name;
-	
-	public SerialListener(SerialPort port, String port_name) throws java.util.TooManyListenersException, java.io.IOException {
+	private int node_id;
+	private FileOutputStream output;
+
+	public SerialListener(SerialPort port, int node_id) throws java.util.TooManyListenersException, java.io.IOException {
 		port.addEventListener(this);
 		port.notifyOnDataAvailable(true);
 		stream = port.getInputStream();
 		newline = true;
-		this.port_name = port_name;
+		this.node_id = node_id;
+		output = new FileOutputStream(node_id + ".out");
 	}
-	
-	public synchronized void serialEvent(SerialPortEvent ev) throws java.io.IOException {			
+
+	public synchronized void serialEvent(SerialPortEvent ev) throws java.io.IOException {
 		while (stream.available() > 0) {
 			char c = (char)stream.read();
 			if (newline) {
-				System.out.print(System.currentTimeMillis() + " " + port_name + " ");
+				output.write((System.currentTimeMillis() + " " + node_id + " ").getBytes());
 				newline = false;
 			}
 			if (c == '\n')
 				newline = true;
-			System.out.print(c);
+			output.write(c);
 		}
 	}
-	
+
 	public static void main(String args[]) throws Exception {
 		if (args.length < 1) {
-			System.out.println("Usage: SerialListener [Port Name e.g. COM4]\n");
+			System.out.println("Usage: SerialListener [Port Names e.g. COM4 COM6]\n");
 			return;
 		}
-		
-		CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(args[0]);
-		SerialPort port = (SerialPort) portId.open("SerialListener", 0);
-		port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-		port.disableReceiveFraming();
-		port.setSerialPortParams(57600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
-		SerialListener listener = new SerialListener(port, args[0]);
-		while (true) 
-			Thread.sleep(100000);		
+		for (int i = 0; i < args.length; i++) {
+			CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(args[i]);
+			SerialPort port = (SerialPort) portId.open("SerialListener", 0);
+			port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+			port.disableReceiveFraming();
+			port.setSerialPortParams(57600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+
+			SerialListener listener = new SerialListener(port, i+1);
+		}
+		while (true)
+			Thread.sleep(100000);
 	}
 }
