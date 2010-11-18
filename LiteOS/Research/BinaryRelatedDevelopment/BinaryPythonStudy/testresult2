@@ -1,0 +1,22 @@
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x8001000 -Wl,-section-start=.text=0x15000 -Xlinker --defsym -Xlinker __stack=0x10af ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+125833216L
+86016L
+4271L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x8001008 -Wl,-section-start=.text=0x15020 -Xlinker --defsym -Xlinker __stack=0x10b7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+parsing and storing
+all 0x8001008 0x10b7 0x15020
+make clean now twice
+reading assembly
+parsing and storing
+length is 0
+Set([])
+all 0x8001000 0x10af 0x15000

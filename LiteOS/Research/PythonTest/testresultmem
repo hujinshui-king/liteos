@@ -1,0 +1,1924 @@
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A00 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xaaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+2560L
+69732L
+2735L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A08 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xab7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A08 0xab7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A10 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xabf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A10 0xabf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A18 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xac7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A18 0xac7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A20 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xacf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A20 0xacf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A28 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xad7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A28 0xad7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A30 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xadf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A30 0xadf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A38 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xae7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A38 0xae7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A40 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xaef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A40 0xaef 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A48 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xaf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A48 0xaf7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A50 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xaff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A50 0xaff 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A58 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A58 0xb07 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A60 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb0f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A60 0xb0f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A68 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb17 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A68 0xb17 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A70 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A70 0xb1f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A78 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb27 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A78 0xb27 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A80 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb2f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A80 0xb2f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A88 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb37 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A88 0xb37 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A90 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb3f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A90 0xb3f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A98 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb47 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800A98 0xb47 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AA0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb4f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AA0 0xb4f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AA8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb57 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AA8 0xb57 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AB0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb5f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AB0 0xb5f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AB8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb67 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AB8 0xb67 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AC0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb6f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AC0 0xb6f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AC8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb77 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AC8 0xb77 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AD0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb7f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AD0 0xb7f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AD8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb87 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AD8 0xb87 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AE0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb8f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AE0 0xb8f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AE8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb97 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AE8 0xb97 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AF0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xb9f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AF0 0xb9f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AF8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xba7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800AF8 0xba7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B00 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B00 0xbaf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B08 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbb7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B08 0xbb7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B10 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbbf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B10 0xbbf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B18 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbc7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B18 0xbc7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B20 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbcf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B20 0xbcf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B28 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbd7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B28 0xbd7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B30 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbdf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B30 0xbdf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B38 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbe7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B38 0xbe7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B40 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B40 0xbef 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B48 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B48 0xbf7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B50 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xbff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B50 0xbff 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B58 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B58 0xc07 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B60 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc0f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B60 0xc0f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B68 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc17 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B68 0xc17 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B70 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B70 0xc1f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B78 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc27 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B78 0xc27 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B80 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc2f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B80 0xc2f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B88 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc37 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B88 0xc37 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B90 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc3f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B90 0xc3f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B98 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc47 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800B98 0xc47 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BA0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc4f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BA0 0xc4f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BA8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc57 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BA8 0xc57 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BB0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc5f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BB0 0xc5f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BB8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc67 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BB8 0xc67 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BC0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc6f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BC0 0xc6f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BC8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc77 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BC8 0xc77 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BD0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc7f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BD0 0xc7f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BD8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc87 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BD8 0xc87 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BE0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc8f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BE0 0xc8f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BE8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc97 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BE8 0xc97 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BF0 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xc9f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BF0 0xc9f 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BF8 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xca7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800BF8 0xca7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C00 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C00 0xcaf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C08 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcb7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C08 0xcb7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C10 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcbf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C10 0xcbf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C18 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcc7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C18 0xcc7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C20 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xccf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C20 0xccf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C28 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcd7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C28 0xcd7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C30 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcdf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C30 0xcdf 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C38 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xce7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C38 0xce7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C40 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C40 0xcef 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C48 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C48 0xcf7 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C50 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xcff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C50 0xcff 0x11064
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C58 -Wl,-section-start=.text=0x11064 -Xlinker --defsym -Xlinker __stack=0xd07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 69732L
+all 0x800C58 0xd07 0x11064
+make clean now twice
+reading assembly
+parsing and storing
+Set([396, 397, 409, 410, 287, 288, 417, 418, 291, 292, 37, 38, 41, 42, 43, 51, 54, 55, 56, 59, 349, 421, 422, 366, 367, 505, 506, 381, 382])
+396  :::   subi r22, 0xE2 subi r22, 0xDA subi r22, 0xD2 subi r22, 0xCA subi r22, 0xC2 subi r22, 0xBA subi r22, 0xB2 subi r22, 0xAA subi r22, 0xA2 subi r22, 0x9A subi r22, 0x92 subi r22, 0x8A subi r22, 0x82 subi r22, 0x7A subi r22, 0x72 subi r22, 0x6A subi r22, 0x62 subi r22, 0x5A subi r22, 0x52 subi r22, 0x4A subi r22, 0x42 subi r22, 0x3A subi r22, 0x32 subi r22, 0x2A subi r22, 0x22 subi r22, 0x1A subi r22, 0x12 subi r22, 0x0A subi r22, 0x02 subi r22, 0xFA subi r22, 0xF2 subi r22, 0xEA subi r22, 0xE2 subi r22, 0xDA subi r22, 0xD2 subi r22, 0xCA subi r22, 0xC2 subi r22, 0xBA subi r22, 0xB2 subi r22, 0xAA subi r22, 0xA2 subi r22, 0x9A subi r22, 0x92 subi r22, 0x8A subi r22, 0x82 subi r22, 0x7A subi r22, 0x72 subi r22, 0x6A subi r22, 0x62 subi r22, 0x5A subi r22, 0x52 subi r22, 0x4A subi r22, 0x42 subi r22, 0x3A subi r22, 0x32 subi r22, 0x2A subi r22, 0x22 subi r22, 0x1A subi r22, 0x12 subi r22, 0x0A subi r22, 0x02 subi r22, 0xFA subi r22, 0xF2 subi r22, 0xEA subi r22, 0xE2 subi r22, 0xDA subi r22, 0xD2 subi r22, 0xCA subi r22, 0xC2 subi r22, 0xBA subi r22, 0xB2 subi r22, 0xAA subi r22, 0xA2 subi r22, 0x9A subi r22, 0x92 subi r22, 0x8A
+397  :::   sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF5 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF4 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3 sbci r23, 0xF3
+409  :::   ldi r22, 0x0B ldi r22, 0x13 ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63 ldi r22, 0x6B ldi r22, 0x73 ldi r22, 0x7B ldi r22, 0x83 ldi r22, 0x8B ldi r22, 0x93 ldi r22, 0x9B ldi r22, 0xA3 ldi r22, 0xAB ldi r22, 0xB3 ldi r22, 0xBB ldi r22, 0xC3 ldi r22, 0xCB ldi r22, 0xD3 ldi r22, 0xDB ldi r22, 0xE3 ldi r22, 0xEB ldi r22, 0xF3 ldi r22, 0xFB ldi r22, 0x03 ldi r22, 0x0B ldi r22, 0x13 ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63 ldi r22, 0x6B ldi r22, 0x73 ldi r22, 0x7B ldi r22, 0x83 ldi r22, 0x8B ldi r22, 0x93 ldi r22, 0x9B ldi r22, 0xA3 ldi r22, 0xAB ldi r22, 0xB3 ldi r22, 0xBB ldi r22, 0xC3 ldi r22, 0xCB ldi r22, 0xD3 ldi r22, 0xDB ldi r22, 0xE3 ldi r22, 0xEB ldi r22, 0xF3 ldi r22, 0xFB ldi r22, 0x03 ldi r22, 0x0B ldi r22, 0x13 ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63
+410  :::   ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C
+287  :::   ldi r22, 0x00 ldi r22, 0x08 ldi r22, 0x10 ldi r22, 0x18 ldi r22, 0x20 ldi r22, 0x28 ldi r22, 0x30 ldi r22, 0x38 ldi r22, 0x40 ldi r22, 0x48 ldi r22, 0x50 ldi r22, 0x58 ldi r22, 0x60 ldi r22, 0x68 ldi r22, 0x70 ldi r22, 0x78 ldi r22, 0x80 ldi r22, 0x88 ldi r22, 0x90 ldi r22, 0x98 ldi r22, 0xA0 ldi r22, 0xA8 ldi r22, 0xB0 ldi r22, 0xB8 ldi r22, 0xC0 ldi r22, 0xC8 ldi r22, 0xD0 ldi r22, 0xD8 ldi r22, 0xE0 ldi r22, 0xE8 ldi r22, 0xF0 ldi r22, 0xF8 ldi r22, 0x00 ldi r22, 0x08 ldi r22, 0x10 ldi r22, 0x18 ldi r22, 0x20 ldi r22, 0x28 ldi r22, 0x30 ldi r22, 0x38 ldi r22, 0x40 ldi r22, 0x48 ldi r22, 0x50 ldi r22, 0x58 ldi r22, 0x60 ldi r22, 0x68 ldi r22, 0x70 ldi r22, 0x78 ldi r22, 0x80 ldi r22, 0x88 ldi r22, 0x90 ldi r22, 0x98 ldi r22, 0xA0 ldi r22, 0xA8 ldi r22, 0xB0 ldi r22, 0xB8 ldi r22, 0xC0 ldi r22, 0xC8 ldi r22, 0xD0 ldi r22, 0xD8 ldi r22, 0xE0 ldi r22, 0xE8 ldi r22, 0xF0 ldi r22, 0xF8 ldi r22, 0x00 ldi r22, 0x08 ldi r22, 0x10 ldi r22, 0x18 ldi r22, 0x20 ldi r22, 0x28 ldi r22, 0x30 ldi r22, 0x38 ldi r22, 0x40 ldi r22, 0x48 ldi r22, 0x50 ldi r22, 0x58
+288  :::   ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C
+417  :::   ldi r22, 0x1E ldi r22, 0x26 ldi r22, 0x2E ldi r22, 0x36 ldi r22, 0x3E ldi r22, 0x46 ldi r22, 0x4E ldi r22, 0x56 ldi r22, 0x5E ldi r22, 0x66 ldi r22, 0x6E ldi r22, 0x76 ldi r22, 0x7E ldi r22, 0x86 ldi r22, 0x8E ldi r22, 0x96 ldi r22, 0x9E ldi r22, 0xA6 ldi r22, 0xAE ldi r22, 0xB6 ldi r22, 0xBE ldi r22, 0xC6 ldi r22, 0xCE ldi r22, 0xD6 ldi r22, 0xDE ldi r22, 0xE6 ldi r22, 0xEE ldi r22, 0xF6 ldi r22, 0xFE ldi r22, 0x06 ldi r22, 0x0E ldi r22, 0x16 ldi r22, 0x1E ldi r22, 0x26 ldi r22, 0x2E ldi r22, 0x36 ldi r22, 0x3E ldi r22, 0x46 ldi r22, 0x4E ldi r22, 0x56 ldi r22, 0x5E ldi r22, 0x66 ldi r22, 0x6E ldi r22, 0x76 ldi r22, 0x7E ldi r22, 0x86 ldi r22, 0x8E ldi r22, 0x96 ldi r22, 0x9E ldi r22, 0xA6 ldi r22, 0xAE ldi r22, 0xB6 ldi r22, 0xBE ldi r22, 0xC6 ldi r22, 0xCE ldi r22, 0xD6 ldi r22, 0xDE ldi r22, 0xE6 ldi r22, 0xEE ldi r22, 0xF6 ldi r22, 0xFE ldi r22, 0x06 ldi r22, 0x0E ldi r22, 0x16 ldi r22, 0x1E ldi r22, 0x26 ldi r22, 0x2E ldi r22, 0x36 ldi r22, 0x3E ldi r22, 0x46 ldi r22, 0x4E ldi r22, 0x56 ldi r22, 0x5E ldi r22, 0x66 ldi r22, 0x6E ldi r22, 0x76
+418  :::   ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C
+291  :::   ldi r22, 0x09 ldi r22, 0x11 ldi r22, 0x19 ldi r22, 0x21 ldi r22, 0x29 ldi r22, 0x31 ldi r22, 0x39 ldi r22, 0x41 ldi r22, 0x49 ldi r22, 0x51 ldi r22, 0x59 ldi r22, 0x61 ldi r22, 0x69 ldi r22, 0x71 ldi r22, 0x79 ldi r22, 0x81 ldi r22, 0x89 ldi r22, 0x91 ldi r22, 0x99 ldi r22, 0xA1 ldi r22, 0xA9 ldi r22, 0xB1 ldi r22, 0xB9 ldi r22, 0xC1 ldi r22, 0xC9 ldi r22, 0xD1 ldi r22, 0xD9 ldi r22, 0xE1 ldi r22, 0xE9 ldi r22, 0xF1 ldi r22, 0xF9 ldi r22, 0x01 ldi r22, 0x09 ldi r22, 0x11 ldi r22, 0x19 ldi r22, 0x21 ldi r22, 0x29 ldi r22, 0x31 ldi r22, 0x39 ldi r22, 0x41 ldi r22, 0x49 ldi r22, 0x51 ldi r22, 0x59 ldi r22, 0x61 ldi r22, 0x69 ldi r22, 0x71 ldi r22, 0x79 ldi r22, 0x81 ldi r22, 0x89 ldi r22, 0x91 ldi r22, 0x99 ldi r22, 0xA1 ldi r22, 0xA9 ldi r22, 0xB1 ldi r22, 0xB9 ldi r22, 0xC1 ldi r22, 0xC9 ldi r22, 0xD1 ldi r22, 0xD9 ldi r22, 0xE1 ldi r22, 0xE9 ldi r22, 0xF1 ldi r22, 0xF9 ldi r22, 0x01 ldi r22, 0x09 ldi r22, 0x11 ldi r22, 0x19 ldi r22, 0x21 ldi r22, 0x29 ldi r22, 0x31 ldi r22, 0x39 ldi r22, 0x41 ldi r22, 0x49 ldi r22, 0x51 ldi r22, 0x59 ldi r22, 0x61
+292  :::   ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C
+37  :::   ldi r28, 0xAF ldi r28, 0xB7 ldi r28, 0xBF ldi r28, 0xC7 ldi r28, 0xCF ldi r28, 0xD7 ldi r28, 0xDF ldi r28, 0xE7 ldi r28, 0xEF ldi r28, 0xF7 ldi r28, 0xFF ldi r28, 0x07 ldi r28, 0x0F ldi r28, 0x17 ldi r28, 0x1F ldi r28, 0x27 ldi r28, 0x2F ldi r28, 0x37 ldi r28, 0x3F ldi r28, 0x47 ldi r28, 0x4F ldi r28, 0x57 ldi r28, 0x5F ldi r28, 0x67 ldi r28, 0x6F ldi r28, 0x77 ldi r28, 0x7F ldi r28, 0x87 ldi r28, 0x8F ldi r28, 0x97 ldi r28, 0x9F ldi r28, 0xA7 ldi r28, 0xAF ldi r28, 0xB7 ldi r28, 0xBF ldi r28, 0xC7 ldi r28, 0xCF ldi r28, 0xD7 ldi r28, 0xDF ldi r28, 0xE7 ldi r28, 0xEF ldi r28, 0xF7 ldi r28, 0xFF ldi r28, 0x07 ldi r28, 0x0F ldi r28, 0x17 ldi r28, 0x1F ldi r28, 0x27 ldi r28, 0x2F ldi r28, 0x37 ldi r28, 0x3F ldi r28, 0x47 ldi r28, 0x4F ldi r28, 0x57 ldi r28, 0x5F ldi r28, 0x67 ldi r28, 0x6F ldi r28, 0x77 ldi r28, 0x7F ldi r28, 0x87 ldi r28, 0x8F ldi r28, 0x97 ldi r28, 0x9F ldi r28, 0xA7 ldi r28, 0xAF ldi r28, 0xB7 ldi r28, 0xBF ldi r28, 0xC7 ldi r28, 0xCF ldi r28, 0xD7 ldi r28, 0xDF ldi r28, 0xE7 ldi r28, 0xEF ldi r28, 0xF7 ldi r28, 0xFF ldi r28, 0x07
+38  :::   ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0A ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0B ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0C ldi r29, 0x0D
+41  :::   ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C
+42  :::   ldi r26, 0x00 ldi r26, 0x08 ldi r26, 0x10 ldi r26, 0x18 ldi r26, 0x20 ldi r26, 0x28 ldi r26, 0x30 ldi r26, 0x38 ldi r26, 0x40 ldi r26, 0x48 ldi r26, 0x50 ldi r26, 0x58 ldi r26, 0x60 ldi r26, 0x68 ldi r26, 0x70 ldi r26, 0x78 ldi r26, 0x80 ldi r26, 0x88 ldi r26, 0x90 ldi r26, 0x98 ldi r26, 0xA0 ldi r26, 0xA8 ldi r26, 0xB0 ldi r26, 0xB8 ldi r26, 0xC0 ldi r26, 0xC8 ldi r26, 0xD0 ldi r26, 0xD8 ldi r26, 0xE0 ldi r26, 0xE8 ldi r26, 0xF0 ldi r26, 0xF8 ldi r26, 0x00 ldi r26, 0x08 ldi r26, 0x10 ldi r26, 0x18 ldi r26, 0x20 ldi r26, 0x28 ldi r26, 0x30 ldi r26, 0x38 ldi r26, 0x40 ldi r26, 0x48 ldi r26, 0x50 ldi r26, 0x58 ldi r26, 0x60 ldi r26, 0x68 ldi r26, 0x70 ldi r26, 0x78 ldi r26, 0x80 ldi r26, 0x88 ldi r26, 0x90 ldi r26, 0x98 ldi r26, 0xA0 ldi r26, 0xA8 ldi r26, 0xB0 ldi r26, 0xB8 ldi r26, 0xC0 ldi r26, 0xC8 ldi r26, 0xD0 ldi r26, 0xD8 ldi r26, 0xE0 ldi r26, 0xE8 ldi r26, 0xF0 ldi r26, 0xF8 ldi r26, 0x00 ldi r26, 0x08 ldi r26, 0x10 ldi r26, 0x18 ldi r26, 0x20 ldi r26, 0x28 ldi r26, 0x30 ldi r26, 0x38 ldi r26, 0x40 ldi r26, 0x48 ldi r26, 0x50 ldi r26, 0x58
+43  :::   ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C
+51  :::   cpi r26, 0x1E cpi r26, 0x26 cpi r26, 0x2E cpi r26, 0x36 cpi r26, 0x3E cpi r26, 0x46 cpi r26, 0x4E cpi r26, 0x56 cpi r26, 0x5E cpi r26, 0x66 cpi r26, 0x6E cpi r26, 0x76 cpi r26, 0x7E cpi r26, 0x86 cpi r26, 0x8E cpi r26, 0x96 cpi r26, 0x9E cpi r26, 0xA6 cpi r26, 0xAE cpi r26, 0xB6 cpi r26, 0xBE cpi r26, 0xC6 cpi r26, 0xCE cpi r26, 0xD6 cpi r26, 0xDE cpi r26, 0xE6 cpi r26, 0xEE cpi r26, 0xF6 cpi r26, 0xFE cpi r26, 0x06 cpi r26, 0x0E cpi r26, 0x16 cpi r26, 0x1E cpi r26, 0x26 cpi r26, 0x2E cpi r26, 0x36 cpi r26, 0x3E cpi r26, 0x46 cpi r26, 0x4E cpi r26, 0x56 cpi r26, 0x5E cpi r26, 0x66 cpi r26, 0x6E cpi r26, 0x76 cpi r26, 0x7E cpi r26, 0x86 cpi r26, 0x8E cpi r26, 0x96 cpi r26, 0x9E cpi r26, 0xA6 cpi r26, 0xAE cpi r26, 0xB6 cpi r26, 0xBE cpi r26, 0xC6 cpi r26, 0xCE cpi r26, 0xD6 cpi r26, 0xDE cpi r26, 0xE6 cpi r26, 0xEE cpi r26, 0xF6 cpi r26, 0xFE cpi r26, 0x06 cpi r26, 0x0E cpi r26, 0x16 cpi r26, 0x1E cpi r26, 0x26 cpi r26, 0x2E cpi r26, 0x36 cpi r26, 0x3E cpi r26, 0x46 cpi r26, 0x4E cpi r26, 0x56 cpi r26, 0x5E cpi r26, 0x66 cpi r26, 0x6E cpi r26, 0x76
+54  :::   ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0A ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0B ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C ldi r17, 0x0C
+55  :::   ldi r26, 0x1E ldi r26, 0x26 ldi r26, 0x2E ldi r26, 0x36 ldi r26, 0x3E ldi r26, 0x46 ldi r26, 0x4E ldi r26, 0x56 ldi r26, 0x5E ldi r26, 0x66 ldi r26, 0x6E ldi r26, 0x76 ldi r26, 0x7E ldi r26, 0x86 ldi r26, 0x8E ldi r26, 0x96 ldi r26, 0x9E ldi r26, 0xA6 ldi r26, 0xAE ldi r26, 0xB6 ldi r26, 0xBE ldi r26, 0xC6 ldi r26, 0xCE ldi r26, 0xD6 ldi r26, 0xDE ldi r26, 0xE6 ldi r26, 0xEE ldi r26, 0xF6 ldi r26, 0xFE ldi r26, 0x06 ldi r26, 0x0E ldi r26, 0x16 ldi r26, 0x1E ldi r26, 0x26 ldi r26, 0x2E ldi r26, 0x36 ldi r26, 0x3E ldi r26, 0x46 ldi r26, 0x4E ldi r26, 0x56 ldi r26, 0x5E ldi r26, 0x66 ldi r26, 0x6E ldi r26, 0x76 ldi r26, 0x7E ldi r26, 0x86 ldi r26, 0x8E ldi r26, 0x96 ldi r26, 0x9E ldi r26, 0xA6 ldi r26, 0xAE ldi r26, 0xB6 ldi r26, 0xBE ldi r26, 0xC6 ldi r26, 0xCE ldi r26, 0xD6 ldi r26, 0xDE ldi r26, 0xE6 ldi r26, 0xEE ldi r26, 0xF6 ldi r26, 0xFE ldi r26, 0x06 ldi r26, 0x0E ldi r26, 0x16 ldi r26, 0x1E ldi r26, 0x26 ldi r26, 0x2E ldi r26, 0x36 ldi r26, 0x3E ldi r26, 0x46 ldi r26, 0x4E ldi r26, 0x56 ldi r26, 0x5E ldi r26, 0x66 ldi r26, 0x6E ldi r26, 0x76
+56  :::   ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0A ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0B ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C ldi r27, 0x0C
+59  :::   cpi r26, 0x27 cpi r26, 0x2F cpi r26, 0x37 cpi r26, 0x3F cpi r26, 0x47 cpi r26, 0x4F cpi r26, 0x57 cpi r26, 0x5F cpi r26, 0x67 cpi r26, 0x6F cpi r26, 0x77 cpi r26, 0x7F cpi r26, 0x87 cpi r26, 0x8F cpi r26, 0x97 cpi r26, 0x9F cpi r26, 0xA7 cpi r26, 0xAF cpi r26, 0xB7 cpi r26, 0xBF cpi r26, 0xC7 cpi r26, 0xCF cpi r26, 0xD7 cpi r26, 0xDF cpi r26, 0xE7 cpi r26, 0xEF cpi r26, 0xF7 cpi r26, 0xFF cpi r26, 0x07 cpi r26, 0x0F cpi r26, 0x17 cpi r26, 0x1F cpi r26, 0x27 cpi r26, 0x2F cpi r26, 0x37 cpi r26, 0x3F cpi r26, 0x47 cpi r26, 0x4F cpi r26, 0x57 cpi r26, 0x5F cpi r26, 0x67 cpi r26, 0x6F cpi r26, 0x77 cpi r26, 0x7F cpi r26, 0x87 cpi r26, 0x8F cpi r26, 0x97 cpi r26, 0x9F cpi r26, 0xA7 cpi r26, 0xAF cpi r26, 0xB7 cpi r26, 0xBF cpi r26, 0xC7 cpi r26, 0xCF cpi r26, 0xD7 cpi r26, 0xDF cpi r26, 0xE7 cpi r26, 0xEF cpi r26, 0xF7 cpi r26, 0xFF cpi r26, 0x07 cpi r26, 0x0F cpi r26, 0x17 cpi r26, 0x1F cpi r26, 0x27 cpi r26, 0x2F cpi r26, 0x37 cpi r26, 0x3F cpi r26, 0x47 cpi r26, 0x4F cpi r26, 0x57 cpi r26, 0x5F cpi r26, 0x67 cpi r26, 0x6F cpi r26, 0x77 cpi r26, 0x7F
+349  :::   sts 0x0A24, r1 sts 0x0A2C, r1 sts 0x0A34, r1 sts 0x0A3C, r1 sts 0x0A44, r1 sts 0x0A4C, r1 sts 0x0A54, r1 sts 0x0A5C, r1 sts 0x0A64, r1 sts 0x0A6C, r1 sts 0x0A74, r1 sts 0x0A7C, r1 sts 0x0A84, r1 sts 0x0A8C, r1 sts 0x0A94, r1 sts 0x0A9C, r1 sts 0x0AA4, r1 sts 0x0AAC, r1 sts 0x0AB4, r1 sts 0x0ABC, r1 sts 0x0AC4, r1 sts 0x0ACC, r1 sts 0x0AD4, r1 sts 0x0ADC, r1 sts 0x0AE4, r1 sts 0x0AEC, r1 sts 0x0AF4, r1 sts 0x0AFC, r1 sts 0x0B04, r1 sts 0x0B0C, r1 sts 0x0B14, r1 sts 0x0B1C, r1 sts 0x0B24, r1 sts 0x0B2C, r1 sts 0x0B34, r1 sts 0x0B3C, r1 sts 0x0B44, r1 sts 0x0B4C, r1 sts 0x0B54, r1 sts 0x0B5C, r1 sts 0x0B64, r1 sts 0x0B6C, r1 sts 0x0B74, r1 sts 0x0B7C, r1 sts 0x0B84, r1 sts 0x0B8C, r1 sts 0x0B94, r1 sts 0x0B9C, r1 sts 0x0BA4, r1 sts 0x0BAC, r1 sts 0x0BB4, r1 sts 0x0BBC, r1 sts 0x0BC4, r1 sts 0x0BCC, r1 sts 0x0BD4, r1 sts 0x0BDC, r1 sts 0x0BE4, r1 sts 0x0BEC, r1 sts 0x0BF4, r1 sts 0x0BFC, r1 sts 0x0C04, r1 sts 0x0C0C, r1 sts 0x0C14, r1 sts 0x0C1C, r1 sts 0x0C24, r1 sts 0x0C2C, r1 sts 0x0C34, r1 sts 0x0C3C, r1 sts 0x0C44, r1 sts 0x0C4C, r1 sts 0x0C54, r1 sts 0x0C5C, r1 sts 0x0C64, r1 sts 0x0C6C, r1 sts 0x0C74, r1 sts 0x0C7C, r1
+421  :::   ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63 ldi r22, 0x6B ldi r22, 0x73 ldi r22, 0x7B ldi r22, 0x83 ldi r22, 0x8B ldi r22, 0x93 ldi r22, 0x9B ldi r22, 0xA3 ldi r22, 0xAB ldi r22, 0xB3 ldi r22, 0xBB ldi r22, 0xC3 ldi r22, 0xCB ldi r22, 0xD3 ldi r22, 0xDB ldi r22, 0xE3 ldi r22, 0xEB ldi r22, 0xF3 ldi r22, 0xFB ldi r22, 0x03 ldi r22, 0x0B ldi r22, 0x13 ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63 ldi r22, 0x6B ldi r22, 0x73 ldi r22, 0x7B ldi r22, 0x83 ldi r22, 0x8B ldi r22, 0x93 ldi r22, 0x9B ldi r22, 0xA3 ldi r22, 0xAB ldi r22, 0xB3 ldi r22, 0xBB ldi r22, 0xC3 ldi r22, 0xCB ldi r22, 0xD3 ldi r22, 0xDB ldi r22, 0xE3 ldi r22, 0xEB ldi r22, 0xF3 ldi r22, 0xFB ldi r22, 0x03 ldi r22, 0x0B ldi r22, 0x13 ldi r22, 0x1B ldi r22, 0x23 ldi r22, 0x2B ldi r22, 0x33 ldi r22, 0x3B ldi r22, 0x43 ldi r22, 0x4B ldi r22, 0x53 ldi r22, 0x5B ldi r22, 0x63 ldi r22, 0x6B ldi r22, 0x73
+422  :::   ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0A ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0B ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C ldi r23, 0x0C
+366  :::   subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A subi r30, 0x82 subi r30, 0x7A subi r30, 0x72 subi r30, 0x6A subi r30, 0x62 subi r30, 0x5A subi r30, 0x52 subi r30, 0x4A subi r30, 0x42 subi r30, 0x3A subi r30, 0x32 subi r30, 0x2A subi r30, 0x22 subi r30, 0x1A subi r30, 0x12 subi r30, 0x0A subi r30, 0x02 subi r30, 0xFA subi r30, 0xF2 subi r30, 0xEA subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A subi r30, 0x82 subi r30, 0x7A subi r30, 0x72 subi r30, 0x6A subi r30, 0x62 subi r30, 0x5A subi r30, 0x52 subi r30, 0x4A subi r30, 0x42 subi r30, 0x3A subi r30, 0x32 subi r30, 0x2A subi r30, 0x22 subi r30, 0x1A subi r30, 0x12 subi r30, 0x0A subi r30, 0x02 subi r30, 0xFA subi r30, 0xF2 subi r30, 0xEA subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A
+367  :::   sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3
+505  :::   lds r30, 0x0A25 lds r30, 0x0A2D lds r30, 0x0A35 lds r30, 0x0A3D lds r30, 0x0A45 lds r30, 0x0A4D lds r30, 0x0A55 lds r30, 0x0A5D lds r30, 0x0A65 lds r30, 0x0A6D lds r30, 0x0A75 lds r30, 0x0A7D lds r30, 0x0A85 lds r30, 0x0A8D lds r30, 0x0A95 lds r30, 0x0A9D lds r30, 0x0AA5 lds r30, 0x0AAD lds r30, 0x0AB5 lds r30, 0x0ABD lds r30, 0x0AC5 lds r30, 0x0ACD lds r30, 0x0AD5 lds r30, 0x0ADD lds r30, 0x0AE5 lds r30, 0x0AED lds r30, 0x0AF5 lds r30, 0x0AFD lds r30, 0x0B05 lds r30, 0x0B0D lds r30, 0x0B15 lds r30, 0x0B1D lds r30, 0x0B25 lds r30, 0x0B2D lds r30, 0x0B35 lds r30, 0x0B3D lds r30, 0x0B45 lds r30, 0x0B4D lds r30, 0x0B55 lds r30, 0x0B5D lds r30, 0x0B65 lds r30, 0x0B6D lds r30, 0x0B75 lds r30, 0x0B7D lds r30, 0x0B85 lds r30, 0x0B8D lds r30, 0x0B95 lds r30, 0x0B9D lds r30, 0x0BA5 lds r30, 0x0BAD lds r30, 0x0BB5 lds r30, 0x0BBD lds r30, 0x0BC5 lds r30, 0x0BCD lds r30, 0x0BD5 lds r30, 0x0BDD lds r30, 0x0BE5 lds r30, 0x0BED lds r30, 0x0BF5 lds r30, 0x0BFD lds r30, 0x0C05 lds r30, 0x0C0D lds r30, 0x0C15 lds r30, 0x0C1D lds r30, 0x0C25 lds r30, 0x0C2D lds r30, 0x0C35 lds r30, 0x0C3D lds r30, 0x0C45 lds r30, 0x0C4D lds r30, 0x0C55 lds r30, 0x0C5D lds r30, 0x0C65 lds r30, 0x0C6D lds r30, 0x0C75 lds r30, 0x0C7D
+506  :::   lds r31, 0x0A26 lds r31, 0x0A2E lds r31, 0x0A36 lds r31, 0x0A3E lds r31, 0x0A46 lds r31, 0x0A4E lds r31, 0x0A56 lds r31, 0x0A5E lds r31, 0x0A66 lds r31, 0x0A6E lds r31, 0x0A76 lds r31, 0x0A7E lds r31, 0x0A86 lds r31, 0x0A8E lds r31, 0x0A96 lds r31, 0x0A9E lds r31, 0x0AA6 lds r31, 0x0AAE lds r31, 0x0AB6 lds r31, 0x0ABE lds r31, 0x0AC6 lds r31, 0x0ACE lds r31, 0x0AD6 lds r31, 0x0ADE lds r31, 0x0AE6 lds r31, 0x0AEE lds r31, 0x0AF6 lds r31, 0x0AFE lds r31, 0x0B06 lds r31, 0x0B0E lds r31, 0x0B16 lds r31, 0x0B1E lds r31, 0x0B26 lds r31, 0x0B2E lds r31, 0x0B36 lds r31, 0x0B3E lds r31, 0x0B46 lds r31, 0x0B4E lds r31, 0x0B56 lds r31, 0x0B5E lds r31, 0x0B66 lds r31, 0x0B6E lds r31, 0x0B76 lds r31, 0x0B7E lds r31, 0x0B86 lds r31, 0x0B8E lds r31, 0x0B96 lds r31, 0x0B9E lds r31, 0x0BA6 lds r31, 0x0BAE lds r31, 0x0BB6 lds r31, 0x0BBE lds r31, 0x0BC6 lds r31, 0x0BCE lds r31, 0x0BD6 lds r31, 0x0BDE lds r31, 0x0BE6 lds r31, 0x0BEE lds r31, 0x0BF6 lds r31, 0x0BFE lds r31, 0x0C06 lds r31, 0x0C0E lds r31, 0x0C16 lds r31, 0x0C1E lds r31, 0x0C26 lds r31, 0x0C2E lds r31, 0x0C36 lds r31, 0x0C3E lds r31, 0x0C46 lds r31, 0x0C4E lds r31, 0x0C56 lds r31, 0x0C5E lds r31, 0x0C66 lds r31, 0x0C6E lds r31, 0x0C76 lds r31, 0x0C7E
+381  :::   subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A subi r30, 0x82 subi r30, 0x7A subi r30, 0x72 subi r30, 0x6A subi r30, 0x62 subi r30, 0x5A subi r30, 0x52 subi r30, 0x4A subi r30, 0x42 subi r30, 0x3A subi r30, 0x32 subi r30, 0x2A subi r30, 0x22 subi r30, 0x1A subi r30, 0x12 subi r30, 0x0A subi r30, 0x02 subi r30, 0xFA subi r30, 0xF2 subi r30, 0xEA subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A subi r30, 0x82 subi r30, 0x7A subi r30, 0x72 subi r30, 0x6A subi r30, 0x62 subi r30, 0x5A subi r30, 0x52 subi r30, 0x4A subi r30, 0x42 subi r30, 0x3A subi r30, 0x32 subi r30, 0x2A subi r30, 0x22 subi r30, 0x1A subi r30, 0x12 subi r30, 0x0A subi r30, 0x02 subi r30, 0xFA subi r30, 0xF2 subi r30, 0xEA subi r30, 0xE2 subi r30, 0xDA subi r30, 0xD2 subi r30, 0xCA subi r30, 0xC2 subi r30, 0xBA subi r30, 0xB2 subi r30, 0xAA subi r30, 0xA2 subi r30, 0x9A subi r30, 0x92 subi r30, 0x8A
+382  :::   sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF5 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF4 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3 sbci r31, 0xF3
+all 0x800A00 0xaaf 0x11064
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A00 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xaaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+2560L
+4352L
+2735L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A08 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xab7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A08 0xab7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A10 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xabf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A10 0xabf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A18 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xac7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A18 0xac7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A20 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xacf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A20 0xacf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A28 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xad7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A28 0xad7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A30 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xadf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A00 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xaaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+2560L
+4352L
+2735L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A08 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xab7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A08 0xab7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A10 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xabf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A10 0xabf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A18 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xac7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A18 0xac7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A20 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xacf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A20 0xacf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A28 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xad7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A28 0xad7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A30 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xadf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A30 0xadf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A38 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xae7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A38 0xae7 0x1100
+make clean now twice
+reading assembly
+parsing and storing
+Set([417, 291, 37, 421, 42, 396, 366, 381, 505, 51, 55, 409, 506, 59, 349, 287])
+417  :::   0x1E
+0x26
+0x2E
+0x36
+0x3E
+0x46
+0x4E
+0x56
+
+291  :::   0x09
+0x11
+0x19
+0x21
+0x29
+0x31
+0x39
+0x41
+
+37  :::   0xAF
+0xB7
+0xBF
+0xC7
+0xCF
+0xD7
+0xDF
+0xE7
+
+421  :::   0x1B
+0x23
+0x2B
+0x33
+0x3B
+0x43
+0x4B
+0x53
+
+42  :::   0x00
+0x08
+0x10
+0x18
+0x20
+0x28
+0x30
+0x38
+
+396  :::   0xE2
+0xDA
+0xD2
+0xCA
+0xC2
+0xBA
+0xB2
+0xAA
+
+366  :::   0xE2
+0xDA
+0xD2
+0xCA
+0xC2
+0xBA
+0xB2
+0xAA
+
+381  :::   0xE2
+0xDA
+0xD2
+0xCA
+0xC2
+0xBA
+0xB2
+0xAA
+
+505  :::   0x0A25
+0x0A2D
+0x0A35
+0x0A3D
+0x0A45
+0x0A4D
+0x0A55
+0x0A5D
+
+51  :::   0x1E
+0x26
+0x2E
+0x36
+0x3E
+0x46
+0x4E
+0x56
+
+55  :::   0x1E
+0x26
+0x2E
+0x36
+0x3E
+0x46
+0x4E
+0x56
+
+409  :::   0x0B
+0x13
+0x1B
+0x23
+0x2B
+0x33
+0x3B
+0x43
+
+506  :::   0x0A26
+0x0A2E
+0x0A36
+0x0A3E
+0x0A46
+0x0A4E
+0x0A56
+0x0A5E
+
+59  :::   0x27
+0x2F
+0x37
+0x3F
+0x47
+0x4F
+0x57
+0x5F
+
+349  :::  
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A38 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xae7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+2616L
+4352L
+2791L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A40 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xaef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A40 0xaef 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A48 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xaf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A48 0xaf7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A50 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xaff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A50 0xaff 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A58 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A58 0xb07 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A60 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb0f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A60 0xb0f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A68 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb17 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A68 0xb17 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A70 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A70 0xb1f 0x1100
+make clean now twice
+reading assembly
+parsing and storing
+Set([417, 291, 37, 38, 421, 42, 396, 366, 381, 505, 51, 55, 409, 506, 59, 349, 287])
+417  :::   0x56
+0x5E
+0x66
+0x6E
+0x76
+0x7E
+0x86
+0x8E
+
+291  :::   0x41
+0x49
+0x51
+0x59
+0x61
+0x69
+0x71
+0x79
+
+37  :::   0xE7
+0xEF
+0xF7
+0xFF
+0x07
+0x0F
+0x17
+0x1F
+
+38  :::   0x0A
+0x0A
+0x0A
+0x0A
+0x0B
+0x0B
+0x0B
+0x0B
+
+421  :::   0x53
+0x5B
+0x63
+0x6B
+0x73
+0x7B
+0x83
+0x8B
+
+42  :::   0x38
+0x40
+0x48
+0x50
+0x58
+0x60
+0x68
+0x70
+
+396  :::   0xAA
+0xA2
+0x9A
+0x92
+0x8A
+0x82
+0x7A
+0x72
+
+366  :::   0xAA
+0xA2
+0x9A
+0x92
+0x8A
+0x82
+0x7A
+0x72
+
+381  :::   0xAA
+0xA2
+0x9A
+0x92
+0x8A
+0x82
+0x7A
+0x72
+
+505  :::   0x0A5D
+0x0A65
+0x0A6D
+0x0A75
+0x0A7D
+0x0A85
+0x0A8D
+0x0A95
+
+51  :::   0x56
+0x5E
+0x66
+0x6E
+0x76
+0x7E
+0x86
+0x8E
+
+55  :::   0x56
+0x5E
+0x66
+0x6E
+0x76
+0x7E
+0x86
+0x8E
+
+409  :::   0x43
+0x4B
+0x53
+0x5B
+0x63
+0x6B
+0x73
+0x7B
+
+506  :::   0x0A5E
+0x0A66
+0x0A6E
+0x0A76
+0x0A7E
+0x0A86
+0x0A8E
+0x0A96
+
+59  :::   0x5F
+0x67
+0x6F
+0x77
+0x7F
+0x87
+0x8F
+0x97
+
+349  :::  
+Now processing the arguments
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit
+Now setting up the environment
+/cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+rm -rf  TestBlink.elf dep/* TestBlink.hex TestBlink.eep TestBlink.lss TestBlink.map
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A70 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+Now change the directory to /cygdrive/e/OS/TerminalProject/Projects/SenseAndDeposit/default
+Now starting the first round of compilation with original parameters
+2672L
+4352L
+2847L
+make clean now
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A78 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb27 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A78 0xb27 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A80 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb2f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A80 0xb2f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A88 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb37 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A88 0xb37 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A90 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb3f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A90 0xb3f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800A98 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb47 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800A98 0xb47 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AA0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb4f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AA0 0xb4f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AA8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb57 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AA8 0xb57 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AB0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb5f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AB0 0xb5f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AB8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb67 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AB8 0xb67 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AC0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb6f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AC0 0xb6f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AC8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb77 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AC8 0xb77 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AD0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb7f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AD0 0xb7f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AD8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb87 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AD8 0xb87 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AE0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb8f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AE0 0xb8f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AE8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb97 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AE8 0xb97 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AF0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xb9f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AF0 0xb9f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800AF8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xba7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800AF8 0xba7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B00 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B00 0xbaf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B08 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbb7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B08 0xbb7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B10 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbbf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B10 0xbbf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B18 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbc7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B18 0xbc7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B20 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbcf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B20 0xbcf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B28 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbd7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B28 0xbd7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B30 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbdf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B30 0xbdf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B38 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbe7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B38 0xbe7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B40 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B40 0xbef 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B48 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B48 0xbf7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B50 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xbff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B50 0xbff 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B58 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B58 0xc07 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B60 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc0f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B60 0xc0f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B68 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc17 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B68 0xc17 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B70 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B70 0xc1f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B78 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc27 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B78 0xc27 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B80 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc2f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B80 0xc2f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B88 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc37 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B88 0xc37 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B90 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc3f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B90 0xc3f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800B98 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc47 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800B98 0xc47 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BA0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc4f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BA0 0xc4f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BA8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc57 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BA8 0xc57 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BB0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc5f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BB0 0xc5f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BB8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc67 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BB8 0xc67 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BC0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc6f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BC0 0xc6f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BC8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc77 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BC8 0xc77 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BD0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc7f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BD0 0xc7f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BD8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc87 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BD8 0xc87 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BE0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc8f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BE0 0xc8f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BE8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc97 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BE8 0xc97 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BF0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xc9f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BF0 0xc9f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800BF8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xca7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800BF8 0xca7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C00 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcaf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C00 0xcaf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C08 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcb7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C08 0xcb7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C10 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcbf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C10 0xcbf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C18 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcc7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C18 0xcc7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C20 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xccf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C20 0xccf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C28 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcd7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C28 0xcd7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C30 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcdf ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C30 0xcdf 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C38 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xce7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C38 0xce7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C40 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcef ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C40 0xcef 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C48 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcf7 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C48 0xcf7 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C50 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xcff ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C50 0xcff 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C58 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd07 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C58 0xd07 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C60 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd0f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C60 0xd0f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C68 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd17 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C68 0xd17 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C70 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd1f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C70 0xd1f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C78 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd27 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C78 0xd27 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C80 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd2f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C80 0xd2f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C88 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd37 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C88 0xd37 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C90 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd3f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C90 0xd3f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800C98 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd47 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800C98 0xd47 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CA0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd4f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CA0 0xd4f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CA8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd57 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CA8 0xd57 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CB0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd5f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CB0 0xd5f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CB8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd67 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CB8 0xd67 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CC0 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd6f ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CC0 0xd6f 0x1100
+make clean now twice
+reading assembly
+c:/Programs/WinAVR/bin/avr-gcc.exe -mmcu=atmega128 -Wall -Os -fsigned-char -combine -fwhole-program  -Wl,-section-start=.data=0x800CC8 -Wl,-section-start=.text=0x1100 -Xlinker --defsym -Xlinker __stack=0xd77 ../TestBlink.c ../adc.c ../file.c ../intoutput.c ../leds.c ../mutex.c ../radio.c ../radio_intoutput.c ../string.c ../system.c ../thread.c ../types.c -o TestBlink.elf
+avr-objcopy -O ihex -R .eeprom  TestBlink.elf TestBlink.hex
+avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 --no-change-warnings -O ihex TestBlink.elf TestBlink.eep || exit 0
+avr-objdump -h -S TestBlink.elf > TestBlink.lss
+parsing and storing
+!!!Now parameter is 4352L
+all 0x800CC8 0xd77 0x1100
+make clean now twice
+reading assembly
+parsing and storing
+Set([396, 397, 409, 410, 287, 288, 417, 418, 291, 292, 37, 422, 41, 42, 43, 51, 54, 55, 56, 59, 349, 421, 38, 366, 367, 505, 506, 381, 382])
+396  :::   0x72 0x6A 0x62 0x5A 0x52 0x4A 0x42 0x3A 0x32 0x2A 0x22 0x1A 0x12 0x0A 0x02 0xFA 0xF2 0xEA 0xE2 0xDA 0xD2 0xCA 0xC2 0xBA 0xB2 0xAA 0xA2 0x9A 0x92 0x8A 0x82 0x7A 0x72 0x6A 0x62 0x5A 0x52 0x4A 0x42 0x3A 0x32 0x2A 0x22 0x1A 0x12 0x0A 0x02 0xFA 0xF2 0xEA 0xE2 0xDA 0xD2 0xCA 0xC2 0xBA 0xB2 0xAA 0xA2 0x9A 0x92 0x8A 0x82 0x7A 0x72 0x6A 0x62 0x5A 0x52 0x4A 0x42 0x3A 0x32 0x2A 0x22 0x1A
+397  :::   0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF5 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF4 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3 0xF3
+409  :::   0x7B 0x83 0x8B 0x93 0x9B 0xA3 0xAB 0xB3 0xBB 0xC3 0xCB 0xD3 0xDB 0xE3 0xEB 0xF3 0xFB 0x03 0x0B 0x13 0x1B 0x23 0x2B 0x33 0x3B 0x43 0x4B 0x53 0x5B 0x63 0x6B 0x73 0x7B 0x83 0x8B 0x93 0x9B 0xA3 0xAB 0xB3 0xBB 0xC3 0xCB 0xD3 0xDB 0xE3 0xEB 0xF3 0xFB 0x03 0x0B 0x13 0x1B 0x23 0x2B 0x33 0x3B 0x43 0x4B 0x53 0x5B 0x63 0x6B 0x73 0x7B 0x83 0x8B 0x93 0x9B 0xA3 0xAB 0xB3 0xBB 0xC3 0xCB 0xD3
+410  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+287  :::   0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8 0xD0 0xD8 0xE0 0xE8 0xF0 0xF8 0x00 0x08 0x10 0x18 0x20 0x28 0x30 0x38 0x40 0x48 0x50 0x58 0x60 0x68 0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8 0xD0 0xD8 0xE0 0xE8 0xF0 0xF8 0x00 0x08 0x10 0x18 0x20 0x28 0x30 0x38 0x40 0x48 0x50 0x58 0x60 0x68 0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8
+288  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+417  :::   0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6
+418  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+291  :::   0x79 0x81 0x89 0x91 0x99 0xA1 0xA9 0xB1 0xB9 0xC1 0xC9 0xD1 0xD9 0xE1 0xE9 0xF1 0xF9 0x01 0x09 0x11 0x19 0x21 0x29 0x31 0x39 0x41 0x49 0x51 0x59 0x61 0x69 0x71 0x79 0x81 0x89 0x91 0x99 0xA1 0xA9 0xB1 0xB9 0xC1 0xC9 0xD1 0xD9 0xE1 0xE9 0xF1 0xF9 0x01 0x09 0x11 0x19 0x21 0x29 0x31 0x39 0x41 0x49 0x51 0x59 0x61 0x69 0x71 0x79 0x81 0x89 0x91 0x99 0xA1 0xA9 0xB1 0xB9 0xC1 0xC9 0xD1
+292  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+37  :::   0x1F 0x27 0x2F 0x37 0x3F 0x47 0x4F 0x57 0x5F 0x67 0x6F 0x77 0x7F 0x87 0x8F 0x97 0x9F 0xA7 0xAF 0xB7 0xBF 0xC7 0xCF 0xD7 0xDF 0xE7 0xEF 0xF7 0xFF 0x07 0x0F 0x17 0x1F 0x27 0x2F 0x37 0x3F 0x47 0x4F 0x57 0x5F 0x67 0x6F 0x77 0x7F 0x87 0x8F 0x97 0x9F 0xA7 0xAF 0xB7 0xBF 0xC7 0xCF 0xD7 0xDF 0xE7 0xEF 0xF7 0xFF 0x07 0x0F 0x17 0x1F 0x27 0x2F 0x37 0x3F 0x47 0x4F 0x57 0x5F 0x67 0x6F 0x77
+422  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+41  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+42  :::   0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8 0xD0 0xD8 0xE0 0xE8 0xF0 0xF8 0x00 0x08 0x10 0x18 0x20 0x28 0x30 0x38 0x40 0x48 0x50 0x58 0x60 0x68 0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8 0xD0 0xD8 0xE0 0xE8 0xF0 0xF8 0x00 0x08 0x10 0x18 0x20 0x28 0x30 0x38 0x40 0x48 0x50 0x58 0x60 0x68 0x70 0x78 0x80 0x88 0x90 0x98 0xA0 0xA8 0xB0 0xB8 0xC0 0xC8
+43  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+51  :::   0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6
+54  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+55  :::   0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6 0xEE 0xF6 0xFE 0x06 0x0E 0x16 0x1E 0x26 0x2E 0x36 0x3E 0x46 0x4E 0x56 0x5E 0x66 0x6E 0x76 0x7E 0x86 0x8E 0x96 0x9E 0xA6 0xAE 0xB6 0xBE 0xC6 0xCE 0xD6 0xDE 0xE6
+56  :::   0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0A 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0B 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C 0x0C
+59  :::   0x97 0x9F 0xA7 0xAF 0xB7 0xBF 0xC7 0xCF 0xD7 0xDF 0xE7 0xEF 0xF7 0xFF 0x07 0x0F 0x17 0x1F 0x27 0x2F 0x37 0x3F 0x47 0x4F 0x57 0x5F 0x67 0x6F 0x77 0x7F 0x87 0x8F 0x97 0x9F 0xA7 0xAF 0xB7 0xBF 0xC7 0xCF 0xD7 0xDF 0xE7 0xEF 0xF7 0xFF 0x07 0x0F 0x17 0x1F 0x27 0x2F 0x37 0x3F 0x47 0x4F 0x57 0x5F 0x67 0x6F 0x77 0x7F 0x87 0x8F 0x97 0x9F 0xA7 0xAF 0xB7 0xBF 0xC7 0xCF 0xD7 0xDF 0xE7 0xEF
+349  :::  
