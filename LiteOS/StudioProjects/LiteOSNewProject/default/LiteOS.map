@@ -1,0 +1,2711 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+                              clockraw.o (__mulsi3)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+                              atmelflash.o (__udivmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+                              fsapi.o (__divmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+                              atmelflash.o (__udivmodsi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodsi4.o)
+                              fsapi.o (__divmodsi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+                              realmain.o (__do_clear_bss)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(rand.o)
+                              math.o (rand)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+                              ioeeprom.o (__eerd_block_m128)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+                              ioeeprom.o (__eerd_byte_m128)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_word_atmega128.o)
+                              ioeeprom.o (__eerd_word_m128)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_block_atmega128.o)
+                              ioeeprom.o (__eewr_block_m128)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_byte_atmega128.o)
+                              ioeeprom.o (__eewr_byte_m128)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_word_atmega128.o)
+                              ioeeprom.o (__eewr_word_m128)
+
+Allocating common symbols
+Common symbol       size              file
+
+enabled             0x1               generictimer.o
+tmp                 0x2               packethandler.o
+hplcc2420fifom_txlength
+                    0x1               hplcc2420fifom.o
+TimerM_queue_tail   0x1               timerraw.o
+packetsremote       0x2               logger.o
+TimerM_mState       0x4               timerraw.o
+fidtable            0x14              fs_structure.o
+shellbuffer         0x100             commandhandle.o
+HPLCC2420M_ramlen   0x1               hplcc2420m.o
+fp                  0x2               commandhandle.o
+historyvalue        0x4               clockraw.o
+radiosocketdata     0x7               socket.o
+cc2420radiom_rxbufptr
+                    0x2               cc2420radiom.o
+TimerM_queue_size   0x1               timerraw.o
+hplcc2420fifom_bSpiAvail
+                    0x1               hplcc2420fifom.o
+timestamp           0x4               eventlogger.o
+cc2420controlm_state
+                    0x1               cc2420controlm.o
+old_stack_ptr       0x2               threadkernel.o
+hplcc2420interruptm_FIFOWaitForState
+                    0x1               hplcc2420interruptm.o
+openedfile          0x2               commandhandle.o
+br_state            0x48              commandhandle.o
+filenameid          0x11              nodeconfig.o
+flag                0x1               libserial.o
+position            0x2               filesocket.o
+createthreadname    0xc               commandhandle.o
+alcounter           0x4               hplcc2420interruptm.o
+internaltracingblock
+                    0xb               eventlogger.o
+ahcounter           0x2               hplcc2420interruptm.o
+HPLCC2420M_rambuf   0x2               hplcc2420m.o
+current_thread      0x2               threadkernel.o
+filehandle          0x2               filesocket.o
+enabletracing       0x1               eventlogger.o
+mythread            0x2               libradio.o
+blinkbuffer         0x96              blink.o
+loggerbuffer        0x190             logger.o
+CC2420_RFPOWER      0x1               cc2420controlm.o
+filemodeaddr        0x5               filesocket.o
+thread_table        0x9c              threadkernel.o
+currentcounter      0x2               generictimer.o
+filefp              0x2               blink.o
+cc2420radiom_currentDSN
+                    0x1               cc2420radiom.o
+cc2420radiom_bPacketReceiving
+                    0x1               cc2420radiom.o
+packetslocal        0x2               logger.o
+lcounter            0x4               hpltimer1.o
+CURRENT_NODE_ID     0x2               nodeconfig.o
+highcounter         0x2               clockraw.o
+cc2420radiom_RxBuf  0x74              cc2420radiom.o
+filename            0xd               commandhandle.o
+cc2420radiom_bAckEnable
+                    0x1               cc2420radiom.o
+cc2420radiom_countRetry
+                    0x1               cc2420radiom.o
+radioReceiveDataReady
+                    0x1               libradio.o
+TimerM_mScale       0x1               timerraw.o
+reply               0x20              commandhandle.o
+i                   0x2               blink.o
+hplcc2420interruptm_FIFOLastState
+                    0x1               hplcc2420interruptm.o
+radio_buf           0xc               radiocontrol.o
+nBytes              0x2               filesocket.o
+hplcc2420interruptm_CCALastState
+                    0x1               hplcc2420interruptm.o
+hcounter2           0x2               hpltimer1.o
+TimerM_mInterval    0x1               timerraw.o
+cc2420radiom_LocalAddr
+                    0x2               cc2420radiom.o
+receivehandles      0x3c              packethandler.o
+cc2420radiom_txbufptr
+                    0x2               cc2420radiom.o
+cc2420radiom_stateRadio
+                    0x1               cc2420radiom.o
+openthread          0x2               filesocket.o
+timercallback       0x10              generictimer.o
+packetsdeliver      0x2               logger.o
+expectNextNum       0x2               commandhandle.o
+TimerM_setIntervalFlag
+                    0x1               timerraw.o
+hplcc2420fifom_rxbuf
+                    0x2               hplcc2420fifom.o
+hplcc2420fifom_txbufBusy
+                    0x1               hplcc2420fifom.o
+hplcc2420fifom_txbuf
+                    0x2               hplcc2420fifom.o
+hcounter            0x2               hpltimer1.o
+datamsg             0x74              generictimer.o
+currentMsg          0x74              socket.o
+counter             0x2               blink.o
+TimerM_queue        0x10              timerraw.o
+addr                0x2               blink.o
+hplcc2420fifom_rxbufBusy
+                    0x1               hplcc2420fifom.o
+HPLTimer1M_set_flag
+                    0x1               hpltimer1.o
+hplcc2420interruptm_CCAWaitForState
+                    0x1               hplcc2420interruptm.o
+filepathaddr        0x14              filesocket.o
+AMStandard_state    0x1               amradio.o
+HPLClock_mscale     0x1               clockraw.o
+chunksequencenum    0x2               commandhandle.o
+LITE_queue          0x30              scheduling.o
+cc2420radiom_txlength
+                    0x1               cc2420radiom.o
+vectornode          0xc               vectornode.o
+thread_task_active  0x1               threadkernel.o
+TimerM_interval_outstanding
+                    0x2               timerraw.o
+blockid             0x1               commandhandle.o
+AMStandard_counter  0x2               amradio.o
+lcounter2           0x4               hpltimer1.o
+radioReceivePacketInfo
+                    0x4               libradio.o
+HPLClock_nextScale  0x1               clockraw.o
+IncomingLength      0x1               commandhandle.o
+cc2420controlm_gCurrentParameters
+                    0x1c              cc2420controlm.o
+IncomingMsg         0x40              commandhandle.o
+PacketInfo          0x2               commandhandle.o
+AMStandard_lastCount
+                    0x2               amradio.o
+ahcounter2          0x2               hplcc2420interruptm.o
+threadindex         0x1               filesocket.o
+offset              0x2               filesocket.o
+thisthread          0x2               commandhandle.o
+TimerM_queue_head   0x1               timerraw.o
+HPLTimer1M_nextScale
+                    0x1               hpltimer1.o
+HPLCC2420M_bSpiAvail
+                    0x1               hplcc2420m.o
+alcounter2          0x4               hplcc2420interruptm.o
+databuffer          0x2               filesocket.o
+HPLTimer1M_minterval
+                    0x2               hpltimer1.o
+Leds_ledsOn         0x1               leds.o
+currentthread       0x2               logger.o
+HPLTimer1M_mscale   0x1               hpltimer1.o
+currentpower        0x1               generictimer.o
+stackinterrupt_ptr  0x2               threadkernel.o
+TimerM_mTimerList   0x90              timerraw.o
+HPLCC2420M_ramaddr  0x2               hplcc2420m.o
+LITE_sched_num      0x1               scheduling.o
+AMStandard_buffer   0x2               amradio.o
+CC2420_CHANNEL      0x1               cc2420controlm.o
+maxthreadrambound   0x2               threadkernel.o
+nodeid              0x2               commandhandle.o
+networkid           0x11              nodeconfig.o
+thiscurrentthread   0x2               logger.o
+HPLClock_set_flag   0x1               clockraw.o
+HPLClock_minterval  0x1               clockraw.o
+lowcounter          0x2               clockraw.o
+hplcc2420fifom_rxlength
+                    0x1               hplcc2420fifom.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+Address of section .bootloader set to 0x1e000
+Address of section .systemcall.1 set to 0x1d400
+Address of section .systemcall.2 set to 0x1d500
+Address of section .systemcall.3 set to 0x1d600
+Address of section .systemcall.4 set to 0x1d700
+Address of section .systemcall.5 set to 0x1d800
+Address of section .systemcall.6 set to 0x1d900
+Address of section .systemcall.7 set to 0x1da00
+Address of section .systemcall.8 set to 0x1db00
+Address of section .systemcall.9 set to 0x1dc00
+Address of section .systemcall.10 set to 0x1dd00
+Address of section .systemcall.11 set to 0x1de00
+LOAD realmain.o
+LOAD bootloader.o
+LOAD nodeconfig.o
+LOAD avrhardware.o
+LOAD micazhardware.o
+LOAD serialprint.o
+LOAD stdserial.o
+LOAD amradio.o
+LOAD packethandler.o
+LOAD cc2420controlm.o
+LOAD cc2420radiom.o
+LOAD hplcc2420fifom.o
+LOAD hplcc2420interruptm.o
+LOAD hplcc2420m.o
+LOAD hpltimer1.o
+LOAD scheduling.o
+LOAD threaddata.o
+LOAD threadkernel.o
+LOAD threadtools.o
+LOAD adcdriver.o
+LOAD leds.o
+LOAD sounder.o
+LOAD bytestorage.o
+LOAD ioeeprom.o
+LOAD fs_structure.o
+LOAD fsapi.o
+LOAD fsconfig.o
+LOAD fsstring.o
+LOAD inode.o
+LOAD stdfsa.o
+LOAD vectorflash.o
+LOAD vectornode.o
+LOAD atmelflash.o
+LOAD pagestorage.o
+LOAD clockraw.o
+LOAD generictimer.o
+LOAD globaltiming.o
+LOAD timerraw.o
+LOAD byteorder.o
+LOAD string.o
+LOAD types.o
+LOAD math.o
+LOAD commandhandle.o
+LOAD socket.o
+LOAD adcsocket.o
+LOAD eepromsocket.o
+LOAD filesocket.o
+LOAD radiocontrol.o
+LOAD syscall.o
+LOAD threadsyscall.o
+LOAD eventlogger.o
+LOAD libadc.o
+LOAD libeeprom.o
+LOAD libfile.o
+LOAD libleds.o
+LOAD libradio.o
+LOAD libserial.o
+LOAD libsounder.o
+LOAD libstring.o
+LOAD libsystem.o
+LOAD libthread.o
+LOAD libmutex.o
+LOAD logger.o
+LOAD blink.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0xaf1e
+ *(.vectors)
+ .vectors       0x00000000       0x8c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ .progmem.gcc_sw_table
+                0x0000008c      0x130 commandhandle.o
+ *(.progmem*)
+                0x000001bc                . = ALIGN (0x2)
+                0x000001bc                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x000001bc        0x0 linker stubs
+ *(.trampolines*)
+                0x000001bc                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x000001bc                __ctors_start = .
+ *(.ctors)
+                0x000001bc                __ctors_end = .
+                0x000001bc                __dtors_start = .
+ *(.dtors)
+                0x000001bc                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x000001bc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+                0x000001bc                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000001bc        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000001c8       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+                0x000001c8                __do_copy_data
+ .init4         0x000001e2       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+                0x000001e2                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000001f2        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+ *(.init9)
+ *(.text)
+ .text          0x000001fa        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+                0x000001fa                __vector_22
+                0x000001fa                __vector_28
+                0x000001fa                __vector_1
+                0x000001fa                __vector_32
+                0x000001fa                __vector_34
+                0x000001fa                __vector_24
+                0x000001fa                __bad_interrupt
+                0x000001fa                __vector_6
+                0x000001fa                __vector_31
+                0x000001fa                __vector_3
+                0x000001fa                __vector_23
+                0x000001fa                __vector_30
+                0x000001fa                __vector_25
+                0x000001fa                __vector_13
+                0x000001fa                __vector_17
+                0x000001fa                __vector_19
+                0x000001fa                __vector_27
+                0x000001fa                __vector_5
+                0x000001fa                __vector_33
+                0x000001fa                __vector_4
+                0x000001fa                __vector_9
+                0x000001fa                __vector_2
+                0x000001fa                __vector_29
+                0x000001fa                __vector_8
+                0x000001fa                __vector_14
+                0x000001fa                __vector_10
+                0x000001fa                __vector_16
+                0x000001fa                __vector_20
+ .text          0x000001fe      0x266 realmain.o
+                0x000001fe                main
+                0x0000040c                initCommandReceived
+ .text          0x00000464        0x0 bootloader.o
+ .text          0x00000464       0x48 nodeconfig.o
+                0x00000496                node_readnodeid
+                0x00000474                node_readinitstatus
+                0x0000048a                node_setinitstatus
+                0x000004a0                node_writenodeid
+                0x0000047e                node_setradiochannel
+                0x00000464                node_readnodestring
+                0x0000046a                node_getradiochannel
+ .text          0x000004ac      0x610 avrhardware.o
+                0x000005ac                LITE_MAKE_BAT_MON_OUTPUT
+                0x000006d0                LITE_CLR_INT2_PIN
+                0x00000930                LITE_SET_UART_XCK0_PIN
+                0x00000914                LITE_CLR_UART_TXD0_PIN
+                0x00000560                LITE_SET_SERIAL_ID_PIN
+                0x00000938                LITE_READ_UART_XCK0_PIN
+                0x000006a0                LITE_SET_INT1_PIN
+                0x000007ca                LITE_CLR_PW2_PIN
+                0x00000508                LITE_READ_RED_LED_PIN
+                0x00000974                LITE_MAKE_AC_NEG_OUTPUT
+                0x0000080e                LITE_MAKE_PW3_INPUT
+                0x000004c4                _avr_disable_interrupt
+                0x000007a2                LITE_MAKE_PW0_INPUT
+                0x000008b0                LITE_MAKE_PW7_OUTPUT
+                0x00000716                LITE_MAKE_INT3_OUTPUT
+                0x0000069c                LITE_MAKE_INT0_INPUT
+                0x00000544                LITE_SET_YELLOW_LED_PIN
+                0x00000a3a                LITE_CLR_TEMP_CTL_PIN
+                0x00000984                LITE_READ_UART_RXD1_PIN
+                0x000007be                LITE_MAKE_PW1_OUTPUT
+                0x00000998                LITE_MAKE_UART_RXD1_OUTPUT
+                0x00000980                LITE_CLR_UART_RXD1_PIN
+                0x00000a90                LITE_MAKE_MIC_MUX_SEL_OUTPUT
+                0x00000a12                LITE_CLR_PHOTO_CTL_PIN
+                0x000006fe                LITE_CLR_INT3_PIN
+                0x00000910                LITE_SET_UART_TXD0_PIN
+                0x00000832                LITE_MAKE_PW4_OUTPUT
+                0x00000a36                LITE_SET_TEMP_CTL_PIN
+                0x0000080a                LITE_MAKE_PW3_OUTPUT
+                0x00000a0a                LITE_MAKE_TONE_DECODE_SIGNAL_INPUT
+                0x00000670                LITE_MAKE_FLASH_IN_OUTPUT
+                0x0000071e                LITE_SET_MOSI_PIN
+                0x00000894                LITE_SET_PW7_PIN
+                0x0000053c                LITE_MAKE_GREEN_LED_OUTPUT
+                0x00000766                LITE_MAKE_MISO_INPUT
+                0x00000842                LITE_READ_PW5_PIN
+                0x000005d4                LITE_MAKE_THERM_PWR_INPUT
+                0x000008b4                LITE_MAKE_PW7_INPUT
+                0x00000634                LITE_READ_FLASH_OUT_PIN
+                0x00000674                LITE_MAKE_FLASH_IN_INPUT
+                0x000005d0                LITE_MAKE_THERM_PWR_OUTPUT
+                0x000008dc                LITE_READ_I2C_BUS1_SDA_PIN
+                0x000007c6                LITE_SET_PW2_PIN
+                0x0000083e                LITE_CLR_PW5_PIN
+                0x00000918                LITE_READ_UART_TXD0_PIN
+                0x000009f0                LITE_MAKE_UART_XCK1_INPUT
+                0x0000073e                LITE_MAKE_MOSI_INPUT
+                0x00000a58                LITE_MAKE_TEMP_CTL_OUTPUT
+                0x000004bc                _avr_sleep
+                0x0000051c                LITE_MAKE_RED_LED_OUTPUT
+                0x000008c0                LITE_READ_I2C_BUS1_SCL_PIN
+                0x000004c8                _atomic_start_avr
+                0x000009f8                LITE_CLR_TONE_DECODE_SIGNAL_PIN
+                0x00000600                LITE_SET_FLASH_CLK_PIN
+                0x00000a2e                LITE_MAKE_PHOTO_CTL_OUTPUT
+                0x0000058c                LITE_CLR_BAT_MON_PIN
+                0x000006f6                LITE_MAKE_INT2_INPUT
+                0x00000590                LITE_READ_BAT_MON_PIN
+                0x000009d0                LITE_READ_UART_XCK1_PIN
+                0x00000628                LITE_MAKE_FLASH_CLK_INPUT
+                0x00000934                LITE_CLR_UART_XCK0_PIN
+                0x0000076e                LITE_CLR_SPI_SCK_PIN
+                0x00000558                LITE_MAKE_YELLOW_LED_OUTPUT
+                0x00000742                LITE_SET_MISO_PIN
+                0x00000624                LITE_MAKE_FLASH_CLK_OUTPUT
+                0x0000094c                LITE_MAKE_UART_XCK0_OUTPUT
+                0x0000088c                LITE_MAKE_PW6_OUTPUT
+                0x00000588                LITE_SET_BAT_MON_PIN
+                0x000009ec                LITE_MAKE_UART_XCK1_OUTPUT
+                0x0000099c                LITE_MAKE_UART_RXD1_INPUT
+                0x0000086e                LITE_READ_PW6_PIN
+                0x00000a0e                LITE_SET_PHOTO_CTL_PIN
+                0x000009fc                LITE_READ_TONE_DECODE_SIGNAL_PIN
+                0x0000064c                LITE_MAKE_FLASH_OUT_OUTPUT
+                0x00000a88                LITE_SET_MIC_MUX_SEL_PIN
+                0x00000524                LITE_SET_GREEN_LED_PIN
+                0x000007aa                LITE_CLR_PW1_PIN
+                0x00000a7e                LITE_SET_MAG_CTL_PIN
+                0x0000076a                LITE_SET_SPI_SCK_PIN
+                0x00000a92                LITE_SET_PIN_DIRECTIONS
+                0x0000081a                LITE_READ_PW4_PIN
+                0x000009a4                LITE_CLR_UART_TXD1_PIN
+                0x00000580                LITE_MAKE_SERIAL_ID_OUTPUT
+                0x000009c4                LITE_MAKE_UART_TXD1_INPUT
+                0x00000978                LITE_MAKE_AC_NEG_INPUT
+                0x00000604                LITE_CLR_FLASH_CLK_PIN
+                0x000008f4                LITE_SET_UART_RXD0_PIN
+                0x000006fa                LITE_SET_INT3_PIN
+                0x00000a82                LITE_CLR_MAG_CTL_PIN
+                0x00000a74                LITE_SET_ACCEL_CTL_PIN
+                0x0000065c                LITE_READ_FLASH_IN_PIN
+                0x0000090c                LITE_MAKE_UART_RXD0_INPUT
+                0x000005b8                LITE_CLR_THERM_PWR_PIN
+                0x00000a7c                LITE_MAKE_ACCEL_CTL_OUTPUT
+                0x00000928                LITE_MAKE_UART_TXD0_OUTPUT
+                0x00000786                LITE_MAKE_SPI_SCK_INPUT
+                0x0000086a                LITE_CLR_PW6_PIN
+                0x000005b0                LITE_MAKE_BAT_MON_INPUT
+                0x00000678                LITE_SET_INT0_PIN
+                0x000008fc                LITE_READ_UART_RXD0_PIN
+                0x00000584                LITE_MAKE_SERIAL_ID_INPUT
+                0x000004c0                _avr_enable_interrupt
+                0x000009a0                LITE_SET_UART_TXD1_PIN
+                0x000006c8                LITE_MAKE_INT1_INPUT
+                0x00000564                LITE_CLR_SERIAL_ID_PIN
+                0x000005fc                LITE_MAKE_FLASH_SELECT_INPUT
+                0x0000095c                LITE_READ_AC_NEG_PIN
+                0x00000866                LITE_SET_PW6_PIN
+                0x000005bc                LITE_READ_THERM_PWR_PIN
+                0x000008d8                LITE_CLR_I2C_BUS1_SDA_PIN
+                0x000006d4                LITE_READ_INT2_PIN
+                0x00000702                LITE_READ_INT3_PIN
+                0x000005e0                LITE_READ_FLASH_SELECT_PIN
+                0x00000954                LITE_SET_AC_NEG_PIN
+                0x000008b8                LITE_SET_I2C_BUS1_SCL_PIN
+                0x000009f4                LITE_SET_TONE_DECODE_SIGNAL_PIN
+                0x00000a78                LITE_CLR_ACCEL_CTL_PIN
+                0x00000958                LITE_CLR_AC_NEG_PIN
+                0x00000908                LITE_MAKE_UART_RXD0_OUTPUT
+                0x000004e0                LITE_uwait
+                0x000005f8                LITE_MAKE_FLASH_SELECT_OUTPUT
+                0x00000a32                LITE_MAKE_PHOTO_CTL_INPUT
+                0x00000950                LITE_MAKE_UART_XCK0_INPUT
+                0x000007ae                LITE_READ_PW1_PIN
+                0x000007ea                LITE_SET_PW3_PIN
+                0x0000055c                LITE_MAKE_YELLOW_LED_INPUT
+                0x00000772                LITE_READ_SPI_SCK_PIN
+                0x00000650                LITE_MAKE_FLASH_OUT_INPUT
+                0x000007f2                LITE_READ_PW3_PIN
+                0x000009cc                LITE_CLR_UART_XCK1_PIN
+                0x000004da                LITE_wait_250ns
+                0x000007ee                LITE_CLR_PW3_PIN
+                0x00000a6e                LITE_CLR_SOUNDER_CTL_PIN
+                0x0000062c                LITE_SET_FLASH_OUT_PIN
+                0x000008cc                LITE_MAKE_I2C_BUS1_SCL_OUTPUT
+                0x00000504                LITE_CLR_RED_LED_PIN
+                0x000008f0                LITE_MAKE_I2C_BUS1_SDA_INPUT
+                0x00000528                LITE_CLR_GREEN_LED_PIN
+                0x000009c8                LITE_SET_UART_XCK1_PIN
+                0x000008ec                LITE_MAKE_I2C_BUS1_SDA_OUTPUT
+                0x0000079e                LITE_MAKE_PW0_OUTPUT
+                0x00000568                LITE_READ_SERIAL_ID_PIN
+                0x000008d4                LITE_SET_I2C_BUS1_SDA_PIN
+                0x000005dc                LITE_CLR_FLASH_SELECT_PIN
+                0x00000a5c                LITE_MAKE_TEMP_CTL_INPUT
+                0x0000092c                LITE_MAKE_UART_TXD0_INPUT
+                0x00000a3e                LITE_READ_TEMP_CTL_PIN
+                0x00000816                LITE_CLR_PW4_PIN
+                0x00000812                LITE_SET_PW4_PIN
+                0x000004b2                _atomic_sleep
+                0x00000a16                LITE_READ_PHOTO_CTL_PIN
+                0x00000862                LITE_MAKE_PW5_INPUT
+                0x00000654                LITE_SET_FLASH_IN_PIN
+                0x000007e2                LITE_MAKE_PW2_OUTPUT
+                0x00000540                LITE_MAKE_GREEN_LED_INPUT
+                0x00000630                LITE_CLR_FLASH_OUT_PIN
+                0x000006c4                LITE_MAKE_INT1_OUTPUT
+                0x0000071a                LITE_MAKE_INT3_INPUT
+                0x0000083a                LITE_SET_PW5_PIN
+                0x000006cc                LITE_SET_INT2_PIN
+                0x0000097c                LITE_SET_UART_RXD1_PIN
+                0x000005d8                LITE_SET_FLASH_SELECT_PIN
+                0x000009a8                LITE_READ_UART_TXD1_PIN
+                0x00000a8c                LITE_CLR_MIC_MUX_SEL_PIN
+                0x00000890                LITE_MAKE_PW6_INPUT
+                0x000006a8                LITE_READ_INT1_PIN
+                0x000006f2                LITE_MAKE_INT2_OUTPUT
+                0x000008d0                LITE_MAKE_I2C_BUS1_SCL_INPUT
+                0x00000608                LITE_READ_FLASH_CLK_PIN
+                0x00000a06                LITE_MAKE_TONE_DECODE_SIGNAL_OUTPUT
+                0x00000726                LITE_READ_MOSI_PIN
+                0x0000089c                LITE_READ_PW7_PIN
+                0x0000078a                LITE_SET_PW0_PIN
+                0x000008bc                LITE_CLR_I2C_BUS1_SCL_PIN
+                0x000007e6                LITE_MAKE_PW2_INPUT
+                0x000007ce                LITE_READ_PW2_PIN
+                0x0000073a                LITE_MAKE_MOSI_OUTPUT
+                0x00000a68                LITE_MAKE_MIC_CTL_OUTPUT
+                0x00000698                LITE_MAKE_INT0_OUTPUT
+                0x00000722                LITE_CLR_MOSI_PIN
+                0x00000500                LITE_SET_RED_LED_PIN
+                0x000009c0                LITE_MAKE_UART_TXD1_OUTPUT
+                0x0000052c                LITE_READ_GREEN_LED_PIN
+                0x00000792                LITE_READ_PW0_PIN
+                0x000004ce                _atomic_end_avr
+                0x00000a72                LITE_MAKE_SOUNDER_CTL_OUTPUT
+                0x000007a6                LITE_SET_PW1_PIN
+                0x00000a86                LITE_MAKE_MAG_CTL_OUTPUT
+                0x000005b4                LITE_SET_THERM_PWR_PIN
+                0x000004ac                wait_cycle
+                0x00000762                LITE_MAKE_MISO_OUTPUT
+                0x0000074a                LITE_READ_MISO_PIN
+                0x00000746                LITE_CLR_MISO_PIN
+                0x00000a60                LITE_SET_MIC_CTL_PIN
+                0x0000085e                LITE_MAKE_PW5_OUTPUT
+                0x00000658                LITE_CLR_FLASH_IN_PIN
+                0x00000a64                LITE_CLR_MIC_CTL_PIN
+                0x000004d2                avr_resetNode
+                0x00000898                LITE_CLR_PW7_PIN
+                0x0000067c                LITE_CLR_INT0_PIN
+                0x00000a6a                LITE_SET_SOUNDER_CTL_PIN
+                0x0000078e                LITE_CLR_PW0_PIN
+                0x00000548                LITE_CLR_YELLOW_LED_PIN
+                0x00000520                LITE_MAKE_RED_LED_INPUT
+                0x0000054c                LITE_READ_YELLOW_LED_PIN
+                0x000008f8                LITE_CLR_UART_RXD0_PIN
+                0x00000836                LITE_MAKE_PW4_INPUT
+                0x000006a4                LITE_CLR_INT1_PIN
+                0x000007c2                LITE_MAKE_PW1_INPUT
+                0x00000782                LITE_MAKE_SPI_SCK_OUTPUT
+                0x00000680                LITE_READ_INT0_PIN
+ .text          0x00000abc      0x1b2 micazhardware.o
+                0x00000abc                CC2420_FIFOP_INT_MODE
+                0x00000b84                LITE_MAKE_CC_FIFOP1_OUTPUT
+                0x00000c50                setCC2420Pins
+                0x00000ade                LITE_READ_CC_RSTN_PIN
+                0x00000bc2                LITE_READ_CC_SFD_PIN
+                0x00000b56                LITE_MAKE_CC_FIFOP_OUTPUT
+                0x00000bde                LITE_MAKE_CC_SFD_INPUT
+                0x00000ad6                LITE_SET_CC_RSTN_PIN
+                0x00000be6                LITE_CLR_CC_CS_PIN
+                0x00000b5a                LITE_MAKE_CC_FIFOP_INPUT
+                0x00000be2                LITE_SET_CC_CS_PIN
+                0x00000b94                LITE_READ_CC_CCA_PIN
+                0x00000bfe                LITE_SET_CC_FIFO_PIN
+                0x00000b88                LITE_MAKE_CC_FIFOP1_INPUT
+                0x00000b08                LITE_CLR_CC_VREN_PIN
+                0x00000c1e                LITE_MAKE_CC_FIFO_INPUT
+                0x00000b8c                LITE_SET_CC_CCA_PIN
+                0x00000bb6                LITE_MAKE_CC_CCA_INPUT
+                0x00000bda                LITE_MAKE_CC_SFD_OUTPUT
+                0x00000bbe                LITE_CLR_CC_SFD_PIN
+                0x00000b38                LITE_READ_CC_FIFOP_PIN
+                0x00000b30                LITE_SET_CC_FIFOP_PIN
+                0x00000b5e                LITE_SET_CC_FIFOP1_PIN
+                0x00000c06                LITE_READ_CC_FIFO_PIN
+                0x00000c26                LITE_CLR_RADIO_CCA_PIN
+                0x00000c48                LITE_MAKE_RADIO_CCA_OUTPUT
+                0x00000b00                LITE_MAKE_CC_RSTN_INPUT
+                0x00000ada                LITE_CLR_CC_RSTN_PIN
+                0x00000bf6                LITE_MAKE_CC_CS_OUTPUT
+                0x00000b90                LITE_CLR_CC_CCA_PIN
+                0x00000c4c                LITE_MAKE_RADIO_CCA_INPUT
+                0x00000b28                LITE_MAKE_CC_VREN_OUTPUT
+                0x00000b66                LITE_READ_CC_FIFOP1_PIN
+                0x00000bfa                LITE_MAKE_CC_CS_INPUT
+                0x00000b34                LITE_CLR_CC_FIFOP_PIN
+                0x00000bb2                LITE_MAKE_CC_CCA_OUTPUT
+                0x00000bba                LITE_SET_CC_SFD_PIN
+                0x00000bea                LITE_READ_CC_CS_PIN
+                0x00000c02                LITE_CLR_CC_FIFO_PIN
+                0x00000b0c                LITE_READ_CC_VREN_PIN
+                0x00000c2a                LITE_READ_RADIO_CCA_PIN
+                0x00000c1a                LITE_MAKE_CC_FIFO_OUTPUT
+                0x00000c22                LITE_SET_RADIO_CCA_PIN
+                0x00000b04                LITE_SET_CC_VREN_PIN
+                0x00000afc                LITE_MAKE_CC_RSTN_OUTPUT
+                0x00000b2c                LITE_MAKE_CC_VREN_INPUT
+                0x00000b62                LITE_CLR_CC_FIFOP1_PIN
+ .text          0x00000c6e      0x408 serialprint.o
+                0x00000c6e                initUSART
+                0x00000cd0                printString
+                0x00000e08                printIntegerU32
+                0x00000e32                printStringLn
+                0x00000d68                usartPutChipHex
+                0x00000d7c                usartPutLong2
+                0x00000dce                printInteger32
+                0x00000cb4                usartPrint_base
+                0x00000d3c                printStringN_base
+                0x00000cfa                printStringN
+                0x00000e98                printInteger
+                0x00000e52                usartPutLong
+                0x00000c98                usartPrint
+                0x00000db6                usartPutHex
+                0x00000f34                __vector_18
+ .text          0x00001076       0xfa stdserial.o
+                0x000010e6                printfinteger32
+                0x00001076                printfintegeru32
+                0x00001124                printfval
+                0x0000115a                printfstrln
+                0x00001130                printfstrlen
+                0x000010b4                printfstr
+                0x0000112a                printfstrlen_base
+ .text          0x00001170      0x1d6 amradio.o
+                0x00001190                AMStandard_reportSendDone
+                0x00001280                AMStandard_Control_start
+                0x00001180                AMStandard_ReceiveMsg_default_receive
+                0x000012a4                AMStandard_RadioSend_send
+                0x00001174                AMStandard_SendMsg_sendDone
+                0x0000117c                AMStandard_sendDone
+                0x00001184                AMStandard_ReceiveMsg_receive
+                0x00001178                AMStandard_default_sendDone
+                0x0000127a                AMStandard_RadioControl_start
+                0x000012be                AMStandard_sendTask
+                0x00001170                AMStandard_SendMsg_default_sendDone
+                0x00001188                AMStandard_RadioSend_sendDone
+                0x000012e6                AMStandard_RadioReceive_receive
+                0x0000128a                AMStandard_Control_init
+                0x00001202                AMStandard_SendMsg_send
+                0x00001198                restoreRadioState
+                0x000011a2                received
+ .text          0x00001346      0x226 packethandler.o
+                0x0000135c                registerEvent
+                0x0000145e                Standard_Receive_Packet
+                0x0000142e                deleteThreadRegistrationInReceiverHandles
+                0x00001346                initRadioHandle
+                0x000013e8                deRegisterEvent
+ .text          0x0000156c      0x524 cc2420controlm.o
+                0x0000194c                cc2420controlm_PostOscillatorOn
+                0x000017ca                cc2420controlm_SplitControl_start
+                0x0000170a                cc2420controlm_CC2420Control_TuneManual
+                0x00001778                cc2420controlm_CC2420Control_OscillatorOn
+                0x00001594                cc2420controlm_CC2420Control_setShortAddress
+                0x00001746                cc2420controlm_SplitControl_initDone
+                0x00001828                cc2420controlm_SplitControl_init
+                0x000015f4                cc2420controlm_SetRegs
+                0x0000173c                cc2420controlm_CC2420Control_RxMode
+                0x00001588                cc2420controlm_HPLChipcon_read
+                0x00001772                cc2420controlm_CCA_startWait
+                0x00001792                cc2420controlm_CC2420Control_TuneChannel
+                0x000016d2                cc2420controlm_CC2420Control_TunePower
+                0x000015d6                cc2420controlm_CCA_fired
+                0x0000158e                cc2420controlm_HPLChipconRAM_write
+                0x00001752                cc2420controlm_CC2420Control_VREFOff
+                0x000015c4                cc2420controlm_SplitControl_startDone
+                0x000015d0                cc2420controlm_HPLChipcon_write
+                0x0000174c                cc2420controlm_taskInitDone
+                0x0000156c                cc2420controlm_HPLChipconRAM_writeDone
+                0x00001570                cc2420controlm_HPLChipconControl_init
+                0x000015ee                cc2420controlm_HPLChipcon_cmd
+                0x000015ca                cc2420controlm_HPLChipconControl_start
+                0x00001762                cc2420controlm_CC2420Control_VREFOn
+ .text          0x00001a90      0x892 cc2420radiom.o
+                0x00001c42                cc2420radiom_SplitControl_start
+                0x00002020                cc2420radiom_FIFOP_fired
+                0x00001c00                cc2420radiom_CC2420SplitControl_startDone
+                0x00001fae                cc2420radiom_HPLChipconFIFO_TXFIFODone
+                0x00001a98                cc2420radiom_SplitControl_default_startDone
+                0x00001aa0                cc2420radiom_SplitControl_initDone
+                0x00001b60                cc2420radiom_PacketRcvd
+                0x000021d6                cc2420radiom_delayedRXFIFO
+                0x0000227c                cc2420radiom_delayedRXFIFOtask
+                0x00001af8                cc2420radiom_Send_sendDone
+                0x00001a9c                cc2420radiom_SplitControl_startDone
+                0x00001b54                cc2420radiom_HPLChipconFIFO_readRXFIFO
+                0x00001bbe                cc2420radiom_FIFOP_startWait
+                0x00001aa4                restorecc2420state
+                0x000020a6                cc2420radiom_HPLChipconFIFO_RXFIFODone
+                0x00001bb8                cc2420radiom_CC2420Control_RxMode
+                0x00001a94                cc2420radiom_CC2420SplitControl_initDone
+                0x00001afe                cc2420radiom_sendFailed
+                0x00001d00                cc2420radiom_SFD_captured
+                0x00001c3c                cc2420radiom_CC2420SplitControl_start
+                0x00001cbc                cc2420radiom_sendPacket
+                0x00001a90                cc2420radiom_SplitControl_default_initDone
+                0x00001bc4                cc2420radiom_HPLChipconFIFO_writeTXFIFO
+                0x00001af2                cc2420radiom_SFD_disable
+                0x00001c7e                cc2420radiom_SplitControl_init
+                0x00001e70                cc2420radiom_Send_send
+                0x00001bd0                cc2420radiom_flushRXFIFO
+                0x00001b5a                cc2420radiom_Receive_receive
+                0x00001dac                cc2420radiom_startSend
+                0x00001e1a                cc2420radiom_startRadio
+                0x00001bac                cc2420radiom_FIFOP_disable
+                0x00001f3e                cc2420radiom_tryToSend
+                0x00001bfa                cc2420radiom_SFD_enableCapture
+                0x00001aac                cc2420radiom_StdControl_start
+                0x00001b24                cc2420radiom_PacketSent
+                0x00001bb2                cc2420radiom_HPLChipcon_read
+                0x00001bca                cc2420radiom_HPLChipcon_cmd
+ .text          0x00002322      0x218 hplcc2420fifom.o
+                0x000024d8                hplcc2420fifom_signalRXdone
+                0x0000250c                hplcc2420fifom_signalTXdone
+                0x00002412                hplcc2420fifom_HPLCC2420FIFO_writeTXFIFO
+                0x00002322                hplcc2420fifom_HPLCC2420FIFO_readRXFIFO
+                0x00002506                hplcc2420fifom_HPLCC2420FIFO_TXFIFODone
+                0x000024d2                hplcc2420fifom_HPLCC2420FIFO_RXFIFODone
+ .text          0x0000253a      0x234 hplcc2420interruptm.o
+                0x0000260e                hplcc2420interruptm_CCA_fired
+                0x000025c2                hplcc2420interruptm_CCATimer_start
+                0x00002680                hplcc2420interruptm_FIFOP_fired
+                0x00002596                hplcc2420interruptm_SFD_enableCapture
+                0x0000254c                hplcc2420interruptm_SFDCapture_isOverflowPending
+                0x00002572                hplcc2420interruptm_SFDCapture_captured
+                0x0000255e                hplcc2420interruptm_SFD_disable
+                0x000026ac                __vector_7
+                0x000025e2                hplcc2420interruptm_CCA_startWait
+                0x00002686                hplcc2420interruptm_FIFOP_startWait
+                0x00002590                hplcc2420interruptm_SFDCapture_enableEvents
+                0x00002614                hplcc2420interruptm_CCATimer_fired
+                0x000025d2                hplcc2420interruptm_FIFOTimer_start
+                0x00002552                hplcc2420interruptm_SFD_captured
+                0x00002558                hplcc2420interruptm_SFDCapture_disableEvents
+                0x00002650                hplcc2420interruptm_FIFOTimer_fired
+                0x00002548                hplcc2420interruptm_FIFO_fired
+                0x0000256c                hplcc2420interruptm_SFDCapture_clearOverflow
+                0x0000253a                hplcc2420interruptm_FIFOP_disable
+                0x00002566                hplcc2420interruptm_SFDCapture_setEdge
+                0x00002544                hplcc2420interruptm_FIFO_default_fired
+ .text          0x0000276e      0x20c hplcc2420m.o
+                0x000028fe                HPLCC2420M_HPLCC2420RAM_writeDone
+                0x000027f0                HPLCC2420M_HPLCC2420_write
+                0x000027c6                HPLCC2420M_HPLCC2420_cmd
+                0x00002844                HPLCC2420M_HPLCC2420RAM_write
+                0x0000276e                HPLCC2420M_HPLCC2420_read
+                0x0000291e                HPLCC2420M_StdControl_init
+                0x00002904                HPLCC2420M_signalRAMWr
+ .text          0x0000297a      0x332 hpltimer1.o
+                0x00002c58                HPLTimer1M_StdControl_start
+                0x0000297a                HPLTimer1M_CaptureT1_enableEvents
+                0x000029d2                __vector_12
+                0x00002b36                __vector_11
+                0x0000298e                HPLTimer1M_CaptureT1_clearOverflow
+                0x00002b12                HPLTimer1M_StdControl_init
+                0x00002ab6                HPLTimer1M_CaptureT1_getEvent
+                0x00002ace                HPLTimer1M_Timer1_setRate
+                0x00002c0e                HPLTimer1M_StdControl_stop
+                0x00002b30                HPLTimer1M_CaptureT1_captured
+                0x000029a8                HPLTimer1M_Timer1_fire
+                0x000029a4                HPLTimer1M_Timer1_default_fire
+                0x00002996                HPLTimer1M_CaptureT1_disableEvents
+                0x000029b2                HPLTimer1M_CaptureT1_setEdge
+                0x000029ac                HPLTimer1M_CaptureT1_isOverflowPending
+ .text          0x00002cac      0x136 scheduling.o
+                0x00002cd0                postTask
+                0x00002cac                initScheduling
+                0x00002d3c                runNextTask
+ .text          0x00002de2        0x6 threaddata.o
+                0x00002de2                call_fcn_ptr
+ .text          0x00002de8      0x88a threadkernel.o
+                0x00002de8                is_thread
+                0x00002e2e                lite_switch_to_user_thread
+                0x000033ec                thread_init
+                0x0000324e                thread_func_dispatcher
+                0x00003072                thread_get_next
+                0x0000301a                thread_wakeup
+                0x00002fac                break_point_function
+                0x00003262                create_thread
+                0x000031e4                destroy_user_thread
+                0x00002ed8                thread_yield
+                0x00003000                postNewThreadTask
+                0x00003432                thread_task
+                0x00002f82                sleepThread
+                0x00002e02                setThreadTerminateFunction
+ .text          0x00003672      0x208 threadtools.o
+                0x000037a6                getThreadIndexAddress
+                0x000037a0                getKernelStackAddress
+                0x00003672                memory_conflict_detect
+                0x00003732                check_for_memory_corrupt
+                0x000037e2                barrier_unblock
+                0x0000385a                ServiceTimerFired
+ .text          0x0000387a       0xc6 adcdriver.o
+                0x000038cc                get_light
+                0x000038f8                get_magx
+                0x0000389a                get_adc
+                0x0000391c                get_accx
+                0x0000387a                __vector_21
+                0x000038e2                get_temp
+                0x0000392e                get_accy
+                0x00003892                adcdriver_init_adc
+                0x0000390a                get_magy
+ .text          0x00003940      0x172 leds.o
+                0x000039ac                Leds_greenOff
+                0x00003940                Leds_yellowOff
+                0x000039ec                Leds_greenToggle
+                0x00003960                Leds_yellowOn
+                0x00003980                Leds_yellowToggle
+                0x00003a18                Leds_redOff
+                0x00003a84                Leds_Leds
+                0x000039cc                Leds_greenOn
+                0x00003a38                Leds_redOn
+                0x00003a58                Leds_redToggle
+ .text          0x00003ab2       0x4a sounder.o
+                0x00003ae2                sounderOn
+                0x00003ac8                sounderOff
+                0x00003ab2                sounder_init
+ .text          0x00003afc       0x5a bytestorage.o
+                0x00003b3e                read8uint
+                0x00003b26                read32uint
+                0x00003b38                read8int
+                0x00003b02                write32uint
+                0x00003b4a                genericwriteBytes
+                0x00003b14                write8int
+                0x00003b44                initBytes
+                0x00003b50                genericreadBytes
+                0x00003b2c                read16int
+                0x00003b1a                write8uint
+                0x00003b20                read32int
+                0x00003afc                write32int
+                0x00003b32                read16uint
+                0x00003b0e                write16uint
+                0x00003b08                write16int
+ .text          0x00003b56      0x3d0 ioeeprom.o
+                0x00003c8c                eeprom_read32int
+                0x00003c1a                eeprom_write16int
+                0x00003b56                eeprom_write32int
+                0x00003d08                eeprom_read32uint
+                0x00003ddc                eeprom_write8int
+                0x00003e16                eeprom_write8uint
+                0x00003efe                eeprom_writeBytes
+                0x00003f12                eeprom_readBytes
+                0x00003d6e                eeprom_read16int
+                0x00003c5a                eeprom_write16uint
+                0x00003e96                eeprom_read8int
+                0x00003ed0                eeprom_read8uint
+                0x00003bca                eeprom_write32uint
+                0x00003e44                eeprom_initBytes
+                0x00003dae                eeprom_read16uint
+ .text          0x00003f26       0xc4 fs_structure.o
+                0x00003fc4                releaseAllFid
+                0x00003fa4                releaseFid
+                0x00003f26                initFidTable
+                0x00003f30                getFreeFid
+                0x00003fce                checkFsValid
+ .text          0x00003fea      0xbf4 fsapi.o
+                0x0000481e                fread2
+                0x0000439c                fchangedir
+                0x000043be                fcopy
+                0x000041b8                formatSystem
+                0x000040b8                fdirnode
+                0x00004260                fcurrentdir
+                0x00004afc                fclose2
+                0x00004a76                fcheckStorageAllocation
+                0x000045a0                fwrite2
+                0x000041be                fsearch
+                0x00004210                finfonode
+                0x00004a7c                fcheckFSAllocation
+                0x00004aa2                fcreatedir2
+                0x000044de                fmove
+                0x00004a82                fdelete2
+                0x00004b08                fopen2
+                0x00004a4e                fsprintall
+                0x00004364                fexist2
+                0x00003fea                fseek2
+ .text          0x00004bde      0x1a2 fsconfig.o
+                0x00004bde                fsinitBytes
+                0x00004c74                fswrite16int
+                0x00004d66                fsread8uint
+                0x00004d4c                fsread8int
+                0x00004d18                fsread16int
+                0x00004c38                fswrite32int
+                0x00004ce4                fsread32int
+                0x00004bfc                fswriteBytes
+                0x00004cfe                fsread32uint
+                0x00004c1a                fsreadBytes
+                0x00004cac                fswrite8int
+                0x00004cc8                fswrite8uint
+                0x00004d32                fsread16uint
+                0x00004c90                fswrite16uint
+                0x00004c56                fswrite32uint
+ .text          0x00004d80       0xd8 fsstring.o
+                0x00004e18                extractLastName
+                0x00004d80                extractString
+                0x00004dbe                fileMode
+ .text          0x00004e58      0x584 inode.o
+                0x00005294                buildNewNode
+                0x00004fe8                copyVectorPage
+                0x0000525c                formatFSLite
+                0x00004e94                printNode
+                0x00004e58                checkNodeValid
+                0x000053c4                buildRootNode
+                0x00005080                deleteNode
+                0x00004f44                inodeMatch
+                0x00005266                formatFS
+                0x00005044                copyVectorNode
+ .text          0x000053dc      0x6e4 stdfsa.o
+                0x00005632                openFile
+                0x00005464                getParentDirectory
+                0x00005792                existBlockAddr
+                0x000054e0                removeChildNode
+                0x000053e6                setPwd
+                0x00005526                addChildNode
+                0x000057fa                createFileFromDirectory
+                0x000058b2                existBlock
+                0x00005470                getName
+                0x00005916                changeDirectory
+                0x0000571e                checkName
+                0x00005706                isDirectory
+                0x00005600                freeBlocks
+                0x000054b2                fullBlock
+                0x000053f0                getRealSector
+                0x000053dc                getPwd
+                0x00005966                locateFileName
+                0x00005422                emptyDirectory
+                0x00005856                createDir
+                0x0000556c                newSector
+ .text          0x00005ac0      0x1fe vectorflash.o
+                0x00005bc0                releaseFlashPage
+                0x00005b66                initVectorFlash
+                0x00005c9a                readVectorFlashFromExternalStorage
+                0x00005cac                writeVectorFlashToExternalStorage
+                0x00005c20                scanVectorFlash
+                0x00005b76                getFlashPage
+                0x00005bd4                countVectorFlash
+                0x00005c1e                printVectorFlash
+ .text          0x00005cbe      0x1d4 vectornode.o
+                0x00005cfe                setbit
+                0x00005e80                writeVectorNodeToExternalStorage
+                0x00005d64                initVectorNode
+                0x00005d74                getVectorNode
+                0x00005e6e                readVectorNodeFromExternalStorage
+                0x00005dd0                countVectorNode
+                0x00005e16                scanVectorNode
+                0x00005cbe                getbit
+                0x00005dbc                releaseVectorNode
+ .text          0x00005e92      0xc48 atmelflash.o
+                0x00006564                copyFlash
+                0x00005f7a                atmel_flash_pagesize
+                0x00005e92                atmel_flash_init
+                0x00005f80                atmel_flash_pagenumber
+                0x00006360                atmel_flash_compare
+                0x00006798                writeFlash
+                0x000069de                readFlash
+                0x000060da                atmel_flash_crc
+ .text          0x00006ada       0x24 pagestorage.o
+                0x00006ae0                writepagestorage
+                0x00006af8                getpagesize
+                0x00006ada                copyPage
+                0x00006ae6                readpagestorage
+                0x00006aec                pagestorageinit
+                0x00006af2                getpagenumber
+ .text          0x00006afe      0x2e2 clockraw.o
+                0x00006c26                HPLClock_Clock_setInterval
+                0x00006cbc                HPLClock_Clock_setRate
+                0x00006c22                HPLClock_Clock_getInterval
+                0x00006b60                HPLClock_Timer3_Stop
+                0x00006cf6                HPLClock_Clock_fire
+                0x00006c1e                HPLClock_Clock_readCounter
+                0x00006cfc                __vector_15
+                0x00006c2a                __vector_26
+                0x00006afe                HPLClock_Timer3_Start
+                0x00006b78                HPLClock_readTimeCounterLow
+                0x00006b6c                HPLClock_readTimeCounterHigh
+ .text          0x00006de0      0x19e generictimer.o
+                0x00006f1a                GenericTimerStart
+                0x00006dfc                GenericTimerFired
+                0x00006de0                timercallbackinvoke
+                0x00006f20                setTimerCallBackFunction
+                0x00006f14                GenericTimerStop
+                0x00006f54                GenericTimerInit
+ .text          0x00006f7e       0xbc globaltiming.o
+                0x00006f96                getCurrentCounterHigh
+                0x00006f7e                GenericTimingStop
+                0x00006f84                GenericTimingStart
+                0x00006f90                getCurrentResolution
+                0x00006f9c                getCurrentTimeStamp
+ .text          0x0000703a      0x590 timerraw.o
+                0x00007096                TimerM_Clock_setInterval
+                0x00007060                TimerM_Timer_default_fired
+                0x00007064                TimerM_dequeue
+                0x00007092                TimerM_StdControl_start
+                0x0000703a                TimerM_enqueue
+                0x00007598                TimerM_signalOneTimer
+                0x0000709c                TimerM_Clock_getInterval
+                0x000073bc                TimerM_HandleFire
+                0x000072c0                TimerM_Timer_stop
+                0x000070ee                TimerM_adjustInterval
+                0x000071d4                TimerM_Timer_start
+                0x00007378                TimerM_Timer_fired
+                0x00007386                TimerM_StdControl_init
+                0x000070a8                TimerM_Clock_fire
+                0x00007380                TimerM_Clock_setRate
+                0x000070a2                TimerM_Clock_readCounter
+ .text          0x000075ca       0x90 byteorder.o
+                0x00007602                toLSB16
+                0x000075ca                is_host_lsb
+                0x0000762e                fromLSB16
+ .text          0x0000765a      0x272 string.o
+                0x000076ca                strappend
+                0x0000765a                mystrcpy
+                0x00007758                superstring
+                0x000077a8                mystrncmp
+                0x00007698                mystrncpy
+                0x00007830                str_from_integer
+                0x0000780a                mystrlen
+ .text          0x000078cc       0x66 types.o
+                0x00007926                _atomic_end
+                0x0000790a                nmemset
+                0x000078cc                rcombine
+                0x0000792c                _atomic_start
+                0x000078fe                dec2asciichar
+                0x000078d6                hex2value
+ .text          0x00007932        0x6 math.o
+                0x00007932                getRandomNumber
+ .text          0x00007938     0x1340 commandhandle.o
+                0x0000866e                reply_thread_state_restore_fromfile
+                0x00007cbc                reply_du
+                0x000079dc                WakeupMe
+                0x00007bd0                reply_debugging_set
+                0x00008c40                ShellThread
+                0x000079f4                reply_formatSystem
+                0x00007e72                reply126
+                0x00008364                reply_cp_fromPCtoNode_type1
+                0x00008500                reply_ls_long
+                0x00007ad4                reply_ps
+                0x0000845e                reply_mkdir
+                0x00007c1c                reply_debugging_print
+                0x00007988                InitShell
+                0x000079fe                reply_search
+                0x00008262                reply_cp_fromPCtoNode_type2
+                0x00008608                reply_ls_networkname
+                0x000079ee                reply_nodeRestart
+                0x00007e80                reply_cp_fromPCtoNode_type3
+                0x0000859e                reply_ls_nodename
+                0x00007fb6                reply_fromNodeToPC_type1
+                0x00008a1a                reply_debugging_insert_avr_breakpoint
+                0x00007d10                reply_killthread
+                0x000081c8                reply_touch
+                0x00007938                init_breakpoint_table
+                0x000088da                reply_debugging_remove_avr_breakpoint
+                0x0000794a                get_breakpoint_index
+                0x000087ac                reply_thread_state_snapshot_tofile
+                0x00007986                reply_ls_short
+                0x00007f10                reply_rm
+                0x00007ea0                reply_fromNodeToPC_type2
+                0x00008b54                commandHandle
+ .text          0x00008c78       0xb6 socket.o
+                0x00008cac                send_task
+                0x00008c78                StandardSocketSend
+ .text          0x00008d2e       0x6c adcsocket.o
+                0x00008d2e                ADCAccY
+                0x00008d76                ADCTemp
+                0x00008d88                ADCLight
+                0x00008d40                ADCAccX
+                0x00008d52                ADCMagY
+                0x00008d64                ADCMagX
+ .text          0x00008d9a       0x42 eepromsocket.o
+                0x00008dbe                genericReadTask
+                0x00008da0                genericWriteTask
+                0x00008d9a                getGenericStorageNodeAddress
+ .text          0x00008ddc      0x178 filesocket.o
+                0x00008de2                getFileModeAddress
+                0x00008ef6                readfile_task
+                0x00008f32                openfile_task
+                0x00008eb4                openFileTask
+                0x00008ddc                getFilePathAddress
+                0x00008e5c                readFileTask
+                0x00008f1c                closefile_task
+                0x00008ed0                writefile_task
+                0x00008de8                seekFileTask
+                0x00008e94                closeFileTask
+                0x00008e24                writeFileTask
+ .text          0x00008f54       0xc6 radiocontrol.o
+                0x00008f54                getRadioSendingBufferAddr
+                0x00008ff6                setRadioFrequencyTask
+                0x00008fd2                setRadioChannelTask
+                0x00008fa2                SocketRadioSend
+                0x00008f60                registerReceiverHandle_syscall
+                0x00008fae                setRadioPowerTask
+                0x00008f5a                getRadioReceivingBufferAddr
+ .text          0x0000901a      0xb2e syscall.o
+                0x00009a78                closeFileTask_Logger
+                0x000096dc                Leds_greenOff_Logger
+                0x0000901a                getNodeIdTask
+                0x00009508                syscall_registerEvent_Logger
+                0x000095a4                Leds_greenToggle_Logger
+                0x0000994e                writeEEPROMTask
+                0x0000960c                Leds_redOff_Logger
+                0x00009448                getRadioSendingBuffer_Logger
+                0x00009072                setNodeIdTask
+                0x000097e0                ADCAccX_Logger
+                0x000094d4                getReceiverBuffer_Logger
+                0x00009a10                getFileModeAddress_Logger
+                0x00009096                setNodeIdTask_Logger
+                0x00009710                ADCLight_Logger
+                0x00009994                getFilePathAddress_avr
+                0x00009908                readEEPROMTask
+                0x0000917a                getThreadIndexAddress_avr
+                0x00009aac                readFileTask_Logger
+                0x000092c6                postNewTask_avr
+                0x000098d4                getEEPROMHandleInfo_Logger
+                0x00009674                Leds_yellowOff_Logger
+                0x0000991a                readEEPROMTask_Logger
+                0x00009146                getCurrentThreadAddress_Logger
+                0x00009292                break_point_function_Logger
+                0x00009744                ADCTemp_Logger
+                0x0000947c                SocketRadioSend_Logger
+                0x00009b14                seekFileTask_Logger
+                0x000090ee                getRandomTask_Logger
+                0x00009122                getCurrentThreadAddress_avr
+                0x00009640                Leds_yellowOn_Logger
+                0x00009848                sounderOn_Logger
+                0x00009814                ADCAccY_Logger
+                0x0000922a                thread_yield_logger
+                0x000095d8                Leds_redOn_Logger
+                0x00009354                getStackPtrTask_Logger
+                0x00009ae0                writeFileTask_Logger
+                0x000099ec                getFileModeAddress_avr
+                0x000096a8                Leds_greenOn_Logger
+                0x0000903e                getNodeIdTask_Logger
+                0x00009778                ADCMagX_Logger
+                0x00009424                getRadioSendingBuffer_avr
+                0x000098b0                getEEPROMHandleInfo
+                0x000091d2                getThreadTableStart_avr
+                0x000099b8                getFilePathAddress_Logger
+                0x00009388                setRadioFrequencyTask_Logger
+                0x000092fc                postNewTask_Logger
+                0x0000987c                sounderOff_Logger
+                0x00009a44                openFileTask_Logger
+                0x00009330                getStackPtrTask
+                0x000091f6                getThreadTableStart_Logger
+                0x00009570                Leds_yellowToggle_Logger
+                0x000090ca                getRandomTask
+                0x0000925e                postNewThreadTask_Logger
+                0x0000919e                getThreadIndexAddress_Logger
+                0x000093f0                setRadioPowerTask_Logger
+                0x000094b0                getReceiverBuffer_avr
+                0x000097ac                ADCMagY_Logger
+                0x000093bc                setRadioChannelTask_Logger
+                0x00009960                writeEEPROMTask_Logger
+                0x0000953c                Leds_redToggle_Logger
+ .text          0x00009b48        0xc threadsyscall.o
+                0x00009b4e                getThreadTableStart
+                0x00009b48                getCurrentThreadAddress
+ .text          0x00009b54       0xa6 eventlogger.o
+                0x00009b9c                addTrace
+                0x00009b78                apptracepointfunction
+                0x00009b96                getTracingBlockAddress
+                0x00009b62                initTrace
+                0x00009b54                enabletracingfunction
+                0x00009b5c                disabletracingfunction
+ .text          0x00009bfa       0xec libadc.o
+                0x00009bfa                lib_get_accy
+                0x00009c60                lib_get_light
+                0x00009c82                lib_get_magy
+                0x00009c1c                lib_get_accx
+                0x00009c3e                lib_get_temp
+                0x00009cb4                lib_get_magx
+ .text          0x00009ce6       0xa6 libeeprom.o
+                0x00009ce6                getCurrentEEPROMInfo
+                0x00009d44                lib_read_from_eeprom
+                0x00009cfc                lib_writeToEEPROM
+ .text          0x00009d8c      0x262 libfile.o
+                0x00009dc8                lib_read_file_syscall
+                0x00009f80                lib_mfopen
+                0x00009ed4                lib_mfread
+                0x00009dd8                lib_seek_file_syscall
+                0x00009e3c                lib_mfwrite
+                0x00009dd0                lib_write_file_syscall
+                0x00009eac                lib_mfwrite_withoutlength
+                0x00009de0                lib_mfseek
+                0x00009da2                lib_get_file_mode_address
+                0x00009db8                lib_open_file_syscall
+                0x00009f44                lib_mfclose
+                0x00009d8c                lib_get_file_path_address
+                0x00009dc0                lib_close_file_syscall
+ .text          0x00009fee       0x48 libleds.o
+                0x0000a01e                lib_green_off
+                0x0000a02e                lib_yellow_off
+                0x00009fee                lib_green_toggle
+                0x0000a00e                lib_red_off
+                0x00009ff6                lib_red_toggle
+                0x0000a016                lib_green_on
+                0x00009ffe                lib_yellow_toggle
+                0x0000a026                lib_yellow_on
+                0x0000a006                lib_red_on
+ .text          0x0000a036      0x1f8 libradio.o
+                0x0000a03e                lib_get_current_radio_receive_handle_addr
+                0x0000a20e                lib_radio_send_string
+                0x0000a07e                lib_radio_set_power
+                0x0000a18a                lib_radio_send_msg
+                0x0000a068                lib_radio_set_channel
+                0x0000a1d6                lib_radio_send_integer_u16
+                0x0000a094                lib_get_current_radio_send_addr
+                0x0000a0aa                lib_radio_send_energy_wrapper
+                0x0000a054                lib_radio_set_freq
+                0x0000a180                lib_radio_receive
+                0x0000a036                lib_radio_send_msg_syscall
+                0x0000a1fc                lib_wakeup_mythread
+                0x0000a0b0                lib_radio_receive_timed
+ .text          0x0000a22e      0x53c libserial.o
+                0x0000a60c                lib_printf_uinteger32
+                0x0000a750                lib_printf_string_energy_wrapper
+                0x0000a22e                itoa
+                0x0000a3ea                lib_usart_put_long
+                0x0000a4e0                lib_usart_put_chip_hex
+                0x0000a57c                lib_print_string_lengthN
+                0x0000a434                lib_print_integer
+                0x0000a66e                lib_printf_integer_u32ln
+                0x0000a518                lib_usart_put_hex
+                0x0000a6a4                lib_printf_integer32
+                0x0000a38e                lib_print_usart
+                0x0000a364                lib_init_usart
+                0x0000a716                lib_printf_string_with_id
+                0x0000a542                lib_print_usart_string
+                0x0000a5e2                lib_print_usart_8bit
+                0x0000a3ba                lib_printf_ln
+ .text          0x0000a76a       0x10 libsounder.o
+                0x0000a76a                lib_sounder_on
+                0x0000a772                lib_sounder_off
+ .text          0x0000a77a      0x24e libstring.o
+                0x0000a8da                lib_string_append
+                0x0000a7a2                lib_string_length
+                0x0000a7f8                lib_mystrcpy
+                0x0000a836                lib_dec2char
+                0x0000a968                lib_string_split
+                0x0000a842                lib_string_int_to_string
+                0x0000a7c8                lib_mystrncpy
+                0x0000a77a                lib_hex2value
+ .text          0x0000a9c8       0x40 libsystem.o
+                0x0000a9f4                lib_set_node_id
+                0x0000a9de                lib_get_node_id
+                0x0000a9c8                lib_random
+ .text          0x0000aa08       0xec libthread.o
+                0x0000aa08                lib_get_current_thread
+                0x0000aa34                lib_get_current_thread_index
+                0x0000aad0                syscall_post_thread_task_no_logging
+                0x0000aa1e                lib_get_kernel_stack_ptr
+                0x0000aaa8                syscall_post_thread_task
+                0x0000aad8                lib_set_thread_termination_handler
+                0x0000aa48                lib_get_thread_table_start
+                0x0000aa5e                lib_sleep_thread
+                0x0000aab0                lib_post_new_task
+                0x0000aaa0                lib_yield
+                0x0000aa88                lib_hibernate_thread
+ .text          0x0000aaf4       0x4a libmutex.o
+                0x0000aaf4                lib_file_barrier_block
+ .text          0x0000ab3e       0xdc logger.o
+                0x0000ac02                wakeupMeOnDataMsg
+                0x0000ab90                logger
+                0x0000ab3e                registerDataPacket
+ .text          0x0000ac1a       0xb0 blink.o
+                0x0000ac1a                blink
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodsi4.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(rand.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_word_atmega128.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_block_atmega128.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_byte_atmega128.o)
+ .text          0x0000acca        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_word_atmega128.o)
+                0x0000acca                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x0000acca       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+                0x0000acca                __mulsi3
+ .text.libgcc   0x0000ad08       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+                0x0000ad08                __udivmodhi4
+ .text.libgcc   0x0000ad30       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+                0x0000ad30                __divmodhi4
+                0x0000ad30                _div
+ .text.libgcc   0x0000ad56       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+                0x0000ad56                __udivmodsi4
+ .text.libgcc   0x0000ad9a       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodsi4.o)
+                0x0000ad9a                __divmodsi4
+ .text.libgcc   0x0000add0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x0000add0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000add0       0xd6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(rand.o)
+                0x0000ae80                rand_r
+                0x0000ae86                rand
+                0x0000ae90                srand
+ .text.avr-libc
+                0x0000aea6       0x20 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+                0x0000aeaa                __eerd_blraw_m128
+                0x0000aea6                __eerd_block_m128
+ .text.avr-libc
+                0x0000aec6       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+                0x0000aec6                __eerd_byte_m128
+ .text.avr-libc
+                0x0000aed6        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_word_atmega128.o)
+                0x0000aed6                __eerd_word_m128
+ .text.avr-libc
+                0x0000aee2       0x14 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_block_atmega128.o)
+                0x0000aee2                __eewr_block_m128
+ .text.avr-libc
+                0x0000aef6       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_byte_atmega128.o)
+                0x0000aef8                __eewr_r18_m128
+                0x0000aef6                __eewr_byte_m128
+ .text.avr-libc
+                0x0000af10        0xa c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_word_atmega128.o)
+                0x0000af10                __eewr_word_m128
+                0x0000af1a                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000af1a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                0x0000af1a                exit
+                0x0000af1a                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000af1a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000af1e                _etext = .
+
+.data           0x00800100       0x52 load address 0x0000af1e
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+ .data          0x00800100       0x1c realmain.o
+ .data          0x0080011c       0x18 bootloader.o
+ .data          0x00800134        0x0 nodeconfig.o
+ .data          0x00800134        0x0 avrhardware.o
+ .data          0x00800134        0x0 micazhardware.o
+ .data          0x00800134        0x0 serialprint.o
+ .data          0x00800134        0x3 stdserial.o
+ .data          0x00800137        0x0 amradio.o
+ .data          0x00800137        0x0 packethandler.o
+ .data          0x00800137        0x0 cc2420controlm.o
+ .data          0x00800137        0x0 cc2420radiom.o
+ .data          0x00800137        0x0 hplcc2420fifom.o
+ .data          0x00800137        0x0 hplcc2420interruptm.o
+ .data          0x00800137        0x0 hplcc2420m.o
+ .data          0x00800137        0x0 hpltimer1.o
+ .data          0x00800137        0x0 scheduling.o
+ .data          0x00800137        0x0 threaddata.o
+ .data          0x00800137        0x0 threadkernel.o
+ .data          0x00800137        0x0 threadtools.o
+ .data          0x00800137        0x0 adcdriver.o
+ .data          0x00800137        0x0 leds.o
+ .data          0x00800137        0x0 sounder.o
+ .data          0x00800137        0x0 bytestorage.o
+ .data          0x00800137        0x0 ioeeprom.o
+ .data          0x00800137        0x0 fs_structure.o
+ .data          0x00800137        0x0 fsapi.o
+ .data          0x00800137        0x0 fsconfig.o
+ .data          0x00800137        0x0 fsstring.o
+ .data          0x00800137        0x5 inode.o
+ .data          0x0080013c        0x0 stdfsa.o
+ .data          0x0080013c        0x0 vectorflash.o
+ .data          0x0080013c        0x0 vectornode.o
+ .data          0x0080013c        0x0 atmelflash.o
+ .data          0x0080013c        0x0 pagestorage.o
+ .data          0x0080013c        0x0 clockraw.o
+ .data          0x0080013c        0x0 generictimer.o
+ .data          0x0080013c        0x0 globaltiming.o
+ .data          0x0080013c        0x0 timerraw.o
+ .data          0x0080013c        0x0 byteorder.o
+ .data          0x0080013c        0x0 string.o
+ .data          0x0080013c        0x0 types.o
+ .data          0x0080013c        0x0 math.o
+ .data          0x0080013c        0x4 commandhandle.o
+ .data          0x00800140        0x0 socket.o
+ .data          0x00800140        0x0 adcsocket.o
+ .data          0x00800140        0x0 eepromsocket.o
+ .data          0x00800140        0x0 filesocket.o
+ .data          0x00800140        0x0 radiocontrol.o
+ .data          0x00800140        0x0 syscall.o
+ .data          0x00800140        0x0 threadsyscall.o
+ .data          0x00800140        0x0 eventlogger.o
+ .data          0x00800140        0x0 libadc.o
+ .data          0x00800140        0x0 libeeprom.o
+ .data          0x00800140        0x0 libfile.o
+ .data          0x00800140        0x0 libleds.o
+ .data          0x00800140        0x0 libradio.o
+ .data          0x00800140        0x5 libserial.o
+ .data          0x00800145        0x0 libsounder.o
+ .data          0x00800145        0x0 libstring.o
+ .data          0x00800145        0x0 libsystem.o
+ .data          0x00800145        0x0 libthread.o
+ .data          0x00800145        0x0 libmutex.o
+ .data          0x00800145        0x8 logger.o
+ .data          0x0080014d        0x0 blink.o
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodsi4.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .data          0x0080014d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .data          0x0080014d        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(rand.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_word_atmega128.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_block_atmega128.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_byte_atmega128.o)
+ .data          0x00800151        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_word_atmega128.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800152                . = ALIGN (0x2)
+ *fill*         0x00800151        0x1 00
+                0x00800152                _edata = .
+                0x00800152                PROVIDE (__data_end, .)
+
+.bss            0x00800152      0xb0c
+                0x00800152                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800152        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128.o
+ .bss           0x00800152        0x2 realmain.o
+ .bss           0x00800154      0x204 bootloader.o
+ .bss           0x00800358        0x0 nodeconfig.o
+ .bss           0x00800358        0x0 avrhardware.o
+ .bss           0x00800358        0x0 micazhardware.o
+ .bss           0x00800358       0x24 serialprint.o
+ .bss           0x0080037c        0x0 stdserial.o
+ .bss           0x0080037c        0x0 amradio.o
+ .bss           0x0080037c        0x0 packethandler.o
+ .bss           0x0080037c        0x0 cc2420controlm.o
+ .bss           0x0080037c        0x0 cc2420radiom.o
+ .bss           0x0080037c        0x0 hplcc2420fifom.o
+ .bss           0x0080037c        0x0 hplcc2420interruptm.o
+ .bss           0x0080037c        0x0 hplcc2420m.o
+ .bss           0x0080037c        0x0 hpltimer1.o
+ .bss           0x0080037c        0x0 scheduling.o
+ .bss           0x0080037c        0x0 threaddata.o
+ .bss           0x0080037c        0x0 threadkernel.o
+ .bss           0x0080037c        0x0 threadtools.o
+ .bss           0x0080037c        0x0 adcdriver.o
+ .bss           0x0080037c        0x0 leds.o
+ .bss           0x0080037c        0x0 sounder.o
+ .bss           0x0080037c        0x0 bytestorage.o
+ .bss           0x0080037c        0x0 ioeeprom.o
+ .bss           0x0080037c        0x0 fs_structure.o
+ .bss           0x0080037c        0x0 fsapi.o
+ .bss           0x0080037c        0x0 fsconfig.o
+ .bss           0x0080037c        0x0 fsstring.o
+ .bss           0x0080037c        0x0 inode.o
+ .bss           0x0080037c        0x2 stdfsa.o
+ .bss           0x0080037e       0x20 vectorflash.o
+ .bss           0x0080039e        0x0 vectornode.o
+ .bss           0x0080039e        0x9 atmelflash.o
+ .bss           0x008003a7        0x0 pagestorage.o
+ .bss           0x008003a7        0x0 clockraw.o
+ .bss           0x008003a7        0x0 generictimer.o
+ .bss           0x008003a7        0xd globaltiming.o
+ .bss           0x008003b4        0x0 timerraw.o
+ .bss           0x008003b4        0x0 byteorder.o
+ .bss           0x008003b4        0x7 string.o
+ .bss           0x008003bb        0x0 types.o
+ .bss           0x008003bb        0x0 math.o
+ .bss           0x008003bb        0x0 commandhandle.o
+ .bss           0x008003bb        0x0 socket.o
+ .bss           0x008003bb        0x0 adcsocket.o
+ .bss           0x008003bb        0x6 eepromsocket.o
+ .bss           0x008003c1        0x0 filesocket.o
+ .bss           0x008003c1        0x0 radiocontrol.o
+ .bss           0x008003c1        0x0 syscall.o
+ .bss           0x008003c1        0x0 threadsyscall.o
+ .bss           0x008003c1        0x0 eventlogger.o
+ .bss           0x008003c1        0x0 libadc.o
+ .bss           0x008003c1        0x0 libeeprom.o
+ .bss           0x008003c1        0x0 libfile.o
+ .bss           0x008003c1        0x0 libleds.o
+ .bss           0x008003c1       0x20 libradio.o
+ .bss           0x008003e1       0x13 libserial.o
+ .bss           0x008003f4        0x0 libsounder.o
+ .bss           0x008003f4        0x7 libstring.o
+ .bss           0x008003fb        0x0 libsystem.o
+ .bss           0x008003fb        0x0 libthread.o
+ .bss           0x008003fb        0x0 libmutex.o
+ .bss           0x008003fb       0x26 logger.o
+ .bss           0x00800421        0x0 blink.o
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodsi4.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(rand.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eerd_word_atmega128.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_block_atmega128.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_byte_atmega128.o)
+ .bss           0x00800421        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(eewr_word_atmega128.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800421       0x24 nodeconfig.o
+                0x00800421                filenameid
+                0x00800432                CURRENT_NODE_ID
+                0x00800434                networkid
+ COMMON         0x00800445        0x7 amradio.o
+                0x00800445                AMStandard_state
+                0x00800446                AMStandard_counter
+                0x00800448                AMStandard_lastCount
+                0x0080044a                AMStandard_buffer
+ COMMON         0x0080044c       0x3e packethandler.o
+                0x0080044c                tmp
+                0x0080044e                receivehandles
+ COMMON         0x0080048a       0x1f cc2420controlm.o
+                0x0080048a                cc2420controlm_state
+                0x0080048b                CC2420_RFPOWER
+                0x0080048c                cc2420controlm_gCurrentParameters
+                0x008004a8                CC2420_CHANNEL
+ COMMON         0x008004a9       0x80 cc2420radiom.o
+                0x008004a9                cc2420radiom_rxbufptr
+                0x008004ab                cc2420radiom_currentDSN
+                0x008004ac                cc2420radiom_bPacketReceiving
+                0x008004ad                cc2420radiom_RxBuf
+                0x00800521                cc2420radiom_bAckEnable
+                0x00800522                cc2420radiom_countRetry
+                0x00800523                cc2420radiom_LocalAddr
+                0x00800525                cc2420radiom_txbufptr
+                0x00800527                cc2420radiom_stateRadio
+                0x00800528                cc2420radiom_txlength
+ COMMON         0x00800529        0x9 hplcc2420fifom.o
+                0x00800529                hplcc2420fifom_txlength
+                0x0080052a                hplcc2420fifom_bSpiAvail
+                0x0080052b                hplcc2420fifom_rxbuf
+                0x0080052d                hplcc2420fifom_txbufBusy
+                0x0080052e                hplcc2420fifom_txbuf
+                0x00800530                hplcc2420fifom_rxbufBusy
+                0x00800531                hplcc2420fifom_rxlength
+ COMMON         0x00800532       0x10 hplcc2420interruptm.o
+                0x00800532                hplcc2420interruptm_FIFOWaitForState
+                0x00800533                alcounter
+                0x00800537                ahcounter
+                0x00800539                hplcc2420interruptm_FIFOLastState
+                0x0080053a                hplcc2420interruptm_CCALastState
+                0x0080053b                hplcc2420interruptm_CCAWaitForState
+                0x0080053c                ahcounter2
+                0x0080053e                alcounter2
+ COMMON         0x00800542        0x6 hplcc2420m.o
+                0x00800542                HPLCC2420M_ramlen
+                0x00800543                HPLCC2420M_rambuf
+                0x00800545                HPLCC2420M_bSpiAvail
+                0x00800546                HPLCC2420M_ramaddr
+ COMMON         0x00800548       0x11 hpltimer1.o
+                0x00800548                lcounter
+                0x0080054c                hcounter2
+                0x0080054e                hcounter
+                0x00800550                HPLTimer1M_set_flag
+                0x00800551                lcounter2
+                0x00800555                HPLTimer1M_nextScale
+                0x00800556                HPLTimer1M_minterval
+                0x00800558                HPLTimer1M_mscale
+ COMMON         0x00800559       0x31 scheduling.o
+                0x00800559                LITE_queue
+                0x00800589                LITE_sched_num
+ COMMON         0x0080058a       0xa5 threadkernel.o
+                0x0080058a                old_stack_ptr
+                0x0080058c                current_thread
+                0x0080058e                thread_table
+                0x0080062a                thread_task_active
+                0x0080062b                stackinterrupt_ptr
+                0x0080062d                maxthreadrambound
+ COMMON         0x0080062f        0x1 leds.o
+                0x0080062f                Leds_ledsOn
+ COMMON         0x00800630       0x14 fs_structure.o
+                0x00800630                fidtable
+ COMMON         0x00800644        0xc vectornode.o
+                0x00800644                vectornode
+ COMMON         0x00800650        0xc clockraw.o
+                0x00800650                historyvalue
+                0x00800654                highcounter
+                0x00800656                HPLClock_mscale
+                0x00800657                HPLClock_nextScale
+                0x00800658                HPLClock_set_flag
+                0x00800659                HPLClock_minterval
+                0x0080065a                lowcounter
+ COMMON         0x0080065c       0x88 generictimer.o
+                0x0080065c                enabled
+                0x0080065d                currentcounter
+                0x0080065f                timercallback
+                0x0080066f                datamsg
+                0x008006e3                currentpower
+ COMMON         0x008006e4       0xac timerraw.o
+                0x008006e4                TimerM_queue_tail
+                0x008006e5                TimerM_mState
+                0x008006e9                TimerM_queue_size
+                0x008006ea                TimerM_mScale
+                0x008006eb                TimerM_mInterval
+                0x008006ec                TimerM_setIntervalFlag
+                0x008006ed                TimerM_queue
+                0x008006fd                TimerM_interval_outstanding
+                0x008006ff                TimerM_queue_head
+                0x00800700                TimerM_mTimerList
+ COMMON         0x00800790      0x1d1 commandhandle.o
+                0x00800790                shellbuffer
+                0x00800890                fp
+                0x00800892                openedfile
+                0x00800894                br_state
+                0x008008dc                createthreadname
+                0x008008e8                filename
+                0x008008f5                reply
+                0x00800915                expectNextNum
+                0x00800917                chunksequencenum
+                0x00800919                blockid
+                0x0080091a                IncomingLength
+                0x0080091b                IncomingMsg
+                0x0080095b                PacketInfo
+                0x0080095d                thisthread
+                0x0080095f                nodeid
+ COMMON         0x00800961       0x7b socket.o
+                0x00800961                radiosocketdata
+                0x00800968                currentMsg
+ COMMON         0x008009dc       0x26 filesocket.o
+                0x008009dc                position
+                0x008009de                filehandle
+                0x008009e0                filemodeaddr
+                0x008009e5                nBytes
+                0x008009e7                openthread
+                0x008009e9                filepathaddr
+                0x008009fd                threadindex
+                0x008009fe                offset
+                0x00800a00                databuffer
+ COMMON         0x00800a02        0xc radiocontrol.o
+                0x00800a02                radio_buf
+ COMMON         0x00800a0e       0x10 eventlogger.o
+                0x00800a0e                timestamp
+                0x00800a12                internaltracingblock
+                0x00800a1d                enabletracing
+ COMMON         0x00800a1e        0x7 libradio.o
+                0x00800a1e                mythread
+                0x00800a20                radioReceiveDataReady
+                0x00800a21                radioReceivePacketInfo
+ COMMON         0x00800a25        0x1 libserial.o
+                0x00800a25                flag
+ COMMON         0x00800a26      0x19a logger.o
+                0x00800a26                packetsremote
+                0x00800a28                loggerbuffer
+                0x00800bb8                packetslocal
+                0x00800bba                packetsdeliver
+                0x00800bbc                currentthread
+                0x00800bbe                thiscurrentthread
+ COMMON         0x00800bc0       0x9e blink.o
+                0x00800bc0                blinkbuffer
+                0x00800c56                filefp
+                0x00800c58                i
+                0x00800c5a                counter
+                0x00800c5c                addr
+                0x00800c5e                PROVIDE (__bss_end, .)
+                0x0000af1e                __data_load_start = LOADADDR (.data)
+                0x0000af70                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800c5e        0x0
+                0x00800c5e                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800c5e                PROVIDE (__noinit_end, .)
+                0x00800c5e                _end = .
+                0x00800c5e                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x9d0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 realmain.o
+ .debug_aranges
+                0x00000020       0x80 bootloader.o
+ .debug_aranges
+                0x000000a0       0x20 nodeconfig.o
+ .debug_aranges
+                0x000000c0       0x20 avrhardware.o
+ .debug_aranges
+                0x000000e0       0x20 micazhardware.o
+ .debug_aranges
+                0x00000100       0x20 serialprint.o
+ .debug_aranges
+                0x00000120       0x20 stdserial.o
+ .debug_aranges
+                0x00000140       0x20 amradio.o
+ .debug_aranges
+                0x00000160       0x20 packethandler.o
+ .debug_aranges
+                0x00000180       0x20 cc2420controlm.o
+ .debug_aranges
+                0x000001a0       0x20 cc2420radiom.o
+ .debug_aranges
+                0x000001c0       0x20 hplcc2420fifom.o
+ .debug_aranges
+                0x000001e0       0x20 hplcc2420interruptm.o
+ .debug_aranges
+                0x00000200       0x20 hplcc2420m.o
+ .debug_aranges
+                0x00000220       0x20 hpltimer1.o
+ .debug_aranges
+                0x00000240       0x20 scheduling.o
+ .debug_aranges
+                0x00000260       0x20 threaddata.o
+ .debug_aranges
+                0x00000280       0x20 threadkernel.o
+ .debug_aranges
+                0x000002a0       0x20 threadtools.o
+ .debug_aranges
+                0x000002c0       0x20 adcdriver.o
+ .debug_aranges
+                0x000002e0       0x20 leds.o
+ .debug_aranges
+                0x00000300       0x20 sounder.o
+ .debug_aranges
+                0x00000320       0x20 bytestorage.o
+ .debug_aranges
+                0x00000340       0x20 ioeeprom.o
+ .debug_aranges
+                0x00000360       0x20 fs_structure.o
+ .debug_aranges
+                0x00000380       0x20 fsapi.o
+ .debug_aranges
+                0x000003a0       0x20 fsconfig.o
+ .debug_aranges
+                0x000003c0       0x20 fsstring.o
+ .debug_aranges
+                0x000003e0       0x20 inode.o
+ .debug_aranges
+                0x00000400       0x20 stdfsa.o
+ .debug_aranges
+                0x00000420       0x20 vectorflash.o
+ .debug_aranges
+                0x00000440       0x20 vectornode.o
+ .debug_aranges
+                0x00000460       0x20 atmelflash.o
+ .debug_aranges
+                0x00000480       0x20 pagestorage.o
+ .debug_aranges
+                0x000004a0       0x20 clockraw.o
+ .debug_aranges
+                0x000004c0       0x20 generictimer.o
+ .debug_aranges
+                0x000004e0       0x20 globaltiming.o
+ .debug_aranges
+                0x00000500       0x20 timerraw.o
+ .debug_aranges
+                0x00000520       0x20 byteorder.o
+ .debug_aranges
+                0x00000540       0x20 string.o
+ .debug_aranges
+                0x00000560       0x20 types.o
+ .debug_aranges
+                0x00000580       0x20 math.o
+ .debug_aranges
+                0x000005a0       0x20 commandhandle.o
+ .debug_aranges
+                0x000005c0       0x20 socket.o
+ .debug_aranges
+                0x000005e0       0x20 adcsocket.o
+ .debug_aranges
+                0x00000600       0x20 eepromsocket.o
+ .debug_aranges
+                0x00000620       0x20 filesocket.o
+ .debug_aranges
+                0x00000640       0x20 radiocontrol.o
+ .debug_aranges
+                0x00000660      0x190 syscall.o
+ .debug_aranges
+                0x000007f0       0x20 threadsyscall.o
+ .debug_aranges
+                0x00000810       0x20 eventlogger.o
+ .debug_aranges
+                0x00000830       0x20 libadc.o
+ .debug_aranges
+                0x00000850       0x20 libeeprom.o
+ .debug_aranges
+                0x00000870       0x20 libfile.o
+ .debug_aranges
+                0x00000890       0x20 libleds.o
+ .debug_aranges
+                0x000008b0       0x20 libradio.o
+ .debug_aranges
+                0x000008d0       0x20 libserial.o
+ .debug_aranges
+                0x000008f0       0x20 libsounder.o
+ .debug_aranges
+                0x00000910       0x20 libstring.o
+ .debug_aranges
+                0x00000930       0x20 libsystem.o
+ .debug_aranges
+                0x00000950       0x20 libthread.o
+ .debug_aranges
+                0x00000970       0x20 libmutex.o
+ .debug_aranges
+                0x00000990       0x20 logger.o
+ .debug_aranges
+                0x000009b0       0x20 blink.o
+
+.debug_pubnames
+                0x00000000     0x68f3
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x33 realmain.o
+ .debug_pubnames
+                0x00000033      0x139 bootloader.o
+ .debug_pubnames
+                0x0000016c       0xe5 nodeconfig.o
+ .debug_pubnames
+                0x00000251     0x15e8 avrhardware.o
+ .debug_pubnames
+                0x00001839      0x4f0 micazhardware.o
+ .debug_pubnames
+                0x00001d29      0x11b serialprint.o
+ .debug_pubnames
+                0x00001e44       0x8e stdserial.o
+ .debug_pubnames
+                0x00001ed2      0x26d amradio.o
+ .debug_pubnames
+                0x0000213f       0xb1 packethandler.o
+ .debug_pubnames
+                0x000021f0      0x41e cc2420controlm.o
+ .debug_pubnames
+                0x0000260e      0x622 cc2420radiom.o
+ .debug_pubnames
+                0x00002c30      0x1c4 hplcc2420fifom.o
+ .debug_pubnames
+                0x00002df4      0x42e hplcc2420interruptm.o
+ .debug_pubnames
+                0x00003222      0x14a hplcc2420m.o
+ .debug_pubnames
+                0x0000336c      0x286 hpltimer1.o
+ .debug_pubnames
+                0x000035f2       0x64 scheduling.o
+ .debug_pubnames
+                0x00003656       0x23 threaddata.o
+ .debug_pubnames
+                0x00003679      0x1b3 threadkernel.o
+ .debug_pubnames
+                0x0000382c       0xa8 threadtools.o
+ .debug_pubnames
+                0x000038d4       0x94 adcdriver.o
+ .debug_pubnames
+                0x00003968       0xd5 leds.o
+ .debug_pubnames
+                0x00003a3d       0x40 sounder.o
+ .debug_pubnames
+                0x00003a7d       0xfb bytestorage.o
+ .debug_pubnames
+                0x00003b78      0x156 ioeeprom.o
+ .debug_pubnames
+                0x00003cce       0x71 fs_structure.o
+ .debug_pubnames
+                0x00003d3f      0x121 fsapi.o
+ .debug_pubnames
+                0x00003e60      0x10b fsconfig.o
+ .debug_pubnames
+                0x00003f6b       0x45 fsstring.o
+ .debug_pubnames
+                0x00003fb0       0xb8 inode.o
+ .debug_pubnames
+                0x00004068      0x15e stdfsa.o
+ .debug_pubnames
+                0x000041c6       0xd7 vectorflash.o
+ .debug_pubnames
+                0x0000429d       0xe4 vectornode.o
+ .debug_pubnames
+                0x00004381       0xb2 atmelflash.o
+ .debug_pubnames
+                0x00004433       0x7e pagestorage.o
+ .debug_pubnames
+                0x000044b1      0x1be clockraw.o
+ .debug_pubnames
+                0x0000466f      0x143 generictimer.o
+ .debug_pubnames
+                0x000047b2       0xe2 globaltiming.o
+ .debug_pubnames
+                0x00004894      0x2d7 timerraw.o
+ .debug_pubnames
+                0x00004b6b       0x3c byteorder.o
+ .debug_pubnames
+                0x00004ba7       0x7b string.o
+ .debug_pubnames
+                0x00004c22       0x6d types.o
+ .debug_pubnames
+                0x00004c8f       0x26 math.o
+ .debug_pubnames
+                0x00004cb5      0x3ca commandhandle.o
+ .debug_pubnames
+                0x0000507f       0x5a socket.o
+ .debug_pubnames
+                0x000050d9       0x5b adcsocket.o
+ .debug_pubnames
+                0x00005134       0x5c eepromsocket.o
+ .debug_pubnames
+                0x00005190      0x163 filesocket.o
+ .debug_pubnames
+                0x000052f3       0xdd radiocontrol.o
+ .debug_pubnames
+                0x000053d0      0x9f0 syscall.o
+ .debug_pubnames
+                0x00005dc0       0x46 threadsyscall.o
+ .debug_pubnames
+                0x00005e06       0xd0 eventlogger.o
+ .debug_pubnames
+                0x00005ed6       0x79 libadc.o
+ .debug_pubnames
+                0x00005f4f       0x5a libeeprom.o
+ .debug_pubnames
+                0x00005fa9      0x13d libfile.o
+ .debug_pubnames
+                0x000060e6       0xb7 libleds.o
+ .debug_pubnames
+                0x0000619d      0x1ca libradio.o
+ .debug_pubnames
+                0x00006367      0x19f libserial.o
+ .debug_pubnames
+                0x00006506       0x39 libsounder.o
+ .debug_pubnames
+                0x0000653f       0xb6 libstring.o
+ .debug_pubnames
+                0x000065f5       0x77 libsystem.o
+ .debug_pubnames
+                0x0000666c      0x148 libthread.o
+ .debug_pubnames
+                0x000067b4       0x2d libmutex.o
+ .debug_pubnames
+                0x000067e1       0xc0 logger.o
+ .debug_pubnames
+                0x000068a1       0x52 blink.o
+
+.debug_info     0x00000000    0x14bc8
+ *(.debug_info)
+ .debug_info    0x00000000      0x16e realmain.o
+ .debug_info    0x0000016e      0x810 bootloader.o
+ .debug_info    0x0000097e      0x19e nodeconfig.o
+ .debug_info    0x00000b1c     0x160d avrhardware.o
+ .debug_info    0x00002129      0x50d micazhardware.o
+ .debug_info    0x00002636      0x417 serialprint.o
+ .debug_info    0x00002a4d      0x1f5 stdserial.o
+ .debug_info    0x00002c42      0x6d5 amradio.o
+ .debug_info    0x00003317      0x3c9 packethandler.o
+ .debug_info    0x000036e0     0x12cb cc2420controlm.o
+ .debug_info    0x000049ab     0x1b52 cc2420radiom.o
+ .debug_info    0x000064fd      0x44a hplcc2420fifom.o
+ .debug_info    0x00006947      0x721 hplcc2420interruptm.o
+ .debug_info    0x00007068      0x38a hplcc2420m.o
+ .debug_info    0x000073f2      0x561 hpltimer1.o
+ .debug_info    0x00007953      0x205 scheduling.o
+ .debug_info    0x00007b58       0x91 threaddata.o
+ .debug_info    0x00007be9      0x7af threadkernel.o
+ .debug_info    0x00008398      0x516 threadtools.o
+ .debug_info    0x000088ae      0x1d3 adcdriver.o
+ .debug_info    0x00008a81      0x297 leds.o
+ .debug_info    0x00008d18      0x11b sounder.o
+ .debug_info    0x00008e33      0x3c2 bytestorage.o
+ .debug_info    0x000091f5      0x544 ioeeprom.o
+ .debug_info    0x00009739      0x1de fs_structure.o
+ .debug_info    0x00009917      0x8d2 fsapi.o
+ .debug_info    0x0000a1e9      0x552 fsconfig.o
+ .debug_info    0x0000a73b      0x138 fsstring.o
+ .debug_info    0x0000a873      0x4ed inode.o
+ .debug_info    0x0000ad60      0x7c3 stdfsa.o
+ .debug_info    0x0000b523      0x2bf vectorflash.o
+ .debug_info    0x0000b7e2      0x234 vectornode.o
+ .debug_info    0x0000ba16      0xbe5 atmelflash.o
+ .debug_info    0x0000c5fb      0x198 pagestorage.o
+ .debug_info    0x0000c793      0x358 clockraw.o
+ .debug_info    0x0000caeb      0x42b generictimer.o
+ .debug_info    0x0000cf16      0x1f0 globaltiming.o
+ .debug_info    0x0000d106      0x6de timerraw.o
+ .debug_info    0x0000d7e4      0x159 byteorder.o
+ .debug_info    0x0000d93d      0x376 string.o
+ .debug_info    0x0000dcb3      0x20a types.o
+ .debug_info    0x0000debd       0x8c math.o
+ .debug_info    0x0000df49     0x104b commandhandle.o
+ .debug_info    0x0000ef94      0x265 socket.o
+ .debug_info    0x0000f1f9      0x3ac adcsocket.o
+ .debug_info    0x0000f5a5      0x108 eepromsocket.o
+ .debug_info    0x0000f6ad      0x4f3 filesocket.o
+ .debug_info    0x0000fba0      0x233 radiocontrol.o
+ .debug_info    0x0000fdd3     0x123c syscall.o
+ .debug_info    0x0001100f      0x355 threadsyscall.o
+ .debug_info    0x00011364      0x1bc eventlogger.o
+ .debug_info    0x00011520      0x460 libadc.o
+ .debug_info    0x00011980      0x1eb libeeprom.o
+ .debug_info    0x00011b6b      0x799 libfile.o
+ .debug_info    0x00012304      0x1ac libleds.o
+ .debug_info    0x000124b0      0x828 libradio.o
+ .debug_info    0x00012cd8      0x687 libserial.o
+ .debug_info    0x0001335f       0xb7 libsounder.o
+ .debug_info    0x00013416      0x39d libstring.o
+ .debug_info    0x000137b3      0x3df libsystem.o
+ .debug_info    0x00013b92      0x557 libthread.o
+ .debug_info    0x000140e9      0x39a libmutex.o
+ .debug_info    0x00014483      0x5a4 logger.o
+ .debug_info    0x00014a27      0x1a1 blink.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000     0x56c6
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xd0 realmain.o
+ .debug_abbrev  0x000000d0      0x1a7 bootloader.o
+ .debug_abbrev  0x00000277       0xa7 nodeconfig.o
+ .debug_abbrev  0x0000031e      0x14e avrhardware.o
+ .debug_abbrev  0x0000046c       0xd2 micazhardware.o
+ .debug_abbrev  0x0000053e      0x107 serialprint.o
+ .debug_abbrev  0x00000645       0x88 stdserial.o
+ .debug_abbrev  0x000006cd      0x232 amradio.o
+ .debug_abbrev  0x000008ff      0x178 packethandler.o
+ .debug_abbrev  0x00000a77      0x2aa cc2420controlm.o
+ .debug_abbrev  0x00000d21      0x32b cc2420radiom.o
+ .debug_abbrev  0x0000104c      0x14e hplcc2420fifom.o
+ .debug_abbrev  0x0000119a      0x296 hplcc2420interruptm.o
+ .debug_abbrev  0x00001430      0x138 hplcc2420m.o
+ .debug_abbrev  0x00001568      0x21d hpltimer1.o
+ .debug_abbrev  0x00001785      0x134 scheduling.o
+ .debug_abbrev  0x000018b9       0x6c threaddata.o
+ .debug_abbrev  0x00001925      0x2d3 threadkernel.o
+ .debug_abbrev  0x00001bf8      0x1a9 threadtools.o
+ .debug_abbrev  0x00001da1       0xd8 adcdriver.o
+ .debug_abbrev  0x00001e79       0x9b leds.o
+ .debug_abbrev  0x00001f14       0x80 sounder.o
+ .debug_abbrev  0x00001f94       0x92 bytestorage.o
+ .debug_abbrev  0x00002026       0xd5 ioeeprom.o
+ .debug_abbrev  0x000020fb      0x125 fs_structure.o
+ .debug_abbrev  0x00002220      0x216 fsapi.o
+ .debug_abbrev  0x00002436       0xaa fsconfig.o
+ .debug_abbrev  0x000024e0       0xac fsstring.o
+ .debug_abbrev  0x0000258c      0x1fa inode.o
+ .debug_abbrev  0x00002786      0x269 stdfsa.o
+ .debug_abbrev  0x000029ef      0x16e vectorflash.o
+ .debug_abbrev  0x00002b5d      0x140 vectornode.o
+ .debug_abbrev  0x00002c9d      0x2c4 atmelflash.o
+ .debug_abbrev  0x00002f61       0x8c pagestorage.o
+ .debug_abbrev  0x00002fed      0x198 clockraw.o
+ .debug_abbrev  0x00003185      0x1a3 generictimer.o
+ .debug_abbrev  0x00003328       0xe9 globaltiming.o
+ .debug_abbrev  0x00003411      0x288 timerraw.o
+ .debug_abbrev  0x00003699       0xea byteorder.o
+ .debug_abbrev  0x00003783      0x19c string.o
+ .debug_abbrev  0x0000391f      0x112 types.o
+ .debug_abbrev  0x00003a31       0x59 math.o
+ .debug_abbrev  0x00003a8a      0x30a commandhandle.o
+ .debug_abbrev  0x00003d94      0x106 socket.o
+ .debug_abbrev  0x00003e9a      0x104 adcsocket.o
+ .debug_abbrev  0x00003f9e       0x9a eepromsocket.o
+ .debug_abbrev  0x00004038      0x142 filesocket.o
+ .debug_abbrev  0x0000417a       0xe8 radiocontrol.o
+ .debug_abbrev  0x00004262      0x16b syscall.o
+ .debug_abbrev  0x000043cd      0x104 threadsyscall.o
+ .debug_abbrev  0x000044d1       0xd0 eventlogger.o
+ .debug_abbrev  0x000045a1      0x12d libadc.o
+ .debug_abbrev  0x000046ce       0xda libeeprom.o
+ .debug_abbrev  0x000047a8      0x1af libfile.o
+ .debug_abbrev  0x00004957       0x7d libleds.o
+ .debug_abbrev  0x000049d4      0x215 libradio.o
+ .debug_abbrev  0x00004be9      0x1ec libserial.o
+ .debug_abbrev  0x00004dd5       0x7d libsounder.o
+ .debug_abbrev  0x00004e52      0x1a5 libstring.o
+ .debug_abbrev  0x00004ff7      0x15a libsystem.o
+ .debug_abbrev  0x00005151      0x1d7 libthread.o
+ .debug_abbrev  0x00005328      0x136 libmutex.o
+ .debug_abbrev  0x0000545e      0x193 logger.o
+ .debug_abbrev  0x000055f1       0xd5 blink.o
+
+.debug_line     0x00000000     0xfd29
+ *(.debug_line)
+ .debug_line    0x00000000      0x3e4 realmain.o
+ .debug_line    0x000003e4      0x818 bootloader.o
+ .debug_line    0x00000bfc      0x161 nodeconfig.o
+ .debug_line    0x00000d5d     0x1062 avrhardware.o
+ .debug_line    0x00001dbf      0x438 micazhardware.o
+ .debug_line    0x000021f7      0x48a serialprint.o
+ .debug_line    0x00002681      0x1fb stdserial.o
+ .debug_line    0x0000287c      0x3d1 amradio.o
+ .debug_line    0x00002c4d      0x2b7 packethandler.o
+ .debug_line    0x00002f04      0x67e cc2420controlm.o
+ .debug_line    0x00003582      0xe14 cc2420radiom.o
+ .debug_line    0x00004396      0x38b hplcc2420fifom.o
+ .debug_line    0x00004721      0x45b hplcc2420interruptm.o
+ .debug_line    0x00004b7c      0x3d6 hplcc2420m.o
+ .debug_line    0x00004f52      0x4cb hpltimer1.o
+ .debug_line    0x0000541d      0x1f7 scheduling.o
+ .debug_line    0x00005614       0x8f threaddata.o
+ .debug_line    0x000056a3      0x699 threadkernel.o
+ .debug_line    0x00005d3c      0x22f threadtools.o
+ .debug_line    0x00005f6b      0x28e adcdriver.o
+ .debug_line    0x000061f9      0x331 leds.o
+ .debug_line    0x0000652a      0x15e sounder.o
+ .debug_line    0x00006688      0x246 bytestorage.o
+ .debug_line    0x000068ce      0x3f1 ioeeprom.o
+ .debug_line    0x00006cbf      0x1b2 fs_structure.o
+ .debug_line    0x00006e71      0x7eb fsapi.o
+ .debug_line    0x0000765c      0x257 fsconfig.o
+ .debug_line    0x000078b3      0x174 fsstring.o
+ .debug_line    0x00007a27      0x5a1 inode.o
+ .debug_line    0x00007fc8      0x6f5 stdfsa.o
+ .debug_line    0x000086bd      0x2ca vectorflash.o
+ .debug_line    0x00008987      0x272 vectornode.o
+ .debug_line    0x00008bf9      0xbfb atmelflash.o
+ .debug_line    0x000097f4      0x162 pagestorage.o
+ .debug_line    0x00009956      0x383 clockraw.o
+ .debug_line    0x00009cd9      0x2d8 generictimer.o
+ .debug_line    0x00009fb1      0x1d5 globaltiming.o
+ .debug_line    0x0000a186      0x57e timerraw.o
+ .debug_line    0x0000a704       0xea byteorder.o
+ .debug_line    0x0000a7ee      0x27b string.o
+ .debug_line    0x0000aa69      0x150 types.o
+ .debug_line    0x0000abb9       0xd5 math.o
+ .debug_line    0x0000ac8e      0xfe9 commandhandle.o
+ .debug_line    0x0000bc77      0x187 socket.o
+ .debug_line    0x0000bdfe      0x18f adcsocket.o
+ .debug_line    0x0000bf8d      0x113 eepromsocket.o
+ .debug_line    0x0000c0a0      0x302 filesocket.o
+ .debug_line    0x0000c3a2      0x206 radiocontrol.o
+ .debug_line    0x0000c5a8     0x164a syscall.o
+ .debug_line    0x0000dbf2      0x144 threadsyscall.o
+ .debug_line    0x0000dd36      0x1be eventlogger.o
+ .debug_line    0x0000def4      0x1e9 libadc.o
+ .debug_line    0x0000e0dd      0x196 libeeprom.o
+ .debug_line    0x0000e273      0x340 libfile.o
+ .debug_line    0x0000e5b3      0x14f libleds.o
+ .debug_line    0x0000e702      0x380 libradio.o
+ .debug_line    0x0000ea82      0x5ad libserial.o
+ .debug_line    0x0000f02f       0xaa libsounder.o
+ .debug_line    0x0000f0d9      0x338 libstring.o
+ .debug_line    0x0000f411      0x164 libsystem.o
+ .debug_line    0x0000f575      0x296 libthread.o
+ .debug_line    0x0000f80b      0x11b libmutex.o
+ .debug_line    0x0000f926      0x238 logger.o
+ .debug_line    0x0000fb5e      0x1cb blink.o
+
+.debug_frame    0x00000000     0x3ed0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x30 realmain.o
+ .debug_frame   0x00000030       0xe0 bootloader.o
+ .debug_frame   0x00000110       0x80 nodeconfig.o
+ .debug_frame   0x00000190      0xd40 avrhardware.o
+ .debug_frame   0x00000ed0      0x300 micazhardware.o
+ .debug_frame   0x000011d0      0x100 serialprint.o
+ .debug_frame   0x000012d0       0x80 stdserial.o
+ .debug_frame   0x00001350      0x120 amradio.o
+ .debug_frame   0x00001470       0x60 packethandler.o
+ .debug_frame   0x000014d0      0x190 cc2420controlm.o
+ .debug_frame   0x00001660      0x260 cc2420radiom.o
+ .debug_frame   0x000018c0       0x70 hplcc2420fifom.o
+ .debug_frame   0x00001930      0x160 hplcc2420interruptm.o
+ .debug_frame   0x00001a90       0x80 hplcc2420m.o
+ .debug_frame   0x00001b10      0x100 hpltimer1.o
+ .debug_frame   0x00001c10       0x40 scheduling.o
+ .debug_frame   0x00001c50       0x20 threaddata.o
+ .debug_frame   0x00001c70       0xf0 threadkernel.o
+ .debug_frame   0x00001d60       0x70 threadtools.o
+ .debug_frame   0x00001dd0       0xa0 adcdriver.o
+ .debug_frame   0x00001e70       0xb0 leds.o
+ .debug_frame   0x00001f20       0x40 sounder.o
+ .debug_frame   0x00001f60      0x100 bytestorage.o
+ .debug_frame   0x00002060      0x100 ioeeprom.o
+ .debug_frame   0x00002160       0x60 fs_structure.o
+ .debug_frame   0x000021c0      0x140 fsapi.o
+ .debug_frame   0x00002300      0x100 fsconfig.o
+ .debug_frame   0x00002400       0x40 fsstring.o
+ .debug_frame   0x00002440       0xb0 inode.o
+ .debug_frame   0x000024f0      0x150 stdfsa.o
+ .debug_frame   0x00002640       0xb0 vectorflash.o
+ .debug_frame   0x000026f0       0xa0 vectornode.o
+ .debug_frame   0x00002790      0x110 atmelflash.o
+ .debug_frame   0x000028a0       0x70 pagestorage.o
+ .debug_frame   0x00002910       0xc0 clockraw.o
+ .debug_frame   0x000029d0       0x70 generictimer.o
+ .debug_frame   0x00002a40       0x60 globaltiming.o
+ .debug_frame   0x00002aa0      0x110 timerraw.o
+ .debug_frame   0x00002bb0       0x40 byteorder.o
+ .debug_frame   0x00002bf0       0x80 string.o
+ .debug_frame   0x00002c70       0x70 types.o
+ .debug_frame   0x00002ce0       0x20 math.o
+ .debug_frame   0x00002d00      0x200 commandhandle.o
+ .debug_frame   0x00002f00       0x30 socket.o
+ .debug_frame   0x00002f30       0x70 adcsocket.o
+ .debug_frame   0x00002fa0       0x40 eepromsocket.o
+ .debug_frame   0x00002fe0       0xc0 filesocket.o
+ .debug_frame   0x000030a0       0x80 radiocontrol.o
+ .debug_frame   0x00003120      0x6b0 syscall.o
+ .debug_frame   0x000037d0       0x30 threadsyscall.o
+ .debug_frame   0x00003800       0x70 eventlogger.o
+ .debug_frame   0x00003870       0x70 libadc.o
+ .debug_frame   0x000038e0       0x40 libeeprom.o
+ .debug_frame   0x00003920       0xe0 libfile.o
+ .debug_frame   0x00003a00       0xa0 libleds.o
+ .debug_frame   0x00003aa0       0xe0 libradio.o
+ .debug_frame   0x00003b80      0x110 libserial.o
+ .debug_frame   0x00003c90       0x30 libsounder.o
+ .debug_frame   0x00003cc0       0x90 libstring.o
+ .debug_frame   0x00003d50       0x40 libsystem.o
+ .debug_frame   0x00003d90       0xc0 libthread.o
+ .debug_frame   0x00003e50       0x20 libmutex.o
+ .debug_frame   0x00003e70       0x40 logger.o
+ .debug_frame   0x00003eb0       0x20 blink.o
+
+.debug_str      0x00000000     0x7540
+ *(.debug_str)
+ .debug_str     0x00000000      0x112 realmain.o
+                                0x157 (size before relaxing)
+ .debug_str     0x00000112      0x1c4 bootloader.o
+                                0x2b5 (size before relaxing)
+ .debug_str     0x000002d6       0xcd nodeconfig.o
+                                0x1b2 (size before relaxing)
+ .debug_str     0x000003a3     0x12db avrhardware.o
+                               0x1394 (size before relaxing)
+ .debug_str     0x0000167e      0x472 micazhardware.o
+                                0x517 (size before relaxing)
+ .debug_str     0x00001af0      0x177 serialprint.o
+                                0x247 (size before relaxing)
+ .debug_str     0x00001c67       0xaf stdserial.o
+                                0x173 (size before relaxing)
+ .debug_str     0x00001d16      0x33b amradio.o
+                                0x42f (size before relaxing)
+ .debug_str     0x00002051      0x11a packethandler.o
+                                0x23d (size before relaxing)
+ .debug_str     0x0000216b      0x5c6 cc2420controlm.o
+                                0x6ea (size before relaxing)
+ .debug_str     0x00002731      0x7b8 cc2420radiom.o
+                                0x9c1 (size before relaxing)
+ .debug_str     0x00002ee9      0x20c hplcc2420fifom.o
+                                0x302 (size before relaxing)
+ .debug_str     0x000030f5      0x45d hplcc2420interruptm.o
+                                0x576 (size before relaxing)
+ .debug_str     0x00003552      0x16f hplcc2420m.o
+                                0x26f (size before relaxing)
+ .debug_str     0x000036c1      0x2e4 hpltimer1.o
+                                0x42f (size before relaxing)
+ .debug_str     0x000039a5       0xd1 scheduling.o
+                                0x19b (size before relaxing)
+ .debug_str     0x00003a76       0x43 threaddata.o
+                                 0xe8 (size before relaxing)
+ .debug_str     0x00003ab9      0x2eb threadkernel.o
+                                0x499 (size before relaxing)
+ .debug_str     0x00003da4      0x146 threadtools.o
+                                0x3fe (size before relaxing)
+ .debug_str     0x00003eea       0xac adcdriver.o
+                                0x198 (size before relaxing)
+ .debug_str     0x00003f96       0xf4 leds.o
+                                0x1b3 (size before relaxing)
+ .debug_str     0x0000408a       0x56 sounder.o
+                                0x115 (size before relaxing)
+ .debug_str     0x000040e0       0x6e bytestorage.o
+                                0x1e0 (size before relaxing)
+ .debug_str     0x0000414e      0x15e ioeeprom.o
+                                0x236 (size before relaxing)
+ .debug_str     0x000042ac       0xae fs_structure.o
+                                0x18c (size before relaxing)
+ .debug_str     0x0000435a      0x1ac fsapi.o
+                                0x320 (size before relaxing)
+ .debug_str     0x00004506      0x100 fsconfig.o
+                                0x1fb (size before relaxing)
+ .debug_str     0x00004606       0x64 fsstring.o
+                                0x12b (size before relaxing)
+ .debug_str     0x0000466a      0x126 inode.o
+                                0x238 (size before relaxing)
+ .debug_str     0x00004790      0x196 stdfsa.o
+                                0x2f3 (size before relaxing)
+ .debug_str     0x00004926       0xff vectorflash.o
+                                0x203 (size before relaxing)
+ .debug_str     0x00004a25       0xdb vectornode.o
+                                0x1b9 (size before relaxing)
+ .debug_str     0x00004b00      0x3ed atmelflash.o
+                                0x4ed (size before relaxing)
+ .debug_str     0x00004eed       0x92 pagestorage.o
+                                0x17f (size before relaxing)
+ .debug_str     0x00004f7f      0x1aa clockraw.o
+                                0x2d8 (size before relaxing)
+ .debug_str     0x00005129      0x10a generictimer.o
+                                0x282 (size before relaxing)
+ .debug_str     0x00005233       0xeb globaltiming.o
+                                0x1fb (size before relaxing)
+ .debug_str     0x0000531e      0x2c5 timerraw.o
+                                0x424 (size before relaxing)
+ .debug_str     0x000055e3       0x52 byteorder.o
+                                0x108 (size before relaxing)
+ .debug_str     0x00005635       0xb1 string.o
+                                0x19b (size before relaxing)
+ .debug_str     0x000056e6       0x69 types.o
+                                0x15f (size before relaxing)
+ .debug_str     0x0000574f       0x43 math.o
+                                 0xf1 (size before relaxing)
+ .debug_str     0x00005792      0x452 commandhandle.o
+                                0x78a (size before relaxing)
+ .debug_str     0x00005be4       0xcf socket.o
+                                0x1e6 (size before relaxing)
+ .debug_str     0x00005cb3       0x67 adcsocket.o
+                                0x21e (size before relaxing)
+ .debug_str     0x00005d1a       0x9e eepromsocket.o
+                                0x167 (size before relaxing)
+ .debug_str     0x00005db8      0x115 filesocket.o
+                                0x324 (size before relaxing)
+ .debug_str     0x00005ecd       0xd4 radiocontrol.o
+                                0x253 (size before relaxing)
+ .debug_str     0x00005fa1      0x86d syscall.o
+                                0xa6d (size before relaxing)
+ .debug_str     0x0000680e       0x66 threadsyscall.o
+                                0x23b (size before relaxing)
+ .debug_str     0x00006874      0x11b eventlogger.o
+                                0x1e7 (size before relaxing)
+ .debug_str     0x0000698f       0x8f libadc.o
+                                0x25f (size before relaxing)
+ .debug_str     0x00006a1e       0xad libeeprom.o
+                                0x1a2 (size before relaxing)
+ .debug_str     0x00006acb      0x161 libfile.o
+                                0x3a2 (size before relaxing)
+ .debug_str     0x00006c2c       0xce libleds.o
+                                0x178 (size before relaxing)
+ .debug_str     0x00006cfa      0x243 libradio.o
+                                0x57c (size before relaxing)
+ .debug_str     0x00006f3d      0x18e libserial.o
+                                0x3a7 (size before relaxing)
+ .debug_str     0x000070cb       0x62 libsounder.o
+                                0x10c (size before relaxing)
+ .debug_str     0x0000712d       0xcd libstring.o
+                                0x1e0 (size before relaxing)
+ .debug_str     0x000071fa       0x6f libsystem.o
+                                0x25f (size before relaxing)
+ .debug_str     0x00007269      0x164 libthread.o
+                                0x340 (size before relaxing)
+ .debug_str     0x000073cd       0x4e libmutex.o
+                                0x2d0 (size before relaxing)
+ .debug_str     0x0000741b       0xe2 logger.o
+                                0x402 (size before relaxing)
+ .debug_str     0x000074fd       0x43 blink.o
+                                0x14c (size before relaxing)
+
+.debug_loc      0x00000000     0x912e
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x3b realmain.o
+ .debug_loc     0x0000003b      0xb12 bootloader.o
+ .debug_loc     0x00000b4d       0x64 nodeconfig.o
+ .debug_loc     0x00000bb1       0x13 avrhardware.o
+ .debug_loc     0x00000bc4       0x1e micazhardware.o
+ .debug_loc     0x00000be2      0x3d1 serialprint.o
+ .debug_loc     0x00000fb3      0x160 stdserial.o
+ .debug_loc     0x00001113      0x32b amradio.o
+ .debug_loc     0x0000143e      0x1ae packethandler.o
+ .debug_loc     0x000015ec      0x1c5 cc2420controlm.o
+ .debug_loc     0x000017b1      0x3dd cc2420radiom.o
+ .debug_loc     0x00001b8e      0x258 hplcc2420fifom.o
+ .debug_loc     0x00001de6      0x182 hplcc2420interruptm.o
+ .debug_loc     0x00001f68      0x24a hplcc2420m.o
+ .debug_loc     0x000021b2      0x18d hpltimer1.o
+ .debug_loc     0x0000233f      0x10c scheduling.o
+ .debug_loc     0x0000244b       0x18 threaddata.o
+ .debug_loc     0x00002463      0x630 threadkernel.o
+ .debug_loc     0x00002a93      0x1ae threadtools.o
+ .debug_loc     0x00002c41       0x30 adcdriver.o
+ .debug_loc     0x00002c71       0xdf leds.o
+ .debug_loc     0x00002d50       0x39 sounder.o
+ .debug_loc     0x00002d89      0x285 bytestorage.o
+ .debug_loc     0x0000300e      0x5f7 ioeeprom.o
+ .debug_loc     0x00003605       0x70 fs_structure.o
+ .debug_loc     0x00003675      0xdd7 fsapi.o
+ .debug_loc     0x0000444c      0x3ed fsconfig.o
+ .debug_loc     0x00004839      0x150 fsstring.o
+ .debug_loc     0x00004989      0x5cb inode.o
+ .debug_loc     0x00004f54      0x8af stdfsa.o
+ .debug_loc     0x00005803      0x255 vectorflash.o
+ .debug_loc     0x00005a58      0x1d0 vectornode.o
+ .debug_loc     0x00005c28      0xa8f atmelflash.o
+ .debug_loc     0x000066b7       0xe6 pagestorage.o
+ .debug_loc     0x0000679d      0x159 clockraw.o
+ .debug_loc     0x000068f6      0x1aa generictimer.o
+ .debug_loc     0x00006aa0       0x5c globaltiming.o
+ .debug_loc     0x00006afc      0x297 timerraw.o
+ .debug_loc     0x00006d93       0x50 byteorder.o
+ .debug_loc     0x00006de3      0x443 string.o
+ .debug_loc     0x00007226       0xda types.o
+ .debug_loc     0x00007300      0xa5d commandhandle.o
+ .debug_loc     0x00007d5d       0x5b socket.o
+ .debug_loc     0x00007db8       0x7c eventlogger.o
+ .debug_loc     0x00007e34       0xb6 libadc.o
+ .debug_loc     0x00007eea      0x15e libeeprom.o
+ .debug_loc     0x00008048      0x388 libfile.o
+ .debug_loc     0x000083d0      0x349 libradio.o
+ .debug_loc     0x00008719      0x432 libserial.o
+ .debug_loc     0x00008b4b      0x3e1 libstring.o
+ .debug_loc     0x00008f2c       0x48 libsystem.o
+ .debug_loc     0x00008f74      0x128 libthread.o
+ .debug_loc     0x0000909c       0x67 libmutex.o
+ .debug_loc     0x00009103       0x2b logger.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(LiteOS.elf elf32-avr)
+LOAD linker stubs
+
+.bootloader     0x0001e000      0x9d6
+ .bootloader    0x0001e000      0x9d6 bootloader.o
+                0x0001e0ea                reprogram
+                0x0001e920                boot_insertBreakPoint
+                0x0001e102                reprogramall
+                0x0001e1e6                ProgramRemains
+                0x0001e3ea                boot_removeTracePoint
+                0x0001e1fe                ProgramString
+                0x0001e7ae                boot_insertTracePoint
+                0x0001e24c                boot_removeTracePointLong
+                0x0001e1a6                ProgramLastString
+                0x0001e020                boot_program_page
+                0x0001e58c                boot_removeBreakPoint
+                0x0001e63c                boot_insertTracePointLong
+                0x0001e000                ProgramSetPage
+
+.systemcall.1   0x0001d400       0x18
+ .systemcall.1  0x0001d400       0x18 syscall.o
+                0x0001d400                getNodeID
+                0x0001d410                getRandomNumberSyscall
+                0x0001d408                setNodeID
+
+.systemcall.2   0x0001d500       0x38
+ .systemcall.2  0x0001d500       0x38 syscall.o
+                0x0001d508                getCurrentThreadIndex
+                0x0001d520                postThreadTask
+                0x0001d518                yieldfunction
+                0x0001d510                getThreadTableStartSyscall
+                0x0001d530                breakfunction
+                0x0001d528                postThreadTaskNoLog
+                0x0001d500                getCurrentThreadAddressSyscall
+
+.systemcall.3   0x0001d600        0x8
+ .systemcall.3  0x0001d600        0x8 syscall.o
+                0x0001d600                postTaskSysCall
+
+.systemcall.4   0x0001d700        0x8
+ .systemcall.4  0x0001d700        0x8 syscall.o
+                0x0001d700                getStackPtr
+
+.systemcall.5   0x0001d800       0x38
+ .systemcall.5  0x0001d800       0x38 syscall.o
+                0x0001d810                setRadioPower
+                0x0001d818                getRadioSendingBuffer
+                0x0001d808                setRadioChannel
+                0x0001d828                getRadioReceivingBuffer
+                0x0001d830                setCurrentRadioHandle
+                0x0001d820                invokeSocketRadioSend
+                0x0001d800                setRadioFrequency
+
+.systemcall.6   0x0001d900       0x48
+ .systemcall.6  0x0001d900       0x48 syscall.o
+                0x0001d930                yellowofffunction
+                0x0001d920                redofffunction
+                0x0001d908                yellowtogglefunction
+                0x0001d918                redonfunction
+                0x0001d910                greentogglefunction
+                0x0001d900                redtogglefunction
+                0x0001d940                greenofffunction
+                0x0001d928                yellowonfunction
+                0x0001d938                greenonfunction
+
+.systemcall.7   0x0001da00       0x40
+ .systemcall.7  0x0001da00       0x40 syscall.o
+                0x0001da28                ADCAccYSysCall
+                0x0001da18                ADCMagYSysCall
+                0x0001da00                ADCLightSysCall
+                0x0001da38                sounderofffunction
+                0x0001da08                ADCTempSysCall
+                0x0001da10                ADCMagXSysCall
+                0x0001da30                sounderonfunction
+                0x0001da20                ADCAccXSysCall
+
+.systemcall.8   0x0001db00       0x18
+ .systemcall.8  0x0001db00       0x18 syscall.o
+                0x0001db08                readFromEEPROM
+                0x0001db10                writeToEEPROM
+                0x0001db00                getCurrentEEPROMHandleAddress
+
+.systemcall.9   0x0001dc00       0x38
+ .systemcall.9  0x0001dc00       0x38 syscall.o
+                0x0001dc00                getFilePathAddr
+                0x0001dc18                closeFileSysCall
+                0x0001dc28                writeFileSysCall
+                0x0001dc20                readFileSysCall
+                0x0001dc08                getFileModeAddr
+                0x0001dc30                seekFileSysCall
+                0x0001dc10                openFileSysCall
+
+.systemcall.10  0x0001dd00        0x0
+
+.systemcall.11  0x0001de00        0x0
+
+.debug_ranges   0x00000000      0xaf8
+ .debug_ranges  0x00000000       0x78 bootloader.o
+ .debug_ranges  0x00000078       0x38 amradio.o
+ .debug_ranges  0x000000b0       0x18 packethandler.o
+ .debug_ranges  0x000000c8       0x60 cc2420controlm.o
+ .debug_ranges  0x00000128      0x180 cc2420radiom.o
+ .debug_ranges  0x000002a8       0x30 hplcc2420fifom.o
+ .debug_ranges  0x000002d8       0x60 hpltimer1.o
+ .debug_ranges  0x00000338       0x60 threadkernel.o
+ .debug_ranges  0x00000398       0x48 leds.o
+ .debug_ranges  0x000003e0       0x50 fsapi.o
+ .debug_ranges  0x00000430       0xf8 inode.o
+ .debug_ranges  0x00000528       0x78 stdfsa.o
+ .debug_ranges  0x000005a0       0x18 vectorflash.o
+ .debug_ranges  0x000005b8       0x88 atmelflash.o
+ .debug_ranges  0x00000640       0x18 generictimer.o
+ .debug_ranges  0x00000658       0x38 timerraw.o
+ .debug_ranges  0x00000690       0x60 string.o
+ .debug_ranges  0x000006f0       0x30 commandhandle.o
+ .debug_ranges  0x00000720      0x360 syscall.o
+ .debug_ranges  0x00000a80       0x78 libstring.o
