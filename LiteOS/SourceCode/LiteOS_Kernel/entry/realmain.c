@@ -151,7 +151,7 @@ int main()
         genericwriteBytes(NODEFILENAMEOFFSET, 16, filenameid);
         node_writenodeid(nodeid);
         node_setinitstatus(MICAZCONFIGMESSAGERECEIVED);
-        node_setradiochannel(21);
+        node_setradiochannel(20);
         Leds_redToggle();
         Leds_greenToggle();
         Leds_yellowToggle();
