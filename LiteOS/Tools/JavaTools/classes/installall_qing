@@ -6,9 +6,9 @@ import subprocess
 
 #20 and 29 removed
 
-commtable = [8]
+commtable = [7]
 startid = 1
-commonchannel = 19
+commonchannel = 21
 
 class MyThread ( threading.Thread ):
 
