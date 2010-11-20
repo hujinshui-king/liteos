@@ -31,6 +31,8 @@ Radio_MsgPtr AMStandard_buffer;
 uint16_t AMStandard_lastCount;
 uint16_t AMStandard_counter;
 
+Radio_MsgPtr debugmsg; 
+
 //-------------------------------------------------------------------------
 inline bool AMStandard_Control_init(void)
 {
@@ -208,6 +210,8 @@ Radio_MsgPtr received(Radio_MsgPtr packet)
     addTrace(TRACE_RADIOEVENT_RECEIVEPACKET, 100);
 #endif
 #endif
+
+    debugmsg = packet; 
     AMStandard_counter++;
     if (packet->crc == 1 && (packet->addr == BCAST_ADDRESS || packet->addr ==
                              addr))
