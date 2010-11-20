@@ -15,7 +15,7 @@ COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -DPLATFORM_AVR -DRADIO_CC2420 -DAVR_STACK_PREPARE_LENGTH=34 -DPRINT_SOURCE_ENABLED -DLITE_MAX_THREADS=4 -DBOOTLOADERSIZE=512  -DJTAG_TOGGLE=1 -DFILE_SYS_RANGE=32  -DMAX_FILE_TABLE_SIZE=2  -DF_CPU=8000000UL -O2 -fsigned-char -DNUM_BREAKPOINTS=8 
+CFLAGS += -Wall -gdwarf-2 -DPLATFORM_AVR -DRADIO_CC2420 -DPRINT_SOURCE_ENABLED -DBOOTLOADERSIZE=512 -DFILE_SYS_RANGE=32 -DMAX_FILE_TABLE_SIZE=2 -DNUM_BREAKPOINTS=3 -DLITE_MAX_THREADS=2 -DAVR_STACK_PREPARE_LENGTH=34 -DF_CPU=8000000UL -O2 -fsigned-char  -DJTAG_TOGGLE=1
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
 ## Assembly specific flags
@@ -49,7 +49,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = realmain.o bootloader.o nodeconfig.o avrhardware.o micazhardware.o serialprint.o stdserial.o amradio.o packethandler.o cc2420controlm.o cc2420radiom.o hplcc2420fifom.o hplcc2420interruptm.o hplcc2420m.o hpltimer1.o scheduling.o threaddata.o threadkernel.o threadtools.o adcdriver.o leds.o sounder.o bytestorage.o ioeeprom.o fs_structure.o fsapi.o fsconfig.o fsstring.o inode.o stdfsa.o vectorflash.o vectornode.o atmelflash.o pagestorage.o clockraw.o generictimer.o globaltiming.o timerraw.o byteorder.o string.o types.o math.o commandhandle.o socket.o adcsocket.o eepromsocket.o filesocket.o radiocontrol.o syscall.o threadsyscall.o eventlogger.o libadc.o libeeprom.o libfile.o libleds.o libradio.o libserial.o libsounder.o libstring.o libsystem.o libthread.o libmutex.o logger.o blink.o 
+OBJECTS = realmain.o bootloader.o nodeconfig.o avrhardware.o micazhardware.o serialprint.o stdserial.o amradio.o packethandler.o cc2420controlm.o cc2420radiom.o hplcc2420fifom.o hplcc2420interruptm.o hplcc2420m.o hpltimer1.o scheduling.o threaddata.o threadkernel.o threadtools.o adcdriver.o leds.o sounder.o bytestorage.o ioeeprom.o fs_structure.o fsapi.o fsconfig.o fsstring.o inode.o stdfsa.o vectorflash.o vectornode.o atmelflash.o pagestorage.o clockraw.o generictimer.o globaltiming.o timerraw.o byteorder.o string.o types.o math.o commandhandle.o socket.o adcsocket.o eepromsocket.o filesocket.o radiocontrol.o syscall.o threadsyscall.o eventlogger.o libadc.o libeeprom.o libfile.o libleds.o libradio.o libserial.o libsounder.o libstring.o libsystem.o libthread.o libmutex.o blink.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -244,9 +244,6 @@ libthread.o: ../../../SourceCode/LiteOS_Kernel/libraries/libthread.c
 libmutex.o: ../../../SourceCode/LiteOS_Kernel/libraries/libmutex.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-logger.o: ../../../SourceCode/LiteOS_Kernel/apps/RLogger/logger.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
 blink.o: ../../../SourceCode/LiteOS_Kernel/apps/Blink/blink.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
@@ -274,5 +271,5 @@ clean:
 
 
 ## Other dependencies
--include $(shell mkdir dep 2>NUL) $(wildcard dep/*)
+-include $(shell mkdir dep 2>/dev/null) $(wildcard dep/*)
 

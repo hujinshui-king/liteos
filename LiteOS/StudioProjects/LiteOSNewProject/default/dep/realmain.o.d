@@ -1,21 +1,21 @@
 realmain.o: ../../../SourceCode/LiteOS_Kernel/entry/realmain.c \
   ../../../SourceCode/LiteOS_Kernel/entry/../hardware/avrhardware.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../hardware/../types/types.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/inttypes.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/stdint.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/iom128.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/portpins.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/common.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/version.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/wdt.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h \
-  c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/eeprom.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/io.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/sfr_defs.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/inttypes.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/stdint.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/iom128.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/portpins.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/common.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/version.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/fuse.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/lock.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/interrupt.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/wdt.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/pgmspace.h \
+  c:\liteos\winavr2010\bin\../lib/gcc/avr/4.3.3/include/stddef.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/eeprom.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../hardware/micaz/micazhardware.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../hardware/micaz/../avrhardware.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../hardware/micaz/../../types/types.h \
@@ -53,7 +53,7 @@ realmain.o: ../../../SourceCode/LiteOS_Kernel/entry/realmain.c \
   ../../../SourceCode/LiteOS_Kernel/entry/../timer/globaltiming.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../io/avrserial/serialprint.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../io/avrserial/../../types/types.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/stdlib.h \
+  c:/liteos/winavr2010/lib/gcc/../../avr/include/stdlib.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../io/radio/packethandler.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../io/radio/amradio.h \
   ../../../SourceCode/LiteOS_Kernel/entry/../storage/filesys/storageconstants.h \
@@ -70,35 +70,35 @@ realmain.o: ../../../SourceCode/LiteOS_Kernel/entry/realmain.c \
 
 ../../../SourceCode/LiteOS_Kernel/entry/../hardware/../types/types.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/io.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/sfr_defs.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/inttypes.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/inttypes.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/stdint.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/stdint.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/iom128.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/iom128.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/portpins.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/portpins.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/common.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/common.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/version.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/version.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/fuse.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/lock.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/interrupt.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/wdt.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/wdt.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/pgmspace.h:
 
-c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h:
+c:\liteos\winavr2010\bin\../lib/gcc/avr/4.3.3/include/stddef.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/avr/eeprom.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/avr/eeprom.h:
 
 ../../../SourceCode/LiteOS_Kernel/entry/../hardware/micaz/micazhardware.h:
 
@@ -174,7 +174,7 @@ c:/winavr-20100110/lib/gcc/../../avr/include/avr/eeprom.h:
 
 ../../../SourceCode/LiteOS_Kernel/entry/../io/avrserial/../../types/types.h:
 
-c:/winavr-20100110/lib/gcc/../../avr/include/stdlib.h:
+c:/liteos/winavr2010/lib/gcc/../../avr/include/stdlib.h:
 
 ../../../SourceCode/LiteOS_Kernel/entry/../io/radio/packethandler.h:
 
