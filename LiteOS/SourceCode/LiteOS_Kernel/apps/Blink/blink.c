@@ -42,12 +42,13 @@ void blink()
      addrptr = (uint8_t*)addr; 
      
    	 if (addr<4000)
-   	 lib_radio_send_msg(12, 0xFFFF, 80, (uint8_t*)addrptr);
+   	 lib_radio_send_msg(12, 0xFFFF, 50, (uint8_t*)addrptr);
    	 
-   	 addr+=50; 
+   	 addr+=80; 
      
-    
-     lib_sleep_thread(100);
+     if (addr >4000)
+     	addr = 0;
+     lib_sleep_thread(1000);
      if (counter == 2999)
      	counter = 0; 
 	   }
