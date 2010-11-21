@@ -1,5 +1,8 @@
 #include "radiocontrol.h"
 #include "../io/radio/socket.h"
+#include "../kernel/threadkernel.h"
+#include "../io/radio/amradio.h"
+
 
  
 radio_receiving_buffer radio_buf;
@@ -41,6 +44,9 @@ void SocketRadioSend()
 
     postTask(send_task, 9);
     //After it is woken up, return
+
+	sleepThread(20);
+    restoreRadioState();
     return;
 }
 
