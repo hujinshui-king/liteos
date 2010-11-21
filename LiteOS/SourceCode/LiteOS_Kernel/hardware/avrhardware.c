@@ -51,13 +51,13 @@ void _atomic_end_avr(_atomic_t oldSreg)
 //-------------------------------------------------------------------------
 void avr_resetNode()
 {
-  //  asm volatile ("ldi	r30, 0x00"::);
-  //  asm volatile ("ldi	r31, 0x00"::);
-  //  asm volatile ("icall"::);
+    asm volatile ("ldi	r30, 0x00"::);
+    asm volatile ("ldi	r31, 0x00"::);
+    asm volatile ("icall"::);
   
-    __asm__ __volatile__("ldi	r30, 0x98" ::); 
-    __asm__ __volatile__("ldi	r31, 0xEA" ::);
-    __asm__ __volatile__("icall" ::);
+  //  __asm__ __volatile__("ldi	r30, 0x98" ::); 
+  //  __asm__ __volatile__("ldi	r31, 0xEA" ::);
+  //  __asm__ __volatile__("icall" ::);
 }
 
 
