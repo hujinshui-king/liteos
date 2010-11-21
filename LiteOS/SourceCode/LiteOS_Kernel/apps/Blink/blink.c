@@ -7,7 +7,7 @@
 #include "../../libraries/libfile.h"
 
  
-uint8_t blinkbuffer[150]; 
+uint8_t blinkbuffer[250]; 
 int i; 
 LIB_MYFILE *filefp; 
 uint16_t counter; 
@@ -15,6 +15,38 @@ uint16_t counter;
 uint16_t addr; 
 
 void blink()
+
+
+{
+    int i;
+	uint8_t *addrptr; 
+	//or (i=0;i<100;i++)
+
+ /*	
+   sbi(MCUCR, SM0);
+   sbi(MCUCR, SM1);
+   cbi(MCUCR, SM2); 
+   sbi(MCUCR, SE);
+   
+ */ addrptr = 0; 
+    lib_sleep_thread(30000);  
+	while (1)
+	{
+  lib_green_toggle();
+  
+ // serialSend_string("hello\n");
+ // serialSend_uint16(32323); 
+  //lib_radio_send_string("hello, world\n"); 
+   lib_radio_send_msg(12, 0xFFFF, 80, (uint8_t*)addrptr);
+  //thread_rollback_snapshot(i);
+  lib_sleep_thread(50);
+	}
+	return 0; 
+}
+
+
+
+void blink2()
 {
 
    char *str = "hello,world"; 
@@ -42,8 +74,9 @@ void blink()
      addrptr = (uint8_t*)addr; 
      
    	 if (addr<4000)
-   	 lib_radio_send_msg(12, 0xFFFF, 50, (uint8_t*)addrptr);
-   	 
+   	  lib_radio_send_msg(12, 0xFFFF, 80, (uint8_t*)addrptr);
+
+	  
    	 addr+=80; 
      
      if (addr >4000)
