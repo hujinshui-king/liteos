@@ -20,12 +20,15 @@
  // void tracemain();
 
 
-  //extern uint8_t loggerbuffer[400]; 
-  //void logger();
+ //extern uint8_t loggerbuffer[400]; 
+ //void logger();
     
     
- extern uint8_t blinkbuffer[250];
+ extern uint8_t blinkbuffer[200];
  void blink();
 
+
+//extern uint8_t countbuffer[150];
+//void count(); 
 
 #endif
