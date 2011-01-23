@@ -41,6 +41,9 @@
 package tools.tools;
 
 import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.*;
 import javax.comm.*;
 
@@ -114,13 +117,16 @@ public class ListenRaw {
 		int i;
 		int count = 0;
 		byte[] packet = new byte[MAX_MSG_SIZE];
+		FileOutputStream out = new FileOutputStream("output");
 
 		while ((i = in.read()) != -1) {
 			if (i == 0x7e) {
 				System.out.println();
 			}
 			Dump.printByte(System.out, i);
+			out.write(i);
 		}
+		
 	}
 
 	private static void printUsage() {
