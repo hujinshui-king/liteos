@@ -1,0 +1,81 @@
+/*
+The following is the license of LiteOS.
+
+This file is part of LiteOS.
+Copyright Qing Cao, Hossein Ahmadi 2007-2008, University of Illinois , qcao2@uiuc.edu
+
+LiteOS is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+LiteOS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with LiteOS.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#ifndef STRINGUTILH
+#define STRINGUTILH
+
+
+/** \defgroup string String Operations
+
+      This module implements common string operations on the mote
+*/
+    
+
+#include "../types/types.h"
+
+/** \ingroup string
+ 
+    Get the length of the string
+*/
+
+int lib_string_length(char* s);
+
+/** \ingroup string
+    
+    Copy a string with a length parameter
+*/
+void lib_mystrncpy(char *dest, const char *src, uint16_t n);
+
+/** \ingroup string
+  
+    Copy a string without a length parameter
+*/
+void lib_mystrcpy(char *dest, const char *src); 
+
+
+/** \ingroup string
+  
+    Append a string to another string
+    
+*/
+void lib_string_append(char *base, char *string);
+
+/** \ingroup string
+  
+    Split a zero-terminated string at the first occurance of delimiter. 
+	The first part is extracted from input string and returned as a zero-terminated string.
+*/
+
+char* lib_string_split(char ** string, char delimiter);
+
+/** \ingroup string
+
+     Convert an integer to a string
+*/
+char *lib_string_int_to_string(int num);
+
+/** \ingroup string
+ 
+     Convert a hexidecimal value to an integer. For example, A is converted to 10 
+ 
+*/
+uint16_t lib_hex2value(uint8_t hex);
+
+#endif

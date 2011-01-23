@@ -1,0 +1,16 @@
+#ifndef STORAGECONSTANTSH
+#define STORAGECONSTANTSH
+
+#define NETWORKNAMEOFFSET 3104
+#define NODEFILENAMEOFFSET    3125
+#define NODEIDOFFSET 3150
+#define NODESTATUSOFFSET 3154
+#define NODECHANNELOFFSET  3156
+
+//EEPROM vector contains 12 bytes
+#define EEPROMVECTORSTART 3138
+//flash vector contains 32 bytes 
+#define FLASHVECTORSTART  3150
+
+
+#endif 
