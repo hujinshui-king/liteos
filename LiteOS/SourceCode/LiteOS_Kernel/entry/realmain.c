@@ -151,7 +151,7 @@ int main()
         genericwriteBytes(NODEFILENAMEOFFSET, 16, filenameid);
         node_writenodeid(nodeid);
         node_setinitstatus(MICAZCONFIGMESSAGERECEIVED);
-        node_setradiochannel(20);
+        node_setradiochannel(22);
         Leds_redToggle();
         Leds_greenToggle();
         Leds_yellowToggle();
@@ -230,8 +230,11 @@ int main()
 	  create_thread(blink, (uint16_t *) blinkbuffer,
                   STACK_TOP(blinkbuffer), 0, 15, "blink", 0, 0);
 
-    // create_thread(logger, (uint16_t *)loggerbuffer,     
-      //          STACK_TOP(loggerbuffer), 0, 15, "logger", 0, 0);
+
+    //create_thread(count, (uint16_t *)countbuffer,
+      //            STACK_TOP(countbuffer), 0, 15, "count", 0, 0);
+     //create_thread(logger, (uint16_t *)loggerbuffer,     
+       //         STACK_TOP(loggerbuffer), 0, 15, "logger", 0, 0);
                   
     //create_thread(gfapp, (uint16_t *) gfbuffer,
       //            STACK_TOP(gfbuffer), 0, 15, "gfapp", 0, 0);
